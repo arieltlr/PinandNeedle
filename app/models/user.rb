@@ -5,7 +5,6 @@ class User < ApplicationRecord
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: {minimum: 6}, allow_nil: true
     validates :password_digest, presence: true
-    validates :about, :limit => 160
     validates :country, presence: true
     validates :launguage, presence: true
     
