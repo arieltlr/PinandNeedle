@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :launguage, presence: true
     
     def set_username(email)
-        self.username = email.split('a')[0]
+        self.username = email.split('@')[0]
     end
 
     after_initialize :ensure_session_token
