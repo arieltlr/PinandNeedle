@@ -14,5 +14,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
-console.log("application")
 
