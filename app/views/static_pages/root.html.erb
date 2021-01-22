@@ -1,1 +1,43 @@
+<% if logged_in? %>
+<script type="text/javascript">
+    window.currentUser = <%= render(
+      "api/users/user.json.jbuilder",
+      user: current_user
+    ).html_safe %>
+</script>
+<% end %>
 <main id="root">React is busted!</main>
+<script type="text/javascript">
+   window.logo = "<%= image_url('logo_200x200.png') %>"
+</script>
+<script type="text/javascript">
+   window.x = "<%= image_url('x.png') %>"
+</script>
+
+
+<script type="text/javascript">
+   window.spools = "<%= image_url('annie-spratt-spools.jpg') %>"
+</script>
+<script type="text/javascript">
+   window.brown_sweater = "<%= image_url('brown_sweater_knit.jpg') %>"
+</script>
+<script type="text/javascript">
+   window.embroidery_thread = "<%= image_url('embroidery_thread.jpg') %>"
+</script>
+<script type="text/javascript">
+   window.craft_table1 = "<%= image_url('estee-janssens-craft-table-unsplash.jpg') %>"
+</script>
+<script type="text/javascript">
+   window.pin_cushion = "<%= image_url('pin_cusion.jpg') %>"
+</script>
+<script type="text/javascript">
+   window.textiles = "<%= image_url('toa-heftiba-textiles-unsplash.jpg') %>"
+</script>
+<script type="text/javascript">
+   window.serger_spool = "<%= image_url('serger_spool.jpg') %>"
+</script>
+<script type="text/javascript">
+   window.craft_table2 = "<%= image_url('estee-janssens-craft-table-unsplash-mini1.jpg') %>"
+</script>
+
+
