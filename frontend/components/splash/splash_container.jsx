@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import Splash from './splash';
-import {logout, signup, login} from '../../actions/session_actions'
+import { openModal, closeModal } from '../../actions/modal_actions';
+import { logout } from "../../actions/session_actions";
+
 
 const mstp = (state, ownProps) => {
     debugger
@@ -10,9 +12,9 @@ const mstp = (state, ownProps) => {
 }
 const mdtp = dispatch => {
     return {
+        openModal: (modal) => dispatch(openModal(modal)),
+        closeModal: () => dispatch(closeModal()),
         logout: () => dispatch(logout()),
-        signup: (user) => dispatch(signup(user)),
-        login: (user) => dispatch(login(user))
 
     }
 }

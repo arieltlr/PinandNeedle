@@ -16,16 +16,12 @@ class SignupForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
-        this.handleUsername = this.handleUsername.bind(this);
-        this.handleCountry = this.handleCountry.bind(this);
-        this.handleLanguage = this.handleLanguage.bind(this);
-        this.handleGender = this.handleGender.bind(this);
+        this.handleAge = this.handleAge.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        debugger
         this.props.signup(user)
             .then(() => this.props.history.push('/'), (error)=> this.props.receiveErrors(error));
     }
@@ -36,65 +32,41 @@ class SignupForm extends React.Component {
     handlePassword(e) {
         this.setState({ password: e.target.value })
     }
-    handleUsername(e) {
-        this.setState({ username: e.target.value })
-    }
-    handleCountry(e) {
-        this.setState({ country: e.target.value })
-    }
-    handleLanguage(e) {
-        this.setState({ language: e.target.value })
-    }
-    handleGender(e) {
-        this.setState({ gender: e.target.value })
+    handleAge(e) {
+        this.setState({ age: e.target.value })
     }
 
 
     render() {
-        debugger
         const errors = this.props.errors.map(error => {
             return <li>{error}</li>
         })
+        debugger
         return (
-            <div>
-                <h1>Create an account</h1>
+
+            <div className="modal">
+                <img className="exit-image" src={window.x} />
+                <section className="header">
+                    <img className="header-logo" src={window.logo} alt="needle-logo"/>
+                    <h1 className="welcome">Welcome to Pin and Needle</h1>
+                    <h3 className="subtext">Find new ideas to try</h3>
+                </section>
+                
                 <form className="signup-form" onSubmit={this.handleSubmit}>
-                    <label>Email:
-                            <br />
-                        <input type="text" value={this.props.email} onChange={this.handleEmail} />
-                    </label>
-                    <br />
-                    <label>Username: 
-                        <br />
-                        <input type="text" value={this.props.username} onChange={this.handleUsername}/>
-                    </label>
+
+                    <input type="text" placeholder="Email" value={this.props.email} onChange={this.handleEmail} />
                     <br/>
-                    <label>Gender:
-                            <br />
-                        <input type="text" onChange={this.handleGender} />
-                    </label>
+                    <input type="password" placeholder="Create a password" onChange={this.handlePassword} />
                     <br />
-                    <label>Password:
-                            <br />
-                        <input type="password" onChange={this.handlePassword} />
-                    </label>
-                    <br/>
-                    <label>Country:
-                        <br/>
-                        <input type="text" value={this.props.country} onChange={this.handleCountry} />
-                    </label>
-                    <br/>
-                    <label>Language:
-                        <br/>
-                        <input type="text" value={this.props.language} onChange={this.handleLanguage} />
-                    </label>
+                    <input type="text" placeholder="Age" value={this.props.age} onChange={this.handleAge}/>
                     <br />
-                    <button>Submit</button>
+                    <button className="red-button">Continue</button>
                     <br />
                     <ul>
                         {errors}
                     </ul>
                 </form>
+                {this.props.otherForm}
             </div>
         )
 

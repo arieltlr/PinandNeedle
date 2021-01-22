@@ -35,25 +35,24 @@ class LoginForm extends React.Component {
             return <li>{error}</li>
         })
         return (
-            <div>
-                <h1>Login!</h1>
+            <div className="modal">
+                <img className="exit-image" src={window.x} />
+                <section className="header">
+                    <img className="header-logo" src={window.logo} alt="needle-logo" />
+                    <h1 className="welcome">Welcome to Pin and Needle</h1>
+                </section>
                 <form className="session-form" onSubmit={this.handleSubmit}>
-                    <label>Email:
-                            <br />
-                        <input type="text" onChange={this.handleEmail} />
-                    </label>
+                    <input type="text" placeholder="Email" value={this.props.email} onChange={this.handleEmail} />
                     <br />
-                    <label>Password:
-                            <br />
-                        <input type="password" onChange={this.handlePassword} />
-                    </label>
+                    <input type="password" placeholder="Password" onChange={this.handlePassword} />
                     <br />
-                    <button>Submit</button>
-                    <br />
+                    <button className="red-button">Log in</button>
+                    {this.props.otherForm}
                     <ul>
                         {errors}
                     </ul>
                 </form>
+                
             </div>
         )
 
