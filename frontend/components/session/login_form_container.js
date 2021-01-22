@@ -24,7 +24,8 @@ const mapDispatchToProps = (dispatch) => {
             <button className="otherFormButton" onClick={()=> dispatch(openModal('signup'))}>
                 Not on Pin and Needle yet? Sign up
             </button>
-        ) 
+        ),
+        refreshErrors: (resetErrors) => dispatch(receiveErrors(resetErrors)),
         
     };
 };

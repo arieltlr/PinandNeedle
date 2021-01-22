@@ -111,3 +111,15 @@ input:focus {
 .blue-button:hover {
 	background-color: #0575d1;
 }
+
+.error-message {
+    font-size: 10px;
+    color: red;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: -10px;
+}
+p {
+    text-align: left;
+}

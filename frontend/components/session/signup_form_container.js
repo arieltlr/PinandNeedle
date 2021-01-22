@@ -5,7 +5,7 @@ import { receiveErrors, signup, login } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    
+    debugger
     return {
         errors: state.errors.session,
         formType: 'signup',
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-
+    debugger
     return {
         login: (user) => dispatch(login(user)),
         signup: (user) => dispatch(signup(user)),
@@ -25,7 +25,8 @@ const mapDispatchToProps = (dispatch) => {
             <button className="otherFormButton" onClick={() => dispatch(openModal('login'))}>
                 Already a member? Log in
             </button>
-        ) 
+        ),
+        refreshErrors: (resetErrors) => dispatch(receiveErrors(resetErrors)), 
     }
 }
 

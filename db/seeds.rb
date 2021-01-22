@@ -246,5 +246,11 @@
 #     user1 = {email: "email@email.com", username: "user123", password: "password", country: "United States of America (USA)", language: "English (US)", gender: "Female"}
 # window.dispatch(login(user))
 #let user2 = {email: "user2@email.com", username: "user2", password: "password", country: "United States of America (USA)", language: "English (US)", gender: "Female"}
-demouser = User.create!({email: "demouser@email.com", age: 25, username: "Demo User", password: "password123", country: "United States (US)", language: "English (US)", gender: "Female"}
-)
+demouser = User.create!({email: "demouser@email.com", age: 25, username: "Demo User", password: "password123", 
+country: "United States (US)", language: "English (US)", gender: "Female"})
+
+user1 = User.create!({email: "gemma@email.com", age: 4, username: "Gemma", password: "password123", 
+country: "United States (US)", language: "English (US)", gender: "Female"})
+
+user2 = User.create!({email: "luca@email.com", age: 1, username: "Luca", password: "password123", 
+country: "United States (US)", language: "English (US)", gender: "Male"})

@@ -13,8 +13,6 @@ class LoginForm extends React.Component {
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
         this.handleDemoUser = this.handleDemoUser.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
-
     }
     handleDemoUser(e) {
         e.preventDefault();
@@ -27,7 +25,7 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         debugger
-        this.props.login(user).then(() => this.props.closeModal(), (error) => this.props.receiveErrors(error));
+        this.props.login(user).then(() => this.props.closeModal());
     }
 
     handleEmail(e) {
@@ -36,19 +34,16 @@ class LoginForm extends React.Component {
     handlePassword(e) {
         this.setState({ password: e.target.value })
     }
-
-    renderErrors(){
-        if (this.props.errors.length > 0) {
-            const errors = this.props.errors.map(error => {
-                return <li>{error}</li>
-            })
-        };
-        return errors
+    componentWillUnmount(){
+        const resetErrors = [];
+        this.props.refreshErrors(resetErrors);
     }
 
     render() {
         debugger
-        this.renderErrors()
+        const errorMessages = this.props.errors.map(error => {
+            return <li>{error}</li>
+        })
         return (
             <div className="modal">
                 <div className="exit-container">
@@ -60,15 +55,14 @@ class LoginForm extends React.Component {
                 </section>
                 <form className="session-form" onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Email" value={this.props.email} onChange={this.handleEmail} />
+                    {errorMessages ? <p className="error-message" id="email-error">{errorMessages[0]}</p> : <p></p>}
                     <br />
                     <input type="password" placeholder="Password" onChange={this.handlePassword} />
+                    {errorMessages.length > 0 ? <p className="error-message" id="email-error">{errorMessages[1]}</p> : <p></p>}
                     <br />
                     <button className="red-button">Log in</button>
                     <button className="blue-button" onClick={this.handleDemoUser}>Continue as Demo User</button>
                     {this.props.otherForm}
-                    <ul>
-                        {errors}
-                    </ul>
                 </form>
                 
             </div>

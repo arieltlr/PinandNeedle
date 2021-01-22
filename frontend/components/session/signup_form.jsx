@@ -26,7 +26,7 @@ class SignupForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.signup(user)
-            .then(() => this.props.closeModal(), (error)=> this.props.receiveErrors(error));
+            .then(() => this.props.closeModal());
     }
 
     handleEmail(e) {
@@ -38,13 +38,14 @@ class SignupForm extends React.Component {
     handleAge(e) {
         this.setState({ age: e.target.value })
     }
-   
-
-
+    componentWillUnmount() {
+        const resetErrors = [];
+        this.props.refreshErrors(resetErrors);
+    }
     render() {
         debugger
-        const errors = this.props.errors.map(error => {
-            return <li>{error}</li>
+        const errorMessages = this.props.errors.map((error, index) => {
+            return <li className="error-li" id={index}>{error}</li>
         })
         debugger
         return (
@@ -60,20 +61,19 @@ class SignupForm extends React.Component {
                 </section>
                 
                 <form className="signup-form" onSubmit={this.handleSubmit}>
-
                     <input type="text" placeholder="Email" value={this.props.email} onChange={this.handleEmail} />
+                    { errorMessages ? <p className="error-message" id="email-error">{errorMessages[0]}</p> : <p></p> }
                     <br/>
                     <input type="password" placeholder="Create a password" onChange={this.handlePassword} />
+                    {errorMessages.length > 0 ? <p className="error-message" id="email-error">{errorMessages[1]}</p> : <p></p>}
                     <br />
                     <input type="text" placeholder="Age" value={this.props.age} onChange={this.handleAge}/>
+                    {errorMessages.length > 1 ? <p className="error-message" id="email-error">{errorMessages[2]}</p> : <p></p>}
                     <br />
                     <button className="red-button">Continue</button>
                     <button className="blue-button" onClick={this.handleDemoUser}>Continue as Demo User</button>
                     {this.props.otherForm}
                     <br />
-                    <ul>
-                        {errors}
-                    </ul>
                 </form>
             </div>
         )
