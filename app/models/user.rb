@@ -1,12 +1,12 @@
 class User < ApplicationRecord
 
-    validates :email, presence: true, uniqueness: true, valid_email?: true 
-    validates :username, presence: true, uniqueness: true
+    validates :email, presence: true, uniqueness: true
+    validates :username, allow_blank: true, uniqueness: true
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: {minimum: 6}, allow_nil: true
     validates :password_digest, presence: true
     validates :about, allow_blank: true, length: {maximum: 160}
-    validates :country, presence: true, inclusion: ["Afghanistan",
+    validates :country, allow_blank: true, inclusion: ["Afghanistan",
                                                     "Albania",
                                                     "Algeria",
                                                     "Andorra",
@@ -194,7 +194,7 @@ class User < ApplicationRecord
                                                     "Uganda",
                                                     "Ukraine",
                                                     "United Arab Emirates",
-                                                    "United States of America (USA)",
+                                                    "United States (US)",
                                                     "Uruguay",
                                                     "Uzbekistan",
                                                     "Venezuela",
@@ -204,7 +204,7 @@ class User < ApplicationRecord
                                                     "Yemen",
                                                     "Zambia",
                                                     "Zimbabwe"]
-    validates :launguage, presence: true, inclusion: ["Bahasa Indonesia",
+    validates :language, allow_blank: true, inclusion: ["Bahasa Indonesia",
                                                     "Bahasa Malaysia",
                                                     "Cestina",
                                                     "Chinese ",
@@ -236,16 +236,18 @@ class User < ApplicationRecord
                                                     "Tieng Viet",
                                                     "Turkce"]
     
-    validates :gender, inclusion: ['Male', 'Female','Non-binary' ]
+    validates :gender, inclusion: ['Male', 'Female','Non-binary' ], allow_blank: true
+    validates :age, presence: true
     
-    def set_username(email)
-        self.username = email.split('@')[0]
-    end
+    # def username=(email)
+    #     @email = email
+    #     self.username = email.split('@')[0]
+    # end
 
-    def valid_email?(email)
-        parts = email.split('@')
-        parts.length != 2 ? false : true   
-    end
+    # def valid_email?(email)
+    #     parts = email.split('@')
+    #     parts.length != 2 ? false : true   
+    # end
 
     after_initialize :ensure_session_token
 

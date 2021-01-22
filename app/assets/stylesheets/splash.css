@@ -1,0 +1,97 @@
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+}
+.left-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 12px;
+    padding-left: 22px;
+}
+.right-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 12px;
+    padding-right: 28px;
+}
+.app-name {
+    color: #e60023;
+    font-size: 18px;
+    padding-left: 4px;
+}
+#header-logo {
+    height: 36px;
+    width: 36px;
+}
+
+button {
+    border-radius: 25px;
+    margin: 10px;
+    font-size: 15px;
+}
+.login-button {
+    background-color: #e60023;
+    color:white;
+}
+.login-button:hover {
+	background-color: #a00119;
+}
+.signup-button {
+    background-color: rgb(239, 239, 239);
+}
+.signup-button:hover {
+    background-color: rgb(224, 223, 223);
+}
+
+.main-text {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 25px;
+}
+.second-header {
+    color: rgb(194, 130, 0);
+    padding-top: 8px;
+}
+.images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+.mid-image {
+    border-radius: 10px;
+    width: 240px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.side-image1 {
+    border-radius: 0px 10px 10px 0px;
+    width: 35px;
+    height: 300px;
+    margin-top: -10px;
+    /* position: absolute;
+    top: -40px; */
+
+}
+.side-image2 {
+    border-radius: 10px 0px 0px 10px;
+    width: 35px;
+    height: 300px;
+    margin-top: -10px;
+  
+}
+#mid1, #mid5 {
+    margin-top: 40px;
+
+}
+#mid2, #mid4 {
+    margin-top: 90px;
+
+}
+#mid3 {
+    margin-top: 130px;
+
+}

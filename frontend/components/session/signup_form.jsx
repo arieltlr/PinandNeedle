@@ -8,22 +8,25 @@ class SignupForm extends React.Component {
         this.state = {
             email: "",
             password: "", 
-            username: "",
-            country: "",
-            language: "",
-            gender: ""
+           age: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
         this.handleAge = this.handleAge.bind(this);
+        this.handleDemoUser = this.handleDemoUser.bind(this);
     }
-
+    handleDemoUser(e) {
+        e.preventDefault();
+        const demoUser = { email: 'demouser@email.com', password: "password123" }
+        this.props.login(demoUser)
+            .then(() => this.props.closeModal())
+    }
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.signup(user)
-            .then(() => this.props.history.push('/'), (error)=> this.props.receiveErrors(error));
+            .then(() => this.props.closeModal(), (error)=> this.props.receiveErrors(error));
     }
 
     handleEmail(e) {
@@ -35,9 +38,11 @@ class SignupForm extends React.Component {
     handleAge(e) {
         this.setState({ age: e.target.value })
     }
+   
 
 
     render() {
+        debugger
         const errors = this.props.errors.map(error => {
             return <li>{error}</li>
         })
@@ -45,7 +50,9 @@ class SignupForm extends React.Component {
         return (
 
             <div className="modal">
-                <img className="exit-image" src={window.x} />
+                <div className="exit-container">
+                    <img className="exit-image" src={window.x} onClick={this.props.closeModal}/>
+                </div>
                 <section className="header">
                     <img className="header-logo" src={window.logo} alt="needle-logo"/>
                     <h1 className="welcome">Welcome to Pin and Needle</h1>
@@ -61,12 +68,13 @@ class SignupForm extends React.Component {
                     <input type="text" placeholder="Age" value={this.props.age} onChange={this.handleAge}/>
                     <br />
                     <button className="red-button">Continue</button>
+                    <button className="blue-button" onClick={this.handleDemoUser}>Continue as Demo User</button>
+                    {this.props.otherForm}
                     <br />
                     <ul>
                         {errors}
                     </ul>
                 </form>
-                {this.props.otherForm}
             </div>
         )
 

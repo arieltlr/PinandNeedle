@@ -12,14 +12,21 @@ class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
+        this.handleDemoUser = this.handleDemoUser.bind(this);
+
+    }
+    handleDemoUser(e) {
+        e.preventDefault();
+        const demoUser = { email: 'demouser@email.com', password: "password123" }
+        this.props.login(demoUser)
+            .then(() => this.props.closeModal())
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         debugger
-        this.props.login(user)
-            .then(() => this.props.history.push('/'));
+        this.props.login(user).then(() => this.props.closeModal(), (error) => this.props.receiveErrors(error));
     }
 
     handleEmail(e) {
@@ -36,7 +43,9 @@ class LoginForm extends React.Component {
         })
         return (
             <div className="modal">
-                <img className="exit-image" src={window.x} />
+                <div className="exit-container">
+                    <img className="exit-image" src={window.x} onClick={this.props.closeModal} />
+                </div>
                 <section className="header">
                     <img className="header-logo" src={window.logo} alt="needle-logo" />
                     <h1 className="welcome">Welcome to Pin and Needle</h1>
@@ -47,6 +56,7 @@ class LoginForm extends React.Component {
                     <input type="password" placeholder="Password" onChange={this.handlePassword} />
                     <br />
                     <button className="red-button">Log in</button>
+                    <button className="blue-button" onClick={this.handleDemoUser}>Continue as Demo User</button>
                     {this.props.otherForm}
                     <ul>
                         {errors}

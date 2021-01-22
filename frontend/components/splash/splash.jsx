@@ -40,29 +40,15 @@ class Splash extends React.Component {
                 </section>
                 <section className="images"> 
                     <img className="side-image1" src={window.craft_table1} alt="estee-janssen" />
-                    <img className="mid-image" src={window.spools} alt="annie spratt"/>
-                    <img className="mid-image" src={window.brown_sweater} alt="brown knit sweater" />
-                    <img className="mid-image" src={window.embroidery_thread} alt="thread" />
-                    <img className="mid-image" src={window.pin_cushion} alt="pins" />
-                    <img className="mid-image" src={window.textiles} alt="toa heftiba" />
+                    <img className="mid-image" id="mid1" src={window.spools} alt="annie spratt"/>
+                    <img className="mid-image" id="mid2"src={window.brown_sweater} alt="brown knit sweater" />
+                    <img className="mid-image" id="mid3" src={window.embroidery_thread} alt="thread" />
+                    <img className="mid-image" id="mid4" src={window.pin_cushion} alt="pins" />
+                    <img className="mid-image" id="mid5" src={window.textiles} alt="toa heftiba" />
                     <img className="side-image2" src={window.craft_table2} alt="estee-janssen" />
-
-                    {/* <img className="7" src={window.serger_spool} alt="serger spools" /> */}
                 </section>
-           
             </div>
         )
-        // debugger
-        // if (this.props.currentUser){
-        //     debugger
-        //     return (
-        //         <div>
-        //             <h1>Welcome back , {this.props.currentUser.username}</h1>
-        //             <button onClick={() => this.props.logout()}>Logout</button>
-        //         </div>
-        //     )
-        // }else { // }
-       
     }
 }
 
