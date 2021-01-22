@@ -13,6 +13,7 @@ class LoginForm extends React.Component {
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
         this.handleDemoUser = this.handleDemoUser.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
 
     }
     handleDemoUser(e) {
@@ -36,11 +37,18 @@ class LoginForm extends React.Component {
         this.setState({ password: e.target.value })
     }
 
+    renderErrors(){
+        if (this.props.errors.length > 0) {
+            const errors = this.props.errors.map(error => {
+                return <li>{error}</li>
+            })
+        };
+        return errors
+    }
+
     render() {
         debugger
-        const errors = this.props.errors.map(error => {
-            return <li>{error}</li>
-        })
+        this.renderErrors()
         return (
             <div className="modal">
                 <div className="exit-container">

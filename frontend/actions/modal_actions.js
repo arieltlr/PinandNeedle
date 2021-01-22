@@ -1,6 +1,6 @@
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
-export const NEXT_MODAL = "NEXT_MODAL";
+export const ERROR_MODAL = "ERROR_MODAL";
 
 export const openModal = modal => {
     return {
@@ -15,9 +15,9 @@ export const closeModal = () => {
     }
 }
 
-export const nextModal = () => {
+export const errorModal = modal => {
     return {
-        type: NEXT_MODAL,
+        type: ERROR_MODAL,
         modal
     }
 }
