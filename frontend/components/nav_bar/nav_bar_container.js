@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Feed from './feed';
-import { receiveErrors, logout } from '../../actions/session_actions'
+import NavBar from './nav_bar';
+import { receiveErrors, logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
     debugger
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

@@ -1,4 +1,7 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import FeedContainer from '../feed/feed_container';
+import NavBarContainer from '../nav_bar/nav_bar_container';
 // import logo from '../../../app/assets/images';
 
 class Splash extends React.Component {
@@ -7,20 +10,26 @@ class Splash extends React.Component {
     }
 
     render (){
+        debugger
        if (this.props.currentUser){
            return (
-           <div>
-               <header className="main-nav">
-                   <div className="left-header">
-                       <img id="header-logo" src={window.logo} alt="needle_icon" />
-                   </div>
-                   <div className="right-header">
-                       <button className="red-button" onClick={this.props.logout}>Logout</button>
-                   </div>
+           <div className="feed-container">
+               <NavBarContainer /> 
+               {/* <FeedContainer /> */}
+           </div>)
+        //    return (
+        //    <div>
+        //        <header className="main-nav">
+        //            <div className="left-header">
+        //                <img id="header-logo" src={window.logo} alt="needle_icon" />
+        //            </div>
+        //            <div className="right-header">
+        //                <button className="red-button" onClick={this.props.logout}>Logout</button>
+        //            </div>
 
-               </header>
-           </div>
-           )
+        //        </header>
+        //    </div>
+        //    )
         }
         return (
             <div>

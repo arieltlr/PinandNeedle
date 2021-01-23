@@ -39,6 +39,7 @@ class SignupForm extends React.Component {
         this.setState({ age: e.target.value })
     }
     componentWillUnmount() {
+        debugger
         const resetErrors = [];
         this.props.refreshErrors(resetErrors);
     }

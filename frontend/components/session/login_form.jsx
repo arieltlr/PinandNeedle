@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const demoUser = { email: 'demouser@email.com', password: "password123" }
         this.props.login(demoUser)
-            .then(() => this.props.closeModal())
+            .then(() => this.props.closeModal());
     }
 
     handleSubmit(e) {
