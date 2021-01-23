@@ -9,24 +9,45 @@
     height: 70px;
     position: fixed;
     top: 0;
-    padding: 15px 25px 15px 25px;
+    padding: 10px 25px 15px 25px;
     align-items: center;
         button {
             background-color: white;
             color: black;
             font-size: 16px;
-            height: 40px;
+            height: 50px;
             padding: 5px
         }
         .nav-ele:hover {
-            background-color: rgba(168, 168, 168, 0.7);
+            background-color: rgba(236, 236, 236, 0.7);
+            cursor: pointer;
         }
 
         #down-icon {
-            height: 15px;
-            width: 15px;
+            height: 8px;
+            width: 13px;
+        }
+        p {
+            font-size: 12px;
+            background-image: url('circle.png');
+            background-repeat: no-repeat;
+            background-size: 25px 25px;
+            background-position: center;
+            outline: none;
+            padding: 30px;
+
+ 
         }
 }
+p:hover {
+    background-image: url('circle.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+                }
 .nav-bar img {
     height: 30px;
     width: 30px;
@@ -34,18 +55,45 @@
 .nav-bar input {
     margin-top: 5px;
     width: 60%;
-    height: 40px;
+    height: 50px;
     border: none;
     border-radius: 25px;
-    background-color: rgba(226, 226, 226, 0.7);
-    margin-right: 15px;
-    cursor: auto;
-
+    background-color: rgba(236, 236, 236, 0.7);
+    background-image: url('search-icon.jpg');
+    background-position: 15px center;
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    outline: none;
+    padding: 0px 30px 0px 40px;
+    font-size: 17px;
+        
 }
+input:hover{
+            cursor: auto;
+        }
+
 .active {
     background-color: black;
     color: white;
 }
 #holder {
     margin-top: 300px;
+}
+#header-logo-circle {
+    height: 50px;
+    width: 50px;
+    background-image: url('logo_200x200.png');
+    background-size: 64%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+#down-icon-circle {
+    height: 25px;
+    width: 25px;
+    background-image: url('down_icon.png');
+    background-size: 13px 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
 }
