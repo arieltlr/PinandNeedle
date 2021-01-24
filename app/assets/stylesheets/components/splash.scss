@@ -1,3 +1,5 @@
+@import "base/colors.scss";
+
 .main-nav {
     display: flex;
     justify-content: space-between;
@@ -17,7 +19,7 @@
     padding-right: 28px;
 }
 .app-name {
-    color: #e60023;
+    color: $red;
     font-size: 18px;
     padding-left: 4px;
 }
@@ -32,11 +34,11 @@ button {
     font-size: 15px;
 }
 .login-button {
-    background-color: #e60023;
+    background-color: $red;
     color:white;
 }
 .login-button:hover {
-	background-color: #a00119;
+	background-color: $hover-red;
 }
 .signup-button {
     background-color: rgb(239, 239, 239);

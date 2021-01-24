@@ -6,15 +6,15 @@ import FeedContainer from './components/feed/feed_container';
 import Modal from '../frontend/components/modal/modal';
 import NavBarContainer from '../frontend/components/nav_bar/nav_bar_container'
 
-const App = () => (
+const App = (store) => (
     <div>
         <Modal />
             <header>
-                <ProtectedRoute path="/" component={NavBarContainer}/>
+                <ProtectedRoute component={NavBarContainer} />
             </header>
             <Switch>
-                <Route exact path="/" component={SplashContainer} />
-                {/* <ProtectedRoute exact path="/feed" component={FeedContainer} /> */}
+                <AuthRoute exact path="/" component={SplashContainer} />
+                <Route path="/feed" component={FeedContainer} />
             </Switch> 
     </div>
 )

@@ -1,3 +1,5 @@
+@import "base/colors.scss";
+
 .nav-bar {
     list-style-type: none;
     // margin: 0;
@@ -11,6 +13,9 @@
     top: 0;
     padding: 10px 25px 15px 25px;
     align-items: center;
+        a {
+            text-decoration: none;
+        }
         button {
             background-color: white;
             color: black;
@@ -23,10 +28,6 @@
             cursor: pointer;
         }
 
-        #down-icon {
-            height: 8px;
-            width: 13px;
-        }
         p {
             font-size: 12px;
             background-image: url('circle.png');
@@ -69,12 +70,14 @@ p:hover {
         
 }
 input:hover{
-            cursor: auto;
-        }
+    cursor: auto;
+    }
 
 .active {
+    button{
     background-color: black;
     color: white;
+    }   
 }
 #holder {
     margin-top: 300px;

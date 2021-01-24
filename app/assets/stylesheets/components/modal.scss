@@ -1,3 +1,5 @@
+@import "base/colors.scss";
+
 .modal-background {
     position: fixed;
     top: 0;
@@ -83,14 +85,14 @@ input:focus {
 
 .red-button {
     border: none;
-    background-color: #e60023;
+    background-color: $red;
     border-radius: 20px;
     width: 268px;
     height: 42px;
     color: white;
 }
 .red-button:hover {
-	background-color: #a00119;
+	background-color: $hover-red;
 }
 .otherFormButton {
     background-color: white;
@@ -102,19 +104,19 @@ input:focus {
 }
 .blue-button {
     border: none;
-    background-color: #0e8ef7;
+    background-color: $fblue;
     border-radius: 20px;
     width: 268px;
     height: 42px;
     color: white;
 }
 .blue-button:hover {
-	background-color: #0575d1;
+	background-color: $fblue-hover;
 }
 
 .error-message {
     font-size: 10px;
-    color: red;
+    color: $red;
     list-style-type: none;
     padding: 0px;
     margin: 0px;
