@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        debugger
+        // debugger
         this.props.login(user).then(() => this.props.closeModal());
     }
 
@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
     }
 
     render() {
-        debugger
+        // debugger
         const errorMessages = this.props.errors.map(error => {
             return <li>{error}</li>
         })

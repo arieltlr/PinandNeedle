@@ -4,7 +4,7 @@ import Profile from './profile';
 import { receiveErrors, logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
+    // debugger
     return {
         user: state.entities.user[state.session.id]
     }

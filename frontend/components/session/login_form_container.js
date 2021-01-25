@@ -5,7 +5,7 @@ import { receiveErrors, login } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
+    // debugger
     return {
         errors: state.errors.session,
         formType: 'login',
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    debugger
+    // debugger
     return {
         login: (user) => dispatch(login(user)),
         receiveErrors: error => dispatch(receiveErrors(error)),

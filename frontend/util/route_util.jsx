@@ -4,7 +4,7 @@ import { Redirect, withRouter, Route } from 'react-router-dom';
 import SplashContainer from '../components/splash/splash_container';
 
 const mapStateToProps = (state) => {
-    debugger
+    // debugger
     return {
         loggedIn: Boolean(state.session.id)
     }

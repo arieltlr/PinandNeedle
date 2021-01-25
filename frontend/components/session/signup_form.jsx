@@ -39,16 +39,16 @@ class SignupForm extends React.Component {
         this.setState({ age: e.target.value })
     }
     componentWillUnmount() {
-        debugger
+        // debugger
         const resetErrors = [];
         this.props.refreshErrors(resetErrors);
     }
     render() {
-        debugger
+        // debugger
         const errorMessages = this.props.errors.map((error, index) => {
             return <li className="error-li" id={index}>{error}</li>
         })
-        debugger
+        // debugger
         return (
 
             <div className="modal">

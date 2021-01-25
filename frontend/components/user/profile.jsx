@@ -3,7 +3,7 @@ import React from 'react';
 class Profile extends React.Component {
 
     render() {
-        debugger
+        // debugger
         return (
             <div id="profile-page">
                 <div id="profile-circle">
