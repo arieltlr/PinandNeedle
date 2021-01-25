@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const DropdownContent = (props) => {
     return (
@@ -9,7 +9,7 @@ const DropdownContent = (props) => {
                 <span className="dropdown-header" >Options</span>
             </li>
             <li>
-                <Link className="dropdown-link" to={`/user/${props.user.id}/edit`}>Settings</Link>
+                <NavLink to={`/user/${props.user.id}`}>Settings</NavLink>
             </li>
             <li onClick={props.logout}>
                 Log out

@@ -12,12 +12,13 @@ class ArrowDropdown extends React.Component {
     }
 
     whenClicked(e){
+        e.preventDefault()
         const changeState = !this.state.show;
         this.setState({show: changeState})
     }
     render() {
         return (
-                <div onClick={this.whenClicked}>
+                <div onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>
                     {this.state.show ? 
                     <DropdownContent id="arrow-dropdown" user={this.props.user} logout={this.props.logout}/>: 
                     null}

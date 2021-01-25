@@ -20,7 +20,7 @@ class NavBar extends React.Component {
                     </NavLink>
                     <input className="nav-ele" id="search-bar" type="text" placeholder="Search" />
                     <NavLink to={`/user/${this.props.user.id}`}>
-                        <p className="nav-ele" id="profile-button">{this.props.user.username[0]}</p>
+                        <p className="nav-ele" id="profile-button">{this.props.user.email[0].toUpperCase()}</p>
                     </NavLink>
                     <ArrowDropdown user={this.props.user} logout={this.props.logout}/>
                 </nav>

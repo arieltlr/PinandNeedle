@@ -25,6 +25,7 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
+        debugger
         this.props.signup(user)
             .then(() => this.props.closeModal());
     }
@@ -63,7 +64,7 @@ class SignupForm extends React.Component {
                 
                 <form className="signup-form" onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Email" value={this.props.email} onChange={this.handleEmail} />
-                    { errorMessages ? <p className="error-message" id="email-error">{errorMessages[0]}</p> : <p></p> }
+                    { errorMessages ? <p className="error-message" id="email-error">{errorMessages[0]}</p> : null }
                     <br/>
                     <input type="password" placeholder="Create a password" onChange={this.handlePassword} />
                     {errorMessages.length > 0 ? <p className="error-message" id="email-error">{errorMessages[1]}</p> : <p></p>}
