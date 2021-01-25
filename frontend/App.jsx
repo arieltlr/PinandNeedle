@@ -4,7 +4,9 @@ import SplashContainer from './components/splash/splash_container';
 import {AuthRoute, ProtectedRoute} from './util/route_util';
 import FeedContainer from './components/feed/feed_container';
 import Modal from '../frontend/components/modal/modal';
-import NavBarContainer from '../frontend/components/nav_bar/nav_bar_container'
+import NavBarContainer from '../frontend/components/nav_bar/nav_bar_container';
+import ProfileContainer from './components/user/profile_container';
+import FollowingContainer from './components/feed/following_container';
 
 const App = (store) => (
     <div>
@@ -13,8 +15,10 @@ const App = (store) => (
                 <ProtectedRoute component={NavBarContainer} />
             </header>
             <Switch>
-                <AuthRoute exact path="/" component={SplashContainer} />
                 <Route path="/feed" component={FeedContainer} />
+                <Route path="/following" component={FollowingContainer} />
+                <Route path="/user/:userId" component={ProfileContainer} />
+                <AuthRoute exact path="/" component={SplashContainer} />    
             </Switch> 
     </div>
 )

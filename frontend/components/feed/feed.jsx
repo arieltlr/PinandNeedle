@@ -8,9 +8,8 @@ class Feed extends React.Component {
             <section className="feed-images">
                 <img className="feed-image" id="feed1" src={window.spools} alt="annie spratt" />
                 <img className="feed-image" id="feed2" src={window.brown_sweater} alt="brown knit sweater" />
-                <img className="feed-image" id="feed3" src={window.embroidery_thread} alt="thread" />
-                <img className="feed-image" id="feed4" src={window.pin_cushion} alt="pins" />
-                <img className="feed-image" id="feed5" src={window.textiles} alt="toa heftiba" />
+                <img className="feed-image" id="feed3" src={window.pin_cushion} alt="pins" />
+                <img className="feed-image" id="feed4" src={window.textiles} alt="toa heftiba" />
             </section>
         </div>
     )

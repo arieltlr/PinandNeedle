@@ -11,15 +11,15 @@ function Modal ({modal, closeModal}) {
     let component;
     switch (modal) {
         case 'login':
-            debugger
+            // debugger
             component = <LoginFormContainer />;
             break;
         case 'signup':
-            debugger
+            // debugger
             component = <SignupFormContainer />;
             break;
         default:
-            debugger
+            // debugger
             return null;
     }
     return (

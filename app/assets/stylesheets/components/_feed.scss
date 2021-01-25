@@ -1,5 +1,6 @@
 #feed {
-    padding-top: 200px;
+    padding: 115px 50px;
+  
 }
 .feed-images {
     display: flex;
@@ -9,7 +10,7 @@
 }
 .feed-image {
     border-radius: 10px;
-    width: 240px;
+    width: 260px;
     height: 300px;
     object-fit: cover;
 }

@@ -15,6 +15,7 @@
     align-items: center;
         a {
             text-decoration: none;
+            color: black;
         }
         button {
             background-color: white;
@@ -36,11 +37,10 @@
             background-position: center;
             outline: none;
             padding: 30px;
-
  
         }
 }
-p:hover {
+#profile-button:hover {
     background-image: url('circle.png');
     background-repeat: no-repeat;
     background-size: 100%;
@@ -74,10 +74,11 @@ input:hover{
     }
 
 .active {
-    button{
+    button {
     background-color: black;
     color: white;
-    }   
+    }
+
 }
 #holder {
     margin-top: 300px;

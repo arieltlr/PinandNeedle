@@ -1,0 +1,27 @@
+@import "base/colors.scss";
+
+#profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 120px;
+}
+
+#profile-circle {
+    height: 120px;
+    width: 120px;
+    background-color: $grey-hover;
+    outline: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+}
+#profile-circle:hover {
+    cursor: pointer;
+}
+#profile-page-letter {
+    font-size: 45px;
+    outline: none;
+}   

@@ -5,7 +5,7 @@ import ArrowDropdown from '../arrow_dropdown/arrow_dropdown';
 class NavBar extends React.Component {
 
     render() {
-        debugger
+        // debugger
         return (
             <div>
                 <nav className="nav-bar">
@@ -15,7 +15,7 @@ class NavBar extends React.Component {
                     <NavLink to="/feed">
                         <button className="nav-ele"id="nav-home">Home</button>
                     </NavLink>
-                    <NavLink to="/follows">
+                    <NavLink to="/following">
                         <button className="nav-ele" id="nav-following">Following</button>
                     </NavLink>
                     <input className="nav-ele" id="search-bar" type="text" placeholder="Search" />

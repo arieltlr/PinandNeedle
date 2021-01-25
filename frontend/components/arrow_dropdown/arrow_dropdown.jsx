@@ -17,13 +17,12 @@ class ArrowDropdown extends React.Component {
     }
     render() {
         return (
-            <div onClick={this.whenClicked}>
-                {this.state.show ? 
-                <DropdownContent id="arrow-dropdown" user={this.props.user} logout={this.props.logout}/>: 
-                null}
-                <div className="nav-ele" id="down-icon-circle" alt="down-icon"></div>
-            </div>
-
+                <div onClick={this.whenClicked}>
+                    {this.state.show ? 
+                    <DropdownContent id="arrow-dropdown" user={this.props.user} logout={this.props.logout}/>: 
+                    null}
+                    <div className="nav-ele" id="down-icon-circle" alt="down-icon"></div>
+                </div>
         )
     }
 }
