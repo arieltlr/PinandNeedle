@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
         return (
             <div className="modal">
                 <div className="exit-container">
-                    <img className="exit-image" src={window.x} onClick={this.props.closeModal} />
+                    <div className="exit-image" onClick={this.props.closeModal} ></div>
                 </div>
                 <section className="header">
                     <img className="header-logo" src={window.logo} alt="needle-logo" />
