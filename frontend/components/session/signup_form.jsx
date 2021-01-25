@@ -65,9 +65,7 @@ class SignupForm extends React.Component {
                 ageError = error
             }
             
-        });
-        debugger
-        
+        });        
         return (
 
             <div className="modal">
