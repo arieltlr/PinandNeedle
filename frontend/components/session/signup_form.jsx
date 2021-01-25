@@ -46,10 +46,28 @@ class SignupForm extends React.Component {
     }
     render() {
         // debugger
+        let emailError;
+        let passwordError;
+        let ageError;
+        let emailErrorBoolean;
+        let passwordErrorBoolean;
+        let ageErrorBoolean;
+
         const errorMessages = this.props.errors.map((error, index) => {
-            return <li className="error-li" id={index}>{error}</li>
-        })
-        // debugger
+            if (error.includes("Email")){
+                emailErrorBoolean = true;
+                emailError = error;
+            } else if(error.includes("Password")){
+                passwordErrorBoolean = true;
+                passwordError = error
+            }else {
+                ageErrorBoolean = true;
+                ageError = error
+            }
+            
+        });
+        debugger
+        
         return (
 
             <div className="modal">
@@ -64,13 +82,13 @@ class SignupForm extends React.Component {
                 
                 <form className="signup-form" onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Email" value={this.props.email} onChange={this.handleEmail} />
-                    { errorMessages ? <p className="error-message" id="email-error">{errorMessages[0]}</p> : null }
+                    {emailErrorBoolean ? <p className="signup-error">{emailError}</p> : null}
                     <br/>
                     <input type="password" placeholder="Create a password" onChange={this.handlePassword} />
-                    {errorMessages.length > 0 ? <p className="error-message" id="email-error">{errorMessages[1]}</p> : <p></p>}
+                    {passwordErrorBoolean ? <p className="signup-error">{passwordError}</p> : null}
                     <br />
                     <input type="text" placeholder="Age" value={this.props.age} onChange={this.handleAge}/>
-                    {errorMessages.length > 1 ? <p className="error-message" id="email-error">{errorMessages[2]}</p> : <p></p>}
+                    {ageErrorBoolean ? <p className= "signup-error">{ageError}</p> : null}                    
                     <br />
                     <button className="red-button">Continue</button>
                     <button className="blue-button" onClick={this.handleDemoUser}>Continue as Demo User</button>

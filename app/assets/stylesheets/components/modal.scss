@@ -125,6 +125,8 @@ input:focus {
     margin: 0px;
     margin-bottom: -10px;
 }
-p {
+.signup-error{
+    font-size: 10px;
+    color: $red;
     text-align: left;
 }
