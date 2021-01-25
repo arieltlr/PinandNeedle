@@ -32,7 +32,7 @@
 
         p {
             font-size: 12px;
-            background-image: url('circle.png');
+            background-image: image-url('circle.png');
             background-repeat: no-repeat;
             background-size: 25px 25px;
             background-position: center;
@@ -42,7 +42,7 @@
         }
 }
 #profile-button:hover {
-    background-image: url('circle.png');
+    background-image: image-url('circle.png');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
@@ -61,7 +61,7 @@
     border: none;
     border-radius: 25px;
     background-color: rgba(236, 236, 236, 0.7);
-    background-image: url('search-icon.jpg');
+    background-image: image-url('search-icon.jpg');
     background-position: 15px center;
     background-size: 18px 18px;
     background-repeat: no-repeat;
@@ -87,7 +87,7 @@ input:hover{
 #header-logo-circle {
     height: 50px;
     width: 50px;
-    background-image: url('logo_200x200.png');
+    background-image: image-url('logo_200x200.png');
     background-size: 64%;
     background-repeat: no-repeat;
     background-position: center;
@@ -96,7 +96,7 @@ input:hover{
 #down-icon-circle {
     height: 25px;
     width: 25px;
-    background-image: url('down_icon.png');
+    background-image: image-url('down_icon.png');
     background-size: 13px 8px;
     background-repeat: no-repeat;
     background-position: center;
