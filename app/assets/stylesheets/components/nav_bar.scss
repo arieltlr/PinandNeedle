@@ -27,7 +27,6 @@
         }
         .nav-ele:hover {
             background-color: rgba(236, 236, 236, 0.7);
-            cursor: pointer;
         }
 
         p {
@@ -49,6 +48,7 @@
     outline: none;
     border: none;
     border-radius: 50%;
+    cursor: pointer;
                 }
 .nav-bar img {
     height: 30px;
@@ -70,14 +70,25 @@
     font-size: 17px;
         
 }
-input:hover{
+#header-logo-circle, #profile-button, #down-icon-circle:hover {
+    cursor: pointer;
+}
+#search-bar:hover{
     cursor: auto;
     }
+#nav-home, #nav-following:hover {
+    transition-duration: .02s;
+    cursor: pointer;
+}
 
 .active {
     button {
     background-color: black;
     color: white;
+    }
+    #nav-home, #nav-following:hover{
+        background-color: black;
+        color: white;
     }
 
 }
@@ -107,7 +118,4 @@ input:hover{
     }
 #nav-following {
     width: 120px;
-}
-#nav-home, #nav-following:hover {
-    transition-duration: .02s;
 }
