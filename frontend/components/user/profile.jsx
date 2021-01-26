@@ -1,5 +1,5 @@
 import React from 'react';
-import boardsContainer from '../boards/boards_container';
+import Boards from '../boards/boards';
 
 class Profile extends React.Component {
 
@@ -15,7 +15,7 @@ class Profile extends React.Component {
                     </div>
                     <h1 id="profile-page-username">{emailName}</h1>
                 </div>
-                <boardsContainer />
+                <Boards />
             </div>
         )
     }

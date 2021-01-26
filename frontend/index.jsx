@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.createBoard = createBoard;
+    window.getBoards = getBoards;
     window.updateBoard = updateBoard;
     window.deleteBoard = deleteBoard;
     // let store;

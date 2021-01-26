@@ -25,14 +25,14 @@ export const showBoard = () => {
 export const updateBoard = (board) => {
     return $.ajax({
         method: "PATCH",
-        url: `/api/boards/${board.id}/edit`,
+        url: `/api/boards/${board.id}`,
         data: { board }
     })
 }
 
-export const destroyBoard = () => {
+export const destroyBoard = (boardId) => {
     return $.ajax({
         method: "DELETE",
-        url: `/api/boards/${board.id}`
+        url: `/api/boards/${boardId}`
     })
 }
