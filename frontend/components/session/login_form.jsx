@@ -41,9 +41,7 @@ class LoginForm extends React.Component {
 
     render() {
         // debugger
-        const errorMessages = this.props.errors.map(error => {
-            return <li>{error}</li>
-        })
+        const errorMessages = this.props.errors;
         return (
             <div className="modal">
                 <div className="exit-container">
@@ -55,10 +53,9 @@ class LoginForm extends React.Component {
                 </section>
                 <form className="session-form" onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Email" value={this.props.email} onChange={this.handleEmail} />
-                    {errorMessages ? <p className="error-message" id="email-error">{errorMessages[0]}</p> : <p></p>}
                     <br />
                     <input type="password" placeholder="Password" onChange={this.handlePassword} />
-                    {errorMessages.length > 0 ? <p className="error-message" id="email-error">{errorMessages[1]}</p> : <p></p>}
+                    {errorMessages.length > 0 ? <p className="error-message" >{errorMessages[0]}</p> : null}
                     <br />
                     <button className="red-button">Log in</button>
                     <button className="blue-button" onClick={this.handleDemoUser}>Continue as Demo User</button>

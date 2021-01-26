@@ -58,11 +58,22 @@ button {
     color: rgb(194, 130, 0);
     padding-top: 8px;
 }
+.splash-row-container {
+    background-image: linear-gradient(to top,
+        rgba(255, 255, 255, 1), rgba(255, 0, 0, 0)
+        );
+    background-repeat: no-repeat;
+    background-size: 100% 75%;
+    background-position: bottom;
+    z-index: 99;
+    
+}
 .images {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     position: relative;
+    z-index: -1;
 }
 .mid-image {
     border-radius: 10px;
@@ -71,7 +82,7 @@ button {
     object-fit: cover;
 }
 
-.side-image1 {
+.side-image1, .second-row-side-image1 {
     border-radius: 0px 10px 10px 0px;
     width: 35px;
     height: 300px;
@@ -80,7 +91,7 @@ button {
     top: -40px; */
 
 }
-.side-image2 {
+.side-image2, .second-row-side-image2 {
     border-radius: 10px 0px 0px 10px;
     width: 35px;
     height: 300px;
@@ -99,3 +110,19 @@ button {
     margin-top: 130px;
 
 }
+  
+#second-row-mid1, #second-row-mid5 {
+    margin-top: -75px;
+
+}
+#second-row-mid2, #second-row-mid4 {
+    margin-top: -25px;
+
+}
+#second-row-mid3 {
+    margin-top: 15px;
+}
+.second-row-side-image2, .second-row-side-image1{
+    margin-top: -125px;
+}
+

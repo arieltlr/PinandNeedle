@@ -9,14 +9,17 @@ function Modal ({modal, closeModal}) {
         return null;
     }
     let component;
+    let form;
     switch (modal) {
         case 'login':
             // debugger
-            component = <LoginFormContainer />;
+            component = <LoginFormContainer />
+            form = 'login-modal';
             break;
         case 'signup':
             // debugger
             component = <SignupFormContainer />;
+            form = 'signup-modal';
             break;
         default:
             // debugger
@@ -24,7 +27,7 @@ function Modal ({modal, closeModal}) {
     }
     return (
         <div className='modal-background' onClick={closeModal}>
-            <div className="modal-child" onClick={e=> e.stopPropagation()}>
+            <div className={form} onClick={e=> e.stopPropagation()}>
                 { component }
             </div>
         </div>

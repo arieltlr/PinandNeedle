@@ -26,15 +26,26 @@ class Splash extends React.Component {
                     <h1 className="first-header">Get your next</h1>
                     <h1 className="second-header">project idea</h1>
                 </section>
-                <section className="images"> 
-                    <img className="side-image1" src={window.craft_table1} alt="estee-janssen" />
-                    <img className="mid-image" id="mid1" src={window.spools} alt="annie spratt"/>
-                    <img className="mid-image" id="mid2"src={window.brown_sweater} alt="brown knit sweater" />
-                    <img className="mid-image" id="mid3" src={window.embroidery_thread} alt="thread" />
-                    <img className="mid-image" id="mid4" src={window.pin_cushion} alt="pins" />
-                    <img className="mid-image" id="mid5" src={window.textiles} alt="toa heftiba" />
-                    <img className="side-image2" src={window.craft_table2} alt="estee-janssen" />
-                </section>
+                <div className="splash-row-container">
+                    <section className="images"> 
+                        <img className="side-image1" src={window.craft_table1} alt="estee-janssen" />
+                        <img className="mid-image" id="mid1" src={window.spools} alt="annie spratt"/>
+                        <img className="mid-image" id="mid2"src={window.brown_sweater} alt="brown knit sweater" />
+                        <img className="mid-image" id="mid3" src={window.embroidery_thread} alt="thread" />
+                        <img className="mid-image" id="mid4" src={window.pin_cushion} alt="pins" />
+                        <img className="mid-image" id="mid5" src={window.textiles} alt="toa heftiba" />
+                        <img className="side-image2" src={window.craft_table2} alt="estee-janssen" />
+                    </section>
+                    <section className="images">
+                        <img className="second-row-side-image1" src={window.craft_table1} alt="estee-janssen" />
+                        <img className="mid-image" id="second-row-mid1" src={window.pin1} alt="annie spratt" />
+                        <img className="mid-image" id="second-row-mid2" src={window.pin2} alt="brown knit sweater" />
+                        <img className="mid-image" id="second-row-mid3" src={window.pin3} alt="thread" />
+                        <img className="mid-image" id="second-row-mid4" src={window.pin4} alt="pins" />
+                        <img className="mid-image" id="second-row-mid5" src={window.pin5} alt="toa heftiba" />
+                        <img className="second-row-side-image2" src={window.craft_table2} alt="estee-janssen" />
+                    </section>
+                </div>
             </div>
         )
     }
