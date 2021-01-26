@@ -241,6 +241,10 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
 
     attr_reader :password
+    
+    has_many :boards,
+    foreign_key: :user_id,
+    class_name: :Board
    
     # def set_username(email)
     #     email_copy = @email.dup

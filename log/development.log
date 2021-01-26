@@ -27117,3 +27117,218 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 631ms (Views: 630.3ms | ActiveRecord: 0.6ms)
 
 
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3061927674388062585)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateBoards (20210125210418)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(3061927674388062585)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3061927674388062585)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateBoards (20210125210418)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3061927674388062585)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3061927674388062585)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateBoards (20210125210418)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (98.0ms)[0m  [1m[35mCREATE TABLE "boards" ("id" bigserial primary key, "user_id" integer NOT NULL, "name" character varying NOT NULL, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210125210418_create_boards.rb:3
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_boards_on_user_id" ON "boards"  ("user_id")[0m
+  ↳ db/migrate/20210125210418_create_boards.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210125210418"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (24.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(3061927674388062585)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started DELETE "/api/session" for ::1 at 2021-01-25 15:55:16 -0800
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "cFg6610QtwccCoRhhFNtmA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:291
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@email.com"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:291
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "81Zs7R_H7QvQStwzt0fxgA"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:291
+  [1m[36mUser Update (4.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "81Zs7R_H7QvQStwzt0fxgA"], ["updated_at", "2021-01-25 23:55:16.495561"], ["id", 11]]
+  ↳ app/models/user.rb:291
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:291
+Completed 200 OK in 103ms (Views: 2.1ms | ActiveRecord: 25.9ms)
+
+
+Started POST "/api/session" for ::1 at 2021-01-25 15:55:24 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"jklj", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jklj"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:264
+Completed 404 Not Found in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Exists (3.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@email.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iOVyGvp_jExokW8BZW3CaQ"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Destroy (20.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Destroy (1.8ms)[0m  [1m[31mDELETE FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Destroy (1.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mBoard Destroy (13.1ms)[0m  [1m[31mDELETE FROM "boards"[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@email.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uIoi_VcHuGxvgVRHDGfNWg"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Create (26.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "username", "gender", "country", "language", "created_at", "updated_at", "age") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "demouser@email.com"], ["password_digest", "$2a$12$J3rPbpzuGqAZ4pMwMzgbFeOJwPuGY4ndnn1OUjpbYDsfDlq51yvRy"], ["session_token", "uIoi_VcHuGxvgVRHDGfNWg"], ["username", "Demo User"], ["gender", "Female"], ["country", "United States (US)"], ["language", "English (US)"], ["created_at", "2021-01-26 00:59:10.305233"], ["updated_at", "2021-01-26 00:59:10.305233"], ["age", 25]]
+  ↳ db/seeds.rb:12
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (4.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gemma@email.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "NYtWLbfg-XrcAKBrK81V2A"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "username", "gender", "country", "language", "created_at", "updated_at", "age") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "gemma@email.com"], ["password_digest", "$2a$12$R7TcL39LQYZykyEQXL2ZP.WZ7W7xiWjwT.uNVqrHli3EDyNKgCUGS"], ["session_token", "NYtWLbfg-XrcAKBrK81V2A"], ["username", "Gemma"], ["gender", "Female"], ["country", "United States (US)"], ["language", "English (US)"], ["created_at", "2021-01-26 00:59:10.684718"], ["updated_at", "2021-01-26 00:59:10.684718"], ["age", 4]]
+  ↳ db/seeds.rb:15
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luca@email.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "pDMIH5CqVtUhXbSdfy3Tvw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "username", "gender", "country", "language", "created_at", "updated_at", "age") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "luca@email.com"], ["password_digest", "$2a$12$yTOI8DtsHRYJYr4zZmN0oOCwAqaXR/f68ybb52BQwF9LwOobvFwgi"], ["session_token", "pDMIH5CqVtUhXbSdfy3Tvw"], ["username", "Luca"], ["gender", "Male"], ["country", "United States (US)"], ["language", "English (US)"], ["created_at", "2021-01-26 00:59:11.090382"], ["updated_at", "2021-01-26 00:59:11.090382"], ["age", 1]]
+  ↳ db/seeds.rb:18
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mBoard Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "boards" WHERE "boards"."name" = $1 AND "boards"."user_id" = $2 LIMIT $3[0m  [["name", "Beautiful Threads"], ["user_id", 59], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mBoard Create (14.1ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 59], ["name", "Beautiful Threads"], ["description", "Threads so pretty you'd think they were made of gold"], ["created_at", "2021-01-26 00:59:11.145254"], ["updated_at", "2021-01-26 00:59:11.145254"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[36mBoard Load (1.7ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Destroy (33.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mBoard Destroy (7.0ms)[0m  [1m[31mDELETE FROM "boards"[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (6.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@email.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "WJ0MB5STV71khcjFGT8qZQ"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Create (21.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "username", "gender", "country", "language", "created_at", "updated_at", "age") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "demouser@email.com"], ["password_digest", "$2a$12$dyjQZv3Les1.8csA/YNrEeIXGOfxgkx6t1n2n4HncaepBgGHmov2W"], ["session_token", "WJ0MB5STV71khcjFGT8qZQ"], ["username", "Demo User"], ["gender", "Female"], ["country", "United States (US)"], ["language", "English (US)"], ["created_at", "2021-01-26 04:36:26.616422"], ["updated_at", "2021-01-26 04:36:26.616422"], ["age", 25]]
+  ↳ db/seeds.rb:12
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gemma@email.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "PwJ0lfKcQHDCcS5MNQwtYw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (5.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "username", "gender", "country", "language", "created_at", "updated_at", "age") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "gemma@email.com"], ["password_digest", "$2a$12$yHV7x7A7O6PQpgK0xmTRp.hWOptgkaDLqTHlax0qwC6S3Bh/uU8oy"], ["session_token", "PwJ0lfKcQHDCcS5MNQwtYw"], ["username", "Gemma"], ["gender", "Female"], ["country", "United States (US)"], ["language", "English (US)"], ["created_at", "2021-01-26 04:36:26.934335"], ["updated_at", "2021-01-26 04:36:26.934335"], ["age", 4]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luca@email.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZZlZBXtSLJ4JbBgHJrq5Dg"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "username", "gender", "country", "language", "created_at", "updated_at", "age") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "luca@email.com"], ["password_digest", "$2a$12$986ILRASM/juj/nsVRA.wOjsbuG38DZwZUgcNauwfCwsstf4oHe.q"], ["session_token", "ZZlZBXtSLJ4JbBgHJrq5Dg"], ["username", "Luca"], ["gender", "Male"], ["country", "United States (US)"], ["language", "English (US)"], ["created_at", "2021-01-26 04:36:27.237378"], ["updated_at", "2021-01-26 04:36:27.237378"], ["age", 1]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mBoard Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "boards" WHERE "boards"."name" = $1 AND "boards"."user_id" = $2 LIMIT $3[0m  [["name", "Beautiful Threads"], ["user_id", 62], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mBoard Create (0.7ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 62], ["name", "Beautiful Threads"], ["description", "Threads so pretty you'd think they were made of gold"], ["created_at", "2021-01-26 04:36:27.291677"], ["updated_at", "2021-01-26 04:36:27.291677"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mBoard Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "boards" WHERE "boards"."name" = $1 AND "boards"."user_id" = $2 LIMIT $3[0m  [["name", "World Textiles"], ["user_id", 62], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mBoard Create (0.4ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 62], ["name", "World Textiles"], ["description", "Weaving and knitting traditions from around the world"], ["created_at", "2021-01-26 04:36:27.305342"], ["updated_at", "2021-01-26 04:36:27.305342"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mBoard Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "boards" WHERE "boards"."name" = $1 AND "boards"."user_id" = $2 LIMIT $3[0m  [["name", "Costume Inspiration"], ["user_id", 62], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[36mBoard Create (0.4ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 62], ["name", "Costume Inspiration"], ["description", "DIY costumes to try someday"], ["created_at", "2021-01-26 04:36:27.318062"], ["updated_at", "2021-01-26 04:36:27.318062"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mBoard Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "boards" WHERE "boards"."name" = $1 AND "boards"."user_id" = $2 LIMIT $3[0m  [["name", "Fashion Construction"], ["user_id", 62], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mBoard Create (0.4ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 62], ["name", "Fashion Construction"], ["description", "How garments are put together"], ["created_at", "2021-01-26 04:36:27.325452"], ["updated_at", "2021-01-26 04:36:27.325452"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
