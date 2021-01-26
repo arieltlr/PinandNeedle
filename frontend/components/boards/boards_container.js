@@ -4,11 +4,10 @@ import Boards from './boards';
 import { receiveErrors, logout } from '../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    const currentProfile = ownProps.match.params.id
+    const userProfile = ownProps.match.params.id
     return {
         currentUser: state.entities.user[state.session.id],
-        currentUserBoards: state.entities.boards[state.session.id],
-        currentProfileBoards: state.entities.boards[currentProfile],
+        boards: state.entities.boards[userProfile]
         // pins: state.entities.pins
     }
 }
