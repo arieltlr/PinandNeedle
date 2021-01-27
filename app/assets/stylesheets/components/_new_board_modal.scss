@@ -1,0 +1,72 @@
+@import "base/colors.scss";
+
+.create-board-modal {
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 6px 6px 8px 3px rgba(50, 50, 50, 0.17);
+}
+
+.new-board-form-container {
+    width: 100%;
+    height: 100%;
+}
+.new-board-form {
+    width: 100%;
+    height: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.create-title {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+.greyed-out-button {
+    border: none;
+    background-color: $grey-hover;
+    border-radius: 20px;
+    width: 75px;
+    height: 42px;
+    color: rgb(239, 239, 239);
+    position: absolute;
+    bottom: 30px;
+    right: 15px;
+}
+.red-button-create-board {
+    border: none;
+    background-color: $red;
+    border-radius: 20px;
+    width: 75px;
+    height: 42px;
+    color: white;
+    position: absolute;
+    bottom: 30px;
+    right: 15px;
+}
+.red-button-create-board:hover {
+    background-color: $hover-red;
+    cursor: pointer;
+}
+
+.board-name-label{
+    font-weight: 300;
+    font-size: 12px;
+    padding-left: 45px;
+    padding-top: 40px;
+    margin-bottom: 5px;
+    text-align: left;
+
+}
+.create-name {
+    width: 80%;
+    align-self: center;
+}

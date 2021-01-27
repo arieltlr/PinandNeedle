@@ -73,7 +73,7 @@ class Profile extends React.Component {
                     
                 </div>
                 <nav className="profile-nav-bar-container" >
-                    { currentUserProfile ? <ProfileNav /> : null }
+                    { currentUserProfile ? <ProfileNav openModal={this.props.openModal}/> : null }
                 </nav>
                 <div className="board-ul-container">
                     <ul className="boards-ul">
