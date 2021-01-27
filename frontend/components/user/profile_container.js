@@ -4,7 +4,7 @@ import { receiveErrors} from '../../actions/board_actions';
 import { getBoards } from '../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
+    // debugger
     return {
         theCurrentUser: state.entities.user[state.session.id],
         thisProfile: ownProps.match.params.userId,

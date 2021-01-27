@@ -76,8 +76,11 @@
 #search-bar:hover{
     cursor: auto;
     }
-#nav-home, #nav-following:hover {
+#nav-following:hover {
     transition-duration: .02s;
+    cursor: pointer;
+}
+#nav-home:hover{
     cursor: pointer;
 }
 
