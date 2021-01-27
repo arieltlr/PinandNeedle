@@ -52,6 +52,7 @@
 
 .exit-image:hover{
     background-color: $grey-hover;
+    cursor: pointer;
 }
 .header {
     display: flex;
@@ -105,7 +106,7 @@ input:focus {
     color: white;
 }
 .red-button:hover {
-    background-color: $hover-red;
+    background-color: $red;
     cursor: pointer;
 }
 .otherFormButton {
@@ -125,7 +126,7 @@ input:focus {
     color: white;
 }
 .blue-button:hover {
-    background-color: $fblue-hover;
+    background-color: $fblue;
     cursor: pointer;
 }
 
