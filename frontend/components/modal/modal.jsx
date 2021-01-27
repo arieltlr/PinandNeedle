@@ -23,7 +23,7 @@ function Modal ({modal, closeModal}) {
             form = 'signup-modal';
             break;
         case 'createBoard':
-            debugger
+            // debugger
             component = <NewBoardFormContainer />;
             form = "create-board-modal"
             break;

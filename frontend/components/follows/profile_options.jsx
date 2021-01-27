@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FollowsProfileDisplay = (props) => {
-    debugger
+    // debugger
     if (props.props) {
         return (
             null
