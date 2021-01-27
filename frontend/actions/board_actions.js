@@ -1,14 +1,15 @@
 import * as BoardAPIUtil from '../util/board_api_util';
+import { userShow } from '../util/user_api_util';
 
-export const RECEIVE_BOARDS = "RECEIVE_BOARDS";
+export const RECEIVE_PROFILE = "RECEIVE_PROFILE";
 export const RECEIVE_BOARD = "RECEIVE_BOARD";
 export const REMOVE_BOARD = "REMOVE_BOARD";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
-export const receiveBoards = (boards) => {
+export const receiveBoards = (userProfile) => {
     return {
-        type: RECEIVE_BOARDS,
-        boards
+        type: RECEIVE_PROFILE,
+        userProfile
     }
 }
 export const receiveBoard = (board) => {
@@ -30,11 +31,11 @@ export const receiveErrors = errors => {
     }
 }
 
-export const getBoards = () => {
+export const getBoards = (userId) => {
     return dispatch => {
-        return BoardAPIUtil.boardIndex()
-        .then((boards) =>
-            dispatch(receiveBoards(boards)), 
+        return userShow(userId)
+        .then((userProfile) =>
+            dispatch(receiveBoards(userProfile)), 
             (errors) =>
                 dispatch(receiveErrors(errors.responseJSON)));
     }

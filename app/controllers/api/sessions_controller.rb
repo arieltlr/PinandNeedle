@@ -4,6 +4,7 @@ class Api::SessionsController < ApplicationController
         @user = User.find_user_by_credentials(params[:user][:email], params[:user][:password]);
         if @user
             login(@user)
+            # @boards = Board.where(user_id: @user.id)
             render "api/users/show"
         else
             render json: ['Invalid credentials'], status: 404 

@@ -16,6 +16,7 @@ class Api::BoardsController < ApplicationController
     end
 
     def index
+        debugger
         @boards = Board.find_by(user_id: params[:user_id])
         render :index
     end

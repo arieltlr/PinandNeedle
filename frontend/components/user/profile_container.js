@@ -1,20 +1,22 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './profile';
-import { receiveErrors, logout } from '../../actions/session_actions';
+import { receiveErrors} from '../../actions/board_actions';
+import { getBoards } from '../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
+    debugger
     return {
-        user: state.entities.user[state.session.id]
+        theCurrentUser: state.entities.user[state.session.id],
+        thisProfile: ownProps.match.params.userId,
+        email: state.entities.profile,
+        boards: Object.values(state.entities.boards)
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-
     return {
         receiveErrors: error => dispatch(receiveErrors(error)),
-        logout: () => dispatch(logout())
+        getBoards: userId => dispatch(getBoards(userId)),
     }
 }
 

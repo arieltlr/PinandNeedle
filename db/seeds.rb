@@ -20,5 +20,5 @@ country: "United States (US)", language: "English (US)", gender: "Male"})
 
 board1 = Board.create!({user_id: demouser.id, name: "Beautiful Threads", description: "Threads so pretty you'd think they were made of gold"})
 board2 = Board.create!({user_id: demouser.id, name: "World Textiles", description: "Weaving and knitting traditions from around the world"})
-board3 = Board.create!({user_id: demouser.id, name: "Costume Inspiration", description: "DIY costumes to try someday"})
-board4 = Board.create!({user_id: demouser.id, name: "Fashion Construction", description: "How garments are put together"})
+board3 = Board.create!({user_id: user1.id, name: "Costume Inspiration", description: "DIY costumes to try someday"})
+board4 = Board.create!({user_id: user2.id, name: "Fashion Construction", description: "How garments are put together"})

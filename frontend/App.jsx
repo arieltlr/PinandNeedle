@@ -18,7 +18,8 @@ const App = (store) => (
                 <Route path="/feed" component={FeedContainer} />
                 <Route path="/following" component={FollowingContainer} />
                 <ProtectedRoute path="/user/:userId" component={ProfileContainer} />
-                <AuthRoute exact path="/" component={SplashContainer} />    
+                <AuthRoute exact path="/" component={SplashContainer} />
+                    
             </Switch> 
     </div>
 )
