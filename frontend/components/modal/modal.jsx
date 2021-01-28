@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import NewBoardFormContainer from '../boards/new_board_form_container';
+import EditBoardContainer from '../boards/edit_board_container'
 
 function Modal ({modal, closeModal}) {
     if (!modal) {
@@ -26,6 +27,11 @@ function Modal ({modal, closeModal}) {
             // debugger
             component = <NewBoardFormContainer />;
             form = "create-board-modal"
+            break;
+        case 'edit-board':
+            // debugger
+            component = <EditBoardContainer />;
+            form = "edit-board-modal"
             break;
         default:
             // debugger

@@ -7,6 +7,7 @@ import Modal from '../frontend/components/modal/modal';
 import NavBarContainer from '../frontend/components/nav_bar/nav_bar_container';
 import ProfileContainer from './components/user/profile_container';
 import FollowingContainer from './components/feed/following_container';
+import BoardShowContainer from './components/boards/board_show_container';
 
 const App = (store) => (
     <div>
@@ -18,6 +19,7 @@ const App = (store) => (
                 <Route path="/feed" component={FeedContainer} />
                 <Route path="/following" component={FollowingContainer} />
                 <ProtectedRoute path="/user/:userId" component={ProfileContainer} />
+                <Route path="/board/:boardId" component={BoardShowContainer} />
                 <AuthRoute exact path="/" component={SplashContainer} />
                     
             </Switch> 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileNav from '../nav_bar/profile_nav';
 import FollowsProfileDisplay from '../follows/profile_options';
+import { Link } from 'react-router-dom';
 
 class Profile extends React.Component {
 
@@ -28,6 +29,7 @@ class Profile extends React.Component {
         let boards = this.props.boards.map((board, index) => {
             return (
                 <li className="board-li" id={index}>
+                    <Link to={`/board/${board.id}`}>
                     <div className="board-cover">
                         <div className="board-cover-single">
                             <img src={window.pin1} className="cover-image3"/>
@@ -46,7 +48,7 @@ class Profile extends React.Component {
                             </div>
                         </div>
                     </div>
-                    
+                    </Link>
                 </li>
             )
         })

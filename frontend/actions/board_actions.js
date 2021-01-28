@@ -40,9 +40,9 @@ export const getBoards = (userId) => {
                 dispatch(receiveErrors(errors.responseJSON)));
     }
 }
-export const getBoard = (board) => {
+export const getBoard = (boardId) => {
     return dispatch => {
-        return BoardAPIUtil.showBoard(board)
+        return BoardAPIUtil.showBoard(boardId)
             .then((board) =>
                 dispatch(receiveBoard(board)),
                 (errors) =>
