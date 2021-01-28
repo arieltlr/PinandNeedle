@@ -73,6 +73,8 @@ class BoardShow extends React.Component {
                                     <p id="small-profile-page-letter">{profileLetter}</p>
                                 </div>
                                 {/* </Link> */}
+                                <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} />
+
                             </div>
                             {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
                             <div className="follows-container">
@@ -105,7 +107,7 @@ class BoardShow extends React.Component {
                                 {/* </Link> */}
                                 <h1 className="username">{emailName}</h1>
                             </div>
-                            {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
+
                             <div className="follows-container">
                                 <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
                             </div>
