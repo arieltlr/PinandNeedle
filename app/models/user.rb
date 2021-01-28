@@ -245,6 +245,10 @@ class User < ApplicationRecord
     has_many :boards,
     foreign_key: :user_id,
     class_name: :Board
+
+    has_many :pins,
+        foreign_key: :user_id,
+        class_name: :Pin
    
     # def set_username(email)
     #     email_copy = @email.dup
