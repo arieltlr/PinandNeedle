@@ -12,20 +12,22 @@ class Api::BoardsController < ApplicationController
 
     def edit
         @board = Board.find(params[:id])
+        # @user = User.find_by(id: @board.user_id)
         render :edit
     end
 
-    def index
-        @boards = Board.find_by(user_id: params[:user_id])
-        render :index
-    end
+    # def index
+    #     debugger
+    #     @boards = Board.find_by(user_id: params[:user_id])
+    #     render :index
+    # end
 
     def update
-        @board = current_user.boards.find_by(id: params[:id])
+        @board = Board.find_by(id: params[:id])
         if @board && @board.update_attributes(board_params)
             render :show
         else
-            render @board.errors.full_messages
+            render json: @board.errors.full_messages
         end
     end
 

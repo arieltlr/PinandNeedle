@@ -9,9 +9,10 @@
     justify-content: center;
     width: 100%;
     height: 70px;
+    background-color: white;
     position: fixed;
     top: 0;
-    padding: 10px 25px 15px 25px;
+    padding: 10px 25px 1px 25px;
     align-items: center;
         a {
             text-decoration: none;
@@ -76,8 +77,11 @@
 #search-bar:hover{
     cursor: auto;
     }
-#nav-home, #nav-following:hover {
+#nav-following:hover {
     transition-duration: .02s;
+    cursor: pointer;
+}
+#nav-home:hover{
     cursor: pointer;
 }
 

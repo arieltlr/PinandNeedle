@@ -3,6 +3,9 @@ import { closeModal } from '../../actions/modal_actions';
 import {connect} from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
+import NewBoardFormContainer from '../boards/new_board_form_container';
+import EditBoardContainer from '../boards/edit_board_container';
+import DeleteBoardContainer from '../boards/delete_board_container';
 
 function Modal ({modal, closeModal}) {
     if (!modal) {
@@ -20,6 +23,21 @@ function Modal ({modal, closeModal}) {
             // debugger
             component = <SignupFormContainer />;
             form = 'signup-modal';
+            break;
+        case 'createBoard':
+            // debugger
+            component = <NewBoardFormContainer />;
+            form = "create-board-modal"
+            break;
+        case 'edit-board':
+            // debugger
+            component = <EditBoardContainer />;
+            form = "edit-board-modal"
+            break;
+        case 'delete-board':
+            // debugger
+            component = <DeleteBoardContainer />;
+            form = "delete-board-modal"
             break;
         default:
             // debugger

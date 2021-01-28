@@ -27840,3 +27840,10 @@ NoMethodError - undefined method `each' for nil:NilClass:
   app/views/api/boards/index.json.jbuilder:1:in `_app_views_api_boards_index_json_jbuilder__1361042111322102578_70339216651140'
   app/controllers/api/boards_controller.rb:21:in `index'
 
+  [1m[36mBoard Load (2.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  [1m[36mBoard Load (0.9ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 62]]
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mBoard Load (2.8ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBoard Load (65.5ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBoard Load (2.7ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" ORDER BY "boards"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBoard Load (5.1ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m

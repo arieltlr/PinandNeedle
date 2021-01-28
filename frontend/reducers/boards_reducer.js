@@ -1,15 +1,20 @@
-import { RECEIVE_BOARDS, RECEIVE_BOARD, REMOVE_BOARD, RECEIVE_ERRORS } from "../actions/board_actions";
+import { RECEIVE_BOARD, REMOVE_BOARD, RECEIVE_ERRORS, RECEIVE_PROFILE } from "../actions/board_actions";
+import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 
 const boardsReducer = (state = {}, action) => {
     Object.freeze(state);
     // debugger
     switch (action.type) {
-        case RECEIVE_BOARDS:
+        case RECEIVE_PROFILE:
+            let userBoards = {}
             // debugger
-            return action.boards;
+            action.userProfile.boards.forEach(board=>{
+                return Object.assign(userBoards, {[board.id]: board})
+            })
+            return userBoards;
         case RECEIVE_BOARD:
             // debugger
-            return Object.assign({}, state, { [action.board.id]: action.board })
+            return action.board;
         case REMOVE_BOARD:
             const newState = Object.assign({}, state);
             delete newState[action.boardId];
@@ -20,3 +25,5 @@ const boardsReducer = (state = {}, action) => {
 }
 
 export default boardsReducer;
+
+
