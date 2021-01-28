@@ -1,6 +1,7 @@
 import React from 'react';
 import BoardOptions from './board_options';
 import FollowsProfileDisplay from '../follows/profile_options';
+import {Link } from 'react-router-dom';
 
 class BoardShow extends React.Component {
 
@@ -8,20 +9,25 @@ class BoardShow extends React.Component {
         const currentBoard = parseInt(this.props.match.params.boardId)
         this.props.getBoard(currentBoard)
     }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.match.params !== prevProps.match.params) {
+    //         this.props.getBoards(this.props.match.params.userId)
+    //     }
+    // }
 
     render() {
-        debugger
+        // debugger
         if (!this.props.board.id) {
             return null;
         }
 
         const board = this.props.board;
         const currentUser = this.props.currentUser;
-        debugger
+        // debugger
         const currentUsersBoard = Boolean(currentUser.id === board.user_id);
         // const thisProfile = this.props.thisProfile;
         // const currentUserProfile = this.props.theCurrentUser.id === parseInt(thisProfile);
-        const email = currentUser.email.split('@')[0]
+        const email = this.props.boardOwner.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         // const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
@@ -52,33 +58,68 @@ class BoardShow extends React.Component {
         //         </li>
         //     )
         // })
-            return (
+            if (currentUsersBoard){
+                return (
 
-                <div>
-                    <div id="board-show-page">
-                        <div className="board-name-container">
-                            <h1 id="board-name">{board.name}</h1>
-                            <div className="three-dots" onClick={() => this.props.openModal("edit-board")}></div>
-                        </div>
-                        <div className="user-info-container">
-                            <div id="small-profile-circle">
-                                <p id="small-profile-page-letter">{profileLetter}</p>
+                    <div>
+                        <div id="board-show-page">
+                            <div className="board-name-container">
+                                <h1 id="board-name">{board.name}</h1>
+                                <div className="three-dots" onClick={() => this.props.openModal("edit-board")}></div>
                             </div>
-                        </div>
-                        <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} />
-                        <div className="follows-container">
-                            <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                            <div className="user-info-container">
+                                {/* <Link id="profile-link" to={`/users/${this.props.boardOwner.id}`}> */}
+                                    <div id="small-profile-circle">
+                                    <p id="small-profile-page-letter">{profileLetter}</p>
+                                </div>
+                                {/* </Link> */}
+                            </div>
+                            {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
+                            <div className="follows-container">
+                                <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                            </div>
+
                         </div>
 
-                    </div>
-
-                    {/* <div className="board-ul-container">
+                        {/* <div className="board-ul-container">
                         <ul className="boards-ul">
                             {boards}
                         </ul>
                     </div> */}
-                </div>
-            )
+                    </div>
+                )
+            } else {
+                return (
+                    
+                    <div>
+                        <div id="board-show-page">
+                            <div className="board-name-container">
+                                <h1 id="board-name">{board.name}</h1>
+                                {/* <div className="three-dots" onClick={() => this.props.openModal("edit-board")}></div> */}
+                            </div>
+                            <div className="user-info-container">
+                                {/* <Link to={`/users/${this.props.boardOwner.id}`}> */}
+                                    <div id="small-profile-circle">
+                                    <p id="small-profile-page-letter">{profileLetter}</p>
+                                </div>
+                                {/* </Link> */}
+                                <h1 className="username">{emailName}</h1>
+                            </div>
+                            {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
+                            <div className="follows-container">
+                                <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                            </div>
+
+                        </div>
+
+                        {/* <div className="board-ul-container">
+                            <ul className="boards-ul">
+                                {boards}
+                            </ul>
+                        </div> */}
+                    </div>
+                )
+        }
     }
 
 }

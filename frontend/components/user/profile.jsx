@@ -29,7 +29,7 @@ class Profile extends React.Component {
         let boards = this.props.boards.map((board, index) => {
             return (
                 <li className="board-li" id={index}>
-                    <Link to={`/board/${board.id}`}>
+                    <Link className="board-show-link" to={`/board/${board.id}`}>
                     <div className="board-cover">
                         <div className="board-cover-single">
                             <img src={window.pin1} className="cover-image3"/>

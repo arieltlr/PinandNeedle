@@ -12,6 +12,7 @@ class Api::BoardsController < ApplicationController
 
     def edit
         @board = Board.find(params[:id])
+        # @user = User.find_by(id: @board.user_id)
         render :edit
     end
 

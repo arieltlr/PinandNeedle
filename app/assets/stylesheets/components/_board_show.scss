@@ -10,7 +10,7 @@
 #small-profile-circle {
     height: 50px;
     width: 50px;
-    background-color: $grey-hover;
+    background-color: rgba(236, 236, 236, 0.7);
     outline: none;
     border-radius: 50%;
     display: flex;
@@ -34,9 +34,9 @@
     border-radius: 50%;
     
 }
-#small-profile-circle:hover {
-    cursor: pointer;
-}
+// #small-profile-circle:hover {
+//     cursor: pointer;
+// }
 #small-profile-page-letter {
     font-size: 20px;
     outline: none;
@@ -50,8 +50,11 @@
     justify-content: flex-start;
     align-items: center;
     
-    #username{
+    .username{
         font-weight: 300;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
 
     }
 }
@@ -103,6 +106,7 @@
 }
 .profile-follow-button:hover {
     background-color: $hover-red;
+    cursor: pointer;
 }
 
 .icon-text {
@@ -193,4 +197,10 @@
     font-weight: 300;
     width: 100%;
     text-align: center;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    cursor: pointer;
 }

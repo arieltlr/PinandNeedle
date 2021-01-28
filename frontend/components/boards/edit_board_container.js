@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import EditBoard from './edit_board';
-import { receiveErrors, updateBoard, getBoard } from '../../actions/board_actions';
+import { receiveErrors, updateBoard, getBoard, deleteBoard } from '../../actions/board_actions';
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     // debugger
     return {
+        deleteBoard: (boardId) => dispatch(deleteBoard(boardId)),
         getBoard: (boardId) => dispatch(getBoard(boardId)),
         updateBoard: (board) => dispatch(updateBoard(board)),
         receiveErrors: error => dispatch(receiveErrors(error)),

@@ -20,7 +20,7 @@ const BoardOptions = (props) => {
     } else {
        return ( 
            <div>
-               <h1 id="username">{emailName}</h1>
+               <h1 id="username">{props.emailName}</h1>
            </div>
             
        )
