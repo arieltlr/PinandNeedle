@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import { openModal } from '../../actions/modal_actions';
 
 class EditBoard extends React.Component {
@@ -6,24 +7,24 @@ class EditBoard extends React.Component {
         super(props)
         this.state = {
             // currentStep: 1,
-            name: this.props.name,
-            description: this.props.description
+            name: "",
+            description: "",
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleName = this.handleName.bind(this);
         this.handleDescription = this.handleDescription.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         // this.handleStep = this.handleStep.bind(this)
 
     }
-    // componentDidMount(){
-    //     this.props.getBoard(this.props.board.id)
-    //         .then(this.setState(this.props.board));
-    // }
+    componentDidMount(){
+        this.props.getBoard(this.props.board.id)
+            .then(this.setState(this.props.board));
+    }
     handleSubmit(e) {
-        e.preventDefault();
         // debugger
-        const board = Object.assign({}, { id: this.props.board.id, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.name })
+        const board = Object.assign({}, { id: this.props.board.id, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.description })
         // debugger
         this.props.updateBoard(board)
             .then(this.props.closeModal());
@@ -34,6 +35,11 @@ class EditBoard extends React.Component {
     handleDescription(e) {
         this.setState({ description: e.target.value })
     }
+    handleDelete(e){
+        debugger
+        this.props.deleteBoard(this.props.board.id)
+            .then(() => this.props.history.push(`/user/${this.props.board.user_id}`)) 
+    }
     // handleStep(){
     //     this.setState({currentStep: e.target.value})
     // }
@@ -43,24 +49,23 @@ class EditBoard extends React.Component {
     // }
 
     render() {
-        
+        // debugger
         return (
             <div className="edit-board-form-container">
-                <form className="edit-board-form" onSubmit={this.handleSubmit}>
+                <form className="edit-board-form" >
                     <div className="edit-board-title-container">
                         <h1 className="create-title">Edit your board</h1>
                     </div>
                     <p className="edit-board-name-label">Name</p>
                     <input className="create-name" type="text"
-                        value={this.state.name} onChange={this.handleName} />
+                        placeholder={this.state.name} onChange={this.handleName} />
                     <p className="board-description-label">Description</p>
                     <input className="edit-description" type="text"
-                        value={this.state.description ? this.state.description : ""}
                         placeholder="What's your board about?"
                         onChange={this.handleDescription} />
                     <div className="edit-button-container">
-                        <button className="delete">Delete</button>
-                        <button className="red-button-update-board" >Done</button>
+                        <button onClick={this.handleDelete} className="delete">Delete</button>
+                        <button onClick={this.handleSubmit} className="red-button-update-board">Done</button>
                     </div>
 
                 </form>
@@ -71,7 +76,7 @@ class EditBoard extends React.Component {
     }
 }
 
-export default EditBoard;
+export default withRouter(EditBoard);
 
  // CODE FOR SETTING UP MULTI STEP FORM
             // <React.Fragment>

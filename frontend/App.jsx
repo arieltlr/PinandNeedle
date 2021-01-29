@@ -18,7 +18,7 @@ const App = (store) => (
             <Switch>
                 <Route path="/feed" component={FeedContainer} />
                 <Route path="/following" component={FollowingContainer} />
-                <ProtectedRoute path="/user/:userId" component={ProfileContainer} />
+                <Route path="/user/:userId" component={ProfileContainer} />
                 <Route path="/board/:boardId" component={BoardShowContainer} />
                 <AuthRoute exact path="/" component={SplashContainer} />
                     

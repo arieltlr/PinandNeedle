@@ -2,6 +2,8 @@ import React from 'react';
 import BoardOptions from './board_options';
 import FollowsProfileDisplay from '../follows/profile_options';
 import {Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
 
 class BoardShow extends React.Component {
 
@@ -90,16 +92,14 @@ class BoardShow extends React.Component {
                             </div>
                             {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
                             <div className="follows-container">
-                                <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                                <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
+                            
 
                         </div>
 
-                        {/* <div className="board-ul-container">
-                        <ul className="boards-ul">
-                            {boards}
-                        </ul>
-                    </div> */}
+                        
+
                     </div>
                 )
             } else {
@@ -138,4 +138,4 @@ class BoardShow extends React.Component {
 
 }
 
-export default BoardShow;
+export default withRouter(BoardShow);
