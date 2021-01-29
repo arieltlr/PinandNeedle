@@ -50,7 +50,7 @@ export const getBoard = (boardId) => {
     }
 }
 export const createBoard = (board) => {
-    // debugger
+    debugger
     return dispatch => {
         return BoardAPIUtil.newBoard(board)
             .then((board) =>

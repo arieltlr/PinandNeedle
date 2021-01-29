@@ -1,7 +1,6 @@
 import React from 'react';
 import BoardOptions from './board_options';
 import FollowsProfileDisplay from '../follows/profile_options';
-import {Link } from 'react-router-dom';
 
 class BoardShow extends React.Component {
 
@@ -9,25 +8,20 @@ class BoardShow extends React.Component {
         const currentBoard = parseInt(this.props.match.params.boardId)
         this.props.getBoard(currentBoard)
     }
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.match.params !== prevProps.match.params) {
-    //         this.props.getBoards(this.props.match.params.userId)
-    //     }
-    // }
 
     render() {
-        // debugger
+        debugger
         if (!this.props.board.id) {
             return null;
         }
 
         const board = this.props.board;
         const currentUser = this.props.currentUser;
-        // debugger
+        debugger
         const currentUsersBoard = Boolean(currentUser.id === board.user_id);
         // const thisProfile = this.props.thisProfile;
         // const currentUserProfile = this.props.theCurrentUser.id === parseInt(thisProfile);
-        const email = this.props.boardOwner.email.split('@')[0]
+        const email = currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         // const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
@@ -58,8 +52,8 @@ class BoardShow extends React.Component {
         //         </li>
         //     )
         // })
-            if (currentUsersBoard){
-                return (
+            if (currentUser){
+            return (
 
                     <div>
                         <div id="board-show-page">
@@ -78,17 +72,16 @@ class BoardShow extends React.Component {
                             <div className="follows-container">
                                 <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
-
+                        </div>
+                        <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} />
+                        <div className="follows-container">
+                            <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
                         </div>
 
-                        {/* <div className="board-ul-container">
-                        <ul className="boards-ul">
-                            {boards}
-                        </ul>
-                    </div> */}
                     </div>
-                )
-            } else {
+            ) 
+                }
+                else {
                 return (
                     
                     <div>

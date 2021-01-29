@@ -1,6 +1,4 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
-import { RECEIVE_BOARD } from '../actions/board_actions';
-
 
 const userReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -9,9 +7,7 @@ const userReducer = (state = {}, action) => {
         case RECEIVE_CURRENT_USER:
             // debugger
             return Object.assign({}, state, { [action.currentUser.id]: action.currentUser })
-        case RECEIVE_BOARD:
-            // debugger
-            return Object.assign({}, state, { [action.board.user.id]: action.board.user });   
+            
         default:
             return state;
     }
