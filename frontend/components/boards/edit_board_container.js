@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import EditBoard from './edit_board';
 import { receiveErrors, updateBoard, getBoard, deleteBoard } from '../../actions/board_actions';
 import { closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
+
 
 const mapStateToProps = (state, ownProps) => {
     // debugger
@@ -9,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.boards,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        board: state.entities.boards
+        board: Object.values(state.entities.boards)
     }
 }
 
@@ -26,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditBoard);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditBoard));
