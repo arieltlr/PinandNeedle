@@ -107,7 +107,7 @@ class BoardShow extends React.Component {
                             </div>
                             {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
                             <div className="follows-container">
-                                <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                                <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
 
                         </div>
