@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileNav from '../nav_bar/profile_nav';
 import FollowsProfileDisplay from '../follows/profile_options';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Profile extends React.Component {
 
@@ -87,4 +87,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+export default withRouter(Profile);

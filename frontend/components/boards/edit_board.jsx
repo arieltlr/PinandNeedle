@@ -36,7 +36,7 @@ class EditBoard extends React.Component {
         this.setState({ description: e.target.value })
     }
     handleDelete(e){
-        debugger
+        // debugger
         this.props.deleteBoard(this.props.board.id)
             .then(() => this.props.history.push(`/user/${this.props.board.user_id}`)) 
     }
