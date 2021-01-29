@@ -87,6 +87,7 @@ class BoardShow extends React.Component {
                                         <div className="notes-icon" onClick={() => this.props.openModal("edit-board")}></div>
                                         <p className="icon-text">Notes</p>
                                     </div>
+                                    
                                 </div>
 
                             </div>

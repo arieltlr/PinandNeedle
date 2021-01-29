@@ -29608,3 +29608,15 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 38ms (Views: 26.3ms | ActiveRecord: 10.0ms)
 
 
+Started GET "/api/boards/16" for ::1 at 2021-01-29 00:45:28 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"16"}
+  [1m[36mBoard Load (1.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  Rendered api/boards/show.json.jbuilder (3.0ms)
+Completed 200 OK in 22ms (Views: 18.5ms | ActiveRecord: 1.5ms)
+
+
