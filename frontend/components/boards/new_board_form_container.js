@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import NewBoardForm from './new_board_form';
 import { receiveErrors, createBoard } from '../../actions/board_actions';
 import { closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
+
 
 const mapStateToProps = (state, ownProps) => {
     // debugger
@@ -23,4 +25,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewBoardForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewBoardForm));

@@ -34,6 +34,9 @@
     border-radius: 50%;
     
 }
+.three-dots:hover {
+    cursor: pointer;
+}
 // #small-profile-circle:hover {
 //     cursor: pointer;
 // }
@@ -91,6 +94,12 @@
     background-position: center;
     border-radius: 30%;
   
+}
+.notes-icon:hover {
+    cursor: pointer;
+}
+.ideas-icon:hover {
+    cursor: pointer;
 }
 .ideas-container, .notes-container {
     display: flex;
@@ -203,4 +212,9 @@ a {
 }
 a:hover {
     cursor: pointer;
+}
+.board-description {
+    text-align: center;
+    font-weight: 300;
+    font-size: 14px;
 }

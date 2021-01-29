@@ -5,8 +5,7 @@ import { receiveErrors, updateBoard, getBoard } from '../../actions/board_action
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    
-    debugger
+    // debugger
     return {
         errors: state.errors.boards,
         ownProps,

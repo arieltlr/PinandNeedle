@@ -2,6 +2,8 @@ import React from 'react';
 import BoardOptions from './board_options';
 import FollowsProfileDisplay from '../follows/profile_options';
 import {Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
 
 class BoardShow extends React.Component {
 
@@ -73,19 +75,32 @@ class BoardShow extends React.Component {
                                     <p id="small-profile-page-letter">{profileLetter}</p>
                                 </div>
                                 {/* </Link> */}
+                                {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
+                                <div className="icon-options-container">
+                                    <div className="ideas-container">
+                                        <Link to="/feed">
+                                            <div className="ideas-icon"></div>
+                                            <p className="icon-text">More ideas</p>
+                                        </Link>
+                                    </div>
+                                    <div className="notes-container">
+                                        <div className="notes-icon" onClick={() => this.props.openModal("edit-board")}></div>
+                                        <p className="icon-text">Notes</p>
+                                    </div>
+                                    
+                                </div>
+
                             </div>
                             {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
                             <div className="follows-container">
-                                <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                                <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
+                            
 
                         </div>
 
-                        {/* <div className="board-ul-container">
-                        <ul className="boards-ul">
-                            {boards}
-                        </ul>
-                    </div> */}
+                        
+
                     </div>
                 )
             } else {
@@ -105,9 +120,9 @@ class BoardShow extends React.Component {
                                 {/* </Link> */}
                                 <h1 className="username">{emailName}</h1>
                             </div>
-                            {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
+
                             <div className="follows-container">
-                                <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                                
                             </div>
 
                         </div>
@@ -124,4 +139,4 @@ class BoardShow extends React.Component {
 
 }
 
-export default BoardShow;
+export default withRouter(BoardShow);
