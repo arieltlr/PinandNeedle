@@ -7,14 +7,14 @@ const boardsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PROFILE:
             let userBoards = {}
-            // debugger
+            debugger
             action.userProfile.boards.forEach(board=>{
                 return Object.assign(userBoards, {[board.id]: board})
             })
             return userBoards;
         case RECEIVE_BOARD:
-            // debugger
-            return action.board;
+            debugger
+            return Object.assign({}, state, {[action.board.id]: action.board});
         case REMOVE_BOARD:
             const newState = Object.assign({}, state);
             delete newState[action.boardId];

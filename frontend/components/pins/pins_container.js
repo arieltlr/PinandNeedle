@@ -1,27 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BoardShow from './board_show';
-import { receiveErrors, updateBoard, getBoard } from '../../actions/board_actions';
+import Pins from './pins';
+import { receiveErrors, getPins, getPin, createPin, updatePin, deletePin } from '../../actions/pin_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+
     debugger
-    const thisBoard = state.entities.boards[ownProps.match.params.boardId]
-    
     return {
-        errors: state.errors.boards,
+        errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        boardOwner: state.entities.user[ownerId],
-        board: state.entities.boards[ownProps.match.params.boardId],
-        pins: state.entities.boards.pins
+        pinOwner: state.entities.user[state.entities.pins.user_id],
+        pins: state.entities.pins,
+        // pins: state.entities.pins
     }
 }
 const mapDispatchToProps = (dispatch) => {
     // debugger
     return {
-        updateBoard: (board) => dispatch(updateBoard(board)),
-        getBoard: (boardId) => dispatch(getBoard(boardId)),
+        createPin: (pin) => dispatch(createPin(pin)),
+        updatePin: (pin) => dispatch(updatePin(pin)),
+        getPin: (pinId) => dispatch(getPin(pinId)),
         receiveErrors: error => dispatch(receiveErrors(error)),
         closeModal: () => dispatch(closeModal()),
         openModal: (modal) => dispatch(openModal(modal)),
@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardShow);
+export default connect(mapStateToProps, mapDispatchToProps)(Pins);

@@ -7,7 +7,7 @@ import {
     RECEIVE_ERRORS } from "../actions/pin_actions";
 
 
-const pinsReducer = (state = {}, action) => {
+const pinsReducer = (state = [], action) => {
     Object.freeze(state);
     // debugger
     switch (action.type) {
@@ -16,7 +16,7 @@ const pinsReducer = (state = {}, action) => {
             return action.pins
         case RECEIVE_PIN:
             // debugger
-            return Object.assign({}, state, { [action.pin.id]: action.pin });
+            return action.pin;
         default:
             return state;
     }

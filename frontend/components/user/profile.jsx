@@ -9,6 +9,7 @@ class Profile extends React.Component {
         this.props.getBoards(this.props.match.params.userId)
     }
     componentDidUpdate(prevProps){
+        // debugger
         if(this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.getBoards(this.props.match.params.userId)
         }
@@ -27,8 +28,9 @@ class Profile extends React.Component {
         const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
         
         let boards = this.props.boards.map((board, index) => {
+            // debugger
             return (
-                <li className="board-li" id={index}>
+                <li className="board-li" id={`${index}`}>
                     <Link className="board-show-link" to={`/board/${board.id}`}>
                     <div className="board-cover">
                         <div className="board-cover-single">

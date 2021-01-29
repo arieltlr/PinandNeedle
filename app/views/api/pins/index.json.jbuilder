@@ -1,5 +1,4 @@
-@pins.each do |pin|
-    json.set! pin.id do 
-        json.partial! 'pin', pin: pin
-    end
+json.array! @pins do |pin|
+    json.extract! pin, :id, :pin_url, :description, :user_id 
+    json.photoUrl url_for(pin.photo)
 end

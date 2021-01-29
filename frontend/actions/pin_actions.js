@@ -1,4 +1,4 @@
-import * as PINAPIUtil from '../util/pin_api_util';
+import * as PinAPIUtil from '../util/pin_api_util';
 
 export const RECEIVE_PINS = "RECEIVE_PINS";
 export const RECEIVE_PIN = "RECEIVE_PIN";
@@ -32,7 +32,7 @@ export const receiveErrors = errors => {
 
 export const getPins = () => {
     return dispatch => {
-        return PINAPIUtil.pinIndex()
+        return PinAPIUtil.pinIndex()
             .then((pins) =>
                 dispatch(receivePins(pins)),
                 (errors) =>
@@ -41,7 +41,7 @@ export const getPins = () => {
 }
 export const getPin = (pinId) => {
     return dispatch => {
-        return PINAPIUtil.showPin(pinId)
+        return PinAPIUtil.showPin(pinId)
             .then((pin) =>
                 dispatch(receivePin(pin)),
                 (errors) =>
@@ -51,7 +51,7 @@ export const getPin = (pinId) => {
 export const createPin = (pin) => {
     // debugger
     return dispatch => {
-        return PINAPIUtil.newPin(pin)
+        return PinAPIUtil.newPin(pin)
             .then((pin) =>
                 dispatch(receivePin(pin)),
                 (errors) =>
@@ -60,7 +60,7 @@ export const createPin = (pin) => {
 }
 export const updatePin = (pin) => {
     return dispatch => {
-        return PINAPIUtil.updatePin(pin)
+        return PinAPIUtil.updatePin(pin)
             .then((pin) =>
                 dispatch(receivePin(pin)),
                 (errors) =>
@@ -69,7 +69,7 @@ export const updatePin = (pin) => {
 }
 export const deletePin = (pinId) => {
     return dispatch => {
-        return PINAPIUtil.destroyPin(pinId)
+        return PinAPIUtil.destroyPin(pinId)
             .then((pin) =>
                 dispatch(removePin(pin)),
                 (errors) =>

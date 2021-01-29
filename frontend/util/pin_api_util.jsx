@@ -1,10 +1,12 @@
 export const newPin = (pin) => {
+    debugger
     return $.ajax({
-        method: "POST",
         url: '/api/pins',
-        data: {
-            pin
-        }
+        method: 'POST',
+        data: pin,
+        contentType: false,
+        processData: false,
+
     })
 }
 
