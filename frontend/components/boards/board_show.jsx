@@ -52,6 +52,7 @@ class BoardShow extends React.Component {
         //         </li>
         //     )
         // })
+<<<<<<< HEAD
             if (currentUser){
             return (
 
@@ -76,8 +77,29 @@ class BoardShow extends React.Component {
                         <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} />
                         <div className="follows-container">
                             <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+=======
+            return (
+
+                <div>
+                    <div id="board-show-page">
+                        <div className="board-name-container">
+                            <h1 id="board-name">{board.name}</h1>
+                            <div className="three-dots" onClick={() => this.props.openModal("edit-board")}></div>
+                        </div>
+                        <div className="user-info-container">
+                            <div id="small-profile-circle">
+                                <p id="small-profile-page-letter">{profileLetter}</p>
+                            </div>
+>>>>>>> parent of 19a5035 (Build board show page - just missing pins - and added modal to edit board)
+                        </div>
+                        <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} />
+                        <div className="follows-container">
+                            <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
                         </div>
 
+                    </div>
+
+<<<<<<< HEAD
                     </div>
             ) 
                 }
@@ -113,6 +135,15 @@ class BoardShow extends React.Component {
                     </div>
                 )
         }
+=======
+                    {/* <div className="board-ul-container">
+                        <ul className="boards-ul">
+                            {boards}
+                        </ul>
+                    </div> */}
+                </div>
+            )
+>>>>>>> parent of 19a5035 (Build board show page - just missing pins - and added modal to edit board)
     }
 
 }
