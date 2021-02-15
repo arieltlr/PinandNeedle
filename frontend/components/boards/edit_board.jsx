@@ -19,22 +19,12 @@ class EditBoard extends React.Component {
 
     }
     componentDidMount(){
-<<<<<<< HEAD
         this.props.getBoard(this.props.board.id);
-            // .then(this.setState(this.props.board));
     }
     handleSubmit(e) {
         e.preventDefault();
         debugger
-        const board = Object.assign({}, { id: this.props.board[0].idc, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.description })
-=======
-        this.props.getBoard(this.props.board.id)
-            .then(this.setState(this.props.board));
-    }
-    handleSubmit(e) {
-        // debugger
         const board = Object.assign({}, { id: this.props.board.id, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.description })
->>>>>>> 53b7aa7169c1147191a106dbc49cb87d59d55bb7
         // debugger
         this.props.updateBoard(board)
             .then(this.props.closeModal());
@@ -50,13 +40,6 @@ class EditBoard extends React.Component {
         this.props.deleteBoard(this.props.board.id)
             .then(() => this.props.history.push(`/user/${this.props.board.user_id}`)) 
     }
-    // handleStep(){
-    //     this.setState({currentStep: e.target.value})
-    // }
-    // componentWillUnmount() {
-    //     const resetErrors = [];
-    //     this.props.refreshErrors(resetErrors);
-    // }
 
     render() {
         // debugger
@@ -75,11 +58,7 @@ class EditBoard extends React.Component {
                         onChange={this.handleDescription} />
                     <div className="edit-button-container">
                         <button onClick={this.handleDelete} className="delete">Delete</button>
-<<<<<<< HEAD
                         <button className="red-button-update-board">Done</button>
-=======
-                        <button onClick={this.handleSubmit} className="red-button-update-board">Done</button>
->>>>>>> 53b7aa7169c1147191a106dbc49cb87d59d55bb7
                     </div>
 
                 </form>

@@ -30,7 +30,7 @@ class Profile extends React.Component {
         let boards = this.props.boards.map((board, index) => {
             // debugger
             return (
-                <li className="board-li" id={`${index}`}>
+                <li className="board-li" key={`${index}`}>
                     <Link className="board-show-link" to={`/board/${board.id}`}>
                         <div className="board-cover">
                             <div className="board-cover-single">

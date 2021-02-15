@@ -6,12 +6,13 @@ import { withRouter } from 'react-router-dom';
 
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
+    debugger
+    const board = parseInt(Object.keys(state.entities.boards))
     return {
         errors: state.errors.boards,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        board: Object.values(state.entities.boards)
+        board: state.entities.boards[board]
     }
 }
 
