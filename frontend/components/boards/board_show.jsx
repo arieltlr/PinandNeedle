@@ -2,7 +2,8 @@ import React from 'react';
 import BoardOptions from './board_options';
 import FollowsProfileDisplay from '../follows/profile_options';
 import {Link } from 'react-router-dom';
-import PinsContainer from '../pins/pins_container';
+import { withRouter } from 'react-router-dom';
+
 
 class BoardShow extends React.Component {
 
@@ -18,11 +19,9 @@ class BoardShow extends React.Component {
     // }
 
     render() {
-        debugger
-        if (!this.props.board.id) {
-            debugger
-            const currentBoard = parseInt(this.props.match.params.boardId)
-            this.props.getBoard(currentBoard);
+        // debugger
+        if (!this.props.board) {
+            return null;
         }
 
         const board = this.props.board;
@@ -31,7 +30,7 @@ class BoardShow extends React.Component {
         const currentUsersBoard = Boolean(currentUser.id === board.user_id);
         // const thisProfile = this.props.thisProfile;
         // const currentUserProfile = this.props.theCurrentUser.id === parseInt(thisProfile);
-        const email = this.props.boardOwner.email.split('@')[0]
+        const email = this.props.currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         // const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
@@ -75,20 +74,20 @@ class BoardShow extends React.Component {
                                         <div className="notes-icon" onClick={() => this.props.openModal("edit-board")}></div>
                                         <p className="icon-text">Notes</p>
                                     </div>
+                                    
                                 </div>
 
                             </div>
                             {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
                             <div className="follows-container">
-                                <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                                <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
+                            
 
                         </div>
-                        <div className="master-pin-container">
-                            <ul className="pin-ul-container">
-                                {pins}
-                            </ul>
-                        </div>
+
+                        
+
                     </div>
                 )
             } else {
@@ -110,7 +109,7 @@ class BoardShow extends React.Component {
                             </div>
 
                             <div className="follows-container">
-                                <FollowsProfileDisplay openModal={this.props.openModal} props={Boolean(currentUsersBoard)} />
+                                
                             </div>
 
                         </div>
@@ -126,4 +125,4 @@ class BoardShow extends React.Component {
 
 }
 
-export default BoardShow;
+export default withRouter(BoardShow);

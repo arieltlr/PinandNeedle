@@ -29,6 +29,10 @@
 }
 .red-button-update-board:hover{
     background-color: $hover-red;
+    cursor: pointer;
+}
+.delete:hover{
+    cursor: pointer;
 }
 
 .edit-board-name-label, .board-description-label{

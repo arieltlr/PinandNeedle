@@ -23,7 +23,7 @@ class Api::BoardsController < ApplicationController
     # end
 
     def update
-        @board = Board.find_by(id: params[:id])
+        @board = Board.find(params[:id])
         if @board && @board.update_attributes(board_params)
             render :show
         else
@@ -51,7 +51,7 @@ class Api::BoardsController < ApplicationController
 
     private
     def board_params
-        params.require(:board).permit(:name, :description, :user_id)
+        params.require(:board).permit(:name, :description, :user_id, :id)
     end
 
 end

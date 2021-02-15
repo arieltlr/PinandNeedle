@@ -3,18 +3,16 @@ import { connect } from 'react-redux';
 import BoardShow from './board_show';
 import { receiveErrors, updateBoard, getBoard } from '../../actions/board_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
+import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
-    const thisBoard = state.entities.boards[ownProps.match.params.boardId]
-    
+    // debugger
     return {
         errors: state.errors.boards,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        boardOwner: state.entities.user[ownerId],
-        board: state.entities.boards[ownProps.match.params.boardId],
-        pins: state.entities.boards.pins
+        boardOwner: state.entities.user[state.entities.boards.user_id],
+        board: state.entities.boards[ownProps.match.params.boardId]
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -31,4 +29,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BoardShow));

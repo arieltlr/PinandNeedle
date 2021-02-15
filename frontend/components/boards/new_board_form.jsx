@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 
 class NewBoardForm extends React.Component {
     constructor(props){
@@ -43,4 +45,4 @@ class NewBoardForm extends React.Component {
         )}
 }
 
-export default NewBoardForm;
+export default withRouter(NewBoardForm);

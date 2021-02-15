@@ -6,6 +6,7 @@ import SignupFormContainer from '../session/signup_form_container';
 import NewBoardFormContainer from '../boards/new_board_form_container';
 import EditBoardContainer from '../boards/edit_board_container';
 import DeleteBoardContainer from '../boards/delete_board_container';
+import {withRouter} from 'react-router-dom';
 
 function Modal ({modal, closeModal}) {
     if (!modal) {
@@ -64,4 +65,4 @@ const mdtp = dispatch => {
     }
 };
 
-export default connect(mstp, mdtp)(Modal);
+export default withRouter(connect(mstp, mdtp)(Modal));
