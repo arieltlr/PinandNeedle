@@ -139,4 +139,4 @@ class BoardShow extends React.Component {
 
 }
 
-export default BoardShow;
+export default withRouter(BoardShow);

@@ -19,6 +19,7 @@ class EditBoard extends React.Component {
 
     }
     componentDidMount(){
+<<<<<<< HEAD
         this.props.getBoard(this.props.board.id);
             // .then(this.setState(this.props.board));
     }
@@ -26,6 +27,14 @@ class EditBoard extends React.Component {
         e.preventDefault();
         debugger
         const board = Object.assign({}, { id: this.props.board[0].idc, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.description })
+=======
+        this.props.getBoard(this.props.board.id)
+            .then(this.setState(this.props.board));
+    }
+    handleSubmit(e) {
+        // debugger
+        const board = Object.assign({}, { id: this.props.board.id, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.description })
+>>>>>>> 53b7aa7169c1147191a106dbc49cb87d59d55bb7
         // debugger
         this.props.updateBoard(board)
             .then(this.props.closeModal());
@@ -53,7 +62,7 @@ class EditBoard extends React.Component {
         // debugger
         return (
             <div className="edit-board-form-container">
-                <form className="edit-board-form" onSubmit={this.handleSubmit}>
+                <form className="edit-board-form" >
                     <div className="edit-board-title-container">
                         <h1 className="create-title">Edit your board</h1>
                     </div>
@@ -66,7 +75,11 @@ class EditBoard extends React.Component {
                         onChange={this.handleDescription} />
                     <div className="edit-button-container">
                         <button onClick={this.handleDelete} className="delete">Delete</button>
+<<<<<<< HEAD
                         <button className="red-button-update-board">Done</button>
+=======
+                        <button onClick={this.handleSubmit} className="red-button-update-board">Done</button>
+>>>>>>> 53b7aa7169c1147191a106dbc49cb87d59d55bb7
                     </div>
 
                 </form>
