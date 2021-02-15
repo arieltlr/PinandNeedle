@@ -7,8 +7,8 @@ class EditBoard extends React.Component {
         super(props)
         this.state = {
             // currentStep: 1,
-            name: "",
-            description: "",
+            name: this.props.board.name,
+            description: this.props.board.description,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,9 +18,9 @@ class EditBoard extends React.Component {
         // this.handleStep = this.handleStep.bind(this)
 
     }
-    componentDidMount(){
-        this.props.getBoard(this.props.board.id);
-    }
+    // componentDidMount(){
+    //     this.props.getBoard(this.props.board.id);
+    // }
     handleSubmit(e) {
         e.preventDefault();
         debugger
@@ -51,9 +51,12 @@ class EditBoard extends React.Component {
                     </div>
                     <p className="edit-board-name-label">Name</p>
                     <input className="create-name" type="text"
-                        placeholder={this.state.name} onChange={this.handleName} />
+                        defaultValue = {this.state.name}
+                        placeholder={this.state.name} 
+                        onChange={this.handleName} />
                     <p className="board-description-label">Description</p>
                     <input className="edit-description" type="text"
+                        defaultValue = {this.state.description}
                         placeholder="What's your board about?"
                         onChange={this.handleDescription} />
                     <div className="edit-button-container">
