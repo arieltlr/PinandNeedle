@@ -25,7 +25,7 @@ class EditBoard extends React.Component {
         e.preventDefault();
         debugger
         const board = Object.assign({}, { id: this.props.board.id, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.description })
-        // debugger
+        debugger
         this.props.updateBoard(board)
             .then(this.props.closeModal());
     }
@@ -45,7 +45,7 @@ class EditBoard extends React.Component {
         // debugger
         return (
             <div className="edit-board-form-container">
-                <form className="edit-board-form" >
+                <form className="edit-board-form" onSubmit={this.handleSubmit}>
                     <div className="edit-board-title-container">
                         <h1 className="create-title">Edit your board</h1>
                     </div>

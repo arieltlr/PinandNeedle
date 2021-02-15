@@ -24,7 +24,7 @@ class Api::BoardsController < ApplicationController
 
     def update
         @board = Board.find(params[:id])
-        debugger
+        # debugger
         if @board && @board.update_attributes(board_params)
             render :show
         else
