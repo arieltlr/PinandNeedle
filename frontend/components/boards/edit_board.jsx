@@ -1,12 +1,10 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import { openModal } from '../../actions/modal_actions';
 
 class EditBoard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // currentStep: 1,
             name: this.props.board.name,
             description: this.props.board.description,
         }
@@ -15,17 +13,12 @@ class EditBoard extends React.Component {
         this.handleName = this.handleName.bind(this);
         this.handleDescription = this.handleDescription.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
-        // this.handleStep = this.handleStep.bind(this)
 
     }
-    // componentDidMount(){
-    //     this.props.getBoard(this.props.board.id);
-    // }
+
     handleSubmit(e) {
         e.preventDefault();
-        debugger
         const board = Object.assign({}, { id: this.props.board.id, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.description })
-        debugger
         this.props.updateBoard(board)
             .then(this.props.closeModal());
     }
@@ -36,13 +29,11 @@ class EditBoard extends React.Component {
         this.setState({ description: e.target.value })
     }
     handleDelete(e){
-        // debugger
         this.props.deleteBoard(this.props.board.id)
             .then(() => this.props.history.push(`/user/${this.props.board.user_id}`)) 
     }
 
     render() {
-        // debugger
         return (
             <div className="edit-board-form-container">
                 <form className="edit-board-form" onSubmit={this.handleSubmit}>
@@ -73,24 +64,3 @@ class EditBoard extends React.Component {
 }
 
 export default withRouter(EditBoard);
-
- // CODE FOR SETTING UP MULTI STEP FORM
-            // <React.Fragment>
-            //     Step {this.state.currentStep}
-            //     <form onSubmit={this.handleSubmit}>
-            //         <Step1
-            //             currentStep={this.state.currentStep}
-            //             handleName={this.handleName}
-            //             handleDescription={this.handleDescription}
-            //             name={this.state.name}
-            //             description={this.state.description}
-            //             handleSubmit={this.handleSubmit}
-
-            //         />
-            //         <Step2 
-            //             currentStep={this.state.currentStep}
-            //             closeModal={this.props.closeModal}
-            //             deleteBoard={this.props.deleteBoard}
-            //         />
-            //     </form>
-            // </React.Fragment>

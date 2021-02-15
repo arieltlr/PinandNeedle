@@ -1242,3 +1242,137 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 67ms (Views: 34.6ms | ActiveRecord: 29.7ms)
 
 
+Started GET "/api/boards/19" for ::1 at 2021-02-15 12:34:12 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"19"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  Rendered api/boards/show.json.jbuilder (53.9ms)
+Completed 200 OK in 111ms (Views: 64.4ms | ActiveRecord: 26.3ms)
+
+
+Started GET "/" for ::1 at 2021-02-15 12:34:17 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "9kMxHzM2Myy-YYQJw2fl7w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 62]]
+  ↳ app/views/api/users/_user.json.jbuilder:4
+  Rendered api/users/_user.json.jbuilder (9.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (55.5ms)
+Completed 200 OK in 1532ms (Views: 1530.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/boards/19" for ::1 at 2021-02-15 12:34:19 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"19"}
+  [1m[36mBoard Load (1.6ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  Rendered api/boards/show.json.jbuilder (43.2ms)
+Completed 200 OK in 80ms (Views: 61.2ms | ActiveRecord: 15.0ms)
+
+
+Started PATCH "/api/boards/19" for ::1 at 2021-02-15 12:34:35 -0800
+Processing by Api::BoardsController#update as JSON
+  Parameters: {"board"=>{"id"=>"19", "user_id"=>"62", "name"=>"Sewing heaven", "description"=>"Sew forever if you want to!"}, "id"=>"19"}
+  [1m[36mBoard Load (22.4ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:26
+  [1m[35m (3.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/boards_controller.rb:27
+  [1m[36mBoard Exists (3.2ms)[0m  [1m[34mSELECT  1 AS one FROM "boards" WHERE "boards"."name" = $1 AND "boards"."id" != $2 AND "boards"."user_id" = $3 LIMIT $4[0m  [["name", "Sewing heaven"], ["id", 19], ["user_id", 62], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:27
+  [1m[36mUser Load (17.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:27
+  [1m[36mBoard Update (0.6ms)[0m  [1m[33mUPDATE "boards" SET "name" = $1, "updated_at" = $2 WHERE "boards"."id" = $3[0m  [["name", "Sewing heaven"], ["updated_at", "2021-02-15 20:34:35.180713"], ["id", 19]]
+  ↳ app/controllers/api/boards_controller.rb:27
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/boards_controller.rb:27
+  Rendering api/boards/show.json.jbuilder
+  Rendered api/boards/show.json.jbuilder (1.5ms)
+Completed 200 OK in 84ms (Views: 19.4ms | ActiveRecord: 49.4ms)
+
+
+Started GET "/api/users/62" for ::1 at 2021-02-15 12:35:02 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"62"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 62]]
+  ↳ app/views/api/users/show.json.jbuilder:12
+  Rendered api/users/show.json.jbuilder (6.3ms)
+Completed 200 OK in 24ms (Views: 20.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/boards/16" for ::1 at 2021-02-15 12:35:04 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"16"}
+  [1m[36mBoard Load (0.6ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  Rendered api/boards/show.json.jbuilder (4.6ms)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/users/62" for ::1 at 2021-02-15 12:35:07 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"62"}
+  [1m[36mUser Load (13.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (0.7ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 62]]
+  ↳ app/views/api/users/show.json.jbuilder:12
+  Rendered api/users/show.json.jbuilder (9.4ms)
+Completed 200 OK in 52ms (Views: 35.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/api/boards/19" for ::1 at 2021-02-15 12:35:08 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"19"}
+  [1m[36mBoard Load (2.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  Rendered api/boards/show.json.jbuilder (4.2ms)
+Completed 200 OK in 24ms (Views: 19.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/users/62" for ::1 at 2021-02-15 12:35:37 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"62"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (5.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 62]]
+  ↳ app/views/api/users/show.json.jbuilder:12
+  Rendered api/users/show.json.jbuilder (21.0ms)
+Completed 200 OK in 51ms (Views: 42.5ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/api/boards" for ::1 at 2021-02-15 12:35:49 -0800
+Processing by Api::BoardsController#create as JSON
+  Parameters: {"board"=>{"user_id"=>"62", "name"=>"Patterns to try!"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/boards_controller.rb:5
+  [1m[36mBoard Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "boards" WHERE "boards"."name" = $1 AND "boards"."user_id" = $2 LIMIT $3[0m  [["name", "Patterns to try!"], ["user_id", 62], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 62], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:5
+  [1m[36mBoard Create (16.7ms)[0m  [1m[32mINSERT INTO "boards" ("user_id", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 62], ["name", "Patterns to try!"], ["created_at", "2021-02-15 20:35:49.380153"], ["updated_at", "2021-02-15 20:35:49.380153"]]
+  ↳ app/controllers/api/boards_controller.rb:5
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/boards_controller.rb:5
+  Rendering api/boards/show.json.jbuilder
+  Rendered api/boards/show.json.jbuilder (1.9ms)
+Completed 200 OK in 44ms (Views: 15.4ms | ActiveRecord: 18.5ms)
+
+
