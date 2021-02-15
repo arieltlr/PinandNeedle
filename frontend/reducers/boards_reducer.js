@@ -16,9 +16,9 @@ const boardsReducer = (state = {}, action) => {
             // debugger
             return Object.assign({}, state, { [action.board.id]: action.board });
         case REMOVE_BOARD:
-            debugger
+            // debugger
             const newState = Object.assign({}, state);
-            debugger
+            // debugger
             delete newState[action.boardId];
             return newState;
         default:

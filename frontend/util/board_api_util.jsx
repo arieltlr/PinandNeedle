@@ -31,7 +31,7 @@ export const updateBoard = (board) => {
 }
 
 export const destroyBoard = (boardId) => {
-    debugger
+    // debugger
     return $.ajax({
         method: "DELETE",
         url: `/api/boards/${boardId}`
