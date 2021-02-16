@@ -8,6 +8,7 @@ import EditBoardContainer from '../boards/edit_board_container';
 import DeleteBoardContainer from '../boards/delete_board_container';
 import {withRouter} from 'react-router-dom';
 
+
 function Modal ({modal, closeModal}) {
     if (!modal) {
         return null;

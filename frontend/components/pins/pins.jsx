@@ -34,7 +34,7 @@ class Pins extends React.Component {
     render (){
         // debugger
         return (
-        <div>
+        <div className="create-pin-container">
             <form onSubmit={this.handleSubmit}>
                 <input type="text" onChange={this.handleURL}/>
                 <input type="file" onChange={this.handleFile}/>

@@ -3,6 +3,7 @@ import BoardOptions from './board_options';
 import FollowsProfileDisplay from '../follows/profile_options';
 import {Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
 
 
 class BoardShow extends React.Component {
@@ -35,18 +36,18 @@ class BoardShow extends React.Component {
         const profileLetter = email[0].toUpperCase();
         // const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
 
-        let pins = this.props.board.pins.map((pin, index) => {
-            return (
-                <li className="pin-li" id={`${index}`}>
-                        <div className="pin-container">
-                            <img src={pin.photoUrl} 
-                                className="pin-image" 
-                                id={ index % 2 === 0 ? "square" : "rectangle"} 
-                            />
-                        </div>
-                </li>
-            )
-        })
+        // let pins = this.props.board.pins.map((pin, index) => {
+        //     return (
+        //         <li className="pin-li" id={`${index}`}>
+        //                 <div className="pin-container">
+        //                     <img src={pin.photoUrl} 
+        //                         className="pin-image" 
+        //                         id={ index % 2 === 0 ? "square" : "rectangle"} 
+        //                     />
+        //                 </div>
+        //         </li>
+        //     )
+        // })
             if (currentUsersBoard){
                 return (
 
@@ -83,6 +84,7 @@ class BoardShow extends React.Component {
                                 <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
                             
+                            <BoardPlusDD openModal={this.props.openModal}/>
 
                         </div>
 
@@ -115,7 +117,7 @@ class BoardShow extends React.Component {
                         </div>
                         <div className="master-pin-container">
                             <ul className="pin-ul-container">
-                                {pins}
+                                {/* {pins} */}
                             </ul>
                         </div>
                     </div>
