@@ -1,4 +1,5 @@
 @import "base/colors.scss";
+@import "base/layout.scss";
 
 .create-board-modal {
     width: 500px;
@@ -14,16 +15,10 @@
 }
 
 .new-board-form-container {
-    width: 100%;
-    height: 100%;
+    @include form-container();
 }
 .new-board-form {
-    width: 100%;
-    height: 100%;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: column;
+    @include new-form();
 }
 .create-title {
     width: 100%;

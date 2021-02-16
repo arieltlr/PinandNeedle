@@ -1,18 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Pins from './pins';
+import { connect} from 'react-redux';
+import {withRouter } from 'react-router-dom';
+import CreatePin from './create_pin';
 import { receiveErrors, getPins, getPin, createPin, updatePin, deletePin } from '../../actions/pin_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
 
-    debugger
+    const boardId = parseInt(Object.keys(state.entities.boards))
     return {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        pinOwner: state.entities.user[state.entities.pins.user_id],
-        pins: state.entities.pins,
+        board: state.entities.boards[boardId]
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Pins);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePin));

@@ -12,7 +12,7 @@
     justify-content: flex-start;
 }
 #arrow-dropdown  {
-    @include drop-down(65px, 50px, 220px);
+    @include drop-down(65px, 50px, 220px, 200px);
 }
 li:hover {
     background-color: $grey-hover;
