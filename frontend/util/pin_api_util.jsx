@@ -1,5 +1,5 @@
 export const newPin = (pin) => {
-    debugger
+    
     return $.ajax({
         url: '/api/pins',
         method: 'POST',
