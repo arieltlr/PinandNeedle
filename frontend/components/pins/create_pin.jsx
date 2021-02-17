@@ -17,7 +17,7 @@ class Pins extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     // componentDidMount(){
-    //     this.props.getPins()
+    //     this.props.()
     // }
     handleChange(event){
         const {name, value} = event.target;

@@ -6,7 +6,7 @@ import { receiveErrors, getPins, getPin, createPin, updatePin, deletePin } from 
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-
+    debugger
     const boardId = parseInt(Object.keys(state.entities.boards))
     return {
         errors: state.errors.pins,
