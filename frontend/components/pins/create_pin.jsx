@@ -50,8 +50,8 @@ class Pins extends React.Component {
                             onChange = {this.handleChange}>
                         <option defaultValue='Select your answer' hidden disabled > Select your answer </option>
                         
-                        <option value='true'>Thin bread for me</option>
-                        <option value='false'>Let it rise</option>
+                        <option value='true'>Board 1</option>
+                        <option value='false'>Board 2</option>
                         </select>
         return (
         <div className="new-pin-form-container">
