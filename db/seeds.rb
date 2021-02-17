@@ -8,6 +8,7 @@
 
 User.delete_all
 Board.delete_all
+Pin.delete_all
 
 demouser = User.create!({email: "demouser@email.com", age: 25, username: "Demo User", password: "password123", 
 country: "United States (US)", language: "English (US)", gender: "Female"})

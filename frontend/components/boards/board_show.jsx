@@ -3,11 +3,13 @@ import BoardOptions from './board_options';
 import FollowsProfileDisplay from '../follows/profile_options';
 import {Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
 
 
 class BoardShow extends React.Component {
 
     componentDidMount(){
+        debugger
         const currentBoard = parseInt(this.props.match.params.boardId)
         this.props.getBoard(currentBoard)
     }
@@ -34,29 +36,15 @@ class BoardShow extends React.Component {
         const profileLetter = email[0].toUpperCase();
         // const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
 
-        // let boards = this.props.boards.map((board, index) => {
+        // let pins = this.props.board.pins.map((pin, index) => {
         //     return (
-        //         <li className="board-li" id={index}>
-        //             <Link to={`/board/${board.id}`}>
-        //                 <div className="board-cover">
-        //                     <div className="board-cover-single">
-        //                         <img src={window.pin1} className="cover-image3" />
-        //                     </div>
-        //                     <div className="board-cover-stack">
-        //                         <img src={window.pin4} className="cover-image1" />
-        //                         <img src={window.brown_sweater} className="cover-image2" />
-        //                     </div>
+        //         <li className="pin-li" id={`${index}`}>
+        //                 <div className="pin-container">
+        //                     <img src={pin.photoUrl} 
+        //                         className="pin-image" 
+        //                         id={ index % 2 === 0 ? "square" : "rectangle"} 
+        //                     />
         //                 </div>
-        //                 <div className="board-info-container">
-        //                     <div className="board-info">
-        //                         <h2 className="board-cover-name">{board.name}</h2>
-        //                         <div className="board-cover-subinfo">
-        //                             <p className="board-cover-pin-count">3 Pins</p>
-        //                             <p className="board-age">1d</p>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-        //             </Link>
         //         </li>
         //     )
         // })
@@ -96,6 +84,7 @@ class BoardShow extends React.Component {
                                 <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
                             
+                            <BoardPlusDD openModal={this.props.openModal}/>
 
                         </div>
 
@@ -126,12 +115,11 @@ class BoardShow extends React.Component {
                             </div>
 
                         </div>
-
-                        {/* <div className="board-ul-container">
-                            <ul className="boards-ul">
-                                {boards}
+                        <div className="master-pin-container">
+                            <ul className="pin-ul-container">
+                                {/* {pins} */}
                             </ul>
-                        </div> */}
+                        </div>
                     </div>
                 )
         }

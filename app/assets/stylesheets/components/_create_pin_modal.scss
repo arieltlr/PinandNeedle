@@ -1,0 +1,121 @@
+@import "base/layout.scss";
+@import "base/colors.scss";
+
+.create-pin-modal {
+    @include modal (880px, 650px);
+}
+
+.new-pin-form-container {
+    @include form-container();
+}
+.new-pin-form {
+    @include new-form();
+}
+.create-pin-header{
+    width: 90%;
+    height: 100px;
+    align-self: center;
+}
+.create-pin-header-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.pin-container-width {
+    width: 90%;
+    height: 700px;
+    align-self: center;
+}
+.pin-content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.image-input-container {
+    width: 380px;
+    height: 450px;
+    background-image: image-url('upload_pin.png');
+    background-position: center;
+    outline: none;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-indent: -900px;
+}
+.image-upload-input {
+    width: 330px;
+    height: 420px;
+    background-color: none;
+    text-indent: -900px;
+    border: none;
+    &:focus{
+        border: none;
+        box-shadow: 0px 0px 0px 0px;
+    }
+}
+.pin-info-container {
+    width: 400px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.pin-input {
+    border: none;
+    background-color: none;
+    margin-bottom: 3px;;
+    border-bottom: 1px solid $grey-hover;
+    border-radius: 0px;
+    color: $grey-hover;
+    font-size: 16px;
+    width: 380px;
+    padding-left: 0;
+    font-weight: 100px;
+    &:focus{
+        border: none;
+        box-shadow: 0px 0px 0px 0px;
+    }
+}
+.pin-title-owner {
+    padding-top: 30px;
+}
+#pin-title {
+    font-size: 36px;
+    font-weight: 500;
+}
+#profile-circle-create-pin {
+    height: 50px;
+    width: 50px;
+    background-color: $grey-hover;
+    outline: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+}
+#profile-page-letter-create-pin {
+    font-size: 28px;
+    outline: none;
+}
+.create-pin-user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.create-pin-name-followers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 8px;
+}
+.pin-follower {
+    font-size: 14px;
+    font-weight: 300;
+    padding-left: 0px;
+    margin-left: 0px;
+}   

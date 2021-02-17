@@ -24,6 +24,7 @@ const mapDispatchToProps = (dispatch) => {
         closeModal: () => dispatch(closeModal()),
         openModal: (modal) => dispatch(openModal(modal)),
         refreshErrors: (resetErrors) => dispatch(receiveErrors(resetErrors)),
+        getPins: () => dispatch(getPins())
 
     };
 };

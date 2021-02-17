@@ -1,0 +1,36 @@
+.master-pin-container {
+    width: 100%;
+    height: auto;
+}
+.pin-ul-container {
+    list-style: none;
+    height: auto;
+    width: 100%;
+}
+.pin-li {
+    list-style: none;
+}
+
+.pin-container {
+    display: flex;
+    flex-flow: column wrap;
+}
+.pin-image > #rectangle{
+    height: 420px;
+    width: 240;
+    object-fit: cover;
+    border-radius: 25px;
+}
+.pin-image > #square{
+    height: 240px;
+    width: 240;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+// /pin url
+.create-pin-container {
+    width: 100%;
+    height: auto;
+    padding-top: 300px;
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createBoard, updateBoard, deleteBoard, getBoard, getBoards } from './actions/board_actions';
+import { createPin, updatePin, deletePin, getPin, getPins } from './actions/pin_actions';
+
 import configureStore from './store/store';
 import Root from './root'
 
@@ -10,9 +12,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     
     // window.dispatch = store.dispatch;
-    // window.getBoards = getBoards;
-    // window.updateBoard = updateBoard;
-    // window.deleteBoard = deleteBoard;
+    // window.getPins = getPins;
+    // window.getPin = getPin;
+    // window.createPin = createPin;
+    // window.updatePin = updatePin;
+    // window.deletePin = deletePin;
     let store;
     if (window.currentUser) {
         const preloadedState = {
@@ -28,6 +32,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     } else {
         store = configureStore();
     }
-    window.getState = store.getState;
+    // window.getState = store.getState;
+
     ReactDOM.render(<Root store={store}/>, root)
 })

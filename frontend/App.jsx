@@ -8,6 +8,7 @@ import NavBarContainer from '../frontend/components/nav_bar/nav_bar_container';
 import ProfileContainer from './components/user/profile_container';
 import FollowingContainer from './components/feed/following_container';
 import BoardShowContainer from './components/boards/board_show_container';
+import CreatePinContainer from './components/pins/create_pin_container';
 
 const App = (store) => (
     <div>
@@ -19,6 +20,7 @@ const App = (store) => (
                 <Route path="/feed" component={FeedContainer} />
                 <Route path="/following" component={FollowingContainer} />
                 <ProtectedRoute path="/user/:userId" component={ProfileContainer} />
+                <Route exact path="/pin" component={CreatePinContainer} />
                 <Route path="/board/:boardId" component={BoardShowContainer} />
                 <AuthRoute exact path="/" component={SplashContainer} />
                     
