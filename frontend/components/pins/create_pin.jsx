@@ -16,9 +16,10 @@ class Pins extends React.Component {
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    // componentDidMount(){
-    //     this.props.()
-    // }
+    componentDidMount(){
+        debugger
+        this.props.getBoards(this.props.board.user_id)
+    }
     handleChange(event){
         const {name, value} = event.target;
         this.setState({
@@ -45,13 +46,15 @@ class Pins extends React.Component {
         // const email = this.props.email.split('@')[0]
         // const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         // const profileLetter = email[0].toUpperCase()
+        
+        const options = Object.values(this.props.userBoards).map(board => {
+            return <option value={board.id}>{board.name}</option>
+        })
         const select = <select name="board_id"
                             id="board-selector"
                             onChange = {this.handleChange}>
-                        <option defaultValue='Select your answer' hidden disabled > Select your answer </option>
-                        
-                        <option value='true'>Board 1</option>
-                        <option value='false'>Board 2</option>
+                        <option defaultValue={this.props.board.id}>{this.props.board.name}</option>
+                        {options}
                         </select>
         return (
         <div className="new-pin-form-container">
