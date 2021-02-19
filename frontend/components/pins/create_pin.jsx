@@ -7,9 +7,9 @@ class Pins extends React.Component {
         this.state = {
             pin_url: "",
             photoFile: null, 
-            user_id: "",
-            board_id: "",
-            description: ""
+            user_id: this.props.board.user_id,
+            board_id: this.props.board.id,
+            description: "",
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleURL = this.handleURL.bind(this);
@@ -32,7 +32,8 @@ class Pins extends React.Component {
         pinPic.append('pin[pin_url]', this.state.pin_url);
         pinPic.append('pin[photo]', this.state.photoFile);
         pinPic.append('pin[user_id]', this.props.currentUser.id);
-        // debugger
+        pinPic.append('pin[board_id]', this.state.board_id)
+        debugger
         this.props.createPin(pinPic);
     }
     handleURL(e){
@@ -43,12 +44,14 @@ class Pins extends React.Component {
     }
     
     render (){
-        // const email = this.props.email.split('@')[0]
-        // const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
-        // const profileLetter = email[0].toUpperCase()
-        
-        const options = Object.values(this.props.userBoards).map(board => {
-            return <option value={board.id}>{board.name}</option>
+        if (!this.props.email[0]) {
+            return null;
+        }
+        const email = this.props.email.split('@')[0]
+        const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
+        const profileLetter = email[0].toUpperCase()
+        const options = Object.values(this.props.userBoards).map((board, index) => {
+            return <option key={index} value={board.id}>{board.name}</option>
         })
         const select = <select name="board_id"
                             id="board-selector"
@@ -71,17 +74,17 @@ class Pins extends React.Component {
                 <div className="pin-container-width">
                     <div className="pin-content-container">
                         <div className="image-input-container">
-                            <input className="image-upload-input" type="file" onChange={this.handleFile}/>
+                            { this.props.pins.length > 1 ?  <img src={this.props.pins.photoUrl} /> : <input className="image-upload-input" type="file" onChange={this.handleFile}/>}
                         </div>
                         <div className="pin-info-container">
                             <div className="pin-title-owner">
                                 <input className="pin-input" id="pin-title" type="text" name="pin_url" onChange={this.handleChange} placeholder="Add your title"/>
                                 <div className="create-pin-user-info">
                                     <div id="profile-circle-create-pin">
-                                        <p id="profile-page-letter-create-pin">L</p>
+                                        <p id="profile-page-letter-create-pin">{profileLetter}</p>
                                     </div>
                                     <div className="create-pin-name-followers">
-                                        <h1 id="profile-page-username-create-pin">email name</h1>
+                                        <h1 id="profile-page-username-create-pin">{emailName}</h1>
                                         <h3 className="pin-follower">1 Follower</h3 >
                                     </div>
                                 </div>
@@ -100,7 +103,6 @@ class Pins extends React.Component {
             {/* <div> */}
                 {/* <h1>Image!</h1>
                 <p>{this.props.pins.photo}</p>
-                <img src={this.props.pins.photoUrl} /> */}
             {/* </div> */}
             </form>
         </div>
