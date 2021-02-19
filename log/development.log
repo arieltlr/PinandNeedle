@@ -1592,3 +1592,472 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 33ms (Views: 19.1ms | ActiveRecord: 12.6ms)
 
 
+Started GET "/" for ::1 at 2021-02-19 06:40:57 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (23.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (8.9ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (61.9ms)
+  Rendered static_pages/root.html.erb within layouts/application (264.2ms)
+Completed 200 OK in 2893ms (Views: 2858.0ms | ActiveRecord: 32.6ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 06:41:02 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (140.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (198.1ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (204.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (453.9ms)
+Completed 200 OK in 872ms (Views: 533.6ms | ActiveRecord: 338.4ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 06:48:38 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (1.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (7.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (68.6ms)
+Completed 200 OK in 1618ms (Views: 1612.7ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 06:48:40 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (31.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (36.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (80.1ms)
+Completed 200 OK in 404ms (Views: 371.3ms | ActiveRecord: 32.0ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 06:48:43 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (13.8ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (19.4ms)
+Completed 200 OK in 41ms (Views: 23.4ms | ActiveRecord: 14.8ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-02-19 06:48:48 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (42.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (13.0ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."board_id" = $1[0m  [["board_id", 41]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (63.2ms)
+Completed 200 OK in 92ms (Views: 33.8ms | ActiveRecord: 56.2ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 06:48:50 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (5.0ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (10.0ms)
+Completed 200 OK in 31ms (Views: 23.2ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/api/pins" for ::1 at 2021-02-19 06:51:20 -0800
+Processing by Api::PinsController#create as JSON
+  Parameters: {"pin"=>{"pin_url"=>"www.pinandneedle.com", "photo"=>#<ActionDispatch::Http::UploadedFile:0x00007ff7e98a4858 @tempfile=#<Tempfile:/var/folders/3r/lv8dwh054m990gxx6bbw6lj40000gn/T/RackMultipart20210219-97470-1b7a0vf.jpg>, @original_filename="meric-dagli-unsplash.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"pin[photo]\"; filename=\"meric-dagli-unsplash.jpg\"\r\nContent-Type: image/jpeg\r\n">, "user_id"=>"68", "board_id"=>"41"}}
+[36m  S3 Storage (3976.9ms) [0m[32mUploaded file to key: P9jFqcLoY8VssAjHPM532PWm (checksum: GqloyBOhqw8QjdvSeiPZOw==)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[36mActiveStorage::Blob Create (17.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "P9jFqcLoY8VssAjHPM532PWm"], ["filename", "meric-dagli-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 2374838], ["checksum", "GqloyBOhqw8QjdvSeiPZOw=="], ["created_at", "2021-02-19 14:51:24.401520"]]
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mPin Create (18.0ms)[0m  [1m[32mINSERT INTO "pins" ("pin_url", "user_id", "created_at", "updated_at", "board_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["pin_url", "www.pinandneedle.com"], ["user_id", 68], ["created_at", "2021-02-19 14:51:24.452843"], ["updated_at", "2021-02-19 14:51:24.452843"], ["board_id", 41]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mActiveStorage::Attachment Create (29.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Pin"], ["record_id", 21], ["blob_id", 23], ["created_at", "2021-02-19 14:51:24.473436"]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mPin Update (24.7ms)[0m  [1m[33mUPDATE "pins" SET "updated_at" = $1 WHERE "pins"."id" = $2[0m  [["updated_at", "2021-02-19 14:51:24.505838"], ["id", 21]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/pins_controller.rb:5
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 41bed4e6-3623-44ae-8931-a011be05daad) to Async(default) with arguments: #<GlobalID:0x00007ff801c56510 @uri=#<URI::GID gid://pinand-needle/ActiveStorage::Blob/23>>
+  Rendering api/pins/show.json.jbuilder
+  Rendered api/pins/show.json.jbuilder (18.1ms)
+Completed 500 Internal Server Error in 4344ms (ActiveRecord: 98.6ms)
+
+
+
+NoMethodError - undefined method `boards' for #<Pin:0x00007ff7e9a00c88>
+Did you mean?  board
+               board=:
+  app/views/api/pins/show.json.jbuilder:1:in `_app_views_api_pins_show_json_jbuilder___2448016603772393331_70351562087160'
+  app/controllers/api/pins_controller.rb:6:in `create'
+
+  [1m[36mActiveStorage::Blob Load (24.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad] Performing ActiveStorage::AnalyzeJob (Job ID: 41bed4e6-3623-44ae-8931-a011be05daad) from Async(default) with arguments: #<GlobalID:0x00007ff7ffaeab88 @uri=#<URI::GID gid://pinand-needle/ActiveStorage::Blob/23>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad] [36m  S3 Storage (442.8ms) [0m[34mDownloaded file from key: P9jFqcLoY8VssAjHPM532PWm[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad]   [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad]   ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad]   [1m[36mActiveStorage::Blob Update (3.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 23]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad]   ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad]   [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad]   ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [41bed4e6-3623-44ae-8931-a011be05daad] Performed ActiveStorage::AnalyzeJob (Job ID: 41bed4e6-3623-44ae-8931-a011be05daad) from Async(default) in 498.5ms
+Started GET "/api/users/68" for ::1 at 2021-02-19 06:55:21 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (7.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (1.6ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (39.3ms)
+Completed 200 OK in 74ms (Views: 57.4ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/api/pins" for ::1 at 2021-02-19 06:55:52 -0800
+Processing by Api::PinsController#create as JSON
+  Parameters: {"pin"=>{"pin_url"=>"www.pinandneedle.com", "photo"=>"null", "user_id"=>"68", "board_id"=>"41"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveSupport::MessageVerifier::InvalidSignature - ActiveSupport::MessageVerifier::InvalidSignature:
+  app/controllers/api/pins_controller.rb:4:in `create'
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 06:59:58 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (19.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (51.5ms)
+Completed 200 OK in 224ms (Views: 43.9ms | ActiveRecord: 114.5ms)
+
+
+Started POST "/api/pins" for ::1 at 2021-02-19 07:00:39 -0800
+Processing by Api::PinsController#create as JSON
+  Parameters: {"pin"=>{"pin_url"=>"www.www.com", "photo"=>#<ActionDispatch::Http::UploadedFile:0x00007ff7fb9d87f8 @tempfile=#<Tempfile:/var/folders/3r/lv8dwh054m990gxx6bbw6lj40000gn/T/RackMultipart20210219-97470-xon55t.jpg>, @original_filename="meric-dagli-unsplash.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"pin[photo]\"; filename=\"meric-dagli-unsplash.jpg\"\r\nContent-Type: image/jpeg\r\n">, "user_id"=>"68", "board_id"=>"41"}}
+[36m  S3 Storage (4973.9ms) [0m[32mUploaded file to key: iVDXEHWUVEZ4xrdw8buccCLa (checksum: GqloyBOhqw8QjdvSeiPZOw==)[0m
+  [1m[35m (81.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[36mActiveStorage::Blob Create (1.8ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "iVDXEHWUVEZ4xrdw8buccCLa"], ["filename", "meric-dagli-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 2374838], ["checksum", "GqloyBOhqw8QjdvSeiPZOw=="], ["created_at", "2021-02-19 15:00:45.466161"]]
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/pins_controller.rb:4
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mPin Create (1.9ms)[0m  [1m[32mINSERT INTO "pins" ("pin_url", "user_id", "created_at", "updated_at", "board_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["pin_url", "www.www.com"], ["user_id", 68], ["created_at", "2021-02-19 15:00:45.536260"], ["updated_at", "2021-02-19 15:00:45.536260"], ["board_id", 41]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mActiveStorage::Attachment Create (1.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Pin"], ["record_id", 22], ["blob_id", 24], ["created_at", "2021-02-19 15:00:45.541085"]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[36mPin Update (0.9ms)[0m  [1m[33mUPDATE "pins" SET "updated_at" = $1 WHERE "pins"."id" = $2[0m  [["updated_at", "2021-02-19 15:00:45.545159"], ["id", 22]]
+  ↳ app/controllers/api/pins_controller.rb:5
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/pins_controller.rb:5
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a4928d36-2102-4801-a957-28bd0e96e659) to Async(default) with arguments: #<GlobalID:0x00007ff7e9a330e8 @uri=#<URI::GID gid://pinand-needle/ActiveStorage::Blob/24>>
+  [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659] Performing ActiveStorage::AnalyzeJob (Job ID: a4928d36-2102-4801-a957-28bd0e96e659) from Async(default) with arguments: #<GlobalID:0x00007ff7ff94fe90 @uri=#<URI::GID gid://pinand-needle/ActiveStorage::Blob/24>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659] [36m  S3 Storage (1072.2ms) [0m[34mDownloaded file from key: iVDXEHWUVEZ4xrdw8buccCLa[0m
+  Rendering api/pins/show.json.jbuilder
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659] Skipping image analysis because the mini_magick gem isn't installed
+  Rendered api/pins/show.json.jbuilder (85430.3ms)
+Completed 200 OK in 149751ms (Views: 85456.1ms | ActiveRecord: 189.2ms)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659]   [1m[35m (56067.9ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659]   ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659]   [1m[36mActiveStorage::Blob Update (136.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 24]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659]   ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659]   [1m[35m (49.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659]   ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4928d36-2102-4801-a957-28bd0e96e659] Performed ActiveStorage::AnalyzeJob (Job ID: a4928d36-2102-4801-a957-28bd0e96e659) from Async(default) in 144403.0ms
+Started GET "/api/users/68" for ::1 at 2021-02-19 07:23:25 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (1.1ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (24.2ms)
+Completed 200 OK in 62ms (Views: 50.7ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 07:23:29 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (0.7ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (8.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (61.6ms)
+Completed 200 OK in 1169ms (Views: 1167.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 07:23:31 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (8.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (86.1ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (90.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (191.2ms)
+Completed 200 OK in 566ms (Views: 470.3ms | ActiveRecord: 95.0ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 07:23:32 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (35.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (37.9ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (42.8ms)
+Completed 200 OK in 106ms (Views: 28.1ms | ActiveRecord: 73.7ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-02-19 07:26:18 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (0.8ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."board_id" = $1[0m  [["board_id", 41]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (15.0ms)
+Completed 200 OK in 32ms (Views: 26.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 07:30:54 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (34.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (4.6ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (11.5ms)
+Completed 200 OK in 109ms (Views: 65.8ms | ActiveRecord: 38.9ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 07:31:07 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (0.7ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (6.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (91.9ms)
+Completed 200 OK in 2976ms (Views: 2974.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 07:31:11 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (42.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (5.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (11.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (157.7ms)
+Completed 200 OK in 522ms (Views: 473.8ms | ActiveRecord: 47.7ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-02-19 07:31:12 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (4.3ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (35.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (1.0ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."board_id" = $1[0m  [["board_id", 41]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (45.2ms)
+Completed 200 OK in 76ms (Views: 33.3ms | ActiveRecord: 41.0ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 07:34:36 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (8.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (1.0ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (7.3ms)
+Completed 200 OK in 36ms (Views: 23.4ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-02-19 07:35:35 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (3.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (0.6ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."board_id" = $1[0m  [["board_id", 41]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (17.1ms)
+Completed 200 OK in 51ms (Views: 40.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 07:36:06 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (6.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (103.4ms)
+Completed 200 OK in 1247ms (Views: 1244.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 07:36:08 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (17.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (0.8ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (8.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (97.2ms)
+Completed 200 OK in 450ms (Views: 430.8ms | ActiveRecord: 18.7ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-02-19 07:36:16 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (4.9ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (318.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (1.1ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."board_id" = $1[0m  [["board_id", 41]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (331.2ms)
+Completed 200 OK in 358ms (Views: 32.1ms | ActiveRecord: 324.5ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 07:36:27 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (25.6ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (32.9ms)
+Completed 200 OK in 60ms (Views: 30.7ms | ActiveRecord: 26.1ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-02-19 07:37:56 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (1.9ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (779.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (8.4ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."board_id" = $1[0m  [["board_id", 41]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (801.7ms)
+Completed 200 OK in 839ms (Views: 47.9ms | ActiveRecord: 789.5ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 07:38:03 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (6.8ms)
+Completed 200 OK in 102ms (Views: 96.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 07:38:06 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (4.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (76.2ms)
+Completed 200 OK in 1290ms (Views: 1288.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2021-02-19 07:38:08 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u50AWDTaBhzxrgsdJiFjqQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (33.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (38.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (106.7ms)
+Completed 200 OK in 533ms (Views: 495.7ms | ActiveRecord: 36.7ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-02-19 07:38:09 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (1.5ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (6.5ms)
+Completed 200 OK in 30ms (Views: 26.4ms | ActiveRecord: 1.9ms)
+
+

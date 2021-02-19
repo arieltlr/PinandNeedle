@@ -16,10 +16,10 @@ class Pins extends React.Component {
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentDidMount(){
-        debugger
-        this.props.getBoards(this.props.board.user_id)
-    }
+    // componentDidMount(){
+    //     debugger
+    //     this.props.getBoards(this.props.board.user_id)
+    // }
     handleChange(event){
         const {name, value} = event.target;
         this.setState({
@@ -44,6 +44,7 @@ class Pins extends React.Component {
     }
     
     render (){
+        debugger
         if (!this.props.email[0]) {
             return null;
         }
@@ -78,7 +79,7 @@ class Pins extends React.Component {
                         </div>
                         <div className="pin-info-container">
                             <div className="pin-title-owner">
-                                <input className="pin-input" id="pin-title" type="text" name="pin_url" onChange={this.handleChange} placeholder="Add your title"/>
+                                <input className="pin-input" id="pin-title" type="text" name="pin-title" onChange={this.handleChange} placeholder="Add your title"/>
                                 <div className="create-pin-user-info">
                                     <div id="profile-circle-create-pin">
                                         <p id="profile-page-letter-create-pin">{profileLetter}</p>
@@ -89,7 +90,7 @@ class Pins extends React.Component {
                                     </div>
                                 </div>
                                 <div className="pin-desc-container">
-                                    <input className="pin-input" type="text" name="pin_url" onChange={this.handleChange} placeholder="Tell everyone what your pin is about"/>
+                                    <input className="pin-input" type="text" name="description" onChange={this.handleChange} placeholder="Tell everyone what your pin is about"/>
                                 </div>
                             </div>
                             <div className="pin-url-container">
