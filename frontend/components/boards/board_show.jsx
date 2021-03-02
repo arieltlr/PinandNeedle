@@ -8,10 +8,8 @@ import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
 
 class BoardShow extends React.Component {
 
-
-
     render() {
-  
+        debugger
         const board = this.props.board;
         const currentUser = this.props.currentUser;
         const currentUsersBoard = Boolean(currentUser.id === board.user_id);

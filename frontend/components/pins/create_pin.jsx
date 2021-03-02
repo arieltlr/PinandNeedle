@@ -6,7 +6,8 @@ class Pins extends React.Component {
         super(props)
         this.state = {
             pin_url: "",
-            photoFile: null, 
+            photoFile: null,
+            photoUrl: null, 
             user_id: this.props.board.user_id,
             board_id: this.props.board.id,
             description: "",
@@ -40,14 +41,21 @@ class Pins extends React.Component {
         this.setState({pin_url: e.target.value})
     }
     handleFile(e) {
-        this.setState({photoFile: e.currentTarget.files[0]})
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+
+            this.setState({photoFile: file, photoUrl: fileReader.result})
+        };
+        if (file){
+            fileReader.readAsDataURL(file);
+        }
+        
     }
     
     render (){
-        debugger
-        if (!this.props.email[0]) {
-            return null;
-        }
+        console.log(this.state)
+        const preview = this.state.photoUrl ? <img src={this.state.photoURL}/> : null; 
         const email = this.props.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
@@ -74,9 +82,10 @@ class Pins extends React.Component {
                 </div>
                 <div className="pin-container-width">
                     <div className="pin-content-container">
-                        <div className="image-input-container">
-                            { this.props.pins.length > 1 ?  <img src={this.props.pins.photoUrl} /> : <input className="image-upload-input" type="file" onChange={this.handleFile}/>}
-                        </div>
+                            <div className="image-input-container">
+                                {this.state.photoUrl ? <img src={this.state.photoUrl}/> :<input className="image-upload-input" type="file" onChange={this.handleFile}/>} 
+                            </div>
+                            
                         <div className="pin-info-container">
                             <div className="pin-title-owner">
                                 <input className="pin-input" id="pin-title" type="text" name="pin-title" onChange={this.handleChange} placeholder="Add your title"/>
