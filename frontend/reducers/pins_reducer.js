@@ -1,4 +1,5 @@
 import React from 'react';
+import { RECEIVE_BOARD } from '../actions/board_actions';
 
 import {
     RECEIVE_PINS,
@@ -17,6 +18,8 @@ const pinsReducer = (state = [], action) => {
         case RECEIVE_PIN:
             debugger
             return action.pin;
+        case RECEIVE_BOARD:
+            return action.board.pins;
         default:
             return state;
     }

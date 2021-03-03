@@ -8,28 +8,35 @@ import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
 
 class BoardShow extends React.Component {
 
+    componentDidMount(){
+        this.props.getBoard(this.props.match.params.boardId)
+    }
+
     render() {
-        debugger
+        if (this.props.board === undefined){
+            return null;
+        }
         const board = this.props.board;
         const currentUser = this.props.currentUser;
         const currentUsersBoard = Boolean(currentUser.id === board.user_id);
         const email = this.props.currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
-        // const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
+        const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
 
-        // let pins = this.props.board.pins.map((pin, index) => {
-        //     return (
-        //         <li className="pin-li" id={`${index}`}>
-        //                 <div className="pin-container">
-        //                     <img src={pin.photoUrl} 
-        //                         className="pin-image" 
-        //                         id={ index % 2 === 0 ? "square" : "rectangle"} 
-        //                     />
-        //                 </div>
-        //         </li>
-        //     )
-        // })
+        let pins = this.props.pins.map((pin, index) => {
+            debugger
+            return (
+                <li className="pin-li" key={`${index}`}>
+                        <div className="pin-container">
+                            <img src={pin.photoUrl} 
+                                className="pin-image" 
+                                id={ index % 2 === 0 ? "square" : "rectangle"} 
+                            />
+                        </div>
+                </li>
+            )
+        })
             if (currentUsersBoard){
                 return (
 
@@ -70,7 +77,11 @@ class BoardShow extends React.Component {
 
                         </div>
 
-                        
+                        <div className="master-pin-container">
+                            <ul className="pin-ul-container">
+                                {pins}
+                            </ul>
+                        </div>
 
                     </div>
                 )
@@ -99,7 +110,7 @@ class BoardShow extends React.Component {
                         </div>
                         <div className="master-pin-container">
                             <ul className="pin-ul-container">
-                                {/* {pins} */}
+                                {pins}
                             </ul>
                         </div>
                     </div>
