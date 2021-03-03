@@ -2,8 +2,7 @@
     width: 100%;
     height: auto;
     columns: 250px;
-    column-gap: 10px;
-
+    column-gap: 5px;
 }
 
 .pin-container {
@@ -19,7 +18,27 @@
     object-fit: cover;
     border-radius: 25px;
 }
-
+.pin-owner-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+#letter-under-pin {
+    font-size: 15px;
+}
+#cirle-under-pin {
+    height: 40px;
+    width: 40px;
+    padding-right: 3px;
+}
+.title-under-pin {
+    padding: 6px;
+}
+.emailname-under-pin {
+    font-weight: 300;
+    padding-left: 5px;
+}
 
 // /pin url
 .create-pin-container {

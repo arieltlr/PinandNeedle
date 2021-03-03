@@ -27,13 +27,19 @@ class BoardShow extends React.Component {
         let pinArray = Object.values(this.props.pins);
         let pins = pinArray.map((pin, index) => {
             return (
-                // <li className="pin-li" >
-                        <div className="pin-container" key={index}>
-                            <img src={pin.photoUrl} 
-                                className="pin-image" 
-                            />
+                    <div className="pin-container" key={index}>
+                        <img src={pin.photoUrl} 
+                            className="pin-image" 
+                        />
+                        <p className="title-under-pin">{pin.title}</p>
+                        <div className="pin-owner-info">
+                            <div className="small-profile-circle" id="cirle-under-pin">
+                                <p className="small-profile-page-letter" id="letter-under-pin">{profileLetter}</p>
+                            </div>
+                            <p className="emailname-under-pin">{emailName}</p>
                         </div>
-                // </li>
+                        
+                    </div>
             )
         })
         debugger
@@ -47,12 +53,9 @@ class BoardShow extends React.Component {
                                 <div className="three-dots" onClick={() => this.props.openModal("edit-board")}></div>
                             </div>
                             <div className="user-info-container">
-                                {/* <Link id="profile-link" to={`/users/${this.props.boardOwner.id}`}> */}
-                                    <div id="small-profile-circle">
-                                    <p id="small-profile-page-letter">{profileLetter}</p>
-                                </div>
-                                {/* </Link> */}
-                                {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
+                                    <div className="small-profile-circle">
+                                        <p className="small-profile-page-letter">{profileLetter}</p>
+                                    </div>
                                 <div className="icon-options-container">
                                     <div className="ideas-container">
                                         <Link to="/feed">
@@ -68,7 +71,6 @@ class BoardShow extends React.Component {
                                 </div>
 
                             </div>
-                            {/* <BoardOptions currentUsersBoard={currentUsersBoard} emailName={emailName} /> */}
                             <div className="follows-container">
                                 <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
@@ -90,14 +92,11 @@ class BoardShow extends React.Component {
                         <div id="board-show-page">
                             <div className="board-name-container">
                                 <h1 id="board-name">{board.name}</h1>
-                                {/* <div className="three-dots" onClick={() => this.props.openModal("edit-board")}></div> */}
                             </div>
                             <div className="user-info-container">
-                                {/* <Link to={`/users/${this.props.boardOwner.id}`}> */}
-                                    <div id="small-profile-circle">
-                                    <p id="small-profile-page-letter">{profileLetter}</p>
+                                    <div className="small-profile-circle">
+                                    <p className="small-profile-page-letter">{profileLetter}</p>
                                 </div>
-                                {/* </Link> */}
                                 <h1 className="username">{emailName}</h1>
                             </div>
 
