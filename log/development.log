@@ -5643,3 +5643,358 @@ Processing by Api::PinsController#show as JSON
 Completed 200 OK in 75ms (Views: 38.5ms | ActiveRecord: 33.5ms)
 
 
+Started GET "/" for ::1 at 2021-03-03 10:27:24 -0800
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (15.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "gK3A3WSWb5dMVymfI6M62g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (7.9ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  [1m[36mPin Load (2.1ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (84.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (2582.1ms)
+Completed 200 OK in 2741ms (Views: 2685.0ms | ActiveRecord: 55.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-03 10:27:27 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "gK3A3WSWb5dMVymfI6M62g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[36mBoard Load (2.6ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  [1m[36mPin Load (0.7ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  Rendered api/users/_user.json.jbuilder (32.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (76.0ms)
+Completed 200 OK in 165ms (Views: 160.6ms | ActiveRecord: 3.9ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-03-03 10:27:32 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "gK3A3WSWb5dMVymfI6M62g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7
+  [1m[35m (3.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:295
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@email.com"], ["id", 68], ["LIMIT", 1]]
+  ↳ app/models/user.rb:295
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "1pvYwQaK-9wQzxID6i38oQ"], ["id", 68], ["LIMIT", 1]]
+  ↳ app/models/user.rb:295
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "1pvYwQaK-9wQzxID6i38oQ"], ["updated_at", "2021-03-03 18:27:32.895771"], ["id", 68]]
+  ↳ app/models/user.rb:295
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:295
+Completed 200 OK in 20ms (Views: 0.4ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-03 10:27:38 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demouser@email.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@email.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:268
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:295
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@email.com"], ["id", 68], ["LIMIT", 1]]
+  ↳ app/models/user.rb:295
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "5lcqT4Itcl1EbJBK-f5Log"], ["id", 68], ["LIMIT", 1]]
+  ↳ app/models/user.rb:295
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "5lcqT4Itcl1EbJBK-f5Log"], ["updated_at", "2021-03-03 18:27:39.120034"], ["id", 68]]
+  ↳ app/models/user.rb:295
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:295
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (0.7ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  [1m[36mPin Load (0.8ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (25.0ms)
+Completed 200 OK in 440ms (Views: 45.6ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/users/68" for ::1 at 2021-03-03 10:27:41 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  [1m[36mPin Load (2.2ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (13.9ms)
+Completed 200 OK in 37ms (Views: 27.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-03-03 10:27:43 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (0.6ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (0.4ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."board_id" = $1 LIMIT $2[0m  [["board_id", 41], ["LIMIT", 11]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (22.5ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 1.5ms)
+
+
+
+Jbuilder::MergeError - Can't merge [] into {"id"=>41, "name"=>"Sewing", "description"=>"", "user_id"=>68, "user"=>#<User id: 68, email: "demouser@email.com", password_digest: "$2a$12$vRU7rJqljNkqGoaHx81E8.8rnSbTcEWVrbOIiQwPv9P...", session_token: "5lcqT4Itcl1EbJBK-f5Log", fname: nil, lname: nil, username: "Demo User", about: nil, gender: "Female", location: nil, country: "United States (US)", language: "English (US)", created_at: "2021-02-16 18:26:03", updated_at: "2021-03-03 18:27:39", age: 25>, "pins"=>#<ActiveRecord::Associations::CollectionProxy [#<Pin id: 38, pin_url: "www.dress.com", description: "dress", user_id: 68, created_at: "2021-03-03 00:03:11", updated_at: "2021-03-03 00:03:11", board_id: 41, title: "Red maternity dress">, #<Pin id: 39, pin_url: "www.dresslikeme.com", description: "123", user_id: 68, created_at: "2021-03-03 00:12:19", updated_at: "2021-03-03 00:12:19", board_id: 41, title: "abc">, #<Pin id: 40, pin_url: "www.francesmama.com", description: "Meryl getting an oscar", user_id: 68, created_at: "2021-03-03 00:18:00", updated_at: "2021-03-03 00:18:00", board_id: 41, title: "Meryl!">, #<Pin id: 41, pin_url: "www.francesmama.com", description: "Getting the gold", user_id: 68, created_at: "2021-03-03 00:20:02", updated_at: "2021-03-03 00:20:02", board_id: 41, title: "Meryl Streepppppp">, #<Pin id: 42, pin_url: "www.billy.com", description: "Billy", user_id: 68, created_at: "2021-03-03 00:22:45", updated_at: "2021-03-03 00:22:45", board_id: 41, title: "Billy">, #<Pin id: 21, pin_url: "www.pinandneedle.com", description: nil, user_id: 68, created_at: "2021-02-19 14:51:24", updated_at: "2021-02-19 14:51:24", board_id: 41, title: nil>, #<Pin id: 22, pin_url: "www.www.com", description: nil, user_id: 68, created_at: "2021-02-19 15:00:45", updated_at: "2021-02-19 15:00:45", board_id: 41, title: nil>, #<Pin id: 23, pin_url: "www.grammydress.com", description: nil, user_id: 68, created_at: "2021-03-02 20:50:06", updated_at: "2021-03-02 20:50:06", board_id: 41, title: nil>, #<Pin id: 24, pin_url: "www.francesmama.com", description: nil, user_id: 68, created_at: "2021-03-02 21:56:54", updated_at: "2021-03-02 21:56:54", board_id: 41, title: nil>, #<Pin id: 25, pin_url: "www.francesmama.com", description: nil, user_id: 68, created_at: "2021-03-02 22:01:07", updated_at: "2021-03-02 22:01:07", board_id: 41, title: nil>, ...]>}:
+  app/views/api/boards/show.json.jbuilder:3:in `_app_views_api_boards_show_json_jbuilder__3798028723887463764_70295241103220'
+  app/controllers/api/boards_controller.rb:46:in `show'
+
+Started GET "/api/users/68" for ::1 at 2021-03-03 10:27:51 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (1.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  [1m[36mPin Load (1.9ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (39.6ms)
+Completed 200 OK in 66ms (Views: 58.6ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-03-03 10:28:16 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (8.5ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (0.6ms)[0m  [1m[34mSELECT  "pins".* FROM "pins" WHERE "pins"."board_id" = $1 LIMIT $2[0m  [["board_id", 41], ["LIMIT", 11]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (33.3ms)
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 12.2ms)
+
+
+
+Jbuilder::MergeError - Can't merge [] into {"id"=>41, "name"=>"Sewing", "description"=>"", "user_id"=>68, "user"=>#<User id: 68, email: "demouser@email.com", password_digest: "$2a$12$vRU7rJqljNkqGoaHx81E8.8rnSbTcEWVrbOIiQwPv9P...", session_token: "5lcqT4Itcl1EbJBK-f5Log", fname: nil, lname: nil, username: "Demo User", about: nil, gender: "Female", location: nil, country: "United States (US)", language: "English (US)", created_at: "2021-02-16 18:26:03", updated_at: "2021-03-03 18:27:39", age: 25>, "pins"=>#<ActiveRecord::Associations::CollectionProxy [#<Pin id: 38, pin_url: "www.dress.com", description: "dress", user_id: 68, created_at: "2021-03-03 00:03:11", updated_at: "2021-03-03 00:03:11", board_id: 41, title: "Red maternity dress">, #<Pin id: 39, pin_url: "www.dresslikeme.com", description: "123", user_id: 68, created_at: "2021-03-03 00:12:19", updated_at: "2021-03-03 00:12:19", board_id: 41, title: "abc">, #<Pin id: 40, pin_url: "www.francesmama.com", description: "Meryl getting an oscar", user_id: 68, created_at: "2021-03-03 00:18:00", updated_at: "2021-03-03 00:18:00", board_id: 41, title: "Meryl!">, #<Pin id: 41, pin_url: "www.francesmama.com", description: "Getting the gold", user_id: 68, created_at: "2021-03-03 00:20:02", updated_at: "2021-03-03 00:20:02", board_id: 41, title: "Meryl Streepppppp">, #<Pin id: 42, pin_url: "www.billy.com", description: "Billy", user_id: 68, created_at: "2021-03-03 00:22:45", updated_at: "2021-03-03 00:22:45", board_id: 41, title: "Billy">, #<Pin id: 21, pin_url: "www.pinandneedle.com", description: nil, user_id: 68, created_at: "2021-02-19 14:51:24", updated_at: "2021-02-19 14:51:24", board_id: 41, title: nil>, #<Pin id: 22, pin_url: "www.www.com", description: nil, user_id: 68, created_at: "2021-02-19 15:00:45", updated_at: "2021-02-19 15:00:45", board_id: 41, title: nil>, #<Pin id: 23, pin_url: "www.grammydress.com", description: nil, user_id: 68, created_at: "2021-03-02 20:50:06", updated_at: "2021-03-02 20:50:06", board_id: 41, title: nil>, #<Pin id: 24, pin_url: "www.francesmama.com", description: nil, user_id: 68, created_at: "2021-03-02 21:56:54", updated_at: "2021-03-02 21:56:54", board_id: 41, title: nil>, #<Pin id: 25, pin_url: "www.francesmama.com", description: nil, user_id: 68, created_at: "2021-03-02 22:01:07", updated_at: "2021-03-02 22:01:07", board_id: 41, title: nil>, ...]>}:
+  app/views/api/boards/show.json.jbuilder:3:in `_app_views_api_boards_show_json_jbuilder__3798028723887463764_70295310593400'
+  app/controllers/api/boards_controller.rb:46:in `show'
+
+Started GET "/api/users/68" for ::1 at 2021-03-03 10:31:20 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (28.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (20.1ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  [1m[36mPin Load (0.8ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (45.9ms)
+Completed 200 OK in 100ms (Views: 48.6ms | ActiveRecord: 49.5ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-03-03 10:31:29 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (3.7ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  Rendered api/boards/show.json.jbuilder (0.9ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 3.7ms)
+
+
+
+SyntaxError - syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^:
+  app/views/api/boards/show.json.jbuilder:28:in `'
+  app/controllers/api/boards_controller.rb:46:in `show'
+
+Started GET "/api/users/68" for ::1 at 2021-03-03 10:32:41 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (11.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  [1m[36mPin Load (7.6ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (25.4ms)
+Completed 200 OK in 75ms (Views: 53.5ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-03-03 10:32:46 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (3.1ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (61.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  Rendered api/boards/show.json.jbuilder (71.3ms)
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 64.6ms)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/api/boards/show.json.jbuilder:3:in `_app_views_api_boards_show_json_jbuilder__3798028723887463764_70295291994320'
+  app/controllers/api/boards_controller.rb:46:in `show'
+
+Started GET "/api/users/68" for ::1 at 2021-03-03 11:01:28 -0800
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (21.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (7.7ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  [1m[36mPin Load (0.9ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (102.5ms)
+Completed 200 OK in 274ms (Views: 88.0ms | ActiveRecord: 68.4ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-03-03 11:01:37 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (1.3ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (41.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (76.2ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."board_id" = $1[0m  [["board_id", 41]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  Rendered api/boards/show.json.jbuilder (551.4ms)
+Completed 500 Internal Server Error in 634ms (ActiveRecord: 119.5ms)
+
+
+
+NoMethodError - undefined method `photo' for nil:NilClass:
+  app/views/api/boards/show.json.jbuilder:6:in `block (3 levels) in _app_views_api_boards_show_json_jbuilder__1495622730856115430_70221053683980'
+  app/views/api/boards/show.json.jbuilder:4:in `block (2 levels) in _app_views_api_boards_show_json_jbuilder__1495622730856115430_70221053683980'
+  app/views/api/boards/show.json.jbuilder:3:in `block in _app_views_api_boards_show_json_jbuilder__1495622730856115430_70221053683980'
+  app/views/api/boards/show.json.jbuilder:2:in `_app_views_api_boards_show_json_jbuilder__1495622730856115430_70221053683980'
+  app/controllers/api/boards_controller.rb:46:in `show'
+
+Started GET "/api/users/68" for ::1 at 2021-03-03 11:04:58 -0800
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/colin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  Rendering api/users/show.json.jbuilder
+  [1m[36mBoard Load (0.8ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  [1m[36mPin Load (0.9ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."user_id" = $1[0m  [["user_id", 68]]
+  ↳ app/views/api/users/show.json.jbuilder:13
+  Rendered api/users/show.json.jbuilder (103.8ms)
+Completed 200 OK in 268ms (Views: 107.9ms | ActiveRecord: 35.2ms)
+
+
+Started GET "/api/boards/41" for ::1 at 2021-03-03 11:05:05 -0800
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"41"}
+  [1m[36mBoard Load (5.3ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/boards_controller.rb:44
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:1
+  [1m[36mPin Load (0.8ms)[0m  [1m[34mSELECT "pins".* FROM "pins" WHERE "pins"."board_id" = $1[0m  [["board_id", 41]]
+  ↳ app/views/api/boards/show.json.jbuilder:3
+  [1m[36mActiveStorage::Attachment Load (4.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 38], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (2.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 39], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (9.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 40], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (6.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (4.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 41], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (62.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (52.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 42], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (12.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 21], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 22], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (9.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 23], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (2.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 24], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (20.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 25], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (9.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 26], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (23.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 27], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (17.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 28], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 29], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (7.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 30], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (3.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 31], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (10.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 32], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (2.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 33], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 34], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 35], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (3.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 36], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (3.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Attachment Load (6.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 37], ["record_type", "Pin"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/views/api/boards/show.json.jbuilder:6
+  Rendered api/boards/show.json.jbuilder (1674.9ms)
+Completed 200 OK in 1753ms (Views: 1384.6ms | ActiveRecord: 335.7ms)
+
+
