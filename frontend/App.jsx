@@ -9,6 +9,7 @@ import ProfileContainer from './components/user/profile_container';
 import FollowingContainer from './components/feed/following_container';
 import BoardShowContainer from './components/boards/board_show_container';
 import CreatePinContainer from './components/pins/create_pin_container';
+import PinShowContainer from './components/pins/pin_show_container';
 
 const App = (store) => (
     <div>
@@ -21,6 +22,7 @@ const App = (store) => (
                 <Route path="/following" component={FollowingContainer} />
                 <ProtectedRoute path="/user/:userId" component={ProfileContainer} />
                 <Route exact path="/pin" component={CreatePinContainer} />
+                <Route exact path="/pin/:pinId" component={PinShowContainer} />
                 <Route path="/board/:boardId" component={BoardShowContainer} />
                 <AuthRoute exact path="/" component={SplashContainer} />
                     
@@ -29,5 +31,3 @@ const App = (store) => (
 )
 
 export default App;
-
-// splashcontainer should route with auth after there is a home feed. 

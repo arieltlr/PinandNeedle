@@ -12,10 +12,10 @@ const pinsReducer = (state = [], action) => {
     // debugger
     switch (action.type) {
         case RECEIVE_PINS:
-            // debugger
+            debugger
             return action.pins
         case RECEIVE_PIN:
-            // debugger
+            debugger
             return action.pin;
         default:
             return state;

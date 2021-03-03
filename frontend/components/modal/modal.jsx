@@ -8,6 +8,7 @@ import EditBoardContainer from '../boards/edit_board_container';
 import DeleteBoardContainer from '../boards/delete_board_container';
 import {withRouter} from 'react-router-dom';
 import CreatePinContainer from '../pins/create_pin_container';
+import PinSaveContainer from '../pins/pin_save_container';
 
 function Modal ({modal, closeModal}) {
     if (!modal) {
@@ -44,6 +45,11 @@ function Modal ({modal, closeModal}) {
         case 'create-pin':
             // debugger
             component = <CreatePinContainer />;
+            form = "create-pin-modal"
+            break;
+        case 'pin-save':
+            // debugger
+            component = <PinSaveContainer />;
             form = "create-pin-modal"
             break;
         default:

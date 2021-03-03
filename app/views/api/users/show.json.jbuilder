@@ -1,4 +1,4 @@
-json.extract! @user, :id, :username, :email, :fname, :lname, :boards
+json.extract! @user, :id, :username, :email, :fname, :lname, :boards, :pins
 
 
 # @boards.each do |board|

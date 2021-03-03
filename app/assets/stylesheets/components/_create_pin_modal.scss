@@ -45,6 +45,12 @@
     align-items: center;
     text-indent: -900px;
 }
+#pin-preview {
+    width: 380px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;;
+}
 .image-upload-input {
     width: 330px;
     height: 420px;
