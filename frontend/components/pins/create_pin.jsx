@@ -1,10 +1,12 @@
 import React from 'react';
+import { openModal } from '../../actions/modal_actions';
 
 class Pins extends React.Component {
     
     constructor(props){
         super(props)
         this.state = {
+            title: "",
             pin_url: "",
             photoFile: null,
             photoUrl: null, 
@@ -33,9 +35,11 @@ class Pins extends React.Component {
         pinPic.append('pin[pin_url]', this.state.pin_url);
         pinPic.append('pin[photo]', this.state.photoFile);
         pinPic.append('pin[user_id]', this.props.currentUser.id);
-        pinPic.append('pin[board_id]', this.state.board_id)
+        pinPic.append('pin[board_id]', this.state.board_id);
+        pinPic.append('pin[title]', this.state.title);
+        pinPic.append('pin[description]', this.state.description)
         debugger
-        this.props.createPin(pinPic);
+        this.props.createPin(pinPic).then(() => this.props.openModal("pin-save"));
     }
     handleURL(e){
         this.setState({pin_url: e.target.value})
@@ -54,8 +58,6 @@ class Pins extends React.Component {
     }
     
     render (){
-        console.log(this.state)
-        const preview = this.state.photoUrl ? <img src={this.state.photoURL}/> : null; 
         const email = this.props.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
@@ -83,12 +85,12 @@ class Pins extends React.Component {
                 <div className="pin-container-width">
                     <div className="pin-content-container">
                             <div className="image-input-container">
-                                {this.state.photoUrl ? <img src={this.state.photoUrl}/> :<input className="image-upload-input" type="file" onChange={this.handleFile}/>} 
+                                {this.state.photoUrl ? <img id="pin-preview" src={this.state.photoUrl}/> :<input className="image-upload-input" type="file" onChange={this.handleFile}/>} 
                             </div>
                             
                         <div className="pin-info-container">
                             <div className="pin-title-owner">
-                                <input className="pin-input" id="pin-title" type="text" name="pin-title" onChange={this.handleChange} placeholder="Add your title"/>
+                                <input className="pin-input" id="pin-title" type="text" name="title" onChange={this.handleChange} placeholder="Add your title"/>
                                 <div className="create-pin-user-info">
                                     <div id="profile-circle-create-pin">
                                         <p id="profile-page-letter-create-pin">{profileLetter}</p>
