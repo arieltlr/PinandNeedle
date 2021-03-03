@@ -1,26 +1,20 @@
 .master-pin-container {
     width: 100%;
     height: auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+    columns: 250px;
+    column-gap: 10px;
+
 }
 
 .pin-container {
-
-    margin: 15px;
+    display: inline-block;
+    width: 100%;         
+    margin-bottom: 10px;
 }
 
-#rectangle{
-    height: 420px;
-    width: 240px;
-    object-fit: cover;
-    border-radius: 25px;
-}
-
-
-#square{
-    height: 240px;
+.pin-image{
+    display: block;
+    height: 100%;
     width: 240px;
     object-fit: cover;
     border-radius: 25px;

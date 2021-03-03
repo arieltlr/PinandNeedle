@@ -31,7 +31,6 @@ class BoardShow extends React.Component {
                         <div className="pin-container" key={index}>
                             <img src={pin.photoUrl} 
                                 className="pin-image" 
-                                id={ index % 2 === 0 ? "square" : "rectangle"} 
                             />
                         </div>
                 // </li>
