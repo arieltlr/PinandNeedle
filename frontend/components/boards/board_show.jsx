@@ -23,20 +23,21 @@ class BoardShow extends React.Component {
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
-
-        let pins = this.props.pins.map((pin, index) => {
-            debugger
+        debugger
+        let pinArray = Object.values(this.props.pins);
+        let pins = pinArray.map((pin, index) => {
             return (
-                <li className="pin-li" key={`${index}`}>
-                        <div className="pin-container">
+                // <li className="pin-li" >
+                        <div className="pin-container" key={index}>
                             <img src={pin.photoUrl} 
                                 className="pin-image" 
                                 id={ index % 2 === 0 ? "square" : "rectangle"} 
                             />
                         </div>
-                </li>
+                // </li>
             )
         })
+        debugger
             if (currentUsersBoard){
                 return (
 
@@ -78,9 +79,7 @@ class BoardShow extends React.Component {
                         </div>
 
                         <div className="master-pin-container">
-                            <ul className="pin-ul-container">
-                                {pins}
-                            </ul>
+                            {pins}
                         </div>
 
                     </div>
@@ -109,9 +108,7 @@ class BoardShow extends React.Component {
 
                         </div>
                         <div className="master-pin-container">
-                            <ul className="pin-ul-container">
-                                {pins}
-                            </ul>
+                            {pins}
                         </div>
                     </div>
                 )

@@ -1,32 +1,31 @@
 .master-pin-container {
     width: 100%;
     height: auto;
-}
-.pin-ul-container {
-    list-style: none;
-    height: auto;
-    width: 100%;
-}
-.pin-li {
-    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
 }
 
 .pin-container {
-    display: flex;
-    flex-flow: column wrap;
+
+    margin: 15px;
 }
-.pin-image > #rectangle{
+
+#rectangle{
     height: 420px;
-    width: 240;
+    width: 240px;
     object-fit: cover;
     border-radius: 25px;
 }
-.pin-image > #square{
+
+
+#square{
     height: 240px;
-    width: 240;
+    width: 240px;
     object-fit: cover;
     border-radius: 25px;
 }
+
 
 // /pin url
 .create-pin-container {

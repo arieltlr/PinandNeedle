@@ -6,12 +6,7 @@ const boardsReducer = (state = {}, action) => {
     // debugger
     switch (action.type) {
         case RECEIVE_PROFILE:
-            let userBoards = {}
-            // debugger
-            action.userProfile.boards.forEach(board => {
-                return Object.assign(userBoards, { [board.id]: board })
-            })
-            return userBoards;
+            return action.userProfile.boards;
         case RECEIVE_BOARD:
             // debugger
             return Object.assign({}, state, { [action.board.id]: action.board });
