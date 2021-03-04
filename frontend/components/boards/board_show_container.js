@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.boards,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        boardOwner: state.entities.user[state.entities.boards.user_id],
+        boardOwner: state.entities.user[state.entities.boards[ownProps.match.params.boardId].user_id],
         board: state.entities.boards[ownProps.match.params.boardId],
         pins: state.entities.pins
     }

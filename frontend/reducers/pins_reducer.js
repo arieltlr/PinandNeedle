@@ -8,7 +8,7 @@ import {
     RECEIVE_ERRORS } from "../actions/pin_actions";
 
 
-const pinsReducer = (state = [], action) => {
+const pinsReducer = (state = {}, action) => {
     Object.freeze(state);
     // debugger
     switch (action.type) {
@@ -19,7 +19,11 @@ const pinsReducer = (state = [], action) => {
             debugger
             return action.pin;
         case RECEIVE_BOARD:
-            return action.board.pins;
+            if (action.board.pins === undefined){
+                return {}
+            } else{
+            return action.board.pins
+            };
         default:
             return state;
     }

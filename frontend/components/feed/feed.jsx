@@ -1,16 +1,49 @@
 import React from 'react';
 
 class Feed extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            fetchPins: false
+        }
+    }
     
+    componentDidMount(){
+        this.props.getPins();
+    }
     render(){
-    return (
-        <div id="feed">
-            <section className="feed-images">
-                <img className="feed-image" id="feed1" src={window.spools} alt="annie spratt" />
-                <img className="feed-image" id="feed2" src={window.brown_sweater} alt="brown knit sweater" />
-                <img className="feed-image" id="feed3" src={window.pin_cushion} alt="pins" />
-                <img className="feed-image" id="feed4" src={window.textiles} alt="toa heftiba" />
-            </section>
+        debugger
+        if (!this.state.fetchPins){
+            this.state.fetchPins = true;
+            return null;
+        }
+        let pinArray = Object.values(this.props.pins);
+        let pins = pinArray.map((pin, index) => {
+            const email = pin.user.email.split('@')[0]
+            const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
+            const profileLetter = email[0].toUpperCase();
+            return (
+                    <div className="pin-container" key={index}>
+                        <img src={pin.photoUrl} 
+                            className="pin-image" 
+                        />
+                        <p className="title-under-pin">{pin.title}</p>
+                        <div className="pin-owner-info">
+                            <div className="small-profile-circle" id="cirle-under-pin">
+                                <p className="small-profile-page-letter" id="letter-under-pin">{profileLetter}</p>
+                            </div>
+                            <p className="emailname-under-pin">{emailName}</p>
+                        </div>
+                        
+                    </div>
+            )
+        })
+        
+        return (
+        <div className="feed-container">
+            <div className="master-pin-container">
+                {pins}
+            </div>
         </div>
     )
 }

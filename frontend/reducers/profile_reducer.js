@@ -5,7 +5,7 @@ const profileReducer = (state = {}, action) => {
     
     switch (action.type) {
         case RECEIVE_PROFILE:
-            // debugger
+            debugger
             return action.userProfile.email;
         default:
             return state;
