@@ -11,10 +11,9 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        board: state.entities.pins.board,
-        userBoards: state.entities.boards,
-        email: state.entities.profile,
         pin: state.entities.pins,
+        board: state.entities.boards,
+        user: state.entities.user
 
     }
 }

@@ -1,5 +1,6 @@
 import { RECEIVE_BOARD, REMOVE_BOARD, RECEIVE_ERRORS, RECEIVE_PROFILE } from "../actions/board_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
+import { RECEIVE_PIN } from '../actions/pin_actions';
 
 const boardsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -16,6 +17,9 @@ const boardsReducer = (state = {}, action) => {
             // debugger
             delete newState[action.boardId];
             return newState;
+        case RECEIVE_PIN:
+            debugger
+            return Object.assign({}, {[action.pin.board.id]: action.pin.board});
         default:
             return state;
     }

@@ -1,0 +1,82 @@
+
+.pin-show-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 760px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 6px 6px 8px 3px rgba(50, 50, 50, 0.17);
+    border-radius: 25px;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.all-pin-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 20px 15px 20px 30px
+}
+.pin-info-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.pin-show-image-container {
+    width: 100%;
+    height: 100%;
+}
+.pin-show-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 25px 0px 0px 25px;
+}
+.pin-show-info{
+    margin-top: 15px;
+    height: 95px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.pin-show-url {
+    font-weight: 300;
+    font-size: 16px;
+    text-decoration: underline;
+}
+.pin-show-title {
+    font-weight: 900;
+    font-size: 36px;
+    padding: 10px 0px;
+}
+.pin-show-description {
+    font-weight: 300;
+    font-size: 14px;
+}
+#pin-show-username {
+    font-size: 15px;
+}
+#pin-show-letter {
+    font-size: 22px;
+}
+.back-arrow {
+    height: 40px;
+    width: 40px;
+    background-image: image-url('back_arrow.png');
+    background-size: 40% 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    &:hover{
+        cursor:pointer;
+        background-color: rgba(236, 236, 236, 0.7);
+    }
+}

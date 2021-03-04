@@ -93,7 +93,7 @@ class Pins extends React.Component {
                                 <input className="pin-input" id="pin-title" type="text" name="title" onChange={this.handleChange} placeholder="Add your title"/>
                                 <div className="create-pin-user-info">
                                     <div id="profile-circle-create-pin">
-                                        <p id="profile-page-letter-create-pin">{profileLetter}</p>
+                                        <p className="profile-page-letter-create-pin">{profileLetter}</p>
                                     </div>
                                     <div className="create-pin-name-followers">
                                         <h1 id="profile-page-username-create-pin">{emailName}</h1>
