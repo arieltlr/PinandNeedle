@@ -9,24 +9,27 @@ import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
 class BoardShow extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
+        this.state ={
             fetchBoard: false
         }
+
     }
 
     componentDidMount(){
+        debugger
         this.props.getBoard(this.props.match.params.boardId)
     }
 
     render() {
         if (!this.state.fetchBoard){
+            debugger
             this.state.fetchBoard = true;
             return null;
         }
         const board = this.props.board;
         const currentUser = this.props.currentUser;
         const currentUsersBoard = Boolean(currentUser.id === board.user_id);
-        const email = this.props.boardOwner.email.split('@')[0]
+        const email = this.props.board.user.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
