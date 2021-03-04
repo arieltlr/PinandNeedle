@@ -7,16 +7,19 @@ class PinShow extends React.Component {
         this.state = {
             pinFetched: false,
         }
+        this.goBack = this.goBack.bind(this);
         
     }
     componentDidMount(){
         this.props.getPin(this.props.match.params.pinId)
     }
+    goBack(){
+        this.props.history.goBack();
+    }
 
     render (){
         debugger
         if (!this.state.pinFetched){
-            debugger
             this.state.pinFetched = true;
             return null;
         }
@@ -37,7 +40,7 @@ class PinShow extends React.Component {
                         </select>
         return (
             <div className="pin-show-outer-container">
-                <div className="back-arrow">
+                <div className="back-arrow" onClick={() => this.goBack()}>
                 </div>
                 <div className="pin-show-container">
                 <div className="pin-show-image-container">

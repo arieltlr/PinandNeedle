@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class Feed extends React.Component {
     constructor(props){
@@ -23,19 +24,21 @@ class Feed extends React.Component {
             const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
             const profileLetter = email[0].toUpperCase();
             return (
-                    <div className="pin-container" key={index}>
-                        <img src={pin.photoUrl} 
-                            className="pin-image" 
-                        />
-                        <p className="title-under-pin">{pin.title}</p>
-                        <div className="pin-owner-info">
-                            <div className="small-profile-circle" id="cirle-under-pin">
-                                <p className="small-profile-page-letter" id="letter-under-pin">{profileLetter}</p>
+                    <Link to={`/pin/${pin.id}`} >
+                        <div className="pin-container" key={index}>
+                            <img src={pin.photoUrl} 
+                                className="pin-image" 
+                            />
+                            <p className="title-under-pin">{pin.title}</p>
+                            <div className="pin-owner-info">
+                                <div className="small-profile-circle" id="cirle-under-pin">
+                                    <p className="small-profile-page-letter" id="letter-under-pin">{profileLetter}</p>
+                                </div>
+                                <p className="emailname-under-pin">{emailName}</p>
                             </div>
-                            <p className="emailname-under-pin">{emailName}</p>
+                            
                         </div>
-                        
-                    </div>
+                    </Link>
             )
         })
         

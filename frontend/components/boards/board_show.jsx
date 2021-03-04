@@ -37,6 +37,7 @@ class BoardShow extends React.Component {
         let pinArray = Object.values(this.props.pins);
         let pins = pinArray.map((pin, index) => {
             return (
+                <Link to={`/pin/${pin.id}`} >
                     <div className="pin-container" key={index}>
                         <img src={pin.photoUrl} 
                             className="pin-image" 
@@ -50,6 +51,7 @@ class BoardShow extends React.Component {
                         </div>
                         
                     </div>
+                </Link>
             )
         })
         debugger
