@@ -19,10 +19,7 @@ class Pins extends React.Component {
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    // componentDidMount(){
-    //     debugger
-    //     this.props.getBoards(this.props.board.user_id)
-    // }
+
     handleChange(event){
         const {name, value} = event.target;
         this.setState({
@@ -110,12 +107,6 @@ class Pins extends React.Component {
                         </div>
                 </div>
                 </div>
-                
-                {/* <input type="file" onChange={this.handleFile}/> */}
-            {/* <div> */}
-                {/* <h1>Image!</h1>
-                <p>{this.props.pins.photo}</p>
-            {/* </div> */}
             </form>
         </div>
         )
