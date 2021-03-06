@@ -4,6 +4,7 @@ import FollowsProfileDisplay from '../follows/profile_options';
 import {Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
+import Masonry from 'react-masonry-css';
 
 
 class BoardShow extends React.Component {
@@ -37,23 +38,35 @@ class BoardShow extends React.Component {
         let pinArray = Object.values(this.props.pins);
         let pins = pinArray.map((pin, index) => {
             return (
-                <Link to={`/pin/${pin.id}`} >
-                    <div className="pin-container" key={index}>
-                        <img src={pin.photoUrl} 
-                            className="pin-image" 
-                        />
-                        <p className="title-under-pin">{pin.title}</p>
-                        <div className="pin-owner-info">
-                            <div className="small-profile-circle" id="cirle-under-pin">
-                                <p className="small-profile-page-letter" id="letter-under-pin">{profileLetter}</p>
+                <div className="pin-item">
+                    <Link to={`/pin/${pin.id}`} >
+                        <div className="pin-container" key={index}>
+                            <img src={pin.photoUrl} 
+                                className="pin-image" 
+                            />
+                            <p className="title-under-pin">{pin.title}</p>
+                            <div className="pin-owner-info">
+                                <div className="small-profile-circle" id="cirle-under-pin">
+                                    <p className="small-profile-page-letter" id="letter-under-pin">{profileLetter}</p>
+                                </div>
+                                <p className="emailname-under-pin">{emailName}</p>
                             </div>
-                            <p className="emailname-under-pin">{emailName}</p>
+                            
                         </div>
-                        
-                    </div>
-                </Link>
+                    </Link>
+                </div>
             )
         })
+        const breakpointColumnsObj = {
+            default: 4,
+            1920: 7,
+            1366: 5,
+            1100: 3,
+            700: 2,
+            500: 2,
+            250: 1,
+        };
+        pins = pins.reverse();
         debugger
             if (currentUsersBoard){
                 return (
@@ -91,9 +104,14 @@ class BoardShow extends React.Component {
 
                         </div>
 
-                        <div className="master-pin-container">
-                            {pins.length > 0 ? pins : noPinsMessage}
-                        </div>
+                        {pins.length > 0 ?  
+                        <Masonry
+                            breakpointCols={breakpointColumnsObj}
+                            className="my-masonry-grid"
+                            columnClassName="my-masonry-grid_column">
+                            {pins}
+                        </Masonry>
+                        : noPinsMessage}
 
                     </div>
                 )
@@ -118,7 +136,14 @@ class BoardShow extends React.Component {
 
                         </div>
                         <div className="master-pin-container">
-                            {pins.length > 0 ? pins : noPinsMessage}
+                            {pins.length > 0 ? 
+                            <Masonry
+                                breakpointCols={breakpointColumnsObj}
+                                className="my-masonry-grid"
+                                columnClassName="my-masonry-grid_column">
+                                {pins}
+                            </Masonry> 
+                            : noPinsMessage}
                         </div>
                     </div>
                 )

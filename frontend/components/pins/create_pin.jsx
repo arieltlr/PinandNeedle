@@ -15,7 +15,6 @@ class Pins extends React.Component {
             description: "",
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleURL = this.handleURL.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -37,9 +36,6 @@ class Pins extends React.Component {
         pinPic.append('pin[description]', this.state.description)
         debugger
         this.props.createPin(pinPic).then(() => this.props.openModal("pin-save"));
-    }
-    handleURL(e){
-        this.setState({pin_url: e.target.value})
     }
     handleFile(e) {
         const file = e.currentTarget.files[0];

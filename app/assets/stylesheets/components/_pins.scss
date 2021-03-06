@@ -1,23 +1,63 @@
-.master-pin-container {
-    width: 100%;
-    height: auto;
-    columns: 250px;
-    column-gap: 5px;
+// .master-pin-container {
+//     width: 100%;
+//     height: auto;
+//     columns: 250px;
+//     column-gap: 5px;
+// }
+
+// .pin-container {
+//     display: inline-block;
+//     width: 100%;         
+//     margin-bottom: 10px;
+// }
+// .grid-item, .grid-sizer {
+//     width: 240px;
+//     float: left;
+
+//     img {
+//         display: block;
+//         width: 100%;
+//         object-fit: cover;
+//         border-radius: 25px;
+//     }
+// }
+.my-masonry-grid {
+    display: flex;
+    margin-left: 80px; /* gutter size offset */
+    margin-right: 80px;
+    width: auto;
+    padding-top: 40px;
+}
+#feed-grid {
+    padding-top: 70px;
+}
+.my-masonry-grid_column {
+  padding-left: 15px; /* gutter size */
+  background-clip: padding-box;
+  width: 240px;
+}
+ 
+/* Style your items */
+.pin-item { /* change div to reference your elements you put in <Masonry> */
+   padding-bottom: 20px;
+    img {
+        display: block;
+        width: 240px;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 25px;
+    }
+
 }
 
-.pin-container {
-    display: inline-block;
-    width: 100%;         
-    margin-bottom: 10px;
-}
 
-.pin-image{
-    display: block;
-    height: 100%;
-    width: 240px;
-    object-fit: cover;
-    border-radius: 25px;
-}
+// .pin-image{
+//     display: block;
+//     height: 100%;
+//     width: 240px;
+//     object-fit: cover;
+//     border-radius: 25px;
+// }
 .pin-owner-info {
     display: flex;
     flex-direction: row;

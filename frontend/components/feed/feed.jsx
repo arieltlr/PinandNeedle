@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Masonry from 'react-masonry-css'
 
 class Feed extends React.Component {
     constructor(props){
@@ -24,6 +25,7 @@ class Feed extends React.Component {
             const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
             const profileLetter = email[0].toUpperCase();
             return (
+                <div className="pin-item">
                     <Link to={`/pin/${pin.id}`} >
                         <div className="pin-container" key={index}>
                             <img src={pin.photoUrl} 
@@ -39,15 +41,28 @@ class Feed extends React.Component {
                             
                         </div>
                     </Link>
+                </div>
             )
         })
-        
+        pins = pins.reverse(); 
+        const breakpointColumnsObj = {
+            default: 4,
+            1920: 7,
+            1366: 5,
+            1100: 3,
+            700: 2,
+            500: 2,
+            250: 1,
+        };
         return (
-        <div className="feed-container">
-            <div className="master-pin-container">
-                {pins}
-            </div>
-        </div>
+
+        <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+            id="feed-grid">
+            {pins}
+        </Masonry>
     )
 }
 }

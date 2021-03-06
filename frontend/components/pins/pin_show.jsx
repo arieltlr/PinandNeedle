@@ -9,6 +9,7 @@ class PinShow extends React.Component {
             pin: {}, 
             board: {}, 
             user: {},
+            pin_board_id: "",
             show: false,
         }
         this.whenClicked = this.whenClicked.bind(this);
@@ -24,11 +25,12 @@ class PinShow extends React.Component {
     }
     handleSubmit(e){
         e.preventDefault();
+        debugger
         const pinPic = new FormData();
         pinPic.append('pin[pin_url]', this.state.pin.pin_url);
-        pinPic.append('pin[photo]', this.state.pin.photoFile);
+        pinPic.append('pin[photo]', this.state.pin.photo);
         pinPic.append('pin[user_id]', this.props.currentUser.id);
-        pinPic.append('pin[board_id]', this.state.pin.board_id);
+        pinPic.append('pin[board_id]', e.target.value);
         pinPic.append('pin[title]', this.state.pin.title);
         pinPic.append('pin[description]', this.state.pin.description)
         debugger
@@ -55,14 +57,9 @@ class PinShow extends React.Component {
         const profileLetter = email[0].toUpperCase()
         debugger
         const options = Object.values(this.state.user.boards).map((board, index) => {
-            return <li key={index} value={board.id}>{board.name}</li>
+            return <li key={index} name="pin_board_id" value={board.id} onClick={this.handleSubmit}>{board.name}</li>
         })
-        // const select = <select name="board_id"
-        //                     id="board-selector"
-        //                     onChange = {this.handleChange}>
-        //                 <option defaultValue={board.id}>{board.name}</option>
-        //                 {options}
-        //                 </select>
+
         return (
             <div className="pin-show-outer-container">
                 <div className="back-arrow" onClick={() => this.goBack()}>

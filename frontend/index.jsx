@@ -1,22 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createBoard, updateBoard, deleteBoard, getBoard, getBoards } from './actions/board_actions';
-import { createPin, updatePin, deletePin, getPin, getPins } from './actions/pin_actions';
 
 import configureStore from './store/store';
 import Root from './root'
+import Masonry from 'masonry-layout';
+import imagesLoaded from 'imagesLoaded';
+
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const root = document.getElementById("root");
-    // const store = configureStore();
+ 
+    var grid = document.querySelector('.grid');
 
-    
-    // window.dispatch = store.dispatch;
-    // window.getPins = getPins;
-    // window.getPin = getPin;
-    // window.createPin = createPin;
-    // window.updatePin = updatePin;
-    // window.deletePin = deletePin;
+
     let store;
     if (window.currentUser) {
         const preloadedState = {
@@ -32,7 +28,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     } else {
         store = configureStore();
     }
-    // window.getState = store.getState;
 
     ReactDOM.render(<Root store={store}/>, root)
 })
