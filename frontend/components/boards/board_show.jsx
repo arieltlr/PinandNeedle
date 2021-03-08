@@ -17,13 +17,13 @@ class BoardShow extends React.Component {
     }
 
     componentDidMount(){
-        debugger
+        // debugger
         this.props.getBoard(this.props.match.params.boardId)
     }
 
     render() {
         if (!this.state.fetchBoard){
-            debugger
+            // debugger
             this.state.fetchBoard = true;
             return null;
         }
@@ -34,7 +34,7 @@ class BoardShow extends React.Component {
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
-        debugger
+        // debugger
         let pinArray = Object.values(this.props.pins);
         let pins = pinArray.map((pin, index) => {
             return (
@@ -67,7 +67,7 @@ class BoardShow extends React.Component {
             250: 1,
         };
         pins = pins.reverse();
-        debugger
+        // debugger
             if (currentUsersBoard){
                 return (
 

@@ -31,7 +31,7 @@ class Pins extends React.Component {
         pinPic.append('pin[pin_url]', this.state.pin_url);
         pinPic.append('pin[photo]', this.state.photoFile);
         pinPic.append('pin[user_id]', this.props.currentUser.id);
-        pinPic.append('pin[board_id]', this.state.board_id);
+        pinPic.append('board_id', this.state.board_id);
         pinPic.append('pin[title]', this.state.title);
         pinPic.append('pin[description]', this.state.description)
         debugger
@@ -51,7 +51,7 @@ class Pins extends React.Component {
     }
     
     render (){
-        const email = this.props.email.split('@')[0]
+        const email = this.props.currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
         const options = Object.values(this.props.userBoards).map((board, index) => {
