@@ -5,7 +5,7 @@ import { receiveErrors, logout } from '../../actions/session_actions';
 import { getPins } from '../../actions/pin_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
+    debugger
     return {
         user: state.entities.user[state.session.id],
         pins: state.entities.pins

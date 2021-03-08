@@ -6,7 +6,6 @@ json.boards do
         end
     end
 end
-
 json.pins do
     @user.pins.each do |pin|
         json.set! pin.id do

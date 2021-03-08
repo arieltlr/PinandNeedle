@@ -54,13 +54,13 @@ class Pins extends React.Component {
         const email = this.props.currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
-        const options = Object.values(this.props.userBoards).map((board, index) => {
+        const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return <option key={index} value={board.id}>{board.name}</option>
         })
         const select = <select name="board_id"
                             id="board-selector"
-                            onChange = {this.handleChange}>
-                        <option defaultValue={this.props.board.id}>{this.props.board.name}</option>
+                            onChange = {this.handleChange}
+                            defaultValue={this.props.board.id}>
                         {options}
                         </select>
         return (

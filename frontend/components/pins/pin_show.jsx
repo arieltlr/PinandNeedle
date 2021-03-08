@@ -25,7 +25,7 @@ class PinShow extends React.Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        debugger
+        // debugger
         const pinPic = new FormData();
         pinPic.append('pin[pin_url]', this.state.pin.pin_url);
         pinPic.append('pin[photo]', this.state.pin.photo);
@@ -33,7 +33,7 @@ class PinShow extends React.Component {
         pinPic.append('pin[board_id]', e.target.value);
         pinPic.append('pin[title]', this.state.pin.title);
         pinPic.append('pin[description]', this.state.pin.description)
-        debugger
+        // debugger
         this.props.createPin(pinPic).then(() => this.props.openModal("pin-save"));
     }
      whenClicked(e){
@@ -49,13 +49,13 @@ class PinShow extends React.Component {
             return null;
         }
         this.state.pin = this.props.pin[this.props.match.params.pinId];
-        this.state.board = this.props.board[this.state.pin.board_id]
+        // this.state.board = this.props.board[this.state.pin.board_id]
         this.state.user = this.props.user[this.state.pin.user_id];
         const usersPin = Boolean(this.props.currentUser.id === this.state.user.id)
         const email = this.state.user.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
-        debugger
+        // debugger
         const options = Object.values(this.state.user.boards).map((board, index) => {
             return <li key={index} name="pin_board_id" value={board.id} onClick={this.handleSubmit}>{board.name}</li>
         })
@@ -81,7 +81,7 @@ class PinShow extends React.Component {
                                 </ul>
                                 : 
                                 null}
-                                <div className="board-list-dropdown" value={this.state.board.id}>{this.state.board.name}</div>
+                                <div className="board-list-dropdown" >Drop Down</div>
                             </div>
                             <button className="pin-save-button" onClick={this.handleSubmit}>Save</button>
                         </div>

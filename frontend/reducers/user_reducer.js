@@ -13,6 +13,7 @@ const userReducer = (state = {}, action) => {
             // debugger
             return Object.assign({}, state, {[action.userProfile.id]: action.userProfile});
         case RECEIVE_BOARD:
+            // debugger
             return Object.assign({}, state, { [action.board.user.id]: action.board.user });
         case RECEIVE_PIN:
             // debugger

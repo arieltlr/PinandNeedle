@@ -16,7 +16,7 @@ class BoardListDropDown extends React.Component {
         this.setState({show: changeState})
     }
     render() {
-        debugger
+        // debugger
         return (
                 <div onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>
                     {this.state.show ? 

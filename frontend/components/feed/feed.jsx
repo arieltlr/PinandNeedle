@@ -14,7 +14,6 @@ class Feed extends React.Component {
         this.props.getPins();
     }
     render(){
-        debugger
         if (!this.state.fetchPins){
             this.state.fetchPins = true;
             return null;
