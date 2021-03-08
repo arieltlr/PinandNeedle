@@ -6,7 +6,7 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
+    debugger
     return {
         errors: state.errors.boards,
         ownProps,

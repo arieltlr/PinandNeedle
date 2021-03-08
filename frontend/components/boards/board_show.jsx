@@ -29,12 +29,13 @@ class BoardShow extends React.Component {
         }
         const board = this.props.board;
         const currentUser = this.props.currentUser;
+        debugger
         const currentUsersBoard = Boolean(currentUser.id === board.user_id);
         const email = this.props.board.user.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
-        // debugger
+        debugger
         let pinArray = Object.values(this.props.pins);
         let pins = pinArray.map((pin, index) => {
             return (

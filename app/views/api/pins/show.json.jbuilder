@@ -10,7 +10,14 @@ end
 #     end
 # end
 json.user do
-    json.extract! @pin.user, :id, :email, :boards
+    json.extract! @pin.user, :id, :email
+        json.boards do 
+            @pin.user.boards.each do |board|
+                json.set! board.id do
+                    json.extract! board, :id, :name, :user_id, :user
+                end
+            end
+        end
 end
 
 

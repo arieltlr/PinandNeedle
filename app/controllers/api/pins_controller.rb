@@ -3,7 +3,6 @@ class Api::PinsController < ApplicationController
     def create
         @pin = Pin.new(pin_params)
         if @pin.save
-            debugger
             BoardsPin.create!(board_id: params[:board_id], pin_id: @pin.id)
             render :show
         else

@@ -8,10 +8,10 @@ class PinSave extends React.Component {
         return (
             <div>
                 <h1>Saved to {this.props.board.name}</h1>
-                <img id="pin-preview" src={this.props.pins.photoUrl} />
+                <img id="pin-preview" src={Object.values(this.props.pins)[0].photoUrl} />
                 
                 <button onClick={()=>this.props.closeModal()}>
-                    <Link to={`/pin/${this.props.pins.id}`}>See it now</Link>
+                    <Link to={`/pin/${Object.values(this.props.pins)[0].id}`}>See it now</Link>
                 </button>
                 
             </div>

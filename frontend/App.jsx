@@ -18,12 +18,12 @@ const App = (store) => (
                 <ProtectedRoute component={NavBarContainer} />
             </header>
             <Switch>
-                <Route path="/feed" component={FeedContainer} />
-                <Route path="/following" component={FollowingContainer} />
+                <ProtectedRoute path="/feed" component={FeedContainer} />
+                <ProtectedRoute path="/following" component={FollowingContainer} />
                 <ProtectedRoute path="/user/:userId" component={ProfileContainer} />
-                <Route exact path="/pin" component={CreatePinContainer} />
-                <Route exact path="/pin/:pinId" component={PinShowContainer} />
-                <Route path="/board/:boardId" component={BoardShowContainer} />
+                <ProtectedRoute exact path="/pin" component={CreatePinContainer} />
+                <ProtectedRoute exact path="/pin/:pinId" component={PinShowContainer} />
+                <ProtectedRoute path="/board/:boardId" component={BoardShowContainer} />
                 <AuthRoute exact path="/" component={SplashContainer} />
                     
             </Switch> 
