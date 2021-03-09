@@ -11,6 +11,8 @@ class PinShow extends React.Component {
             user: {},
             pin_board_id: "",
             show: false,
+            pin_id: "",
+            board_id: "",
         }
         this.whenClicked = this.whenClicked.bind(this);
         this.goBack = this.goBack.bind(this);
@@ -25,16 +27,10 @@ class PinShow extends React.Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        // debugger
-        const pinPic = new FormData();
-        pinPic.append('pin[pin_url]', this.state.pin.pin_url);
-        pinPic.append('pin[photo]', this.state.pin.photo);
-        pinPic.append('pin[user_id]', this.props.currentUser.id);
-        pinPic.append('pin[board_id]', e.target.value);
-        pinPic.append('pin[title]', this.state.pin.title);
-        pinPic.append('pin[description]', this.state.pin.description)
-        // debugger
-        this.props.createPin(pinPic).then(() => this.props.openModal("pin-save"));
+        const assoc = Object.assign({}, {pin_id: this.state.pin.id}, {board_id: e.target.value})
+        debugger
+        this.props.createAssoc(assoc)
+        
     }
      whenClicked(e){
         e.preventDefault()
