@@ -56,11 +56,11 @@ class PinShow extends React.Component {
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
-            
             return 
                     <li className="board-name" key={index} value={board.id} data-id={board.name}
                     onClick={this.handleSubmit}>{board.name}</li>
         })
+        const firstBoard = Object.values(this.props.currentUser.boards)[0]
 
         return (
             <div className="pin-show-outer-container">
