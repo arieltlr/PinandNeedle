@@ -23,10 +23,11 @@
 // }
 .my-masonry-grid {
     display: flex;
-    margin-left: 80px; /* gutter size offset */
-    margin-right: 80px;
+    // margin-right: 80px;
     width: auto;
     padding-top: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 #feed-grid {
     padding-top: 70px;

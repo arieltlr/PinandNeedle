@@ -1,0 +1,100 @@
+@import "base/colors.scss";
+@import "base/layout.scss";
+
+.board-list-dropdown {
+    height: 50px;
+    width: 175px;
+}
+.drop-down-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 240px;
+    justify-content: center;
+}
+.create-pin-list-save {
+    height: 50px;
+    width: 173px;
+    padding-right: 8px;
+    background-color: $light-grey;
+    border-radius: 15px 0px 0px 15px;
+    font-size: 14px;
+    line-height: 50px;
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 15px;
+    &:hover {
+        cursor: pointer;
+        background-color: $grey-hover;
+    }
+
+}
+#down-icon-circle-board {
+    background-image: image-url('down_icon.png');
+    background-size: 13px 8px;
+    background-repeat: no-repeat;
+    background-position: 96% 51%;
+    &:hover {
+        cursor: pointer;
+        background-color: $grey-hover;
+    }
+
+}
+.pin-save-button {
+    height: 50px;
+    width: 65px;
+    background-color: $red;
+    border-radius: 0px 15px 15px 0px;
+    color: white;
+    margin-left: 2px;
+    font-size: 14px;
+    &:hover {
+        cursor: pointer;
+        background-color: $hover-red;
+    }
+}
+.board-dropdown {
+    @include drop-down(90px, -50px, 365px, 360px, 60px);
+    li {
+        margin-left: 10px;
+    }  
+}
+.add-board-button-container{
+    width: 396px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+    border-radius: 0px 0px 15px 15px;
+    margin-left: 10px;
+    margin-bottom: -15px;
+    &:hover {
+        cursor: pointer;
+        background-color: $grey-hover;
+    }
+}
+.add-board-button {
+    display: flex;
+    align-items: flex-start;
+    justify-self: center;
+    
+}
+.create-new-board {
+    padding-left: 15px;
+    font-size: 16px;
+}
+.add-board-icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+    background-image: image-url('plus-icon.jpg');
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $grey-hover;
+    margin-left: 15px;
+}
+.board-name {
+    font-size: 16px;
+}

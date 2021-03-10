@@ -13,6 +13,7 @@ class Pins extends React.Component {
             user_id: this.props.board.user_id,
             board_id: this.props.board.id,
             description: "",
+            owner_email: this.props.currentUser.email,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -33,7 +34,8 @@ class Pins extends React.Component {
         pinPic.append('pin[user_id]', this.props.currentUser.id);
         pinPic.append('board_id', this.state.board_id);
         pinPic.append('pin[title]', this.state.title);
-        pinPic.append('pin[description]', this.state.description)
+        pinPic.append('pin[description]', this.state.description);
+        pinPic.append('pin[owner_email]', this.state.owner_email);
         debugger
         this.props.createPin(pinPic).then(() => this.props.openModal("pin-save"));
     }

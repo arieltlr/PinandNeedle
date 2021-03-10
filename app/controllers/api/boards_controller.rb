@@ -2,6 +2,7 @@ class Api::BoardsController < ApplicationController
 
     def create
         @board = Board.new(board_params)
+        debugger
         if @board.save
             render :show
         else
@@ -51,7 +52,7 @@ class Api::BoardsController < ApplicationController
 
     private
     def board_params
-        params.require(:board).permit(:name, :description, :user_id, :id)
+        params.require(:board).permit(:name, :description, :user_id, :owner_email)
     end
 
 end

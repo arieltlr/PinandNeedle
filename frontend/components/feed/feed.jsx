@@ -20,7 +20,7 @@ class Feed extends React.Component {
         }
         let pinArray = Object.values(this.props.pins);
         let pins = pinArray.map((pin, index) => {
-            const email = pin.user.email.split('@')[0]
+            const email = pin.owner_email.split('@')[0]
             const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
             const profileLetter = email[0].toUpperCase();
             return (
@@ -54,14 +54,15 @@ class Feed extends React.Component {
             250: 1,
         };
         return (
-
-        <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-            id="feed-grid">
-            {pins}
-        </Masonry>
+            <div className="feed-container">
+                <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="my-masonry-grid"
+                    columnClassName="my-masonry-grid_column"
+                    id="feed-grid">
+                    {pins}
+                </Masonry>
+            </div>
     )
 }
 }
