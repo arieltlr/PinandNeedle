@@ -29,15 +29,20 @@ class BoardShow extends React.Component {
         }
         const board = this.props.board;
         const currentUser = this.props.currentUser;
-        debugger
+        let users = this.props.users;
         const currentUsersBoard = Boolean(currentUser.id === board.user_id);
-        const email = this.props.board.user.email.split('@')[0]
+        const email = this.props.board.owner_email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
-        debugger
+        
         let pinArray = Object.values(this.props.pins);
+        debugger
         let pins = pinArray.map((pin, index) => {
+            debugger
+            const pinEmail = pin.owner_email.split('@')[0]
+            const pinEmailName = pinEmail[0].toUpperCase() + pinEmail.slice(1).toLowerCase();
+            const pinProfileLetter = pinEmail[0].toUpperCase();
             return (
                 <div className="pin-item">
                     <Link to={`/pin/${pin.id}`} >
@@ -48,9 +53,9 @@ class BoardShow extends React.Component {
                             <p className="title-under-pin">{pin.title}</p>
                             <div className="pin-owner-info">
                                 <div className="small-profile-circle" id="cirle-under-pin">
-                                    <p className="small-profile-page-letter" id="letter-under-pin">{profileLetter}</p>
+                                    <p className="small-profile-page-letter" id="letter-under-pin">{pinProfileLetter}</p>
                                 </div>
-                                <p className="emailname-under-pin">{emailName}</p>
+                                <p className="emailname-under-pin">{pinEmail}</p>
                             </div>
                             
                         </div>

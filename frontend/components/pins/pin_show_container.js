@@ -4,6 +4,7 @@ import {withRouter } from 'react-router-dom';
 import PinShow from './pin_show';
 import { receiveErrors, getPins, getPin, createPin, updatePin, deletePin } from '../../actions/pin_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
+import { createAssoc } from '../../actions/boards_pins_actions'
 
 const mapStateToProps = (state, ownProps) => {
     debugger
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
         getBoards: userId => dispatch(getBoards(userId)),
         getPin: (pinId) => dispatch(getPin(pinId)),
         createPin: (pin) => dispatch(createPin(pin)),
+        createAssoc: (boardPin) => dispatch(createAssoc(boardPin))
 
     };
 };

@@ -10,6 +10,15 @@ class Board < ApplicationRecord
 
     has_and_belongs_to_many :pins
 
+    # def owner=(user)
+    #     debugger
+
+    #     email = user.email
+    #     debugger
+    #     self.owner_email = email;
+
+    # end
+
 end
 
 
