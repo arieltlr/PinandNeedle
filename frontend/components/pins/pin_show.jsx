@@ -16,11 +16,14 @@ class PinShow extends React.Component {
             save_board: false,
             saved_board_name: "",
             save_board_id: "",
+            show_save_button: false,
 
         }
         this.whenClicked = this.whenClicked.bind(this);
         this.goBack = this.goBack.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.closeWhenClicked = this.closeWhenClicked.bind(this);
+        this.onHover = this.onHover.bind(this);
         
     }
     componentDidMount(){
@@ -42,6 +45,19 @@ class PinShow extends React.Component {
         const changeState = !this.state.show;
         this.setState({show: changeState})
     }
+     closeWhenClicked(e){
+        e.preventDefault()
+        if (this.state.show){
+            const changeState = !this.state.show;
+            this.setState({show: changeState});
+        }   
+    }
+    onHover(e){
+        e.preventDefault();
+        debugger
+        const changeState = !this.state.show_save_button;
+        this.setState({show_save_button: changeState});
+    }
 
     render (){
         
@@ -55,66 +71,85 @@ class PinShow extends React.Component {
         const email = this.state.pin.owner_email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
+        let buttonState;
+        if (this.state.show_save_button){
+            buttonState = 'show-button';
+        }else {
+            buttonState = "hide-button";
+        }
+        let pins = this.props.currentUser.pins;
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             debugger
-            return 
-                <li className="board-name" key={index} value={board.id} data-id={board.name} onClick={this.handleSubmit}>{board.name}</li>
+            return(
+                <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
+                    <div className="boards-dropdown-board">
+                        { board.pins[0] ? <img  className="dropdown-board-cover" src={pins[board.pins[0]].photoUrl} alt="board-cover-image"/>
+                         : <div className="dropdown-board-cover"></div> }
+                        <li className="board-name" key={index} value={board.id} data-id={board.name} 
+                        onClick={this.handleSubmit}>{board.name}</li>
+                    </div>
+                    <div >
+                        <button className={buttonState}>Save</button> 
+                    </div>
+                </div>)
         })
         const firstBoard = Object.values(this.props.currentUser.boards)[0]
-
+        
         return (
-            <div className="pin-show-outer-container">
-                <div className="back-arrow" onClick={() => this.goBack()}>
-                </div>
-                <div className="pin-show-container">
-                <div className="pin-show-image-container">
-                    <img src={this.state.pin.photoUrl} className="pin-show-image"/>
-                </div>
-                <div className="all-pin-info">
-                    <div className="pin-info-buttons">
-                        <div>
-                            { usersPin ? <div className="edit-icon"></div> : null }      
-                        </div>
-                        { this.state.save_board ? 
-                        <Link to={`/board/${this.state.save_board_id}`}>
-                        Saved to {this.state.saved_board_name}!
-                        </Link>
-                        : 
-                            <div className="drop-down-container">
-                                <div id="down-icon-circle-board" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{firstBoard.name}
-                                    {this.state.show ? 
-                                    <ul className="board-dropdown">
-                                        {options} 
-                                        <div className="add-board-button-container">
-                                            <div className="add-board-icon"></div>
-                                            <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
-                                        </div>
-                                    </ul>
-                
-                                    : 
-                                    null}
-                                </div>
-                                <button value={firstBoard.id} data-id={firstBoard.name} className="pin-save-button" onClick={this.handleSubmit}>Save</button>
+            <div className="whole-page-background" onClick={this.closeWhenClicked}>
+                <div className="pin-show-outer-container" >
+                    <div className="back-arrow" onClick={() => this.goBack()}>
+                    </div>
+                    <div className="pin-show-container">
+                    <div className="pin-show-image-container">
+                        <img src={this.state.pin.photoUrl} className="pin-show-image"/>
+                    </div>
+                    <div className="all-pin-info">
+                        <div className="pin-info-buttons">
+                            <div>
+                                { usersPin ? <div className="edit-icon"></div> : null }      
                             </div>
-                         }
-                        
-                    </div>
-                    <div className="pin-show-info">
-                        <a className="pin-show-url" rel={'external'} href={`https://${this.state.pin.pin_url}`} target="_blank">{this.state.pin.pin_url.slice(4)}</a>
-                        <a className="pin-show-title" rel={'external'} href={`https://${this.state.pin.pin_url}`}>{this.state.pin.title}</a>
-                        {this.state.pin.description ? <p className="pin-show-description">{this.state.pin.description}</p> : null}
-                    </div>
-                    <div className="create-pin-user-info">
-                        <div id="profile-circle-create-pin">
-                            <p className="profile-page-letter-create-pin" id="pin-show-letter">{profileLetter}</p>
+                            { this.state.save_board ? 
+                            <Link to={`/board/${this.state.save_board_id}`}>
+                            Saved to {this.state.saved_board_name}!
+                            </Link>
+                            : 
+                                <div className="drop-down-container">
+                                    <div id="down-icon-circle-board" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{firstBoard.name}
+                                        {this.state.show ? 
+                                        <ul className="board-dropdown">
+                                            {options} 
+                                            <div className="add-board-button-container">
+                                                <div className="add-board-icon"></div>
+                                                <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
+                                            </div>
+                                        </ul>
+                    
+                                        : 
+                                        null}
+                                    </div>
+                                    <button value={firstBoard.id} data-id={firstBoard.name} className="pin-save-button" onClick={this.handleSubmit}>Save</button>
+                                </div>
+                            }
+                            
                         </div>
-                        <div className="create-pin-name-followers">
-                            <h1 id="profile-page-username-create-pin" id="pin-show-username">{emailName}</h1>
-                            <h3 className="pin-follower">1 Follower</h3 >
+                        <div className="pin-show-info">
+                            <a className="pin-show-url" rel={'external'} href={`https://${this.state.pin.pin_url}`} target="_blank">{this.state.pin.pin_url.slice(4)}</a>
+                            <a className="pin-show-title" rel={'external'} href={`https://${this.state.pin.pin_url}`}>{this.state.pin.title}</a>
+                            {this.state.pin.description ? <p className="pin-show-description">{this.state.pin.description}</p> : null}
+                        </div>
+                        <div className="create-pin-user-info">
+                            <div id="profile-circle-create-pin">
+                                <p className="profile-page-letter-create-pin" id="pin-show-letter">{profileLetter}</p>
+                            </div>
+                            <div className="create-pin-name-followers">
+                                <h1 id="profile-page-username-create-pin" id="pin-show-username">{emailName}</h1>
+                                <h3 className="pin-follower">1 Follower</h3 >
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
             </div>
             
         )
