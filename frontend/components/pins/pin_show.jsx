@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BoardItem from '../board_list_dropdown/board_item';
 
 class PinShow extends React.Component {
     
@@ -13,33 +14,27 @@ class PinShow extends React.Component {
             pin_board_id: "",
             show: false,
             pin_id: "",
-            save_board: false,
+            save_board: this.props.pinSaved,
             saved_board_name: "",
             save_board_id: "",
-            show_save_button: false,
 
         }
         this.whenClicked = this.whenClicked.bind(this);
         this.goBack = this.goBack.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.closeWhenClicked = this.closeWhenClicked.bind(this);
-        this.onHover = this.onHover.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+
         
     }
     componentDidMount(){
+        debugger
         this.props.getPin(this.props.match.params.pinId)
     }
     goBack(){
         this.props.history.goBack();
     }
-    handleSubmit(e){
-        e.preventDefault();
-        this.setState({saved_board_name: e.target.dataset.id, save_board_id: e.target.value, save_board: true})
-        const assoc = Object.assign({}, {pin_id: this.state.pin.id}, {board_id: e.target.value})
-        debugger
-        this.props.createAssoc(assoc)
-        
-    }
+
      whenClicked(e){
         e.preventDefault()
         const changeState = !this.state.show;
@@ -52,11 +47,13 @@ class PinShow extends React.Component {
             this.setState({show: changeState});
         }   
     }
-    onHover(e){
+    handleSubmit(e){
         e.preventDefault();
+        this.setState({saved_board_name: e.target.dataset.id, save_board_id: e.target.value, save_board: true})
+        const assoc = Object.assign({}, {pin_id: this.state.pin.id}, {board_id: e.target.value})
         debugger
-        const changeState = !this.state.show_save_button;
-        this.setState({show_save_button: changeState});
+        this.props.createAssoc(assoc)
+        
     }
 
     render (){
@@ -70,29 +67,18 @@ class PinShow extends React.Component {
         const usersPin = Boolean(this.props.currentUser.id === this.state.user.id)
         const email = this.state.pin.owner_email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
-        const profileLetter = email[0].toUpperCase()
-        let buttonState;
-        if (this.state.show_save_button){
-            buttonState = 'show-button';
-        }else {
-            buttonState = "hide-button";
-        }
+        const profileLetter = email[0].toUpperCase()       
         let pins = this.props.currentUser.pins;
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             debugger
             return(
-                <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
-                    <div className="boards-dropdown-board">
-                        { board.pins[0] ? <img  className="dropdown-board-cover" src={pins[board.pins[0]].photoUrl} alt="board-cover-image"/>
-                         : <div className="dropdown-board-cover"></div> }
-                        <li className="board-name" key={index} value={board.id} data-id={board.name} 
-                        onClick={this.handleSubmit}>{board.name}</li>
-                    </div>
-                    <div >
-                        <button className={buttonState}>Save</button> 
-                    </div>
-                </div>)
-        })
+                <BoardItem 
+                board={board}
+                pins={pins}
+                index={index}
+                pin={this.state.pin}
+                />      
+        )})
         const firstBoard = Object.values(this.props.currentUser.boards)[0]
         
         return (

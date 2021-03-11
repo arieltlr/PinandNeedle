@@ -14,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: state.entities.user[state.session.id],
         pin: state.entities.pins,
         board: state.entities.boards,
-        user: state.entities.user
+        user: state.entities.user,
+        pinSaved: state.entities.pinSaved,
 
     }
 }
