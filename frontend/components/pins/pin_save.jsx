@@ -7,13 +7,18 @@ class PinSave extends React.Component {
         debugger
         const pin = Object.values(this.props.pins).reverse()[0]
         return (
-            <div>
+            <div className="pin-save-container">
                 <h1>Saved to {this.props.board.name}</h1>
-                <img id="pin-preview" src={pin.photoUrl} />
+                <div className="image-container">
+                    <img src={pin.photoUrl} />
+                </div>
                 
-                <button onClick={()=>this.props.closeModal()}>
-                    <Link to={`/pin/${pin.id}`}>See it now</Link>
-                </button>
+                <div className="pin-save-button-container">
+                    <button onClick={()=>this.props.closeModal()}>
+                        <Link to={`/pin/${pin.id}`}>See it now</Link>
+                    </button>
+                </div>
+                
                 
             </div>
             
