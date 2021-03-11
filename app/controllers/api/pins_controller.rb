@@ -4,6 +4,9 @@ class Api::PinsController < ApplicationController
         @pin = Pin.new(pin_params)
         if @pin.save
             BoardsPin.create!(board_id: params[:board_id], pin_id: @pin.id)
+            @user = User.find(@pin.user_id)
+            @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
+            @pins = @user.pins.includes(photo_attachment: :blob).to_a
             render :show
         else
             render json: @pin.errors.full_messages, status: 404
