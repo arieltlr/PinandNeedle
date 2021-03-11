@@ -14,10 +14,15 @@ class Pins extends React.Component {
             board_id: this.props.board.id,
             description: "",
             owner_email: this.props.currentUser.email,
+            show_save_button: false,
+            show: false,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.closeWhenClicked = this.closeWhenClicked.bind(this);
+        this.onHover = this.onHover.bind(this);
+        this.whenClicked = this.whenClicked.bind(this);
     }
 
     handleChange(event){
@@ -51,29 +56,73 @@ class Pins extends React.Component {
         }
         
     }
+         whenClicked(e){
+        e.preventDefault()
+        const changeState = !this.state.show;
+        this.setState({show: changeState})
+    }
+     closeWhenClicked(e){
+        e.preventDefault()
+        if (this.state.show){
+            const changeState = !this.state.show;
+            this.setState({show: changeState});
+        }   
+    }
+    onHover(e){
+        e.preventDefault();
+        debugger
+        const changeState = !this.state.show_save_button;
+        this.setState({show_save_button: changeState});
+    }
     
     render (){
         const email = this.props.currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
+        let buttonState;
+        if (this.state.show_save_button){
+            buttonState = 'show-button';
+        }else {
+            buttonState = "hide-button";
+        }
+        let pins = this.props.currentUser.pins;
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
-            return <option key={index} value={board.id}>{board.name}</option>
+            debugger
+            return(
+                <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
+                    <div className="boards-dropdown-board">
+                        { board.pins[0] ? <img  className="dropdown-board-cover" src={pins[board.pins[0]].photoUrl} alt="board-cover-image"/>
+                         : <div className="dropdown-board-cover"></div> }
+                        <li className="board-name" key={index} value={board.id} data-id={board.name} 
+                        onClick={this.handleSubmit}>{board.name}</li>
+                    </div>
+                    <div >
+                        <button className={buttonState}>Save</button> 
+                    </div>
+                </div>)
         })
-        const select = <select name="board_id"
-                            id="board-selector"
-                            onChange = {this.handleChange}
-                            defaultValue={this.props.board.id}>
-                        {options}
-                        </select>
+        const firstBoard = Object.values(this.props.currentUser.boards)[0]
         return (
-        <div className="new-pin-form-container">
+            <div className="new-pin-form-container">
             <form className="new-pin-form" onSubmit={this.handleSubmit}>
                 <div className="create-pin-header">
                     <div className="create-pin-header-buttons">
                         <div className="three-dots" onClick={() => this.props.openModal("pin-options")}></div>
-                        <div className="create-pin-list-save">
-                            {select}
-                            <button>Save</button>
+                        <div className="drop-down-container">
+                                    <div id="down-icon-circle-board" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{firstBoard.name}
+                                        {this.state.show ? 
+                                        <ul className="board-dropdown">
+                                            {options} 
+                                            <div className="add-board-button-container">
+                                                <div className="add-board-icon"></div>
+                                                <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
+                                            </div>
+                                        </ul>
+                    
+                                        : 
+                                        null}
+                                    </div>
+                                    <button value={firstBoard.id} data-id={firstBoard.name} className="pin-save-button" onClick={this.handleSubmit}>Save</button>
                         </div>
                     </div>
                 </div>
