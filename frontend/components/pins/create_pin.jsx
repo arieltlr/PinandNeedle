@@ -12,23 +12,30 @@ class Pins extends React.Component {
             photoUrl: null, 
             user_id: this.props.board.user_id,
             board_id: this.props.board.id,
+            board_name: this.props.board.name,
             description: "",
             owner_email: this.props.currentUser.email,
-            show_save_button: false,
             show: false,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.closeWhenClicked = this.closeWhenClicked.bind(this);
-        this.onHover = this.onHover.bind(this);
         this.whenClicked = this.whenClicked.bind(this);
+        this.handleName = this.handleName.bind(this);
     }
 
     handleChange(event){
         const {name, value} = event.target;
+        debugger
         this.setState({
             [name]: value
+        })
+    }
+    handleName(e){
+        debugger
+        this.setState({
+            board_name: e.target.dataset.id, board_id: e.target.value
         })
     }
     handleSubmit(e){
@@ -56,7 +63,7 @@ class Pins extends React.Component {
         }
         
     }
-         whenClicked(e){
+    whenClicked(e){
         e.preventDefault()
         const changeState = !this.state.show;
         this.setState({show: changeState})
@@ -68,36 +75,22 @@ class Pins extends React.Component {
             this.setState({show: changeState});
         }   
     }
-    onHover(e){
-        e.preventDefault();
-        debugger
-        const changeState = !this.state.show_save_button;
-        this.setState({show_save_button: changeState});
-    }
-    
+
     render (){
         const email = this.props.currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
-        let buttonState;
-        if (this.state.show_save_button){
-            buttonState = 'show-button';
-        }else {
-            buttonState = "hide-button";
-        }
         let pins = this.props.currentUser.pins;
+        debugger
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             debugger
             return(
-                <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
+                <div className="boards-dropdown-li-container" value={board.id} data-id={board.name} onClick={this.handleName} key={index}>
                     <div className="boards-dropdown-board">
                         { board.pins[0] ? <img  className="dropdown-board-cover" src={pins[board.pins[0]].photoUrl} alt="board-cover-image"/>
                          : <div className="dropdown-board-cover"></div> }
-                        <li className="board-name" key={index} value={board.id} data-id={board.name} 
-                        onClick={this.handleSubmit}>{board.name}</li>
-                    </div>
-                    <div >
-                        <button className={buttonState}>Save</button> 
+                        <li className="board-name" value={board.id} data-id={board.name}>
+                            {board.name}</li>
                     </div>
                 </div>)
         })
@@ -109,7 +102,7 @@ class Pins extends React.Component {
                     <div className="create-pin-header-buttons">
                         <div className="three-dots" onClick={() => this.props.openModal("pin-options")}></div>
                         <div className="drop-down-container">
-                                    <div id="down-icon-circle-board" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{firstBoard.name}
+                                    <div id="down-icon-circle-board" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{this.state.board_name}
                                         {this.state.show ? 
                                         <ul className="board-dropdown">
                                             {options} 
@@ -122,7 +115,7 @@ class Pins extends React.Component {
                                         : 
                                         null}
                                     </div>
-                                    <button value={firstBoard.id} data-id={firstBoard.name} className="pin-save-button" onClick={this.handleSubmit}>Save</button>
+                                    <button className="pin-save-button" onClick={this.handleSubmit}>Save</button>
                         </div>
                     </div>
                 </div>
