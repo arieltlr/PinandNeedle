@@ -7,15 +7,14 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
     debugger
-    const boardId = parseInt(ownProps.location.pathname.slice(7));
+    const savedPin = Object.values(state.entities.pins).reverse()[0]
     return {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        board: state.entities.boards[boardId],
+        board: state.entities.boards[savedPin.board.id],
         email: state.entities.profile,
         pins: state.entities.pins,
-
     }
 }
 const mapDispatchToProps = (dispatch) => {
