@@ -29,6 +29,17 @@ class Api::PinsController < ApplicationController
     def update
         @pin = Pin.find_by(id: params[:id])
         if @pin && @pin.update_attributes(pin_params)
+            @user = User.find(@pin.user_id)
+            @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
+            @pins = @user.pins.includes(photo_attachment: :blob).to_a
+        
+                if params[:board_id]
+                    
+                    @board = Board.find(params[:board_id])
+                else 
+                    
+                    @board = Board.find(@boards[0].id)
+                end
             render :show
         else
             render json: @pin.errors.full_messages
@@ -38,7 +49,7 @@ class Api::PinsController < ApplicationController
     def destroy
         @pin = Pin.find(params[:id])
         if @pin.destroy
-            render :show
+            render "api/boards/show.json.jbuilder"
         else
             render json: @pin.errors.full_messages, status: 422
         end

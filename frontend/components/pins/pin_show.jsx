@@ -27,7 +27,6 @@ class PinShow extends React.Component {
         
     }
     componentDidMount(){
-        debugger
         this.props.getPin(this.props.match.params.pinId)
     }
     goBack(){
@@ -92,7 +91,7 @@ class PinShow extends React.Component {
                     <div className="all-pin-info">
                         <div className="pin-info-buttons">
                             <div>
-                                { usersPin ? <div className="edit-icon"></div> : null }      
+                                { usersPin ? <div className="edit-icon" onClick={()=> this.props.openModal("edit-pin")}></div> : null }      
                             </div>
                             
                                 <div className="drop-down-container">

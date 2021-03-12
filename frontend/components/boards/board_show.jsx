@@ -37,9 +37,7 @@ class BoardShow extends React.Component {
         const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
         
         let pinArray = Object.values(this.props.pins);
-        debugger
         let pins = pinArray.map((pin, index) => {
-            debugger
             const pinEmail = pin.owner_email.split('@')[0]
             const pinEmailName = pinEmail[0].toUpperCase() + pinEmail.slice(1).toLowerCase();
             const pinProfileLetter = pinEmail[0].toUpperCase();
