@@ -86,3 +86,13 @@
         background-color: rgba(236, 236, 236, 0.7);
     }
 }
+.board-link {
+    text-decoration: underline;
+    height: 50px;
+    width: 100%;
+    background-color: $light-grey;
+    line-height: 50px;
+    border-radius: 15px;
+    font-size: 14px;
+    text-align: center;
+}

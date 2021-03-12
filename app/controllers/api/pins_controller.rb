@@ -49,12 +49,12 @@ class Api::PinsController < ApplicationController
         @user = User.find(@pin.user_id)
         @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
         @pins = @user.pins.includes(photo_attachment: :blob).to_a
-        debugger
+        
         if params[:board_id]
-            debugger
+            
             @board = Board.find(params[:board_id])
         else 
-            debugger
+            
             @board = Board.find(@boards[0].id)
         end
         if @pin 

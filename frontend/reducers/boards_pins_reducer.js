@@ -5,7 +5,7 @@ const boardsPinsReducer = (state = false, action) => {
     // debugger
     switch (action.type) {
         case RECEIVE_BOARDS_PINS_ASSOC:
-            return action.boardsPins.savedPin;
+            return Object.assign({}, action.boardsPins)
         default:
             return state;
     }

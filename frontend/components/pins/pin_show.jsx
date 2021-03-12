@@ -14,7 +14,6 @@ class PinShow extends React.Component {
             pin_board_id: "",
             show: false,
             pin_id: "",
-            save_board: this.props.pinSaved,
             saved_board_name: "",
             save_board_id: "",
 
@@ -70,17 +69,17 @@ class PinShow extends React.Component {
         const profileLetter = email[0].toUpperCase()       
         let pins = this.props.currentUser.pins;
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
-            debugger
             return(
                 <BoardItem 
                 board={board}
                 pins={pins}
                 index={index}
                 pin={this.state.pin}
+                createAssoc={this.props.createAssoc}
                 />      
         )})
         const firstBoard = Object.values(this.props.currentUser.boards)[0]
-        
+        debugger
         return (
             <div className="whole-page-background" onClick={this.closeWhenClicked}>
                 <div className="pin-show-outer-container" >
@@ -95,28 +94,34 @@ class PinShow extends React.Component {
                             <div>
                                 { usersPin ? <div className="edit-icon"></div> : null }      
                             </div>
-                            { this.state.save_board ? 
-                            <Link to={`/board/${this.state.save_board_id}`}>
-                            Saved to {this.state.saved_board_name}!
-                            </Link>
-                            : 
+                            
                                 <div className="drop-down-container">
-                                    <div id="down-icon-circle-board" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{firstBoard.name}
-                                        {this.state.show ? 
-                                        <ul className="board-dropdown">
-                                            {options} 
-                                            <div className="add-board-button-container">
-                                                <div className="add-board-icon"></div>
-                                                <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
-                                            </div>
-                                        </ul>
-                    
-                                        : 
-                                        null}
-                                    </div>
-                                    <button value={firstBoard.id} data-id={firstBoard.name} className="pin-save-button" onClick={this.handleSubmit}>Save</button>
+                                    { this.props.pinSaved.savedPin ? 
+                                    <Link className="board-link" to={`/board/${this.props.pinSaved.board_id}`}>
+                                        Saved to {this.props.currentUser.boards[this.props.pinSaved.board_id].name}!
+                                    </Link>
+                                    : 
+                                    <div id="down-icon-circle-board" className="create-pin-list-save" 
+                                        onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>
+                                        {firstBoard.name}
+                                            {this.state.show ? 
+                                            <ul className="board-dropdown">
+                                                {options} 
+                                                <div className="add-board-button-container">
+                                                    <div className="add-board-icon"></div>
+                                                    <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
+                                                </div>
+                                            </ul>
+                                        : null}
+                                        
+                                    </div>}
+                                   { this.props.pinSaved.savedPin ? null : 
+                                    <button value={firstBoard.id} data-id={firstBoard.name} 
+                                        className="pin-save-button" onClick={this.handleSubmit}>
+                                    Save</button>
+                                    }
+                                    
                                 </div>
-                            }
                             
                         </div>
                         <div className="pin-show-info">

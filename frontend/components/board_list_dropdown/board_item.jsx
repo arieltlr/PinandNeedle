@@ -9,16 +9,15 @@ class BoardItem extends React.Component {
             show_save_button: false,
             pin: this.props.pin,
         }
-        debugger
+        
         this.onHover = this.onHover.bind(this);
-        debugger
+        
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
     handleSubmit(e){
         e.preventDefault();
         const assoc = Object.assign({}, {pin_id: this.state.pin.id}, {board_id: e.target.value})
-        debugger
         this.props.createAssoc(assoc)
         
     }
@@ -38,7 +37,6 @@ class BoardItem extends React.Component {
         }else {
             buttonState = "hide-button";
         } 
-        debugger
         return (
                 <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
                     <div className="boards-dropdown-board">
