@@ -48,8 +48,9 @@ class Api::PinsController < ApplicationController
 
     def destroy
         @pin = Pin.find(params[:id])
+        debugger
         if @pin.destroy
-            render "api/boards/show.json.jbuilder"
+            render :delete
         else
             render json: @pin.errors.full_messages, status: 422
         end

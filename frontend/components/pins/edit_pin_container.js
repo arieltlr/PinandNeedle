@@ -6,12 +6,13 @@ import { receiveErrors, getPin, updatePin, deletePin } from '../../actions/pin_a
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+    let pinId=ownProps.history.location.pathname.slice(5)
     debugger
     return {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        pin: state.entities.pins,
+        pin: state.entities.pins[pinId],
         boards: state.entities.user[state.session.id].boards
     }
 }
