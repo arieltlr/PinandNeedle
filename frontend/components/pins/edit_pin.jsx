@@ -112,7 +112,7 @@ class EditPin extends React.Component {
                                     <div className="edit-field-input-container">
                                         <p>Board</p> 
                                         <div className="drop-down-container" id="edit-pin-dropdown-container">                                       
-                                            <div id="edit-pin-board-dropdown" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{this.state.board_name}
+                                            <div id="edit-pin-board-dropdown" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>
                                                 {this.state.show ?
                                                     <ul className="edit-pin-dropdown">
                                                         {options} 
@@ -120,9 +120,17 @@ class EditPin extends React.Component {
                                                     : 
                                                     null
                                                 }
+                                                {this.state.board_name ? 
+                                                <div value={this.state.board_id} data-id={this.state.board_name} 
+                                                        className="edit-pin-default-board">
+                                                    {this.state.board_name}
+                                                </div>
+                                                    : 
                                                 <div value={pinsBoard.id} data-id={pinsBoard.name} 
                                                         className="edit-pin-default-board">
-                                                    {pinsBoard.name}</div>
+                                                    {pinsBoard.name}
+                                                </div>
+                                                }
                                             </div>
                                         </div> 
                                     </div>
