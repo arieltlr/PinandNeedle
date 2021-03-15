@@ -105,9 +105,9 @@
 }
 .edit-pin-dropdown {
     border: solid 1px $grey-hover;
-    position: absolute;
-    top: 179px;
-    right: 315px;
+    position: relative;
+    top: 46px;
+    right: 14px;
     width: 400px;   ;
     display: flex;
     flex-direction: column;

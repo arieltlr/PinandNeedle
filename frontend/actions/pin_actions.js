@@ -83,3 +83,12 @@ export const deletePin = (pinId) => {
                     dispatch(receiveErrors(errors.responseJSON)));
     }
 }
+export const removeBoardsPin = (pin) => {
+    return dispatch => {
+        return PinAPIUtil.deleteBoardsPin(pin)
+            .then((pin) =>
+                dispatch(receivePin(pin)),
+                (errors) =>
+                    dispatch(receiveErrors(errors.responseJSON)));
+    }
+}

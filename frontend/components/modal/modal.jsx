@@ -10,6 +10,9 @@ import {withRouter} from 'react-router-dom';
 import CreatePinContainer from '../pins/create_pin_container';
 import PinSaveContainer from '../pins/pin_save_container';
 import EditPinContainer from '../pins/edit_pin_container';
+import EditPinsBoardContainer from '../pins/edit_pins_board_container';
+
+
 
 function Modal ({modal, closeModal}) {
     if (!modal) {
@@ -56,6 +59,10 @@ function Modal ({modal, closeModal}) {
         case 'edit-pin':
             // debugger
             component = <EditPinContainer />;
+            form = "edit-pin-modal"
+            break;
+        case 'edit-pinsBoard':
+            component = <EditPinsBoardContainer />;
             form = "edit-pin-modal"
             break;
         default:
