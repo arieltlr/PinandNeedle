@@ -15,6 +15,7 @@ class EditPin extends React.Component {
             photoUrl: this.props.pin.photoUrl,
             board_name: "",
             board_id: "",
+            new_board_id: "",
             this_pin_board_id: "",
             show: false,
             board_found: false,
@@ -39,26 +40,36 @@ class EditPin extends React.Component {
     }
     handleName(e){
         this.setState({
-            board_name: e.target.dataset.id, board_id: e.target.value
+            board_name: e.target.dataset.id, new_board_id: e.target.value
         })
     }
     handleSubmit(e){
         e.preventDefault();
-    
-        const updatedPin = {
+        let updatedPin;
+        debugger
+        { this.state.new_board_id ? 
+            updatedPin = {
             title: this.state.title,
             pin_url: this.state.pin_url,
             description: this.state.description,
             id: this.props.pin.id,
-            board_id: this.state.board_id
+            board_id: this.state.board_id,
+            new_board_id: this.state.new_board_id,
+            } 
+            :
+            updatedPin = {
+            title: this.state.title,
+            pin_url: this.state.pin_url,
+            description: this.state.description,
+            id: this.props.pin.id,
+            board_id: this.state.board_id,
+            } 
         }
-        debugger
         this.props.updatePin(updatedPin).then(() => this.props.closeModal())
         
     }
     handleDelete(e){
         e.preventDefault();
-        debugger
         this.props.deletePin(this.state.pin.id).then(()=> this.props.history.push(`/board/${this.state.board_id}`))
     }
     whenClicked(e){
@@ -89,7 +100,6 @@ class EditPin extends React.Component {
     }
 
     render (){
-        debugger
         let pinsBoard;
         if ( !this.state.board_found ){
             pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
@@ -127,7 +137,7 @@ class EditPin extends React.Component {
                                                     : 
                                                     null
                                                 }
-                                                <div value={this.state.board_id} data-id={this.state.board_name} 
+                                                <div value={this.state.new_board_id ? this.state.new_board_id : this.state.board_id} data-id={this.state.board_name} 
                                                         className="edit-pin-default-board">
                                                     {this.state.board_name}
                                                 </div>

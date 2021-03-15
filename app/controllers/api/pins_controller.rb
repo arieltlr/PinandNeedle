@@ -4,6 +4,7 @@ class Api::PinsController < ApplicationController
         @pin = Pin.new(pin_params)
         if @pin.save
             @board = Board.find(params[:board_id])
+            debugger
             BoardsPin.create!(board_id: params[:board_id], pin_id: @pin.id)
             @user = User.find(@pin.user_id)
             @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
@@ -32,20 +33,16 @@ class Api::PinsController < ApplicationController
             @user = User.find(@pin.user_id)
             @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
             @pins = @user.pins.includes(photo_attachment: :blob).to_a
-        
-                if params[:board_id]
+                if params[:pin][:new_board_id]
                     
-                    @board = Board.find(params[:board_id])
-                else 
-                    
-                    @board = Board.find(@boards[0].id)
+                    @boardsPins = BoardsPin.where(pin_id: @pin.id, board_id: params[:pin][:board_id])
+                    BoardsPin.delete(@boardsPins[0][:id])
+                    @newBoardPin = BoardsPin.create!(board_id: params[:pin][:new_board_id], pin_id: @pin.id)
+                    @board = Board.find(params[:pin][:new_board_id])
+                else
+                    @board = Board.find(params[:pin][:board_id])
                 end
-            @boardsPins = BoardsPin.where(pin_id: @pin.id, board_id: params[:board_id])
-            if @boardsPins.destroy
-                render :show
-            else
-                render json: ["Oops! Could not delete the associated pin and board from BoardsPin"], status: 404
-            end
+            render :show
         else
             render json: @pin.errors.full_messages
         end
@@ -68,7 +65,7 @@ class Api::PinsController < ApplicationController
         
         if params[:board_id]
             
-            @board = Board.find(params[:board_id])
+            @board = Board.find(params[:pin][:board_id])
         else 
             
             @board = Board.find(@boards[0].id)
