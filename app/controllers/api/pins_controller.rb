@@ -40,7 +40,12 @@ class Api::PinsController < ApplicationController
                     
                     @board = Board.find(@boards[0].id)
                 end
-            render :show
+            @boardsPins = BoardsPin.where(pin_id: @pin.id, board_id: params[:board_id])
+            if @boardsPins.destroy
+                render :show
+            else
+                render json: ["Oops! Could not delete the associated pin and board from BoardsPin"], status: 404
+            end
         else
             render json: @pin.errors.full_messages
         end

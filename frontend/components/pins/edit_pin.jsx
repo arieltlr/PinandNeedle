@@ -17,6 +17,7 @@ class EditPin extends React.Component {
             board_id: "",
             this_pin_board_id: "",
             show: false,
+            board_found: false,
 
         }
         this.handleChange = this.handleChange.bind(this);
@@ -25,7 +26,7 @@ class EditPin extends React.Component {
         this.closeWhenClicked = this.closeWhenClicked.bind(this);
         this.whenClicked = this.whenClicked.bind(this);
         this.handleName = this.handleName.bind(this);
-        this.findBoard = this.findBoard.bind(this);
+        this.findBoard = this.findBoard.bind(this)
         
     }
 
@@ -47,10 +48,9 @@ class EditPin extends React.Component {
         const updatedPin = {
             title: this.state.title,
             pin_url: this.state.pin_url,
-            // user_id: this.props.currentUser.id,
             description: this.state.description,
-            // owner_email: this.props.currentUser.email,
-            id: this.props.pin.id
+            id: this.props.pin.id,
+            board_id: this.state.board_id
         }
         debugger
         this.props.updatePin(updatedPin).then(() => this.props.closeModal())
@@ -90,8 +90,14 @@ class EditPin extends React.Component {
 
     render (){
         debugger
-        const pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
-        this.state.board_id = pinsBoard.id;
+        let pinsBoard;
+        if ( !this.state.board_found ){
+            pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
+            this.state.board_id = pinsBoard.id;
+            this.state.board_name= pinsBoard.name;
+            this.state.board_found = !this.state.board_found;
+
+        }
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
                 <div id="edit-pin-board-dropdown-li-container"className="boards-dropdown-li-container" value={board.id} data-id={board.name} onClick={this.handleName} key={index}>
@@ -101,6 +107,7 @@ class EditPin extends React.Component {
                     </div>
                 </div>)
         })
+        debugger
         return (
             <div className="edit-pin-form-container">
                 <form className="edit-pin-form" onSubmit={this.handleSubmit}>
@@ -120,17 +127,10 @@ class EditPin extends React.Component {
                                                     : 
                                                     null
                                                 }
-                                                {this.state.board_name ? 
                                                 <div value={this.state.board_id} data-id={this.state.board_name} 
                                                         className="edit-pin-default-board">
                                                     {this.state.board_name}
                                                 </div>
-                                                    : 
-                                                <div value={pinsBoard.id} data-id={pinsBoard.name} 
-                                                        className="edit-pin-default-board">
-                                                    {pinsBoard.name}
-                                                </div>
-                                                }
                                             </div>
                                         </div> 
                                     </div>
