@@ -22,12 +22,13 @@ class PinShow extends React.Component {
         this.goBack = this.goBack.bind(this);
         this.closeWhenClicked = this.closeWhenClicked.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.findBoard = this.findBoard.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
 
 
         
     }
     componentDidMount(){
-        debugger
         this.props.getPin(this.props.match.params.pinId)
     }
     goBack(){
@@ -54,6 +55,30 @@ class PinShow extends React.Component {
         this.props.createAssoc(assoc)
         
     }
+    findBoard(pin, user){
+        let pinsBoard = false;
+        debugger
+        const pinId = pin.id;
+        const pinIdArray = Object.values(user.boards).map(board => {
+            return Object.assign({}, {[board.id]: board.pins})
+            })
+        for (let i = 0; i < pinIdArray.length; i++){
+            if (Object.values(pinIdArray[i])[0].includes(pinId)){
+                pinsBoard = true;
+            }
+        }
+        return pinsBoard;
+    }
+    handleEdit(e){
+        e.preventDefault();
+        const pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);
+        if (pinsBoard && this.state.user.id === this.props.currentUser.id){
+            this.props.openModal("edit-pin")
+        } else {
+            this.props.openModal("edit-pinsBoard")
+        }
+        
+    }
 
     render (){
         
@@ -66,8 +91,9 @@ class PinShow extends React.Component {
         const usersPin = Boolean(this.props.currentUser.id === this.state.user.id)
         const email = this.state.pin.owner_email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
-        const profileLetter = email[0].toUpperCase()       
-        let pins = this.props.currentUser.pins;
+        const profileLetter = email[0].toUpperCase()  
+        const pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);     
+        let pins = Object.assign({}, this.props.currentUser.pins, this.state.user.pins);
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
                 <BoardItem 
@@ -79,6 +105,12 @@ class PinShow extends React.Component {
                 />      
         )})
         const firstBoard = Object.values(this.props.currentUser.boards)[0]
+        let showEditIcon;
+        if ( usersPin || pinsBoard) {
+            showEditIcon =  <div className="edit-icon" onClick={this.handleEdit}></div>
+        } else{
+            showEditIcon = null;
+        }
         debugger
         return (
             <div className="whole-page-background" onClick={this.closeWhenClicked}>
@@ -92,7 +124,7 @@ class PinShow extends React.Component {
                     <div className="all-pin-info">
                         <div className="pin-info-buttons">
                             <div>
-                                { usersPin ? <div className="edit-icon"></div> : null }      
+                                { showEditIcon }      
                             </div>
                             
                                 <div className="drop-down-container">

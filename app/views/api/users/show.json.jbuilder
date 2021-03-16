@@ -1,5 +1,5 @@
 json.extract! @user, :id, :username, :email, :fname, :lname
-debugger
+
 json.boards do
     @user.boards.each do |board|
         json.set! board.id do

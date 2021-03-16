@@ -4,6 +4,7 @@ class Api::PinsController < ApplicationController
         @pin = Pin.new(pin_params)
         if @pin.save
             @board = Board.find(params[:board_id])
+            debugger
             BoardsPin.create!(board_id: params[:board_id], pin_id: @pin.id)
             @user = User.find(@pin.user_id)
             @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
@@ -28,8 +29,29 @@ class Api::PinsController < ApplicationController
 
     def update
         @pin = Pin.find_by(id: params[:id])
-        if @pin && @pin.update_attributes(pin_params)
+        if @pin && params[:pin][:delete_boardsPin]
+            @boardsPins = BoardsPin.where(pin_id: @pin.id, board_id: params[:pin][:board_id])
+            BoardsPin.delete(@boardsPins[0][:id])
+            @user = User.find(params[:pin][:userId])
+            @board = Board.find(params[:pin][:board_id])
+            @boards = Board.where(user_id: @user.id).includes(:pins).to_a
+            @pins = @user.pins.includes(photo_attachment: :blob).to_a
             render :show
+        elsif @pin && @pin.update_attributes(pin_params)
+            @user = User.find(@pin.user_id)
+            @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
+            @pins = @user.pins.includes(photo_attachment: :blob).to_a
+                if params[:pin][:new_board_id]
+                    @boardsPins = BoardsPin.where(pin_id: @pin.id, board_id: params[:pin][:board_id])
+                    BoardsPin.delete(@boardsPins[0][:id])
+                    @newBoardPin = BoardsPin.create!(board_id: params[:pin][:new_board_id], pin_id: @pin.id)
+                    @board = Board.find(params[:pin][:new_board_id])
+                else
+                    @board = Board.find(params[:pin][:board_id])
+                end
+            render :show
+        
+            
         else
             render json: @pin.errors.full_messages
         end
@@ -38,7 +60,7 @@ class Api::PinsController < ApplicationController
     def destroy
         @pin = Pin.find(params[:id])
         if @pin.destroy
-            render :show
+            render :delete
         else
             render json: @pin.errors.full_messages, status: 422
         end
@@ -52,7 +74,7 @@ class Api::PinsController < ApplicationController
         
         if params[:board_id]
             
-            @board = Board.find(params[:board_id])
+            @board = Board.find(params[:pin][:board_id])
         else 
             
             @board = Board.find(@boards[0].id)

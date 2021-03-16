@@ -15,7 +15,6 @@ class Api::UsersController < ApplicationController
         @user = User.find(params[:id])
         @boards = Board.where(user_id: params[:id]).includes(:pins).to_a
         @pins = @user.pins.includes(photo_attachment: :blob).to_a
-        debugger
         render :show
     end
 

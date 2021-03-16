@@ -1,5 +1,5 @@
 import { OPEN_MODAL, CLOSE_MODAL} from '../actions/modal_actions';
-import {RECEIVE_PIN} from '../actions/pin_actions';
+import {RECEIVE_PIN, REMOVE_PIN} from '../actions/pin_actions';
 
 const modalReducer = (state=null, action) => {
     Object.freeze(state);
@@ -10,6 +10,8 @@ const modalReducer = (state=null, action) => {
         case CLOSE_MODAL:
             return null;
         case RECEIVE_PIN:
+            return null; 
+        case REMOVE_PIN:
             return null; 
         default:
             return state;
