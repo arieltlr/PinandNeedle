@@ -29,27 +29,28 @@ class Api::PinsController < ApplicationController
 
     def update
         @pin = Pin.find_by(id: params[:id])
-        @pin_to_delete = Pin.find_by(id: params[:pin][:id])
-        debugger
-        if @pin && @pin.update_attributes(pin_params)
+        if @pin && params[:pin][:delete_boardsPin]
+            @boardsPins = BoardsPin.where(pin_id: @pin.id, board_id: params[:pin][:board_id])
+            BoardsPin.delete(@boardsPins[0][:id])
+            @user = User.find(params[:pin][:userId])
+            @board = Board.find(params[:pin][:board_id])
+            @boards = Board.where(user_id: @user.id).includes(:pins).to_a
+            @pins = @user.pins.includes(photo_attachment: :blob).to_a
+            render :show
+        elsif @pin && @pin.update_attributes(pin_params)
             @user = User.find(@pin.user_id)
             @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
             @pins = @user.pins.includes(photo_attachment: :blob).to_a
                 if params[:pin][:new_board_id]
-                    debugger
                     @boardsPins = BoardsPin.where(pin_id: @pin.id, board_id: params[:pin][:board_id])
                     BoardsPin.delete(@boardsPins[0][:id])
                     @newBoardPin = BoardsPin.create!(board_id: params[:pin][:new_board_id], pin_id: @pin.id)
                     @board = Board.find(params[:pin][:new_board_id])
-                    debugger
                 else
                     @board = Board.find(params[:pin][:board_id])
                 end
             render :show
-        elsif @pin_to_delete && params[:pin][:delete_boardsPin]
-            debugger
-            @boardsPins = BoardsPin.where(pin_id: @pin.id, board_id: params[:pin][:board_id])
-            BoardsPin.delete(@boardsPins[0][:id])
+        
             
         else
             render json: @pin.errors.full_messages

@@ -94,9 +94,7 @@ class PinShow extends React.Component {
         const profileLetter = email[0].toUpperCase()  
         const pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);     
         let pins = Object.assign({}, this.props.currentUser.pins, this.state.user.pins);
-        debugger
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
-            debugger
             return(
                 <BoardItem 
                 board={board}

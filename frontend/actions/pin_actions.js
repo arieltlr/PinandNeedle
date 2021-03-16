@@ -84,6 +84,7 @@ export const deletePin = (pinId) => {
     }
 }
 export const removeBoardsPin = (pin) => {
+    debugger
     return dispatch => {
         return PinAPIUtil.deleteBoardsPin(pin)
             .then((pin) =>

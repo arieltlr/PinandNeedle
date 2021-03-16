@@ -52,8 +52,10 @@ class EditPinsBoard extends React.Component {
     handleDelete(e){
         e.preventDefault();
         const deletePin = {
-            pin: this.state.pin,
+            pinId: this.state.pin.id,
+            board_id: this.state.board_id,
             delete_boardsPin: true,
+            userId: this.props.currentUser.id,
         }
         this.props.removeBoardsPin(deletePin).then(()=> this.props.history.push(`/board/${this.state.board_id}`))
     }
@@ -146,7 +148,7 @@ class EditPinsBoard extends React.Component {
                                     </div>*/}
                                 </div> 
                                 <div className="pin-image-container">   
-                                    <img src={this.state.photoUrl} alt="pin-image"/>
+                                    <img src={this.state.pin.photoUrl} alt="pin-image"/>
                                 </div>
                         </div>
                         <div className="edit-pin-button-container">
