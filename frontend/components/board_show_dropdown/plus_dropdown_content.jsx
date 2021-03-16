@@ -7,8 +7,17 @@ const PlusDropdownContent = (props) => {
             <li id="dropdown-header">
                 <span className="dropdown-header">Create</span>
             </li>
-            <li onClick={()=> props.openModal('create-pin')}> 
+            {props.boardShow ? 
+                <li onClick={()=> props.openModal('create-pin')}> 
                 Pin
+                </li>
+                :
+                <li onClick={()=> props.openModal('create-pin-from-profile')}> 
+                Pin
+                </li>
+            } 
+            <li onClick={()=> props.openModal("createBoard")}> 
+                Board
             </li>
         </ul>
 
