@@ -22,9 +22,21 @@
     position: fixed;
 }
 
-#plus-dropdown {
-    @include drop-down(100vh/10 * 7, 100vw/5*2.15, 180px, 160px, 40px)
+.create-drop-down {
+    @include drop-down(100vh/10 * 7, 100vw/5*2.15, 180px, 160px, 40px);
+
 }
-// .profile-nav-add-button {
-//     position: 
-// }
+#profile{
+    top: 55px;
+    right: 0px;
+}
+.dropdown-container-board-page{
+    position: relative;
+}
+#board{
+    top: 350px;
+    right: -130px;
+}
+.dropdown-container-profile-page {
+    position: relative;
+}
