@@ -18,11 +18,11 @@ class BoardPlusDD extends React.Component {
     }
     render() {
         return (
-                <div onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>
+                <div onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked} className="dropdown-container-board-page">
                     {this.state.show ? 
-                    <PlusDropdownContent id="plus-dropdown" user={this.props.user} board={this.props.board} openModal={this.props.openModal}/>: 
+                    <PlusDropdownContent id="plus-dropdown" user={this.props.user} board={this.props.board} openModal={this.props.openModal} boardShow={this.props.boardShow}/>: 
                     null}
-                    <div className="add-item-icon-board-or-pin" alt="plus icon"></div>
+                    <div className="add-item-icon-board-or-pin" id="board-create-dropdown" alt="plus icon"></div>
                 </div>
         )
     }

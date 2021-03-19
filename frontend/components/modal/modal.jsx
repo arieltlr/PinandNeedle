@@ -11,6 +11,7 @@ import CreatePinContainer from '../pins/create_pin_container';
 import PinSaveContainer from '../pins/pin_save_container';
 import EditPinContainer from '../pins/edit_pin_container';
 import EditPinsBoardContainer from '../pins/edit_pins_board_container';
+import CreatePinFromProfileContainer from '../pins/create_pin_from_profile_container';
 
 
 
@@ -49,6 +50,11 @@ function Modal ({modal, closeModal}) {
         case 'create-pin':
             // debugger
             component = <CreatePinContainer />;
+            form = "create-pin-modal"
+            break;
+        case 'create-pin-from-profile':
+            // debugger
+            component = <CreatePinFromProfileContainer />;
             form = "create-pin-modal"
             break;
         case 'pin-save':

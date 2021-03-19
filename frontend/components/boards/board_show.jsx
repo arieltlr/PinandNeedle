@@ -104,7 +104,7 @@ class BoardShow extends React.Component {
                                 <p className="board-description">{board.description ? board.description : null}</p>
                             </div>
                             
-                            <BoardPlusDD openModal={this.props.openModal}/>
+                            <BoardPlusDD openModal={this.props.openModal} boardShow={true}/>
 
                         </div>
 

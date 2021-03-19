@@ -80,7 +80,7 @@ class Pins extends React.Component {
         const email = this.props.currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
-        let pins = this.props.currentUser.pins;
+        let pins = this.props.pins;
         debugger
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             debugger

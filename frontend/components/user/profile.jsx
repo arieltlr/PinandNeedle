@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileNav from '../nav_bar/profile_nav';
+import ProfileNav from './profile_nav';
 import FollowsProfileDisplay from '../follows/profile_options';
 import { Link, withRouter } from 'react-router-dom';
 

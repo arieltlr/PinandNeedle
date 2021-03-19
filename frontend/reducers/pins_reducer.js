@@ -1,5 +1,5 @@
 import React from 'react';
-import { RECEIVE_BOARD } from '../actions/board_actions';
+import { RECEIVE_BOARD, RECEIVE_PROFILE } from '../actions/board_actions';
 
 import {
     RECEIVE_PINS,
@@ -24,6 +24,9 @@ const pinsReducer = (state = {}, action) => {
             } else{
             return action.board.pins
             };
+        case RECEIVE_PROFILE:
+            debugger
+            return Object.assign({}, state, action.userProfile.pins)
         default:
             return state;
     }
