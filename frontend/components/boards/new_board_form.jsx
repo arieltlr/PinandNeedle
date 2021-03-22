@@ -15,9 +15,14 @@ class NewBoardForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        const board = Object.assign({}, {user_id: this.props.currentUser.id, name: this.state.name, owner_email: this.props.currentUser.email})
+        if (!this.state.name){
+            return null;
+        } else{
+            const board = Object.assign({}, {user_id: this.props.currentUser.id, name: this.state.name, owner_email: this.props.currentUser.email})
         this.props.createBoard(board)
             .then(this.props.closeModal());
+        }
+        
     }
     handleName(e) {
         this.setState({name: e.target.value })
