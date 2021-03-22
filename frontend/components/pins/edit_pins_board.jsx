@@ -33,14 +33,12 @@ class EditPinsBoard extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         let updatedPin;
-        debugger
         if (this.state.new_board_id) {
             updatedPin = {
             id: this.props.pin.id,
             board_id: this.state.board_id,
             new_board_id: this.state.new_board_id,
             }
-            debugger
             this.props.updatePin(updatedPin).then(() => this.props.closeModal())
             } 
         else{
@@ -73,7 +71,6 @@ class EditPinsBoard extends React.Component {
     }
     findBoard(pin, user){
         let pinsBoard;
-        debugger
         const pinId = pin.id;
         const pinIdArray = Object.values(user.boards).map(board => {
             return Object.assign({}, {[board.id]: board.pins})
@@ -104,7 +101,6 @@ class EditPinsBoard extends React.Component {
                     </div>
                 </div>)
         })
-        debugger
         return (
             <div className="edit-pin-form-container">
                 <form className="edit-pin-form" onSubmit={this.handleSubmit}>

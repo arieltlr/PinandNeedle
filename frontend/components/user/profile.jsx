@@ -28,7 +28,6 @@ class Profile extends React.Component {
         const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
         let pins = this.props.pins
         let boards = this.props.boards.map((board, index) => {
-            debugger
             const pinCount = board.pins.length
             return (
                 <li className="board-li" key={`${index}`}>

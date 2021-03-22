@@ -32,7 +32,6 @@ export const updatePin = (pin) => {
     })
 }
 export const deleteBoardsPin = (pin) => {
-    debugger
     return $.ajax({
         method: "PATCH",
         url: `/api/pins/${pin.pinId}`,

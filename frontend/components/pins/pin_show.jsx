@@ -51,13 +51,11 @@ class PinShow extends React.Component {
         e.preventDefault();
         this.setState({saved_board_name: e.target.dataset.id, save_board_id: e.target.value, save_board: true})
         const assoc = Object.assign({}, {pin_id: this.state.pin.id}, {board_id: e.target.value})
-        debugger
         this.props.createAssoc(assoc)
         
     }
     findBoard(pin, user){
         let pinsBoard = false;
-        debugger
         const pinId = pin.id;
         const pinIdArray = Object.values(user.boards).map(board => {
             return Object.assign({}, {[board.id]: board.pins})
@@ -111,7 +109,6 @@ class PinShow extends React.Component {
         } else{
             showEditIcon = null;
         }
-        debugger
         return (
             <div className="whole-page-background" onClick={this.closeWhenClicked}>
                 <div className="pin-show-outer-container" >

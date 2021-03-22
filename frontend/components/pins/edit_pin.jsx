@@ -33,7 +33,6 @@ class EditPin extends React.Component {
 
     handleChange(event){
         const {name, value} = event.target;
-        debugger
         this.setState({
             [name]: value
         })
@@ -46,7 +45,7 @@ class EditPin extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         let updatedPin;
-        debugger
+        
         { this.state.new_board_id ? 
             updatedPin = {
             title: this.state.title,
@@ -86,7 +85,6 @@ class EditPin extends React.Component {
     }
     findBoard(pin, user){
         let pinsBoard;
-        debugger
         const pinId = pin.id;
         const pinIdArray = Object.values(user.boards).map(board => {
             return Object.assign({}, {[board.id]: board.pins})
@@ -117,7 +115,6 @@ class EditPin extends React.Component {
                     </div>
                 </div>)
         })
-        debugger
         return (
             <div className="edit-pin-form-container">
                 <form className="edit-pin-form" onSubmit={this.handleSubmit}>

@@ -6,7 +6,6 @@ import { receiveErrors, getPins, getPin, createPin, updatePin, deletePin } from 
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     const savedPin = Object.values(state.entities.pins).reverse()[0]
     return {
         errors: state.errors.pins,
@@ -18,7 +17,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    // debugger
     return {
         getPin: (pinId) => dispatch(getPin(pinId)),
         receiveErrors: error => dispatch(receiveErrors(error)),

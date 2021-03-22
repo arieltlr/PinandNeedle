@@ -21,7 +21,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    // debugger
     return {
         deleteBoard: (boardId) => dispatch(deleteBoard(boardId)),
         getBoard: (boardId) => dispatch(getBoard(boardId)),

@@ -4,7 +4,6 @@ class Api::PinsController < ApplicationController
         @pin = Pin.new(pin_params)
         if @pin.save
             @board = Board.find(params[:board_id])
-            debugger
             BoardsPin.create!(board_id: params[:board_id], pin_id: @pin.id)
             @user = User.find(@pin.user_id)
             @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
@@ -18,7 +17,6 @@ class Api::PinsController < ApplicationController
 
     def edit
         @pin = Pin.find(params[:id])
-        # @user = User.find_by(id: @pin.user_id)
         render :edit
     end
 

@@ -7,7 +7,6 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import { getBoards } from '../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     const boardId = Object.keys(state.entities.user[state.session.id].boards)[0];
     return {
         errors: state.errors.pins,

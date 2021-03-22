@@ -6,7 +6,6 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     return {
         errors: state.errors.boards,
         ownProps,
@@ -17,7 +16,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    // debugger
     return {
         updateBoard: (board) => dispatch(updateBoard(board)),
         getBoard: (boardId) => dispatch(getBoard(boardId)),

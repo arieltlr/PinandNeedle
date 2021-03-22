@@ -6,7 +6,6 @@ const boardErrorsReducer = (state = [], action) => {
         case RECEIVE_BOARD:
             return [];
         case RECEIVE_ERRORS:
-            debugger
             return action.errors;
         default:
             return state;

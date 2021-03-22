@@ -7,7 +7,6 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import { createAssoc } from '../../actions/boards_pins_actions'
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     return {
         errors: state.errors.pins,
         ownProps,
@@ -20,7 +19,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    // debugger
     return {
         getPin: (pinId) => dispatch(getPin(pinId)),
         receiveErrors: error => dispatch(receiveErrors(error)),

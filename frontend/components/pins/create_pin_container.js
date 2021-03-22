@@ -7,7 +7,6 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import { getBoards } from '../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     const boardId = parseInt(ownProps.location.pathname.slice(7));
     return {
         errors: state.errors.pins,
@@ -19,7 +18,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    // debugger
     return {
         createPin: (pin) => dispatch(createPin(pin)),
         updatePin: (pin) => dispatch(updatePin(pin)),
