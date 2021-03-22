@@ -15,7 +15,6 @@ class NewBoardForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        debugger
         const board = Object.assign({}, {user_id: this.props.currentUser.id, name: this.state.name, owner_email: this.props.currentUser.email})
         this.props.createBoard(board)
             .then(this.props.closeModal());
@@ -23,14 +22,10 @@ class NewBoardForm extends React.Component {
     handleName(e) {
         this.setState({name: e.target.value })
     }
-    // componentWillUnmount() {
-    //     const resetErrors = [];
-    //     this.props.refreshErrors(resetErrors);
-    // }
+
 
     render(){
-        // const errorMessages = this.props.errors;
-        // debugger
+
         return (
             <div className="new-board-form-container">
                 <form className="new-board-form" onSubmit={this.handleSubmit}>

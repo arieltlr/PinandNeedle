@@ -17,13 +17,11 @@ class BoardShow extends React.Component {
     }
 
     componentDidMount(){
-        // debugger
         this.props.getBoard(this.props.match.params.boardId)
     }
 
     render() {
         if (!this.state.fetchBoard){
-            // debugger
             this.state.fetchBoard = true;
             return null;
         }
@@ -71,7 +69,6 @@ class BoardShow extends React.Component {
             250: 1,
         };
         pins = pins.reverse();
-        // debugger
             if (currentUsersBoard){
                 return (
 

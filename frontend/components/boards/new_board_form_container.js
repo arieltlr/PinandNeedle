@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
     return {
         errors: state.errors.boards,
         ownProps,
@@ -15,7 +14,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    // debugger
     return {
         createBoard: (board) => dispatch(createBoard(board)),
         receiveErrors: error => dispatch(receiveErrors(error)),

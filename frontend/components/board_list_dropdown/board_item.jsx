@@ -9,7 +9,6 @@ class BoardItem extends React.Component {
             show_save_button: false,
             pin: this.props.pin,
         }
-        debugger
         this.onHover = this.onHover.bind(this);
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,12 +27,10 @@ class BoardItem extends React.Component {
         this.setState({show_save_button: changeState});
     }
     render() {
-        debugger
         let board = this.props.board;
         let pins = this.props.pins;
         let index = this.props.index
         let buttonState;
-        debugger
         if (this.state.show_save_button){
             buttonState = "show-button";
         }else {
@@ -47,7 +44,7 @@ class BoardItem extends React.Component {
                         <li className="board-name" key={index} value={board.id} data-id={board.name} 
                         onClick={this.handleSubmit}>{board.name}</li>
                     </div>
-                    <div >
+                    <div className="dropdown-save-button">
                         <button className={buttonState}>Save</button> 
                     </div>
                 </div>

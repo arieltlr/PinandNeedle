@@ -169,6 +169,7 @@
     width: 80px;
     height: 80px;
     object-fit: cover;
+    background-color: $grey-hover;
 }
 .cover-image1 {
         margin-bottom: 1px;
@@ -187,6 +188,8 @@
     height: 160px;
     object-fit: cover;
     border-radius: 20px 0px 0px 20px;
+    background-color: $grey-hover;
+
 }
 .no-boards-message{
     font-weight: 300;

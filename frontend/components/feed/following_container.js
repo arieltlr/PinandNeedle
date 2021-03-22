@@ -4,7 +4,6 @@ import Following from './following';
 import { receiveErrors, logout } from '../../actions/session_actions'
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
     return {
         user: state.entities.user[state.session.id]
     }

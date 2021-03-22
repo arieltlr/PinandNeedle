@@ -250,17 +250,6 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Pin
    
-    # def set_username(email)
-    #     email_copy = @email.dup
-    #     debugger
-    #     self.username = email_copy.split('@')[0]
-    #     debugger
-    # end
-
-    # def valid_email?(email)
-    #     parts = email.split('@')
-    #     parts.length != 2 ? false : true   
-    # end
 
 
 

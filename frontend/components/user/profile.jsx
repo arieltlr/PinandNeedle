@@ -26,27 +26,28 @@ class Profile extends React.Component {
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
         const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
-
+        let pins = this.props.pins
         let boards = this.props.boards.map((board, index) => {
-            // debugger
+            const pinCount = board.pins.length
             return (
                 <li className="board-li" key={`${index}`}>
                     <Link className="board-show-link" to={`/board/${board.id}`}>
                         <div className="board-cover">
                             <div className="board-cover-single">
-                                <img src={window.pin1} className="cover-image3" />
+                                {board.pins[0] ? <img src={pins[board.pins[0]].photoUrl} className="cover-image3" /> : <div className="cover-image3"></div> }
                             </div>
                             <div className="board-cover-stack">
-                                <img src={window.pin4} className="cover-image1" />
-                                <img src={window.brown_sweater} className="cover-image2" />
+                                {board.pins[1] ? <img src={pins[board.pins[1]].photoUrl} className="cover-image1" /> : <div className="cover-image1"></div> }
+                                {board.pins[2] ? <img src={pins[board.pins[2]].photoUrl} className="cover-image2" /> : <div className="cover-image2"></div> }       
                             </div>
                         </div>
                         <div className="board-info-container">
                             <div className="board-info">
                                 <h2 className="board-cover-name">{board.name}</h2>
                                 <div className="board-cover-subinfo">
-                                    <p className="board-cover-pin-count">3 Pins</p>
-                                    <p className="board-age">1d</p>
+                                    {board.pins.length === 1 ? <p className="board-cover-pin-count">{pinCount} Pin</p> 
+                                        : <p className="board-cover-pin-count">{pinCount} Pins</p>}
+                                    <p className="board-age">7d</p>
                                 </div>
                             </div>
                         </div>

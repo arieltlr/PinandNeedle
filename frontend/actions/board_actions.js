@@ -32,7 +32,6 @@ export const receiveErrors = errors => {
 }
 
 export const getBoards = (userId) => {
-    // debugger
     return dispatch => {
         return userShow(userId)
         .then((userProfile) =>
@@ -42,7 +41,6 @@ export const getBoards = (userId) => {
     }
 }
 export const getBoard = (boardId) => {
-    // debugger
     return dispatch => {
         return BoardAPIUtil.showBoard(boardId)
             .then((board) =>
@@ -52,7 +50,6 @@ export const getBoard = (boardId) => {
     }
 }
 export const createBoard = (board) => {
-    // debugger
     return dispatch => {
         return BoardAPIUtil.newBoard(board)
             .then((board) =>

@@ -27,13 +27,13 @@ class Pins extends React.Component {
 
     handleChange(event){
         const {name, value} = event.target;
-        debugger
+        // debugger
         this.setState({
             [name]: value
         })
     }
     handleName(e){
-        debugger
+        // debugger
         this.setState({
             board_name: e.target.dataset.id, board_id: e.target.value
         })
@@ -48,7 +48,6 @@ class Pins extends React.Component {
         pinPic.append('pin[title]', this.state.title);
         pinPic.append('pin[description]', this.state.description);
         pinPic.append('pin[owner_email]', this.state.owner_email);
-        debugger
         this.props.createPin(pinPic).then(() => this.props.openModal("pin-save"));
     }
     handleFile(e) {
@@ -81,9 +80,8 @@ class Pins extends React.Component {
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
         let pins = this.props.pins;
-        debugger
+        // debugger
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
-            debugger
             return(
                 <div className="boards-dropdown-li-container" value={board.id} data-id={board.name} onClick={this.handleName} key={index}>
                     <div className="boards-dropdown-board">

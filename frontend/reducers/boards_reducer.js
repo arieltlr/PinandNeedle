@@ -9,7 +9,6 @@ const boardsReducer = (state = {}, action) => {
         case RECEIVE_PROFILE:
             return action.userProfile.boards;
         case RECEIVE_BOARD:
-            // debugger
             return Object.assign({}, state, { [action.board.id]: action.board });
         case REMOVE_BOARD:
             // debugger
@@ -18,7 +17,6 @@ const boardsReducer = (state = {}, action) => {
             delete newState[action.boardId];
             return newState;
         case RECEIVE_PIN:
-            debugger
             return Object.assign({}, action.pin.user.boards);   
         default:
             return state;

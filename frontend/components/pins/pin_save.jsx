@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 class PinSave extends React.Component {
     render (){
-        debugger
         const pin = Object.values(this.props.pins).reverse()[0]
         return (
             <div className="pin-save-container">
