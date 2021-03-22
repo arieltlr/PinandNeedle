@@ -18,7 +18,6 @@ class BoardPlusDD extends React.Component {
     }
     render() {
         let page;
-        debugger
     if (this.props.boardShow === "boardShow"){
         page = "dropdown-container-board-page"
     } else if (this.props.boardShow === "feed"){
