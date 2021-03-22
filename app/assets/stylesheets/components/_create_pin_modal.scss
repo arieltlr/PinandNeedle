@@ -34,8 +34,21 @@
 }
 .image-input-container {
     width: 380px;
-    height: 450px;
+    height: 455px;
     background-image: image-url('upload_pin.png');
+    background-position: center;
+    outline: none;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-indent: -900px;
+}
+.image-input-container-error {
+    width: 380px;
+    height: 455px;
+    background-image: image-url('pin_upload_error');
     background-position: center;
     outline: none;
     background-repeat: no-repeat;
@@ -47,7 +60,7 @@
 }
 #pin-preview {
     width: 380px;
-    height: 450px;
+    height: 455px;
     object-fit: cover;
     border-radius: 10px;;
 }

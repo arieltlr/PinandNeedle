@@ -1,7 +1,9 @@
 class Api::PinsController < ApplicationController
 
     def create
+        debugger
         @pin = Pin.new(pin_params)
+        debugger
         if @pin.save
             @board = Board.find(params[:board_id])
             BoardsPin.create!(board_id: params[:board_id], pin_id: @pin.id)

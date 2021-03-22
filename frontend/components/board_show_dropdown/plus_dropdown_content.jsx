@@ -3,13 +3,19 @@ import React from 'react';
 
 const PlusDropdownContent = (props) => {
     let page;
-    props.boardShow ? page = "board" : page = "profile";
+    if (props.boardShow === "boardShow"){
+        page = "board"
+    } else if (props.boardShow === "feed"){
+        page = "feed"
+    } else {
+        page = "profile"
+    }
     return (
         <ul className="create-drop-down" id={page} >
             <li id="dropdown-header">
                 <span className="dropdown-header">Create</span>
             </li>
-            {props.boardShow ? 
+            {props.boardShow === "boardShow" ? 
                 <li onClick={()=> props.openModal('create-pin')}> 
                 Pin
                 </li>
@@ -18,12 +24,12 @@ const PlusDropdownContent = (props) => {
                 Pin
                 </li>
             } 
-            {props.boardShow ? 
-                null
-                :
+            {props.boardShow === "profile" ? 
                 <li onClick={()=> props.openModal("createBoard")}> 
                 Board
                 </li>
+                :
+                null
             }
             
         </ul>

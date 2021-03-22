@@ -47,7 +47,6 @@ class Profile extends React.Component {
                                 <div className="board-cover-subinfo">
                                     {board.pins.length === 1 ? <p className="board-cover-pin-count">{pinCount} Pin</p> 
                                         : <p className="board-cover-pin-count">{pinCount} Pins</p>}
-                                    <p className="board-age">7d</p>
                                 </div>
                             </div>
                         </div>

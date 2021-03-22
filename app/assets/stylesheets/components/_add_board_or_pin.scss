@@ -15,28 +15,36 @@
         background-color: $grey-hover;
     }
 }
-#board-create-dropdown {
-    position: absolute;
-    bottom: 30px;
-    right: 100vw / 2;
-    position: fixed;
-}
 
 .create-drop-down {
     @include drop-down(100vh/10 * 7, 100vw/5*2.15, 180px, 160px, 40px);
 
 }
 #profile{
-    top: 55px;
-    right: 0px;
+    top: 420px;
+    right: 120px;
 }
 .dropdown-container-board-page{
-    position: relative;
+    position: absolute;
+    bottom: 30px;
+    right: 100vw / 2;
+    position: fixed;
 }
 #board{
-    top: 350px;
-    right: -130px;
+    top: -120px;
+    right: -90px;
 }
-.dropdown-container-profile-page {
-    position: relative;
+#feed{
+    top: -40px;
+    right: 60px;
+}
+// .dropdown-container-profile-page {
+//     position: absolute;
+//     top: 400px;
+//     right: 170px;
+// }
+.dropdown-container-feed{
+    position: absolute;
+    top: 91vh;
+    right: 170px;
 }

@@ -15,9 +15,14 @@ class NewBoardForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        const board = Object.assign({}, {user_id: this.props.currentUser.id, name: this.state.name, owner_email: this.props.currentUser.email})
+        if (!this.state.name){
+            return null;
+        } else{
+            const board = Object.assign({}, {user_id: this.props.currentUser.id, name: this.state.name, owner_email: this.props.currentUser.email})
         this.props.createBoard(board)
             .then(this.props.closeModal());
+        }
+        
     }
     handleName(e) {
         this.setState({name: e.target.value })
@@ -32,7 +37,6 @@ class NewBoardForm extends React.Component {
                     <h1 className="create-title">Create Board</h1>
                     <p className="board-name-label">Name</p>
                     <input className="create-name" type="text" placeholder="Like 'Quilt inspiration' or 'Pattern references'" onChange={this.handleName}/>
-                    {/* {errorMessages.length > 0 ? <p className="error-message" >{errorMessages[0]}</p> : null} */}
                     <button className={ this.state.name.length > 0 ? "red-button-create-board" : "greyed-out-button"} >Create</button>
                 </form>
             </div>

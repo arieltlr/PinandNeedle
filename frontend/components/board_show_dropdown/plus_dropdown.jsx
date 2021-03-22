@@ -17,8 +17,17 @@ class BoardPlusDD extends React.Component {
         this.setState({show: changeState})
     }
     render() {
+        let page;
+        debugger
+    if (this.props.boardShow === "boardShow"){
+        page = "dropdown-container-board-page"
+    } else if (this.props.boardShow === "feed"){
+        page = "dropdown-container-feed"
+    } else {
+        page = "dropdown-container-profile-page"
+    }
         return (
-                <div onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked} className="dropdown-container-board-page">
+                <div onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked} className={page}>
                     {this.state.show ? 
                     <PlusDropdownContent id="plus-dropdown" user={this.props.user} board={this.props.board} openModal={this.props.openModal} boardShow={this.props.boardShow}/>: 
                     null}
