@@ -17,8 +17,9 @@ class BoardPlusDDProfile extends React.Component {
         this.setState({show: changeState})
     }
     render() {
+
         return (
-                <div onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked} className="dropdown-container-profile-page">
+                <div onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked} className="">
                     {this.state.show ? 
                     <PlusDropdownContent id="plus-dropdown" user={this.props.user} board={this.props.board} openModal={this.props.openModal} boardShow={this.props.boardShow}/>: 
                     null}

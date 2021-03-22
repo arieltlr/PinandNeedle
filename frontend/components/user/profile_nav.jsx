@@ -1,5 +1,5 @@
 import React from 'react';
-import BoardPlusDDProfile from '../board_show_dropdown/plus_dropodown_profile';
+import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
 
 const ProfileNav = (props) => {
     return (
@@ -9,7 +9,7 @@ const ProfileNav = (props) => {
             {/* <div className="add-item-icon" onClick={() => props.openModal("createBoard")}>
             </div> */}
             <div className="profile-nav-add-button">
-                <BoardPlusDDProfile openModal={props.openModal} boardShow={false}/>
+                <BoardPlusDD openModal={props.openModal} boardShow={"profile"}/>
             </div>
             
         </div>

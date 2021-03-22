@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Masonry from 'react-masonry-css'
+import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
+
 
 class Feed extends React.Component {
     constructor(props){
@@ -62,6 +64,7 @@ class Feed extends React.Component {
                     id="feed-grid">
                     {pins}
                 </Masonry>
+                <BoardPlusDD openModal={this.props.openModal} boardShow={"feed"}/>
             </div>
     )
 }
