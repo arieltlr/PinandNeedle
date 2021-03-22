@@ -16,6 +16,7 @@ class Pins extends React.Component {
             description: "",
             owner_email: this.props.currentUser.email,
             show: false,
+            error: "image-input-container",
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -40,7 +41,12 @@ class Pins extends React.Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        const pinPic = new FormData();
+        if (!this.state.photoFile){
+            this.setState({
+                error: "image-input-container-error"
+            })
+        } else {
+            const pinPic = new FormData();
         pinPic.append('pin[pin_url]', this.state.pin_url);
         pinPic.append('pin[photo]', this.state.photoFile);
         pinPic.append('pin[user_id]', this.props.currentUser.id);
@@ -49,6 +55,8 @@ class Pins extends React.Component {
         pinPic.append('pin[description]', this.state.description);
         pinPic.append('pin[owner_email]', this.state.owner_email);
         this.props.createPin(pinPic).then(() => this.props.openModal("pin-save"));
+        }
+        
     }
     handleFile(e) {
         const file = e.currentTarget.files[0];
@@ -80,7 +88,6 @@ class Pins extends React.Component {
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
         let pins = this.props.pins;
-        // debugger
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
                 <div className="boards-dropdown-li-container" value={board.id} data-id={board.name} onClick={this.handleName} key={index}>
@@ -92,7 +99,6 @@ class Pins extends React.Component {
                     </div>
                 </div>)
         })
-        const firstBoard = Object.values(this.props.currentUser.boards)[0]
         return (
             <div className="new-pin-form-container">
             <form className="new-pin-form" onSubmit={this.handleSubmit}>
@@ -119,7 +125,7 @@ class Pins extends React.Component {
                 </div>
                 <div className="pin-container-width">
                     <div className="pin-content-container">
-                            <div className="image-input-container">
+                            <div className={this.state.error}>
                                 {this.state.photoUrl ? <img id="pin-preview" src={this.state.photoUrl}/> :<input className="image-upload-input" type="file" onChange={this.handleFile}/>} 
                             </div>
                             
