@@ -4,6 +4,11 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             login(@user)
+            @boards = Board.where(user_id: params[:id]).includes(:pins).to_a
+            @pins = []
+            @boards.each do |board|
+            @pins.concat(board.pins.includes(photo_attachment: :blob).to_a)
+        end
             render :show
         else
             render json: @user.errors.full_messages, status: 404
