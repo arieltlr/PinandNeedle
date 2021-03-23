@@ -3,8 +3,15 @@ class Api::PinsController < ApplicationController
     def create
         @pin = Pin.new(pin_params)
         if @pin.save
-            @board = Board.find(params[:board_id])
-            BoardsPin.create!(board_id: params[:board_id], pin_id: @pin.id)
+            debugger
+            if params[:board_id] == ""
+                @board = Board.create!({user_id: @pin.user_id, name: "Quick Saves", description: "", owner_email: @pin.owner_email})
+                BoardsPin.create!(board_id: @board.id, pin_id: @pin.id)
+            else 
+                @board = Board.find(params[:board_id])
+                BoardsPin.create!(board_id: params[:board_id], pin_id: @pin.id)
+            end
+            
             @user = User.find(@pin.user_id)
             @boards = Board.where(user_id: @pin.user_id).includes(:pins).to_a
             @pins = @user.pins.includes(photo_attachment: :blob).to_a

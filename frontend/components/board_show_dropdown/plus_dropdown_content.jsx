@@ -10,7 +10,6 @@ const PlusDropdownContent = (props) => {
     } else {
         page = "profile"
     }
-    debugger
     return (
         <ul className="create-drop-down" id={page} >
             <li id="dropdown-header">
