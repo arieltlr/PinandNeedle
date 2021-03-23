@@ -26,9 +26,9 @@ class Feed extends React.Component {
             const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
             const profileLetter = email[0].toUpperCase();
             return (
-                <div className="pin-item">
+                <div className="pin-item" key={index}>
                     <Link to={`/pin/${pin.id}`} >
-                        <div className="pin-container" key={index}>
+                        <div className="pin-container" >
                             <img src={pin.photoUrl} 
                                 className="pin-image" 
                             />

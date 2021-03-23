@@ -7,7 +7,11 @@ const boardsReducer = (state = {}, action) => {
     // debugger
     switch (action.type) {
         case RECEIVE_PROFILE:
-            return action.userProfile.boards;
+            if (action.userProfile.boards === undefined){
+                return state;
+            } else {
+                return action.userProfile.boards;
+            } 
         case RECEIVE_BOARD:
             return Object.assign({}, state, { [action.board.id]: action.board });
         case REMOVE_BOARD:
