@@ -8,17 +8,23 @@ import { getBoards } from '../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const boardId = Object.keys(state.entities.user[state.session.id].boards)[0];
+    let boards;
+    if (Object.values(state.entities.boards).length === 0){
+        boards = state.entities.user[state.session.id].boards;
+    } else {
+        boards = state.entities.boards;
+    }
     return {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        board: state.entities.boards[boardId],
+        board: boards[boardId],
         pins: state.entities.pins,
 
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    // debugger
+    debugger
     return {
         createPin: (pin) => dispatch(createPin(pin)),
         updatePin: (pin) => dispatch(updatePin(pin)),
