@@ -88,6 +88,8 @@ class Pins extends React.Component {
         const profileLetter = email[0].toUpperCase()
         let pins = this.props.pins;
         let options;
+        let pinSaveButtonId;
+        this.state.board_id ? null : pinSaveButtonId = "no-board"
         if (this.props.currentUser.boards) { 
             options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
@@ -125,7 +127,7 @@ class Pins extends React.Component {
                                     </div>
                                     : 
                                     null}
-                                    <button className="pin-save-button" onClick={this.handleSubmit}>Save</button>
+                                    <button className="pin-save-button" id={pinSaveButtonId} onClick={this.handleSubmit}>Save</button>
                         </div>
                     </div>
                 </div>

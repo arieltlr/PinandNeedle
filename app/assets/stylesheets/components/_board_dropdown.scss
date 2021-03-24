@@ -52,6 +52,9 @@
         cursor: pointer;
         background-color: $hover-red;
     }
+    #no-board{
+        border-radius: 15px;
+    }
 }
 .board-dropdown {
     @include drop-down(90px, -50px, 365px, 200px, 60px);
