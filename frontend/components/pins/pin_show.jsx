@@ -50,8 +50,21 @@ class PinShow extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.setState({saved_board_name: e.target.dataset.id, save_board_id: e.target.value, save_board: true})
-        const assoc = Object.assign({}, {pin_id: this.state.pin.id}, {board_id: e.target.value})
-        this.props.createAssoc(assoc)
+        if (!this.props.currentUser.boards){
+            const assoc = {
+                'boardPin[pin_id]': this.state.pin.id, 
+                'boardPin[board_id]': e.target.value,
+                'newBoard[user_id]': this.props.currentUser.id,
+                'newBoard[owner_email]': this.props.currentUser.email}
+            this.props.createAssoc(assoc)
+        } else {
+            const assoc = {
+            'pin_id': this.state.pin.id, 
+            'board_id': e.target.value
+            }
+            this.props.createAssoc(assoc)
+        }
+
         
     }
     findBoard(pin, user){
@@ -69,7 +82,12 @@ class PinShow extends React.Component {
     }
     handleEdit(e){
         e.preventDefault();
-        const pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);
+        let pinsBoard;
+        if (this.props.currentUser.boards.length > 0){
+            pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);
+        } else {
+            pinsBoard = undefined;
+        }
         if (pinsBoard && this.state.user.id === this.props.currentUser.id){
             this.props.openModal("edit-pin")
         } else {
@@ -87,12 +105,20 @@ class PinShow extends React.Component {
         this.state.pin = this.props.pin[this.props.match.params.pinId];
         this.state.user = this.props.user[this.state.pin.user_id];
         const usersPin = Boolean(this.props.currentUser.id === this.state.user.id)
-        const email = this.state.pin.owner_email.split('@')[0]
-        const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
-        const profileLetter = email[0].toUpperCase()  
-        const pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);     
+        const email = this.state.pin.owner_email.split('@')[0];
+        const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
+        const profileLetter = email[0].toUpperCase();
+        let pinsBoard;
+        if (this.props.currentUser.boards){
+            pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);
+        }
+
+            
         let pins = Object.assign({}, this.props.currentUser.pins, this.state.user.pins);
-        const options = Object.values(this.props.currentUser.boards).map((board, index) => {
+        let options;
+        let firstBoard;
+        if (this.props.currentUser.boards) {
+            options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
                 <BoardItem 
                 board={board}
@@ -101,14 +127,19 @@ class PinShow extends React.Component {
                 pin={this.state.pin}
                 createAssoc={this.props.createAssoc}
                 />      
-        )})
-        const firstBoard = Object.values(this.props.currentUser.boards)[0]
+            )})
+            firstBoard = Object.values(this.props.currentUser.boards)[0];
+        } else {
+            options = null;
+            firstBoard = null;
+        }
         let showEditIcon;
         if ( usersPin || pinsBoard) {
             showEditIcon =  <div className="edit-icon" onClick={this.handleEdit}></div>
         } else{
             showEditIcon = null;
         }
+        debugger
         return (
             <div className="whole-page-background" onClick={this.closeWhenClicked}>
                 <div className="pin-show-outer-container" >
@@ -123,34 +154,37 @@ class PinShow extends React.Component {
                             <div>
                                 { showEditIcon }      
                             </div>
-                            
-                                <div className="drop-down-container">
-                                    { this.props.pinSaved.savedPin ? 
-                                    <Link className="board-link" to={`/board/${this.props.pinSaved.board_id}`}>
-                                        Saved to {this.props.currentUser.boards[this.props.pinSaved.board_id].name}!
-                                    </Link>
-                                    : 
-                                    <div id="down-icon-circle-board" className="create-pin-list-save" 
-                                        onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>
-                                        {firstBoard.name}
-                                            {this.state.show ? 
-                                            <ul className="board-dropdown">
-                                                {options} 
-                                                <div className="add-board-button-container">
-                                                    <div className="add-board-icon"></div>
-                                                    <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
-                                                </div>
-                                            </ul>
-                                        : null}
-                                        
-                                    </div>}
-                                   { this.props.pinSaved.savedPin ? null : 
-                                    <button value={firstBoard.id} data-id={firstBoard.name} 
-                                        className="pin-save-button" onClick={this.handleSubmit}>
-                                    Save</button>
+                                {firstBoard ? 
+                                    <div className="drop-down-container">
+                                        { this.props.pinSaved.savedPin ? 
+                                        <Link className="board-link" to={`/board/${this.props.pinSaved.board_id}`}>
+                                            Saved to {this.props.currentUser.boards[this.props.pinSaved.board_id].name}!
+                                        </Link>
+                                        : 
+                                        <div id="down-icon-circle-board" className="create-pin-list-save" 
+                                            onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>
+                                            {firstBoard.name}
+                                                {this.state.show ? 
+                                                <ul className="board-dropdown">
+                                                    {options} 
+                                                    <div className="add-board-button-container">
+                                                        <div className="add-board-icon"></div>
+                                                        <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
+                                                    </div>
+                                                </ul>
+                                            : null}
+                                            
+                                        </div>}
+                                    { this.props.pinSaved.savedPin ? null : 
+                                        <button value={firstBoard.id} data-id={firstBoard.name} 
+                                            className="pin-save-button" onClick={this.handleSubmit}>
+                                        Save</button>
                                     }
                                     
-                                </div>
+                                </div> 
+                                :
+                                <button className="pin-save-button" id="no-board" onClick={this.handleSubmit}>Save</button>
+                                }
                             
                         </div>
                         <div className="pin-show-info">
