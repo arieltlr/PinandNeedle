@@ -37,5 +37,29 @@ file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/alexandra-lam
 pin2.photo.attach(io: file, filename: 'alexandra-lammerink-unsplash.jpg')
 BoardsPin.create!(board_id: board4.id, pin_id: pin2.id)
 
-# pin3 = Pin.create!({pin_url: "https://unsplash.com/photos/tX62O5F3AfU", description: "Sewing desk", title: "Station Goals", owner_email: demouser.email, user_id: demouser.id})
-# pin4 = Pin.create!({pin_url: "https://unsplash.com/photos/tX62O5F3AfU", description: "Sewing desk", title: "Station Goals", owner_email: demouser.email, user_id: demouser.id})
+pin3 = Pin.create!({pin_url: "https://unsplash.com/photos/4byBtNuIyIg", description: "Folded linen fabric", title: "Soft linen", owner_email: demouser.email, user_id: demouser.id})
+file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/mel-poole-unsplash.jpg')
+pin3.photo.attach(io: file, filename: 'mel-poole-unsplash.jpg')
+BoardsPin.create!(board_id: board2.id, pin_id: pin3.id)
+
+
+pin4 = Pin.create!({pin_url: "https://unsplash.com/photos/V6T99SnUCyA", description: "Rack of serger threads", title: "Jewel tone thread", owner_email: demouser.email, user_id: demouser.id})
+file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/vishal-banik-unsplash.jpg')
+pin4.photo.attach(io: file, filename: 'mel-poole-unsplash.jpg')
+BoardsPin.create!(board_id: board1.id, pin_id: pin4.id)
+
+pin5 = Pin.create!({pin_url: "https://unsplash.com/@heftiba", description: "Stacks of textiles from Turkey", title: "Turkish Tapestries", owner_email: demouser.email, user_id: demouser.id})
+file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/toa-heftiba-textiles-unsplash.jpg')
+pin5.photo.attach(io: file, filename: 'toa-heftiba-textiles-unsplash.jpg')
+BoardsPin.create!(board_id: board2.id, pin_id: pin5.id)
+
+pin6 = Pin.create!({pin_url: "https://unsplash.com/photos/tp8qeCAFBrw", description: "A man applying fabric prints by hand", title: "Pattern printing", owner_email: user2.email, user_id: user2.id})
+file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/francisco-arnela-unsplash.jpg')
+pin6.photo.attach(io: file, filename: 'francisco-arnela-unsplash.jpg')
+BoardsPin.create!(board_id: board4.id, pin_id: pin6.id)
+
+pin7 = Pin.create!({pin_url: "https://unsplash.com/photos/E7zsz8JA8FM", description: "Thread in all the colors of the rainbow", title: "Embroidery thread", owner_email: demouser.email, user_id: demouser.id})
+file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/embroidery_thread.jpg')
+pin7.photo.attach(io: file, filename: 'annie-spratt-spools.jpg')
+BoardsPin.create!(board_id: board1.id, pin_id: pin7.id)
+
