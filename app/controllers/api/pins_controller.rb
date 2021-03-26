@@ -73,7 +73,7 @@ class Api::PinsController < ApplicationController
     def show
         @pin = Pin.find_by(id: params[:id])
         @pinOwner = User.find(@pin.user_id)
-        @pins = @pinOwner.pins.includes(photo_attachment: :blob).to_a
+        @pins = Pin.all
         if @pin 
             render :showOne
         else

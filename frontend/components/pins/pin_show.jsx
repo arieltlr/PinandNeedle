@@ -8,10 +8,6 @@ class PinShow extends React.Component {
         super(props)
         this.state = {
             pinFetched: false,
-            pin: this.props.allPins[this.props.match.params.pinId],
-            pins: this.props.allPins, 
-            board: {}, 
-            pinOwner: this.props.pinOwner[this.state.pin.user_id],
             pin_board_id: "",
             show: false,
             pin_id: "",
@@ -30,7 +26,7 @@ class PinShow extends React.Component {
         
     }
     componentDidMount(){
-        this.props.getPins()
+        this.props.getPin(this.props.match.params.pinId)
     }
     goBack(){
         this.props.history.goBack();
@@ -53,15 +49,16 @@ class PinShow extends React.Component {
         this.setState({saved_board_name: e.target.dataset.id, save_board_id: e.target.value, save_board: true})
         if (!this.props.currentUser.boards){
             const assoc = {
-                'boardPin[pin_id]': this.state.pin.id, 
+                'boardPin[pin_id]': this.props.pin.id, 
                 'boardPin[board_id]': e.target.value,
                 'newBoard[user_id]': this.props.currentUser.id,
                 'newBoard[owner_email]': this.props.currentUser.email}
             this.props.createAssoc(assoc)
         } else {
+            debugger
             const assoc = {
-            'pin_id': this.state.pin.id, 
-            'board_id': e.target.value
+                'boardPin[board_id]': e.target.value, 
+                'boardPin[pin_id]': this.props.pin.id 
             }
             debugger
             this.props.createAssoc(assoc)
@@ -86,11 +83,11 @@ class PinShow extends React.Component {
         e.preventDefault();
         let pinsBoard;
         if (this.props.currentUser.boards.length > 0){
-            pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);
+            pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
         } else {
             pinsBoard = undefined;
         }
-        if (pinsBoard && this.state.pinOwner.id === this.props.currentUser.id){
+        if (pinsBoard && this.props.pinOwner.id === this.props.currentUser.id){
             this.props.openModal("edit-pin")
         } else {
             this.props.openModal("edit-pinsBoard")
@@ -104,18 +101,15 @@ class PinShow extends React.Component {
             this.state.pinFetched = true;
             return null;
         }
-        // this.state.pin = this.props.pin[this.props.match.params.pinId];
-        // this.state.pinOwner = this.props.pinOwner[this.state.pin.user_id];
-        const usersPin = Boolean(this.props.currentUser.id === this.state.pinOwner.id)
-        const email = this.state.pin.owner_email.split('@')[0];
+        const usersPin = Boolean(this.props.currentUser.id === this.props.pinOwner.id)
+        const email = this.props.pin.owner_email.split('@')[0];
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         let pinsBoard;
         if (this.props.currentUser.boards){
-            pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);
+            pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
         }
-  
-        let pins = Object.assign({}, this.props.currentUser.pins, this.props.pin);
+        let pins = this.props.allPins;
         let options;
         let firstBoard;
         let noBoards;
@@ -126,7 +120,7 @@ class PinShow extends React.Component {
                 board={board}
                 pins={pins}
                 index={index}
-                pin={this.state.pin}
+                pin={this.props.pin}
                 createAssoc={this.props.createAssoc}
                 />      
             )})
@@ -150,7 +144,7 @@ class PinShow extends React.Component {
                     </div>
                     <div className="pin-show-container">
                     <div className="pin-show-image-container">
-                        <img src={this.state.pin.photoUrl} className="pin-show-image"/>
+                        <img src={this.props.pin.photoUrl} className="pin-show-image"/>
                     </div>
                     <div className="all-pin-info" id={noBoards}>
                         <div className="pin-info-buttons">
@@ -191,9 +185,9 @@ class PinShow extends React.Component {
                             
                         </div>
                         <div className="pin-show-info">
-                            <a className="pin-show-url" rel={'external'} href={`https://${this.state.pin.pin_url}`} target="_blank">{this.state.pin.pin_url.slice(4)}</a>
-                            <a className="pin-show-title" rel={'external'} href={`https://${this.state.pin.pin_url}`}>{this.state.pin.title}</a>
-                            {this.state.pin.description ? <p className="pin-show-description">{this.state.pin.description}</p> : null}
+                            <a className="pin-show-url" rel={'external'} href={`https://${this.props.pin.pin_url}`} target="_blank">{this.props.pin.pin_url.slice(4)}</a>
+                            <a className="pin-show-title" rel={'external'} href={`https://${this.props.pin.pin_url}`}>{this.props.pin.title}</a>
+                            {this.props.pin.description ? <p className="pin-show-description">{this.props.pin.description}</p> : null}
                         </div>
                         <div className="create-pin-user-info">
                             <div id="profile-circle-create-pin">

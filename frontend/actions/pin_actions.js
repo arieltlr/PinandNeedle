@@ -5,6 +5,7 @@ export const RECEIVE_PIN = "RECEIVE_PIN";
 export const REMOVE_PIN = "REMOVE_PIN";
 export const NEW_PIN = "NEW_PIN";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const SHOW_PIN = "SHOW_PIN";
 
 export const receivePins = (pins) => {
     return {
@@ -15,6 +16,12 @@ export const receivePins = (pins) => {
 export const receivePin = (pin) => {
     return {
         type: RECEIVE_PIN,
+        pin
+    }
+}
+export const showPin = (pin) => {
+    return {
+        type: SHOW_PIN,
         pin
     }
 }
@@ -50,7 +57,7 @@ export const getPin = (pinId) => {
     return dispatch => {
         return PinAPIUtil.showPin(pinId)
             .then((pin) =>
-                dispatch(receivePin(pin)),
+                dispatch(showPin(pin)),
                 (errors) =>
                     dispatch(receiveErrors(errors.responseJSON)));
     }

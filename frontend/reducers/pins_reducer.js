@@ -5,7 +5,8 @@ import {
     RECEIVE_PINS,
     RECEIVE_PIN,
     REMOVE_PIN,
-    RECEIVE_ERRORS } from "../actions/pin_actions";
+    RECEIVE_ERRORS, 
+    SHOW_PIN } from "../actions/pin_actions";
 
 
 const pinsReducer = (state = {}, action) => {
@@ -14,7 +15,10 @@ const pinsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PINS:
             // debugger
-            return action.pins
+            return action.pins;
+        case SHOW_PIN:
+            debugger
+            return action.pin.pins
         case RECEIVE_PIN:
             debugger
             return Object.assign({}, state, { [action.pin.pin.id]: action.pin.pin });

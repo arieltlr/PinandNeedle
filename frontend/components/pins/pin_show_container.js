@@ -8,12 +8,21 @@ import { createAssoc } from '../../actions/boards_pins_actions'
 
 const mapStateToProps = (state, ownProps) => {
     debugger
+    let pinOwnerId;
+    let pinOwner;
+    if (Object.keys(state.entities.pins).length > 0){
+        pinOwnerId = state.entities.pins[ownProps.match.params.pinId].user_id
+        pinOwner = state.entities.user[pinOwnerId];
+    } else {
+        pinOwner = {};
+    }
     return {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
         allPins: state.entities.pins,
-        pinOwner: state.entities.user,
+        pin: state.entities.pins[ownProps.match.params.pinId],
+        pinOwner: pinOwner,
         pinSaved: state.entities.pinSaved,
 
     }
