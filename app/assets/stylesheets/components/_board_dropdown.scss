@@ -95,6 +95,8 @@
     height: 45px;
     border-radius: 25px;
     margin: 0px;
+    margin-right: 10px;
+
     &:hover{
         display: initial;
         background-color: $red;
@@ -106,6 +108,8 @@
         transition-duration: 0s;
         padding: 0px;
         margin: 0px;
+        margin-right: 10px;
+
     }
 }
 .show-button {
@@ -117,6 +121,8 @@
     border-radius: 25px;
     padding: 0px;
     margin: 0px;
+    margin-right: 10px;
+
     &:hover{
         display: initial;
         background-color: $red;
@@ -127,7 +133,9 @@
         cursor: pointer;
         transition-duration: 0s;
         padding: 0px;
-           margin: 0px;
+        margin: 0px;
+        margin-right: 10px;
+
     }
 }
 .dropdown-save-button {

@@ -116,9 +116,9 @@ class Pins extends React.Component {
                                         {this.state.show ? 
                                         <ul className="board-dropdown">
                                             {options} 
-                                            <div className="add-board-button-container">
+                                            <div className="add-board-button-container" onClick={() => this.props.openModal('createBoard')}>
                                                 <div className="add-board-icon"></div>
-                                                <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
+                                                <div className="create-new-board">Create Board</div>
                                             </div>
                                         </ul>
                     

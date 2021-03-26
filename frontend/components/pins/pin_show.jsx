@@ -10,7 +10,7 @@ class PinShow extends React.Component {
             pinFetched: false,
             pin: {}, 
             board: {}, 
-            user: {},
+            pinOwner: {},
             pin_board_id: "",
             show: false,
             pin_id: "",
@@ -88,7 +88,7 @@ class PinShow extends React.Component {
         } else {
             pinsBoard = undefined;
         }
-        if (pinsBoard && this.state.user.id === this.props.currentUser.id){
+        if (pinsBoard && this.state.pinOwner.id === this.props.currentUser.id){
             this.props.openModal("edit-pin")
         } else {
             this.props.openModal("edit-pinsBoard")
@@ -103,8 +103,8 @@ class PinShow extends React.Component {
             return null;
         }
         this.state.pin = this.props.pin[this.props.match.params.pinId];
-        this.state.user = this.props.user[this.state.pin.user_id];
-        const usersPin = Boolean(this.props.currentUser.id === this.state.user.id)
+        this.state.pinOwner = this.props.pinOwner[this.state.pin.user_id];
+        const usersPin = Boolean(this.props.currentUser.id === this.state.pinOwner.id)
         const email = this.state.pin.owner_email.split('@')[0];
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
@@ -112,11 +112,11 @@ class PinShow extends React.Component {
         if (this.props.currentUser.boards){
             pinsBoard = this.findBoard(this.state.pin, this.props.currentUser);
         }
-
-            
-        let pins = Object.assign({}, this.props.currentUser.pins, this.state.user.pins);
+  
+        let pins = Object.assign({}, this.props.currentUser.pins, this.props.pin);
         let options;
         let firstBoard;
+        let noBoards;
         if (this.props.currentUser.boards) {
             options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
@@ -132,6 +132,7 @@ class PinShow extends React.Component {
         } else {
             options = null;
             firstBoard = null;
+            noBoards = "all-pin-info-no-boards"
         }
         let showEditIcon;
         if ( usersPin || pinsBoard) {
@@ -149,7 +150,7 @@ class PinShow extends React.Component {
                     <div className="pin-show-image-container">
                         <img src={this.state.pin.photoUrl} className="pin-show-image"/>
                     </div>
-                    <div className="all-pin-info">
+                    <div className="all-pin-info" id={noBoards}>
                         <div className="pin-info-buttons">
                             <div>
                                 { showEditIcon }      
@@ -168,8 +169,8 @@ class PinShow extends React.Component {
                                                 <ul className="board-dropdown">
                                                     {options} 
                                                     <div className="add-board-button-container">
-                                                        <div className="add-board-icon"></div>
-                                                        <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
+                                                        <div className="add-board-icon" onClick={() => this.props.openModal('createBoard')}></div>
+                                                        <div className="create-new-board">Create Board</div>
                                                     </div>
                                                 </ul>
                                             : null}
