@@ -8,9 +8,10 @@ class PinShow extends React.Component {
         super(props)
         this.state = {
             pinFetched: false,
-            pin: {}, 
+            pin: this.props.allPins[this.props.match.params.pinId],
+            pins: this.props.allPins, 
             board: {}, 
-            pinOwner: {},
+            pinOwner: this.props.pinOwner[this.state.pin.user_id],
             pin_board_id: "",
             show: false,
             pin_id: "",
@@ -29,7 +30,7 @@ class PinShow extends React.Component {
         
     }
     componentDidMount(){
-        this.props.getPin(this.props.match.params.pinId)
+        this.props.getPins()
     }
     goBack(){
         this.props.history.goBack();
@@ -62,6 +63,7 @@ class PinShow extends React.Component {
             'pin_id': this.state.pin.id, 
             'board_id': e.target.value
             }
+            debugger
             this.props.createAssoc(assoc)
         }
 
@@ -102,8 +104,8 @@ class PinShow extends React.Component {
             this.state.pinFetched = true;
             return null;
         }
-        this.state.pin = this.props.pin[this.props.match.params.pinId];
-        this.state.pinOwner = this.props.pinOwner[this.state.pin.user_id];
+        // this.state.pin = this.props.pin[this.props.match.params.pinId];
+        // this.state.pinOwner = this.props.pinOwner[this.state.pin.user_id];
         const usersPin = Boolean(this.props.currentUser.id === this.state.pinOwner.id)
         const email = this.state.pin.owner_email.split('@')[0];
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();

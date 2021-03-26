@@ -7,11 +7,12 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import { createAssoc } from '../../actions/boards_pins_actions'
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
     return {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        pin: state.entities.pins,
+        allPins: state.entities.pins,
         pinOwner: state.entities.user,
         pinSaved: state.entities.pinSaved,
 

@@ -12,6 +12,7 @@ class Api::BoardsPinsController < ApplicationController
                 render json: @boardsPin.errors.full_messages, status: 404
             end
         else
+            debugger
             @boardsPin = BoardsPin.new(boards_pins_params)
             if @boardsPin.save
                 render :show
