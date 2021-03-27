@@ -15,8 +15,14 @@ const userReducer = (state = {}, action) => {
         case RECEIVE_PIN:
             return Object.assign({}, state, {[action.pin.user.id]: action.pin.user});
         case SHOW_PIN:
-            return Object.assign({}, state, {[action.pin.user.id]: action.pin.user});
+            if (Object.keys(state).includes(action.pin.user.id.toString())){
+                return state;
+            } else {
+                return Object.assign({}, state, {[action.pin.user.id]: action.pin.user});
+            }
+            
         case RECEIVE_BOARDS_PINS_ASSOC:
+            debugger
             if (action.boardsPins.user){
                 const newState = Object.assign({}, state);
                 delete newState[action.boardsPins.user.id];

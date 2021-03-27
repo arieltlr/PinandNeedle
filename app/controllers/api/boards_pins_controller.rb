@@ -1,7 +1,7 @@
 class Api::BoardsPinsController < ApplicationController
 
     def create
-    debugger        
+            
         if params[:boardPin][:boardPin][:board_id] == ""
             @board = Board.create!({user_id: params[:boardPin][:newBoard][:user_id], name: "Quick Saves", description: "", owner_email: params[:boardPin][:newBoard][:owner_email]})
             @user = User.find_by(id: params[:boardPin][:newBoard][:user_id] )
@@ -13,7 +13,7 @@ class Api::BoardsPinsController < ApplicationController
                 render json: @boardsPin.errors.full_messages, status: 404
             end
         else
-            debugger
+            
             @boardsPin = BoardsPin.new(board_id: params[:boardPin][:boardPin][:board_id], pin_id: params[:boardPin][:boardPin][:pin_id])
             if @boardsPin.save
                 render :show

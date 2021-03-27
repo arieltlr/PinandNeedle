@@ -55,12 +55,10 @@ class PinShow extends React.Component {
                 'newBoard[owner_email]': this.props.currentUser.email}
             this.props.createAssoc(assoc)
         } else {
-            debugger
             const assoc = {
                 'boardPin[board_id]': e.target.value, 
                 'boardPin[pin_id]': this.props.pin.id 
             }
-            debugger
             this.props.createAssoc(assoc)
         }
 
@@ -136,7 +134,7 @@ class PinShow extends React.Component {
         } else{
             showEditIcon = null;
         }
-        debugger
+        
         return (
             <div className="whole-page-background" onClick={this.closeWhenClicked}>
                 <div className="pin-show-outer-container" >
@@ -185,7 +183,7 @@ class PinShow extends React.Component {
                             
                         </div>
                         <div className="pin-show-info">
-                            <a className="pin-show-url" rel={'external'} href={`https://${this.props.pin.pin_url}`} target="_blank">{this.props.pin.pin_url.slice(4)}</a>
+                            <a className="pin-show-url" rel={'external'} href={`https://${this.props.pin.pin_url}`} target="_blank">{this.props.pin.pin_url.slice(8, 20)}</a>
                             <a className="pin-show-title" rel={'external'} href={`https://${this.props.pin.pin_url}`}>{this.props.pin.title}</a>
                             {this.props.pin.description ? <p className="pin-show-description">{this.props.pin.description}</p> : null}
                         </div>

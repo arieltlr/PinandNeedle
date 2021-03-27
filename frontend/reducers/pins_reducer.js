@@ -14,13 +14,10 @@ const pinsReducer = (state = {}, action) => {
     // debugger
     switch (action.type) {
         case RECEIVE_PINS:
-            // debugger
             return action.pins;
         case SHOW_PIN:
-            debugger
             return action.pin.pins
         case RECEIVE_PIN:
-            debugger
             return Object.assign({}, state, { [action.pin.pin.id]: action.pin.pin });
         case RECEIVE_BOARD:
             if (action.board.pins === undefined){
