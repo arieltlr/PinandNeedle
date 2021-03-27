@@ -5,6 +5,14 @@ import { Link, withRouter } from 'react-router-dom';
 
 class Profile extends React.Component {
 
+    constructor(props){
+        super(props)
+        this.state ={
+            fetchBoards: false
+        }
+
+    }
+
     componentDidMount() {
         this.props.getBoards(this.props.match.params.userId)
     }
@@ -16,7 +24,8 @@ class Profile extends React.Component {
     }
     render() {
         // debugger
-        if (!this.props.email[0]) {
+        if (!this.state.fetchBoards) {
+            this.state.fetchBoards = !this.state.fetchBoards;
             return null;
         }
 
@@ -30,7 +39,7 @@ class Profile extends React.Component {
         let boards = this.props.boards.map((board, index) => {
             const pinCount = board.pins.length
             return (
-                <li className="board-li" key={`${index}`}>
+                <li className="board-li" key={index}>
                     <Link className="board-show-link" to={`/board/${board.id}`}>
                         <div className="board-cover">
                             <div className="board-cover-single">
