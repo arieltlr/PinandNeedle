@@ -113,25 +113,25 @@ pin16.photo.attach(io: file, filename: 'michelle-cassar-blue-super.jpg')
 BoardsPin.create!(board_id: board3.id, pin_id: pin16.id)
 
 #done
-pin17 = Pin.create!({pin_url: "https://unsplash.com/photos/_KCrSolz6FI", description: "Natural threads on a loom", title: "Loom work", owner_email: demosuer.email, user_id: demosuer.id})
+pin17 = Pin.create!({pin_url: "https://unsplash.com/photos/_KCrSolz6FI", description: "Natural threads on a loom", title: "Loom work", owner_email: demouser.email, user_id: demouser.id})
 file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/nickolas-nikolic-natural-loom.jpg')
 pin17.photo.attach(io: file, filename: 'nickolas-nikolic-natural-loom.jpg')
 BoardsPin.create!(board_id: board1.id, pin_id: pin17.id)
 
 #done
-pin18 = Pin.create!({pin_url: "https://unsplash.com/photos/dl-Lb5TMxF0", description: "Colorful blankets from the market", title: "Peruvian textiles", owner_email: demosuer.email, user_id: demosuer.id})
+pin18 = Pin.create!({pin_url: "https://unsplash.com/photos/dl-Lb5TMxF0", description: "Colorful blankets from the market", title: "Peruvian textiles", owner_email: demouser.email, user_id: demouser.id})
 file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/megan-markham-peruvian.jpg')
 pin18.photo.attach(io: file, filename: 'megan-markham-peruvian.jpg')
 BoardsPin.create!(board_id: board2.id, pin_id: pin18.id)
 
 #done
-pin19 = Pin.create!({pin_url: "https://unsplash.com/photos/upJFoyr7BBA", description: "Textures and colors from Morocco", title: "Moroccan market textiles", owner_email: demosuer.email, user_id: demosuer.id})
+pin19 = Pin.create!({pin_url: "https://unsplash.com/photos/upJFoyr7BBA", description: "Textures and colors from Morocco", title: "Moroccan market textiles", owner_email: demouser.email, user_id: demouser.id})
 file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/annie-spratt-morocco-market.jpg')
 pin19.photo.attach(io: file, filename: 'annie-spratt-morocco-market.jpg')
 BoardsPin.create!(board_id: board2.id, pin_id: pin19.id)
 
 #done
-pin20 = Pin.create!({pin_url: "https://unsplash.com/photos/mpFsCX5FqZ8", description: "Glimpse into the rug market", title: "Rug stack", owner_email: demosuer.email, user_id: demosuer.id})
+pin20 = Pin.create!({pin_url: "https://unsplash.com/photos/mpFsCX5FqZ8", description: "Glimpse into the rug market", title: "Rug stack", owner_email: demouser.email, user_id: demouser.id})
 file = open('https://pinandneedle-seeds.s3-us-west-1.amazonaws.com/juli-kosolapova-rug-stack.jpg')
 pin20.photo.attach(io: file, filename: 'juli-kosolapova-rug-stack.jpg')
 BoardsPin.create!(board_id: board2.id, pin_id: pin20.id)
