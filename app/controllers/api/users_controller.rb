@@ -20,9 +20,12 @@ class Api::UsersController < ApplicationController
         @user = User.find(params[:id])
         @boards = Board.where(user_id: params[:id]).includes(:pins).to_a
         @pins = []
-        @boards.each do |board|
-            @pins.concat(board.pins.includes(photo_attachment: :blob).to_a)
+        if @boards 
+            @boards.each do |board|
+                @pins.concat(board.pins.includes(photo_attachment: :blob).to_a)
+            end
         end
+        
         # @pins = @user.pins.includes(photo_attachment: :blob).to_a
         render :show
     end

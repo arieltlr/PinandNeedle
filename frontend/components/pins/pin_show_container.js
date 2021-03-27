@@ -7,13 +7,21 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import { createAssoc } from '../../actions/boards_pins_actions'
 
 const mapStateToProps = (state, ownProps) => {
+    let pinOwnerId;
+    let pinOwner;
+    if (Object.keys(state.entities.pins).length > 0){
+        pinOwnerId = state.entities.pins[ownProps.match.params.pinId].user_id
+        pinOwner = state.entities.user[pinOwnerId];
+    } else {
+        pinOwner = {};
+    }
     return {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        pin: state.entities.pins,
-        board: state.entities.boards,
-        user: state.entities.user,
+        allPins: state.entities.pins,
+        pin: state.entities.pins[ownProps.match.params.pinId],
+        pinOwner: pinOwner,
         pinSaved: state.entities.pinSaved,
 
     }

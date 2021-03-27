@@ -7,24 +7,44 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import { getBoards } from '../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    const boardId = Object.keys(state.entities.user[state.session.id].boards)[0];
+    let boardId;
     let boards;
-    if (Object.values(state.entities.boards).length === 0){
+    let board_id;
+    let board_name;
+    let board;
+    if (state.entities.user[state.session.id].boards){
+        boardId = Object.keys(state.entities.user[state.session.id].boards)[0];
+    } else {
+        boardId = "";
+        board_id = "";
+        board_name = "";
+    } 
+    
+    if (Object.values(state.entities.boards).length === 0 && !state.entities.user[state.session.id].boards ){
+        boards = {}  
+    } else if (Object.values(state.entities.boards).length === 0){
         boards = state.entities.user[state.session.id].boards;
+        board = boards[boardId];
+        board_name = board.name;
+        board_id = board.id;
+        
     } else {
         boards = state.entities.boards;
+        board = boards[boardId];
+        board_name = board.name;
+        board_id = board.id;
     }
     return {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        board: boards[boardId],
+        board_name: board_name,
+        board_id: board_id,
         pins: state.entities.pins,
 
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    debugger
     return {
         createPin: (pin) => dispatch(createPin(pin)),
         updatePin: (pin) => dispatch(updatePin(pin)),

@@ -10,9 +10,8 @@ class Pins extends React.Component {
             pin_url: "",
             photoFile: null,
             photoUrl: null, 
-            user_id: this.props.board.user_id,
-            board_id: this.props.board.id,
-            board_name: this.props.board.name,
+            board_id: this.props.board_id,
+            board_name: this.props.board_name,
             description: "",
             owner_email: this.props.currentUser.email,
             show: false,
@@ -88,7 +87,11 @@ class Pins extends React.Component {
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
         let pins = this.props.pins;
-        const options = Object.values(this.props.currentUser.boards).map((board, index) => {
+        let options;
+        let pinSaveButtonId;
+        this.state.board_id ? null : pinSaveButtonId = "no-board"
+        if (this.props.currentUser.boards) { 
+            options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
                 <div className="boards-dropdown-li-container" value={board.id} data-id={board.name} onClick={this.handleName} key={index}>
                     <div className="boards-dropdown-board">
@@ -98,7 +101,9 @@ class Pins extends React.Component {
                             {board.name}</li>
                     </div>
                 </div>)
-        })
+        })} else{
+            options = null;
+        }
         return (
             <div className="new-pin-form-container">
             <form className="new-pin-form" onSubmit={this.handleSubmit}>
@@ -106,20 +111,23 @@ class Pins extends React.Component {
                     <div className="create-pin-header-buttons">
                         <div className="three-dots" onClick={() => this.props.openModal("pin-options")}></div>
                         <div className="drop-down-container">
-                                    <div id="down-icon-circle-board" className="create-pin-list-save" onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{this.state.board_name}
+                                    { this.state.board_id ? <div id="down-icon-circle-board" className="create-pin-list-save" 
+                                    onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{this.state.board_name}
                                         {this.state.show ? 
                                         <ul className="board-dropdown">
                                             {options} 
-                                            <div className="add-board-button-container">
+                                            <div className="add-board-button-container" onClick={() => this.props.openModal('createBoard')}>
                                                 <div className="add-board-icon"></div>
-                                                <div className="create-new-board" onClick={() => this.props.openModal('createBoard')}>Create Board</div>
+                                                <div className="create-new-board">Create Board</div>
                                             </div>
                                         </ul>
                     
                                         : 
                                         null}
                                     </div>
-                                    <button className="pin-save-button" onClick={this.handleSubmit}>Save</button>
+                                    : 
+                                    null}
+                                    <button className="pin-save-button" id={pinSaveButtonId} onClick={this.handleSubmit}>Save</button>
                         </div>
                     </div>
                 </div>

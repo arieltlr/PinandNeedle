@@ -52,6 +52,15 @@
         cursor: pointer;
         background-color: $hover-red;
     }
+    
+}
+#no-board{
+    border-radius: 30px;
+    font-size: 16px;
+    width: 80px;
+    position: absolute;
+    right: 40px;
+    top: 20px;
 }
 .board-dropdown {
     @include drop-down(90px, -50px, 365px, 200px, 60px);
@@ -86,6 +95,8 @@
     height: 45px;
     border-radius: 25px;
     margin: 0px;
+    margin-right: 10px;
+
     &:hover{
         display: initial;
         background-color: $red;
@@ -97,6 +108,8 @@
         transition-duration: 0s;
         padding: 0px;
         margin: 0px;
+        margin-right: 10px;
+
     }
 }
 .show-button {
@@ -108,6 +121,8 @@
     border-radius: 25px;
     padding: 0px;
     margin: 0px;
+    margin-right: 10px;
+
     &:hover{
         display: initial;
         background-color: $red;
@@ -118,7 +133,9 @@
         cursor: pointer;
         transition-duration: 0s;
         padding: 0px;
-           margin: 0px;
+        margin: 0px;
+        margin-right: 10px;
+
     }
 }
 .dropdown-save-button {
