@@ -109,7 +109,7 @@ class Pins extends React.Component {
             <form className="new-pin-form" onSubmit={this.handleSubmit}>
                 <div className="create-pin-header">
                     <div className="create-pin-header-buttons">
-                        <div className="three-dots" onClick={() => this.props.openModal("pin-options")}></div>
+                        {/* <div className="three-dots" onClick={() => this.props.openModal("pin-options")}></div> */}
                         <div className="drop-down-container">
                                     { this.state.board_id ? <div id="down-icon-circle-board" className="create-pin-list-save" 
                                     onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>{this.state.board_name}
