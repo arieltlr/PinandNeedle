@@ -12,8 +12,9 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.pins,
         ownProps,
         currentUser: state.entities.user[state.session.id],
-        board: state.entities.boards[boardId],
-        pins: state.entities.pins,
+        board_id: state.entities.boards[boardId].id,
+        board_name: state.entities.boards[boardId].name,
+        pins: Object.assign({}, state.entities.pins, state.entities.user[state.session.id].pins)
 
     }
 }
