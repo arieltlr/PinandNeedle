@@ -22,7 +22,6 @@ const userReducer = (state = {}, action) => {
             }
             
         case RECEIVE_BOARDS_PINS_ASSOC:
-            debugger
             if (action.boardsPins.user){
                 const newState = Object.assign({}, state);
                 delete newState[action.boardsPins.user.id];

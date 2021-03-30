@@ -32,7 +32,7 @@ class BoardShow extends React.Component {
         const email = this.props.board.owner_email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
-        const noPinsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
+        const noPinsMessage = <h3 className="no-boards-message">There aren’t any Pins on this board yet</h3>;
         
         let pinArray = Object.values(this.props.pins);
         let pins = pinArray.map((pin, index) => {
@@ -105,7 +105,7 @@ class BoardShow extends React.Component {
 
                         </div>
 
-                        {pins.length > 0 ?  
+                        {this.props.board.pins ?  
                         <Masonry
                             breakpointCols={breakpointColumnsObj}
                             className="my-masonry-grid"
