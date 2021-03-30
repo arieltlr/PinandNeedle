@@ -2,8 +2,12 @@ class Api::BoardsController < ApplicationController
 
     def create
         @board = Board.new(board_params)
+        @user = User.find(@board.user_id)
+        @boards = Board.where(user_id: @board.user_id).includes(:pins).to_a
+        @ownerPins = @user.pins.includes(photo_attachment: :blob).to_a
+        @pins = []
         if @board.save
-            render :show
+            render :new
         else
             render json: @board.errors.full_messages, status: 404
             
@@ -18,6 +22,9 @@ class Api::BoardsController < ApplicationController
 
     def update
         @board = Board.find(params[:id])
+        @user = User.find(@board.user_id)
+        @boards = Board.where(user_id: @board.user_id).includes(:pins).to_a
+        @pins = @user.pins.includes(photo_attachment: :blob).to_a
         if @board && @board.update_attributes(board_params)
             render :show
         else
