@@ -16,7 +16,12 @@ class BoardItem extends React.Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        const assoc = Object.assign({}, {pin_id: this.state.pin.id}, {board_id: e.target.value})
+
+        const assoc = {
+                'boardPin[board_id]': this.props.board.id, 
+                'boardPin[pin_id]': this.props.pin.id 
+            }
+
         this.props.createAssoc(assoc)
         
     }
@@ -29,7 +34,6 @@ class BoardItem extends React.Component {
     render() {
         let board = this.props.board;
         let pins = this.props.pins;
-        let index = this.props.index
         let buttonState;
         if (this.state.show_save_button){
             buttonState = "show-button";
@@ -37,15 +41,14 @@ class BoardItem extends React.Component {
             buttonState = "hide-button";
         } 
         return (
-                <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
+                <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover} key={this.props.index} onClick={this.handleSubmit}>
                     <div className="boards-dropdown-board">
                         { board.pins[0] ? <img  className="dropdown-board-cover" src={pins[board.pins[0]].photoUrl} alt="board-cover-image"/>
                          : <div className="dropdown-board-cover"></div> }
-                        <li className="board-name" key={index} value={board.id} data-id={board.name} 
-                        onClick={this.handleSubmit}>{board.name}</li>
+                        <li className="board-name">{board.name}</li>
                     </div>
                     <div className="dropdown-save-button">
-                        <button className={buttonState}>Save</button> 
+                        <div onClick={this.handleSubmit} className={buttonState}>Save</div> 
                     </div>
                 </div>
         )
