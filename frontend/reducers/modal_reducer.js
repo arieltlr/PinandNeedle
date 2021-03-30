@@ -1,4 +1,5 @@
 import { OPEN_MODAL, CLOSE_MODAL} from '../actions/modal_actions';
+import { RECEIVE_BOARD } from '../actions/board_actions';
 import {RECEIVE_PIN, REMOVE_PIN, SHOW_PIN} from '../actions/pin_actions';
 
 const modalReducer = (state=null, action) => {
@@ -14,7 +15,9 @@ const modalReducer = (state=null, action) => {
         case SHOW_PIN:
             return null;
         case REMOVE_PIN:
-            return null; 
+            return null;
+        case RECEIVE_BOARD:
+            return null;
         default:
             return state;
     }

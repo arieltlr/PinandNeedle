@@ -20,7 +20,7 @@ class NewBoardForm extends React.Component {
         } else{
             const board = Object.assign({}, {user_id: this.props.currentUser.id, name: this.state.name, owner_email: this.props.currentUser.email})
         this.props.createBoard(board)
-            .then(this.props.closeModal());
+            .then(()=> this.props.history.push(`/user/${this.props.currentUser.id}`));
         }
         
     }
