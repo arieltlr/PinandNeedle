@@ -48,7 +48,6 @@ class PinShow extends React.Component {
         e.preventDefault();
         this.setState({saved_board_name: e.target.dataset.id, save_board_id: e.target.value, save_board: true})
         if (!this.props.currentUser.boards){
-            debugger
             const assoc = {
                 'boardPin[pin_id]': this.props.pin.id, 
                 'boardPin[board_id]': e.target.value,
@@ -193,7 +192,9 @@ class PinShow extends React.Component {
                                 <p className="profile-page-letter-create-pin" id="pin-show-letter">{profileLetter}</p>
                             </div>
                             <div className="create-pin-name-followers">
-                                <h1 id="profile-page-username-create-pin" id="pin-show-username">{emailName}</h1>
+                                <Link id="username-link" to={`/user/${this.props.pinOwner.id}`}>
+                                    <h1 id="profile-page-username-create-pin" id="pin-show-username">{emailName}</h1>
+                                </Link>
                                 <h3 className="pin-follower">1 Follower</h3 >
                             </div>
                         </div>

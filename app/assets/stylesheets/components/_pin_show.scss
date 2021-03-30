@@ -99,3 +99,8 @@
     font-size: 14px;
     text-align: center;
 }
+#username-link{
+    &:hover{
+        text-decoration: underline black;
+    }
+}

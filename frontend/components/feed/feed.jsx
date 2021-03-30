@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Masonry from 'react-masonry-css'
+import Masonry from 'react-masonry-css';
 import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
 
 
