@@ -48,6 +48,7 @@ class PinShow extends React.Component {
         e.preventDefault();
         this.setState({saved_board_name: e.target.dataset.id, save_board_id: e.target.value, save_board: true})
         if (!this.props.currentUser.boards){
+            debugger
             const assoc = {
                 'boardPin[pin_id]': this.props.pin.id, 
                 'boardPin[board_id]': e.target.value,
@@ -55,11 +56,11 @@ class PinShow extends React.Component {
                 'newBoard[owner_email]': this.props.currentUser.email}
             this.props.createAssoc(assoc)
         } else {
-            const assoc = {
-                'boardPin[board_id]': e.target.value, 
-                'boardPin[pin_id]': this.props.pin.id 
-            }
-            this.props.createAssoc(assoc)
+                const assoc = {
+                    'boardPin[board_id]': e.target.value, 
+                    'boardPin[pin_id]': this.props.pin.id 
+                }
+                this.props.createAssoc(assoc)
         }
 
         
@@ -117,7 +118,7 @@ class PinShow extends React.Component {
                 <BoardItem 
                 board={board}
                 pins={pins}
-                index={index}
+                key={index}
                 pin={this.props.pin}
                 createAssoc={this.props.createAssoc}
                 />      
