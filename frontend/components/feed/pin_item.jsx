@@ -43,8 +43,9 @@ class PinItem extends React.Component {
             firstBoard = null;
             noBoards = "all-pin-info-no-boards"
         } 
+    
         return (
-                <div className="pin-item" key={this.props.index} onMouseEnter={this.onHover} onMouseLeave={this.onHover} >
+                <div className="pin-item" key={this.props.index}  onMouseEnter={this.onHover} onMouseLeave={this.onHover}>
                     {this.state.show_dropdown && !this.props.pinSaved ? 
                         <BoardDropdown
                             options= {options}

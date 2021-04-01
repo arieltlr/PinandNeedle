@@ -54,11 +54,11 @@ class BoardDropdown extends React.Component {
                                                 {this.state.show ? 
                                                 <ul className="board-dropdown">
                                                     <li className="board-name" id="save-board-title">Save to board</li>
-                                                    {this.props.options} 
-                                                    <div className="add-board-button-container">
-                                                        <div className="add-board-icon" onClick={() => this.props.openModal('createBoard')}></div>
+                                                    {this.props.options}
+                                                    <div className="add-board-button-container-feed" onClick={() => this.props.openModal('createBoard')}>
+                                                        <div className="add-board-icon"></div>
                                                         <div className="create-new-board">Create Board</div>
-                                                    </div>
+                                                    </div>                                                    
                                                 </ul>
                                                 : 
                                                 null}

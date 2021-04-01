@@ -33,11 +33,28 @@
     // padding-left: 60px;
     // padding-right: 60px;
 }
+
 #feed-grid {
     padding-top: 70px;
     width: 90%;
     display: flex;
     justify-content: center;
+    
+}
+#feed-grid > .my-masonry-grid_column {
+    .board-dropdown{
+        right: -150px;
+    }
+}
+#feed-grid > .my-masonry-grid_column ~ .my-masonry-grid_column {
+    .board-dropdown{
+        right: -50px
+    }
+}
+.my-masonry-grid_column:last-of-type {
+    .board-dropdown{
+        right: 50px
+    }
 }
 .my-masonry-grid_column {
   padding-left: 20px; /* gutter size */
