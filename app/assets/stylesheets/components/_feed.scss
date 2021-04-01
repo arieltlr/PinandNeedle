@@ -1,6 +1,80 @@
-// .feed-container {
-//     width: 80%;
-//     display: flex;
-//     justify-self: center;
-//     align-items: center;
-// }
+@import "base/colors.scss";
+@import "base/layout.scss";
+
+.pin-item {
+    position: relative;
+    height: auto;
+}
+.board-link-feed-saved{
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    &:hover{
+        text-decoration: underline white 2px;
+        cursor: pointer;
+    }
+}
+.pin-overlay-dropdown{
+    position: absolute;
+    width: 240px;
+    top: 5px;
+    right: -5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    height: auto;
+    .create-pin-list-save{
+        height: auto;
+    }
+    .dropdown-board-cover{
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        border-radius: 5px;
+        background-color: #e0dfdf;
+    }
+    .board-dropdown {
+        @include drop-down(65px, -50px, 360px, 200px, 60px);
+        // width: 360px;
+        // top: 65px;
+        li {
+            margin-left: 10px;
+            padding-left: 0px;
+        }
+       
+    }
+    #save-board-title{
+        margin-left: 100px;
+        padding-left: 0px;
+        &:hover{
+            background-color: white;
+            cursor: default;
+
+        }
+    }
+    .add-board-button-container{
+    width: 383px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+    border-radius: 0px 0px 15px 15px;
+    margin-left: 9px;
+    margin-bottom: -115px;
+    padding-left: 7px;
+    &:hover {
+        cursor: pointer;
+        background-color: $grey-hover;
+    }
+    .hidden {
+        display: none;
+    }
+}
+}

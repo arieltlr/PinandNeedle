@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Masonry from 'react-masonry-css';
 import BoardPlusDD from '../board_show_dropdown/plus_dropdown';
+import PinItemContainer from './pin_item_container';
 
 
 class Feed extends React.Component {
@@ -21,28 +22,21 @@ class Feed extends React.Component {
             return null;
         }
         let pinArray = Object.values(this.props.pins);
+        let propPins = this.props.pins;
+        let currentUser= this.props.user;
         let pins = pinArray.map((pin, index) => {
             const email = pin.owner_email.split('@')[0]
             const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
             const profileLetter = email[0].toUpperCase();
             return (
-                <div className="pin-item" key={index}>
-                    <Link to={`/pin/${pin.id}`} >
-                        <div className="pin-container" >
-                            <img src={pin.photoUrl} 
-                                className="pin-image" 
-                            />
-                            <p className="title-under-pin">{pin.title}</p>
-                            <div className="pin-owner-info">
-                                <div className="small-profile-circle" id="cirle-under-pin">
-                                    <p className="small-profile-page-letter" id="letter-under-pin">{profileLetter}</p>
-                                </div>
-                                <p className="emailname-under-pin">{emailName}</p>
-                            </div>
-                            
-                        </div>
-                    </Link>
-                </div>
+                <PinItemContainer
+                key={index}
+                pin={pin}
+                profileLetter={profileLetter}
+                emailName={emailName}
+                propPins={propPins}
+                />
+                
             )
         })
         pins = pins.reverse(); 
