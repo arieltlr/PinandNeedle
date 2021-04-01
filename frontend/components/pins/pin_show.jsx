@@ -80,14 +80,16 @@ class PinShow extends React.Component {
     handleEdit(e){
         e.preventDefault();
         let pinsBoard;
-        if (this.props.currentUser.boards.length > 0){
+        if (this.props.currentUser.boards){
             pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
         } else {
             pinsBoard = undefined;
         }
         if (pinsBoard && this.props.pinOwner.id === this.props.currentUser.id){
+            debugger
             this.props.openModal("edit-pin")
         } else {
+            debugger
             this.props.openModal("edit-pinsBoard")
         }
         
@@ -134,7 +136,7 @@ class PinShow extends React.Component {
         } else{
             showEditIcon = null;
         }
-        
+        debugger
         return (
             <div className="whole-page-background" onClick={this.closeWhenClicked}>
                 <div className="pin-show-outer-container" >

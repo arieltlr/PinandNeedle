@@ -41,13 +41,14 @@ class Feed extends React.Component {
         })
         pins = pins.reverse(); 
         const breakpointColumnsObj = {
-            default: 4,
+            default: 5,
             1920: 7,
             1300: 5,
+            1200: 4,
             1100: 3,
             700: 2,
             500: 2,
-            250: 1,
+            450: 1,
         };
         return (
             <div className="feed-container">
