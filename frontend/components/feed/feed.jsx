@@ -43,7 +43,7 @@ class Feed extends React.Component {
         const breakpointColumnsObj = {
             default: 4,
             1920: 7,
-            1366: 5,
+            1300: 5,
             1100: 3,
             700: 2,
             500: 2,
