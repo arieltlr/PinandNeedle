@@ -1,43 +1,41 @@
-// .master-pin-container {
-//     width: 100%;
-//     height: auto;
-//     columns: 250px;
-//     column-gap: 5px;
-// }
 
-// .pin-container {
-//     display: inline-block;
-//     width: 100%;         
-//     margin-bottom: 10px;
-// }
-// .grid-item, .grid-sizer {
-//     width: 240px;
-//     float: left;
-
-//     img {
-//         display: block;
-//         width: 100%;
-//         object-fit: cover;
-//         border-radius: 25px;
-//     }
-// }
 .feed-container{
     display: flex;
     justify-content: center;
 }
 .my-masonry-grid {
     display: flex;
-    // margin-right: 80px;
+    margin-right: 80px;
+    margin-left: 80px;
     width: 90%;
     padding-top: 40px;
-    // padding-left: 60px;
-    // padding-right: 60px;
+    padding-right: 40px;
+
 }
+
 #feed-grid {
     padding-top: 70px;
     width: 90%;
-    display: flex;
-    justify-content: center;
+    justify-content: center; 
+}
+.message-container{
+    width: 100%;
+}
+
+#feed-grid > .my-masonry-grid_column {
+    .board-dropdown{
+        right: -150px;
+    }
+}
+#feed-grid > .my-masonry-grid_column ~ .my-masonry-grid_column {
+    .board-dropdown{
+        right: -50px;
+    }
+}
+#feed-grid .my-masonry-grid_column:last-of-type {
+    .board-dropdown{
+        left: -150px
+    }
 }
 .my-masonry-grid_column {
   padding-left: 20px; /* gutter size */
@@ -60,14 +58,6 @@
 
 }
 
-
-// .pin-image{
-//     display: block;
-//     height: 100%;
-//     width: 240px;
-//     object-fit: cover;
-//     border-radius: 25px;
-// }
 .pin-owner-info {
     display: flex;
     flex-direction: row;

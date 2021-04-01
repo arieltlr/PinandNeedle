@@ -58,7 +58,8 @@
 
         }
     }
-    .add-board-button-container{
+}
+.add-board-button-container-feed {
     width: 383px;
     height: 80px;
     display: flex;
@@ -67,14 +68,10 @@
     justify-self: center;
     border-radius: 0px 0px 15px 15px;
     margin-left: 9px;
-    margin-bottom: -115px;
     padding-left: 7px;
+    margin-bottom: -15px;
     &:hover {
         cursor: pointer;
         background-color: $grey-hover;
     }
-    .hidden {
-        display: none;
-    }
-}
 }
