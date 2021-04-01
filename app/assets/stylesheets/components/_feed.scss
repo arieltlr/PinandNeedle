@@ -21,13 +21,13 @@
 .pin-overlay-dropdown{
     position: absolute;
     width: 240px;
-    top: 5px;
-    right: -5px;
+    top: 15px;
+    right: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 20px;
     height: auto;
     .create-pin-list-save{
         height: auto;

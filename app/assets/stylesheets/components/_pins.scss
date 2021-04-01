@@ -21,19 +21,26 @@
 //         border-radius: 25px;
 //     }
 // }
+.feed-container{
+    display: flex;
+    justify-content: center;
+}
 .my-masonry-grid {
     display: flex;
     // margin-right: 80px;
-    width: auto;
+    width: 90%;
     padding-top: 40px;
-    padding-left: 60px;
-    padding-right: 60px;
+    // padding-left: 60px;
+    // padding-right: 60px;
 }
 #feed-grid {
     padding-top: 70px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
 }
 .my-masonry-grid_column {
-  padding-left: 15px; /* gutter size */
+  padding-left: 20px; /* gutter size */
   background-clip: padding-box;
   width: 240px;
 }
@@ -41,12 +48,14 @@
 /* Style your items */
 .pin-item { /* change div to reference your elements you put in <Masonry> */
    padding-bottom: 20px;
+   display: inline-block;
+   padding: 15px;
     img {
         display: block;
         width: 240px;
         height: 100%;
         object-fit: cover;
-        border-radius: 25px;
+        border-radius: 20px;
     }
 
 }

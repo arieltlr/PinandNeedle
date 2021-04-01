@@ -44,7 +44,6 @@ class BoardDropdown extends React.Component {
     }
 
     render() {
-        debugger
         return (            
                 <div className="pin-overlay-dropdown" key={this.props.index} onClick={this.whenClicked} onFocus={this.whenClicked} onBlur={this.whenClicked}>
                     {this.props.firstBoard ? 
