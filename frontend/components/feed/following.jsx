@@ -45,8 +45,10 @@ class Following extends React.Component {
         })
         pins = pins.reverse()
         return (
-            <div id="feed">
-                <h1 id="following-holder">Pins from people you follow</h1>
+            <div id="following-feed">
+                <div className="message-container">
+                    <h1 id="following-holder">Discover ideas from people you follow...</h1>
+                </div> 
                 <Masonry
                     breakpointCols={breakpointColumnsObj}
                     className="my-masonry-grid"
