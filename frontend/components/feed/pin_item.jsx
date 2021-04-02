@@ -57,17 +57,19 @@ class PinItem extends React.Component {
                         />
                         : null
                             }
-                    {this.props.pinSaved ? 
-                        <Link className="board-link-feed-saved" to={`/board/${this.props.savedBoardId}`}>
-                            {this.props.currentUser.boards[this.props.savedBoardId].name}
-                        </Link>
+                    {this.props.pinSaved ?
+                            <Link className="board-link-feed-saved" to={`/board/${this.props.savedBoardId}`}>
+                                {this.props.currentUser.boards[this.props.savedBoardId].name}
+                            </Link>
                         : null}
                     
                     <Link to={`/pin/${this.props.pin.id}`} >
                         <div className="pin-container" >
                             <img src={this.props.pin.photoUrl} 
                                 className="pin-image" 
-                            />
+                                />
+
+                            
                             <p className="title-under-pin">{this.props.pin.title}</p>
                             <div className="pin-owner-info">
                                 <div className="small-profile-circle" id="cirle-under-pin">

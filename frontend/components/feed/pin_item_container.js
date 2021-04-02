@@ -11,14 +11,17 @@ const mapStateToProps = (state, ownProps) => {
     let savedPin;
     let savedBoardId;
     let savedBoardName;
+    let backgroundBlack;
     if (ownProps.pin.id === state.entities.pinSaved.pin_id && state.entities.pinSaved.savedPin){
         savedPin = true;
         savedBoardId = state.entities.pinSaved.board_id;
         savedBoardName = state.entities.pinSaved.name;
+        backgroundBlack = "board-link-feed-saved-container";
     } else {
         savedPin = false;
         savedBoardId = null;
         savedBoardName = null;
+        backgroundBlack = null;
     }
     return {
         pinSaved: savedPin,
@@ -29,6 +32,7 @@ const mapStateToProps = (state, ownProps) => {
         emailName: ownProps.emailName,
         propPins: ownProps.propPins,
         currentUser: state.entities.user[state.session.id],
+        backgroundBlack: backgroundBlack,
     }
 }
 
