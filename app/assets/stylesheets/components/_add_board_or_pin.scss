@@ -25,10 +25,11 @@
     right: 120px;
 }
 .dropdown-container-board-page{
-    position: absolute;
+    // position: absolute;
     bottom: 30px;
     right: 100vw / 2;
     position: fixed;
+    z-index: 10;
 }
 #board{
     top: -120px;

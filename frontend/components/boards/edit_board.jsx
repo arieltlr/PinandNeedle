@@ -18,6 +18,7 @@ class EditBoard extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        debugger
         const board = Object.assign({}, { id: this.props.board.id, user_id: this.props.currentUser.id, name: this.state.name, description: this.state.description })
         this.props.updateBoard(board)
             .then(this.props.closeModal());
@@ -29,6 +30,8 @@ class EditBoard extends React.Component {
         this.setState({ description: e.target.value })
     }
     handleDelete(e){
+        e.preventDefault();
+        debugger
         this.props.deleteBoard(this.props.board.id)
             .then(() => this.props.history.push(`/user/${this.props.board.user_id}`)) 
     }

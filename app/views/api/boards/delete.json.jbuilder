@@ -1,0 +1,1 @@
+json.deleteBoard :true

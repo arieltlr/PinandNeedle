@@ -89,7 +89,6 @@ class PinShow extends React.Component {
             debugger
             this.props.openModal("edit-pin")
         } else {
-            debugger
             this.props.openModal("edit-pinsBoard")
         }
         
