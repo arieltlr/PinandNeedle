@@ -24,14 +24,6 @@ class Pins extends React.Component {
         this.whenClicked = this.whenClicked.bind(this);
         this.handleName = this.handleName.bind(this);
     }
-    componentDidMount(){
-        
-        this.props.getPins().then(
-            this.setState({
-                fetchPins: true
-            })
-        )
-    }
 
     handleChange(event){
         const {name, value} = event.target;
@@ -94,7 +86,6 @@ class Pins extends React.Component {
         const email = this.props.currentUser.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
-        let pins = this.props.pins;
         let options;
         let pinSaveButtonId;
         this.state.board_id ? null : pinSaveButtonId = "no-board"
