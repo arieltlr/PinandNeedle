@@ -21,8 +21,16 @@ class PinShow extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.findBoard = this.findBoard.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
-
-
+        this.handleLink = this.handleLink.bind(this);
+        
+    }
+    handleLink(e){
+        let url;
+        if (this.props.pin.pin_url.includes('http')){
+            window.open(`${this.props.pin.pin_url}`)
+        } else {
+            window.open(`https://${this.props.pin.pin_url}`)
+        }
         
     }
     componentDidMount(){
@@ -135,6 +143,17 @@ class PinShow extends React.Component {
         } else{
             showEditIcon = null;
         }
+        let displayURL;
+        debugger
+        if (this.props.pin.pin_url.includes('www.')){
+            displayURL = this.props.pin.pin_url.split('www.')[1];
+            displayURL = displayURL.split('.com')[0]
+            displayURL = displayURL + '.com'
+        } else if (this.props.pin.pin_url.includes('https://')){
+            displayURL = this.props.pin.pin_url.split('https://')[1];
+            displayURL = displayURL.split('.com')[0]
+            displayURL = displayURL + '.com'
+        }
         
         return (
             <div className="whole-page-background" onClick={this.closeWhenClicked}>
@@ -184,8 +203,8 @@ class PinShow extends React.Component {
                             
                         </div>
                         <div className="pin-show-info">
-                            <a className="pin-show-url" href={this.props.pin.pin_url} target="_blank">{this.props.pin.pin_url.slice(8, 20)}</a>
-                            <a className="pin-show-title" href={this.props.pin.pin_url} target="_blank">{this.props.pin.title}</a>
+                            <a className="pin-show-url"  onClick={this.handleLink}>{displayURL}</a>
+                            <a className="pin-show-title" onClick={this.handleLink}>{this.props.pin.title}</a>
                             {this.props.pin.description ? <p className="pin-show-description">{this.props.pin.description}</p> : null}
                         </div>
                         <div className="create-pin-user-info">
