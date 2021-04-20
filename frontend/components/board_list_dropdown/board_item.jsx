@@ -43,7 +43,7 @@ class BoardItem extends React.Component {
         return (
                 <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover} key={this.props.index} onClick={this.handleSubmit}>
                     <div className="boards-dropdown-board">
-                        { board.pins[0] ? <img  className="dropdown-board-cover" src={pins[board.pins[0]].photoUrl} alt="board-cover-image"/>
+                        { board.pins[0] ? <img  className="dropdown-board-cover" src={board.pins[0].photoUrl} alt="board-cover-image"/>
                          : <div className="dropdown-board-cover"></div> }
                         <li className="board-name">{board.name}</li>
                     </div>

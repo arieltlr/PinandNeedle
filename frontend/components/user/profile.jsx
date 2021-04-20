@@ -38,16 +38,17 @@ class Profile extends React.Component {
         let pins = this.props.pins
         let boards = this.props.boards.map((board, index) => {
             const pinCount = board.pins.length
+            debugger
             return (
                 <li className="board-li" key={index}>
                     <Link className="board-show-link" to={`/board/${board.id}`}>
                         <div className="board-cover">
                             <div className="board-cover-single">
-                                {board.pins[0] ? <img src={pins[board.pins[0]].photoUrl} className="cover-image3" /> : <div className="cover-image3"></div> }
+                                {board.pins[0] ? <img src={board.pins[0].photoUrl} className="cover-image3" /> : <div className="cover-image3"></div> }
                             </div>
                             <div className="board-cover-stack">
-                                {board.pins[1] ? <img src={pins[board.pins[1]].photoUrl} className="cover-image1" /> : <div className="cover-image1"></div> }
-                                {board.pins[2] ? <img src={pins[board.pins[2]].photoUrl} className="cover-image2" /> : <div className="cover-image2"></div> }       
+                                {board.pins[1] ? <img src={board.pins[1].photoUrl} className="cover-image1" /> : <div className="cover-image1"></div> }
+                                {board.pins[2] ? <img src={board.pins[2].photoUrl} className="cover-image2" /> : <div className="cover-image2"></div> }       
                             </div>
                         </div>
                         <div className="board-info-container">

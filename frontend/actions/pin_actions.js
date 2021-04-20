@@ -45,6 +45,7 @@ export const receiveErrors = errors => {
 }
 
 export const getPins = () => {
+    debugger
     return dispatch => {
         return PinAPIUtil.pinIndex()
             .then((pins) =>

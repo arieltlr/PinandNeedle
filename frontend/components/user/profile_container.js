@@ -5,6 +5,7 @@ import { getBoards } from '../../actions/board_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
     return {
         theCurrentUser: state.entities.user[state.session.id],
         thisProfile: ownProps.match.params.userId,

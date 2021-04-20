@@ -24,6 +24,14 @@ class Pins extends React.Component {
         this.whenClicked = this.whenClicked.bind(this);
         this.handleName = this.handleName.bind(this);
     }
+    componentDidMount(){
+        debugger
+        this.props.getPins().then(
+            this.setState({
+                fetchPins: true
+            })
+        )
+    }
 
     handleChange(event){
         const {name, value} = event.target;
@@ -90,12 +98,13 @@ class Pins extends React.Component {
         let options;
         let pinSaveButtonId;
         this.state.board_id ? null : pinSaveButtonId = "no-board"
+        debugger
         if (this.props.currentUser.boards) { 
             options = Object.values(this.props.currentUser.boards).map((board, index) => {
-            return(
+                return(
                 <div className="boards-dropdown-li-container" value={board.id} data-id={board.name} onClick={this.handleName} key={index}>
                     <div className="boards-dropdown-board">
-                        { board.pins[0] ? <img  className="dropdown-board-cover" src={pins[board.pins[0]].photoUrl} alt="board-cover-image"/>
+                        { board.pins[0] ? <img  className="dropdown-board-cover" src={board.pins[0].photoUrl} alt="board-cover-image"/>
                          : <div className="dropdown-board-cover"></div> }
                         <li className="board-name" value={board.id} data-id={board.name}>
                             {board.name}</li>
@@ -104,6 +113,7 @@ class Pins extends React.Component {
         })} else{
             options = null;
         }
+        debugger
         return (
             <div className="new-pin-form-container">
             <form className="new-pin-form" onSubmit={this.handleSubmit}>

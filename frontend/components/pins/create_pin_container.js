@@ -8,6 +8,7 @@ import { getBoards } from '../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const boardId = parseInt(ownProps.location.pathname.slice(7));
+    debugger
     return {
         errors: state.errors.pins,
         ownProps,

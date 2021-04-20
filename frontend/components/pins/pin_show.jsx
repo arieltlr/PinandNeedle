@@ -184,8 +184,8 @@ class PinShow extends React.Component {
                             
                         </div>
                         <div className="pin-show-info">
-                            <a className="pin-show-url" rel={'external'} href={`https://${this.props.pin.pin_url}`} target="_blank">{this.props.pin.pin_url.slice(8, 20)}</a>
-                            <a className="pin-show-title" rel={'external'} href={`https://${this.props.pin.pin_url}`}>{this.props.pin.title}</a>
+                            <a className="pin-show-url" href={this.props.pin.pin_url} target="_blank">{this.props.pin.pin_url.slice(8, 20)}</a>
+                            <a className="pin-show-title" href={this.props.pin.pin_url} target="_blank">{this.props.pin.title}</a>
                             {this.props.pin.description ? <p className="pin-show-description">{this.props.pin.description}</p> : null}
                         </div>
                         <div className="create-pin-user-info">
