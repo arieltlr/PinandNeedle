@@ -8,7 +8,7 @@ json.boards do
         end
     end
 end
-debugger
+
 json.pins do
     @pins.each do |pin|
         json.set! pin.id do

@@ -1,7 +1,8 @@
 @import "base/layout.scss";
 @import "base/colors.scss";
 .edit-pin-modal {
-    @include modal (900px, 760px);
+    @include modal (900px, 90%);
+    margin-top: 40px;
 }
 
 .edit-pin-form {
@@ -45,6 +46,7 @@
         height: 240px;
         width: 240px;
         border-radius: 15px;
+        object-fit: cover;
     }
 }
 .edit-pin-button-container {

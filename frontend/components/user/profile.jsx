@@ -38,7 +38,7 @@ class Profile extends React.Component {
         let pins = this.props.pins
         let boards = this.props.boards.map((board, index) => {
             const pinCount = board.pins.length
-            debugger
+            
             return (
                 <li className="board-li" key={index}>
                     <Link className="board-show-link" to={`/board/${board.id}`}>

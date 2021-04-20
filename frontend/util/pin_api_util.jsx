@@ -11,7 +11,7 @@ export const newPin = (pin) => {
 }
 
 export const pinIndex = () => {
-    debugger
+    
     return $.ajax({
         method: "GET",
         url: "/api/pins"

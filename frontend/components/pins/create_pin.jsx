@@ -25,7 +25,7 @@ class Pins extends React.Component {
         this.handleName = this.handleName.bind(this);
     }
     componentDidMount(){
-        debugger
+        
         this.props.getPins().then(
             this.setState({
                 fetchPins: true
@@ -98,7 +98,7 @@ class Pins extends React.Component {
         let options;
         let pinSaveButtonId;
         this.state.board_id ? null : pinSaveButtonId = "no-board"
-        debugger
+        
         if (this.props.currentUser.boards) { 
             options = Object.values(this.props.currentUser.boards).map((board, index) => {
                 return(
@@ -113,7 +113,7 @@ class Pins extends React.Component {
         })} else{
             options = null;
         }
-        debugger
+        
         return (
             <div className="new-pin-form-container">
             <form className="new-pin-form" onSubmit={this.handleSubmit}>

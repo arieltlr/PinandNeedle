@@ -11,10 +11,10 @@ import {
 
 const pinsReducer = (state = {}, action) => {
     Object.freeze(state);
-    debugger
+    
     switch (action.type) {
         case RECEIVE_PINS:
-            debugger
+            
             return action.pins;
         case SHOW_PIN:
             return action.pin.pins
@@ -27,7 +27,7 @@ const pinsReducer = (state = {}, action) => {
             return action.board.pins
             };
         case RECEIVE_PROFILE:
-            debugger
+            
             return Object.assign({}, state, action.userProfile.pins)
         default:
             return state;

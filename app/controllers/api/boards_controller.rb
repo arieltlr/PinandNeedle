@@ -9,7 +9,7 @@ class Api::BoardsController < ApplicationController
         if @board.save
             render :new
         else
-            debugger
+            
             render json: @board.errors.messages[:name], status: 404
             
         end

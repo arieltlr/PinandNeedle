@@ -115,7 +115,7 @@ class EditPin extends React.Component {
                     </div>
                 </div>)
         })
-        debugger
+        
         return (
             <div className="edit-pin-form-container">
                 <form className="edit-pin-form" onSubmit={this.handleSubmit}>

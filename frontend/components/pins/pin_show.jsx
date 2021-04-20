@@ -86,7 +86,7 @@ class PinShow extends React.Component {
             pinsBoard = undefined;
         }
         if (pinsBoard && this.props.pinOwner.id === this.props.currentUser.id){
-            debugger
+            
             this.props.openModal("edit-pin")
         } else {
             this.props.openModal("edit-pinsBoard")
@@ -135,7 +135,7 @@ class PinShow extends React.Component {
         } else{
             showEditIcon = null;
         }
-        debugger
+        
         return (
             <div className="whole-page-background" onClick={this.closeWhenClicked}>
                 <div className="pin-show-outer-container" >
