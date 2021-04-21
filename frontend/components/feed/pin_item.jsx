@@ -22,18 +22,18 @@ class PinItem extends React.Component {
 
     }
     render() {
-        let pins = this.props.propPins;
         let options;
         let firstBoard;
         let noBoards;
+        let pins = this.props.propPins
         if (this.props.currentUser.boards) {
             options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
                 <BoardItem 
                 board={board}
-                pins={pins}
                 key={index}
                 pin={this.props.pin}
+                pins={pins}
                 createAssoc = {this.props.createAssoc}
                 />      
             )})
@@ -54,6 +54,7 @@ class PinItem extends React.Component {
                             openModal = {this.props.openModal}
                             className="pin-overlay-dropdown"
                             pin = {this.props.pin}
+                            pins = {this.props.propPins}
                         />
                         : null
                             }

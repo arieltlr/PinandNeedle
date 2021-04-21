@@ -14,7 +14,6 @@ const pinsReducer = (state = {}, action) => {
     
     switch (action.type) {
         case RECEIVE_PINS:
-            
             return action.pins;
         case SHOW_PIN:
             return action.pin.pins

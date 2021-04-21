@@ -33,17 +33,18 @@ class BoardItem extends React.Component {
     }
     render() {
         let board = this.props.board;
-        let pins = this.props.pins;
+        let pinID;
         let buttonState;
         if (this.state.show_save_button){
             buttonState = "show-button";
         }else {
             buttonState = "hide-button";
-        } 
+        }
+        typeof board.pins[0] === 'object' ? pinID = board.pins[0].id : pinID = board.pins[0]
         return (
                 <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover} key={this.props.index} onClick={this.handleSubmit}>
                     <div className="boards-dropdown-board">
-                        { board.pins[0] ? <img  className="dropdown-board-cover" src={board.pins[0].photoUrl} alt="board-cover-image"/>
+                        { board.pins[0] ? <img  className="dropdown-board-cover" src={this.props.pins[pinID].photoUrl} alt="board-cover-image"/>
                          : <div className="dropdown-board-cover"></div> }
                         <li className="board-name">{board.name}</li>
                     </div>

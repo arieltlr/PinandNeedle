@@ -144,7 +144,6 @@ class PinShow extends React.Component {
             showEditIcon = null;
         }
         let displayURL;
-        debugger
         if (this.props.pin.pin_url.includes('www.')){
             displayURL = this.props.pin.pin_url.split('www.')[1];
             displayURL = displayURL.split('.com')[0]

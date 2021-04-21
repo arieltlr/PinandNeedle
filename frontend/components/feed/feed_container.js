@@ -8,6 +8,7 @@ import { createAssoc } from '../../actions/boards_pins_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+    
     return {
         user: state.entities.user[state.session.id],
         pins: state.entities.pins,
