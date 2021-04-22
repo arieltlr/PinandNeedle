@@ -17,6 +17,7 @@ const modalReducer = (state=null, action) => {
         case REMOVE_PIN:
             return null;
         case RECEIVE_BOARD:
+            debugger
             return null;
         case RECEIVE_PROFILE:
             return null;   

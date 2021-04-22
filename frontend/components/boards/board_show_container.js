@@ -6,12 +6,14 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
+    // lets pins = state.entities.pins
     return {
         errors: state.errors.boards,
         ownProps,
         currentUser: state.entities.user[state.session.id],
         board: state.entities.boards[ownProps.match.params.boardId],
-        pins: state.entities.pins,
+        pins: Object.values(state.entities.boards[ownProps.match.params.boardId].pins),
         users: state.entities.user
     }
 }

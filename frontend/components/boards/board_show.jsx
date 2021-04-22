@@ -17,8 +17,15 @@ class BoardShow extends React.Component {
     }
 
     componentDidMount(){
+        debugger
         this.props.getBoard(this.props.match.params.boardId)
     }
+    // componentDidUpdate(prevProps){
+    //     debugger
+    //     if (Object.values(prevProps.pins).length !==Object.values(this.props.pins).length){
+    //         this.props.getBoard(this.props.match.params.boardId)
+    //     }
+    // }
 
     render() {
         if (!this.state.fetchBoard){
