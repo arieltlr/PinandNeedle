@@ -35,7 +35,13 @@ class Api::BoardsController < ApplicationController
 
     def destroy
         @board = Board.find(params[:id])
+        @pins = @board.pins.includes(photo_attachment: :blob).to_a
         if @board.destroy
+            debugger
+            @pins.each do |pin|
+                pin.destroy
+            end
+            debugger
             render :delete
         else
             render json: @board.errors.full_messages, status: 422

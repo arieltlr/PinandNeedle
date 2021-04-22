@@ -36,7 +36,6 @@ class BoardDropdown extends React.Component {
                 'boardPin[board_id]': e.target.value,
                 'newBoard[user_id]': this.props.currentUser.id,
                 'newBoard[owner_email]': this.props.currentUser.email}
-            debugger
             this.props.createAssoc(assoc)
         } else {
                 const assoc = {

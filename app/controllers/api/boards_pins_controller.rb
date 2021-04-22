@@ -1,10 +1,8 @@
 class Api::BoardsPinsController < ApplicationController
 
     def create
-        debugger
             
         if params[:boardPin][:boardPin][:board_id] == ""
-            debugger
             @board = Board.create!({user_id: params[:boardPin][:newBoard][:user_id], name: "Quick Saves", description: "", owner_email: params[:boardPin][:newBoard][:owner_email]})
             @user = User.find_by(id: params[:boardPin][:newBoard][:user_id] )
             @pins = @user.pins.includes(photo_attachment: :blob).to_a

@@ -18,8 +18,7 @@ const boardsReducer = (state = {}, action) => {
             const newState = Object.assign({}, state);
             delete newState[action.boardId];
             return newState;
-        case RECEIVE_PIN:
-            debugger
+        case RECEIVE_PIN:   
             return Object.assign({}, action.pin.user.boards);   
         default:
             return state;
