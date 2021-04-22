@@ -6,6 +6,7 @@ export const REMOVE_PIN = "REMOVE_PIN";
 export const NEW_PIN = "NEW_PIN";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const SHOW_PIN = "SHOW_PIN";
+export const RECEIVE_SEARCH = "RECEIVE_SEARCH";
 
 export const receivePins = (pins) => {
     return {
@@ -41,6 +42,12 @@ export const receiveErrors = errors => {
     return {
         type: RECEIVE_ERRORS,
         errors
+    }
+}
+export const receiveSearch = results => {
+    return {
+        type: RECEIVE_SEARCH,
+        results
     }
 }
 
@@ -97,4 +104,12 @@ export const removeBoardsPin = (pin) => {
                 (errors) =>
                     dispatch(receiveErrors(errors.responseJSON)));
     }
+}
+export const searchPins = (search) => {
+    return dispatch => {
+        return PinAPIUtil.searchPins(search)
+            .then((results) => 
+                dispatch(receiveSearch(results))         
+            );
+        }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ArrowDropdown from '../arrow_dropdown/arrow_dropdown';
+import SearchBar from "./search_bar";
 
 class NavBar extends React.Component {
 
@@ -18,7 +19,7 @@ class NavBar extends React.Component {
                     <NavLink to="/following">
                         <button className="nav-ele" id="nav-following">Following</button>
                     </NavLink>
-                    <input className="nav-ele" id="search-bar" type="text" placeholder="Search" />
+                    <SearchBar searchPins={this.props.searchPins}/>
                     <NavLink to={`/user/${this.props.user.id}`}>
                         <p className="nav-ele" id="profile-button">{this.props.user.email[0].toUpperCase()}</p>
                     </NavLink>
