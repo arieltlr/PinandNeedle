@@ -55,6 +55,7 @@ class PinItem extends React.Component {
                             className="pin-overlay-dropdown"
                             pin = {this.props.pin}
                             pins = {this.props.propPins}
+                            createAssoc= {this.props.createAssoc}
                         />
                         : null
                             }
