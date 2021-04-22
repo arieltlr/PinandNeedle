@@ -6,14 +6,15 @@ import { receiveErrors, getPins, getPin, createPin, updatePin, deletePin } from 
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    let board;
-    
-    if (Object.values(state.entities.boards).length === 0){
-        board = savedPin.board;
-    } else {
-        board = Object.values(state.entities.pins).reverse()[0].board;
-    }
-    
+    let board = Object.values(state.entities.pins).reverse()[0].board;
+    // if (Object.values(state.entities.boards).length === 0){
+    //     debugger
+    //     board = 
+    //     // state.entities.pinSaved.savedPin.board ||
+    // } else {
+    //     board = Object.values(state.entities.pins).reverse()[0].board;
+    // }
+    debugger
     return {
         errors: state.errors.pins,
         ownProps,
