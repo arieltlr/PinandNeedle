@@ -8,7 +8,7 @@ const boardsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PROFILE:
             if (action.userProfile.boards === undefined){
-                return state;
+                return {};
             } else {
                 return action.userProfile.boards;
             } 
