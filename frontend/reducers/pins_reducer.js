@@ -21,10 +21,8 @@ const pinsReducer = (state = {}, action) => {
             return Object.assign({}, state, { [action.pin.pin.id]: action.pin.pin });
         case RECEIVE_BOARD:
             if (action.board.pins === undefined || action.board.pins.length === 0){
-                debugger
                 return state
             } else{
-                debugger
             return action.board.pins
             };
         case RECEIVE_PROFILE:

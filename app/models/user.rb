@@ -284,16 +284,6 @@ class User < ApplicationRecord
         self.save!
         self.session_token
     end
-    #  def set_username
-    #     debugger
-    #     email_copy = @email.dup
-    #     debugger
-    #     self.username = email_copy.split('@')[0]
-    #     debugger
-    #     self.email = @email
-    #     debugger
-    # end
-
 
 end
 

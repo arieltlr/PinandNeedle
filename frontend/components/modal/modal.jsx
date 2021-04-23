@@ -23,47 +23,38 @@ function Modal ({modal, closeModal}) {
     let form;
     switch (modal) {
         case 'login':
-            // debugger
             component = <LoginFormContainer />
             form = 'login-modal';
             break;
         case 'signup':
-            // debugger
             component = <SignupFormContainer />;
             form = 'signup-modal';
             break;
         case 'createBoard':
-            // debugger
             component = <NewBoardFormContainer />;
             form = "create-board-modal"
             break;
         case 'edit-board':
-            // debugger
             component = <EditBoardContainer />;
             form = "edit-board-modal"
             break;
         case 'delete-board':
-            // debugger
             component = <DeleteBoardContainer />;
             form = "delete-board-modal"
             break;
         case 'create-pin':
-            // debugger
             component = <CreatePinContainer />;
             form = "create-pin-modal"
             break;
         case 'create-pin-from-profile':
-            // debugger
             component = <CreatePinFromProfileContainer />;
             form = "create-pin-modal"
             break;
         case 'pin-save':
-            // debugger
             component = <PinSaveContainer />;
             form = "create-pin-modal"
             break;
         case 'edit-pin':
-            // debugger
             component = <EditPinContainer />;
             form = "edit-pin-modal"
             break;
@@ -72,7 +63,6 @@ function Modal ({modal, closeModal}) {
             form = "edit-pin-modal"
             break;
         default:
-            // debugger
             return null;
     }
     return (

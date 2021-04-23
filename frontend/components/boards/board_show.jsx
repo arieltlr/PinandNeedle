@@ -17,15 +17,8 @@ class BoardShow extends React.Component {
     }
 
     componentDidMount(){
-        debugger
         this.props.getBoard(this.props.match.params.boardId)
     }
-    // componentDidUpdate(prevProps){
-    //     debugger
-    //     if (Object.values(prevProps.pins).length !==Object.values(this.props.pins).length){
-    //         this.props.getBoard(this.props.match.params.boardId)
-    //     }
-    // }
 
     render() {
         if (!this.state.fetchBoard){
@@ -43,7 +36,6 @@ class BoardShow extends React.Component {
         
         let pinArray;
         this.props.board.pins ? pinArray = Object.values(this.props.board.pins) : pinArray = [];
-        debugger
         let pins = pinArray.map((pin, index) => {
             const pinEmail = pin.owner_email.split('@')[0]
             const pinEmailName = pinEmail[0].toUpperCase() + pinEmail.slice(1).toLowerCase();

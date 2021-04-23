@@ -17,13 +17,11 @@ class Profile extends React.Component {
         this.props.getBoards(this.props.match.params.userId)
     }
     componentDidUpdate(prevProps) {
-        // debugger
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.props.getBoards(this.props.match.params.userId)
         }
     }
     render() {
-        // debugger
         if (!this.state.fetchBoards) {
             this.state.fetchBoards = !this.state.fetchBoards;
             return null;

@@ -4,7 +4,6 @@ import { RECEIVE_PIN } from '../actions/pin_actions';
 
 const boardsReducer = (state = {}, action) => {
     Object.freeze(state);
-    // debugger
     switch (action.type) {
         case RECEIVE_PROFILE:
             if (action.userProfile.boards === undefined){
@@ -13,7 +12,6 @@ const boardsReducer = (state = {}, action) => {
                 return action.userProfile.boards;
             } 
         case RECEIVE_BOARD:
-            debugger
             return Object.assign({}, state, { [action.board.id]: action.board });
         case REMOVE_BOARD:
             const newState = Object.assign({}, state);

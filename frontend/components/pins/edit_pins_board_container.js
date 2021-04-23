@@ -16,7 +16,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    // debugger
     return {
         getPin: (pinId) => dispatch(getPin(pinId)),
         updatePin: (pin) => dispatch(updatePin(pin)),

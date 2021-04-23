@@ -3,7 +3,6 @@ import { RECEIVE_PIN, SHOW_PIN } from '../actions/pin_actions';
 
 const boardsPinsReducer = (state = false, action) => {
     Object.freeze(state);
-    // debugger
     switch (action.type) {
         case RECEIVE_BOARDS_PINS_ASSOC:
             return Object.assign({}, action.boardsPins);

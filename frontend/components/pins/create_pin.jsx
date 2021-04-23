@@ -27,13 +27,11 @@ class Pins extends React.Component {
 
     handleChange(event){
         const {name, value} = event.target;
-        // debugger
         this.setState({
             [name]: value
         })
     }
     handleName(e){
-        // debugger
         this.setState({
             board_name: e.target.dataset.id, board_id: e.target.value
         })

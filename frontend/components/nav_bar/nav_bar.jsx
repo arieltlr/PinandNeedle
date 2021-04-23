@@ -5,7 +5,6 @@ import ArrowDropdown from '../arrow_dropdown/arrow_dropdown';
 class NavBar extends React.Component {
 
     render() {
-        // debugger
         return (
             <div>
                 <nav className="nav-bar">
