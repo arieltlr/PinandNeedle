@@ -19,7 +19,6 @@ json.user do
         end
     end
 end
-
 json.pins do
     @board.pins.each do |pin|
         json.set! pin.id do
