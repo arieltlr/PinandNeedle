@@ -22,7 +22,7 @@ class EditPinsBoard extends React.Component {
         this.whenClicked = this.whenClicked.bind(this);
         this.handleName = this.handleName.bind(this);
         this.findBoard = this.findBoard.bind(this);
-        this.findBoardFromObj = this.findBoardFromObj.bind(this);
+        // this.findBoardFromObj = this.findBoardFromObj.bind(this);
         
     }
 
@@ -84,44 +84,44 @@ class EditPinsBoard extends React.Component {
         debugger
         return pinsBoard;
     }
-        findBoardFromObj(pin, user){
-        let pinsBoard;
-        const pinId = pin.id;
-        const pinIdArray = Object.values(user.boards).map(board => {
-            return Object.assign({}, {[board.id]: board.pins})
-            })
-        debugger
-        for (let i = 0; i < pinIdArray.length; i++){
-            for (let j = 0; i < Object.values(pinIdArray[i])[0].length; j++){
-                if (Object.values(pinIdArray[i])[0][j].id === pinId){
-                    debugger
-                    pinsBoard = Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
-                    return Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
-                }
-            }
-        }
-        debugger
-        return pinsBoard;
-    }
+    //     findBoardFromObj(pin, user){
+    //     let pinsBoard;
+    //     const pinId = pin.id;
+    //     const pinIdArray = Object.values(user.boards).map(board => {
+    //         return Object.assign({}, {[board.id]: board.pins})
+    //         })
+    //     debugger
+    //     for (let i = 0; i < pinIdArray.length; i++){
+    //         for (let j = 0; i < Object.values(pinIdArray[i])[0].length; j++){
+    //             if (Object.values(pinIdArray[i])[0][j].id === pinId){
+    //                 debugger
+    //                 pinsBoard = Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
+    //                 return Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
+    //             }
+    //         }
+    //     }
+    //     debugger
+    //     return pinsBoard;
+    // }
 
     render (){
         let pinsBoard;
         if ( !this.state.board_found ){
             debugger
-            if (typeof Object.values(this.props.boards)[0].pins[0] === "object"){
-                this.state.board_found = !this.state.board_found;
-                debugger
-                pinsBoard = this.findBoardFromObj(this.props.pin, this.props.currentUser);
-                this.state.board_id = pinsBoard.id;
-                this.state.board_name= pinsBoard.name;
+            // if (typeof Object.values(this.props.boards)[0].pins[0] === "object"){
+            //     this.state.board_found = !this.state.board_found;
+            //     debugger
+            //     pinsBoard = this.findBoardFromObj(this.props.pin, this.props.currentUser);
+            //     this.state.board_id = pinsBoard.id;
+            //     this.state.board_name= pinsBoard.name;
                 
-            } else{
-                debugger
+            // } else{
+            //     debugger
                 pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
                 this.state.board_id = pinsBoard.id;
                 this.state.board_name= pinsBoard.name;
                 this.state.board_found = !this.state.board_found;
-            }
+            // }
         }
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(

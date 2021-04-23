@@ -18,9 +18,7 @@ const pinsReducer = (state = {}, action) => {
         case SHOW_PIN:
             return action.pin.pins
         case RECEIVE_PIN:
-
             return Object.assign({}, state, { [action.pin.pin.id]: action.pin.pin });
-            
         case RECEIVE_BOARD:
             if (action.board.pins === undefined || action.board.pins.length === 0){
                 return state
