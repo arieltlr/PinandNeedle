@@ -108,7 +108,6 @@ class EditPin extends React.Component {
         for (let i = 0; i < pinIdArray.length; i++){
             for (let j = 0; i < Object.values(pinIdArray[i])[0].length; j++){
                 if (Object.values(pinIdArray[i])[0][j].id === pinId){
-                    debugger
                     pinsBoard = Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
                     return Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
                 }

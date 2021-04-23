@@ -97,7 +97,6 @@ class PinShow extends React.Component {
         for (let i = 0; i < pinIdArray.length; i++){
             for (let j = 0; i < Object.values(pinIdArray[i])[0].length; j++){
                 if (Object.values(pinIdArray[i])[0][j].id === pinId){
-                    debugger
                     pinsBoard = Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
                     return Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
                 }
@@ -136,7 +135,17 @@ class PinShow extends React.Component {
         const profileLetter = email[0].toUpperCase();
         let pinsBoard;
         if (this.props.currentUser.boards){
-            pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
+            if (typeof Object.values(this.props.currentUser.boards)[0].pins[0] === "object"){
+                pinsBoard = this.findBoardFromObj(this.props.pin, this.props.currentUser);
+                this.state.board_id = pinsBoard.id;
+                this.state.board_name= pinsBoard.name;
+                
+            } else{
+                
+                pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
+                this.state.board_id = pinsBoard.id;
+                this.state.board_name= pinsBoard.name;
+            }
         }
         let pins = this.props.allPins;
         let options;
