@@ -3,7 +3,7 @@ json.pin do
     json.photoUrl url_for(@pin.photo)
     json.board do 
         json.extract! @board, :id, :name, :owner_email
-    end 
+    end
 end
 
 json.user do

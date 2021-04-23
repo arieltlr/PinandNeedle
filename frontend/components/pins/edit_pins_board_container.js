@@ -6,7 +6,8 @@ import { receiveErrors, getPin, updatePin, deletePin, removeBoardsPin } from '..
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    let pinId=ownProps.history.location.pathname.slice(5)
+    let pinId=ownProps.history.location.pathname.slice(5);
+   
     return {
         errors: state.errors.pins,
         ownProps,

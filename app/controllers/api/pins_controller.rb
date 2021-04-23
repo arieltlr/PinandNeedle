@@ -4,7 +4,6 @@ class Api::PinsController < ApplicationController
         @pin = Pin.new(pin_params)
         if @pin.save
             if params[:board_id] == ""
-                
                 @board = Board.create!({user_id: @pin.user_id, name: "Quick Saves", description: "", owner_email: @pin.owner_email})
                 BoardsPin.create!(board_id: @board.id, pin_id: @pin.id)
             else 
