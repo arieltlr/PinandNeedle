@@ -21,7 +21,8 @@ class EditPinsBoard extends React.Component {
         this.closeWhenClicked = this.closeWhenClicked.bind(this);
         this.whenClicked = this.whenClicked.bind(this);
         this.handleName = this.handleName.bind(this);
-        this.findBoard = this.findBoard.bind(this)
+        this.findBoard = this.findBoard.bind(this);
+        // this.findBoardFromObj = this.findBoardFromObj.bind(this);
         
     }
 
@@ -82,7 +83,7 @@ class EditPinsBoard extends React.Component {
         }
         return pinsBoard;
     }
-
+    
     render (){
         let pinsBoard;
         if ( !this.state.board_found ){
@@ -90,7 +91,6 @@ class EditPinsBoard extends React.Component {
             this.state.board_id = pinsBoard.id;
             this.state.board_name= pinsBoard.name;
             this.state.board_found = !this.state.board_found;
-
         }
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(

@@ -6,13 +6,11 @@ import { logout } from "../../actions/session_actions";
 
 
 const mstp = (state, ownProps) => {
-    // debugger
     return {
         currentUser: state.entities.user[state.session.id]
     }
 }
 const mdtp = dispatch => {
-    // debugger
     return {
         openModal: (modal) => dispatch(openModal(modal)),
         closeModal: () => dispatch(closeModal()),

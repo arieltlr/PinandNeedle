@@ -6,8 +6,6 @@ const ProfileNav = (props) => {
         <div className="profile-nav-bar">
             <div>
             </div>
-            {/* <div className="add-item-icon" onClick={() => props.openModal("createBoard")}>
-            </div> */}
             <div className="profile-nav-add-button">
                 <BoardPlusDD openModal={props.openModal} boardShow={"profile"}/>
             </div>
