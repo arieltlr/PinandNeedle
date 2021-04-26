@@ -46,3 +46,11 @@ export const destroyPin = (pinId) => {
         url: `/api/pins/${pinId}`
     })
 }
+
+export const searchPins = (search) => {
+    return $.ajax({
+        method: "GET",
+        url: "/api/search",
+        data: search
+    })
+}

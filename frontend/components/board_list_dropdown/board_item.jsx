@@ -31,6 +31,7 @@ class BoardItem extends React.Component {
         this.setState({show_save_button: changeState});
     }
     render() {
+        
         let board = this.props.board;
         let pinID;
         let buttonState;
