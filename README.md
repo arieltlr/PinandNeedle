@@ -1,6 +1,7 @@
 <p align="center">
   <img src="https://github.com/arieltlr/PinandNeedle/blob/main/app/assets/images/logo_200x200.png" />
 </p>
+
 ## Overview
 
 <p align="center">
