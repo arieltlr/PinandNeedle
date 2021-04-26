@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pin and Needle is a social discovery platform, based on Pinterest. Like Pinterest you can upload photos as pins, save the pin to a board, and explore pins from other users.
 
-Things you may want to cover:
+Pin and Needle was built using Ruby on Rails with a Postgres database on the backend and Javascript / React on the frontend. 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
