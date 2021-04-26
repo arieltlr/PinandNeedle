@@ -8,7 +8,7 @@
   <img src="https://github.com/arieltlr/PinandNeedle/blob/main/app/assets/images/pinandneedle.gif" />
 </p>
 
-Pin and Needle is a full-stack Pinterest clone. Like Pinterest you can upload photos as pins, save the pin to a board, and explore pins from other users. Each pin is comprised of a photo, which is stored on AWS, and optional link, title and description. Users create boards, and can save their own pins, as well as other users' pins to their boards. Pin and Needle is the perfect place to find inspiration. 
+PinandNeedle, a fullstack Pinterest clone, is a social media platform that allows users to search, save, and share URLs, represented by images. Saved URL/images are referred to as pins. Users can organize their pins into groups called boards, follow other users, and discover new content on the home feed.
 
 [Click here to get new ideas!](https://pinandneedle.herokuapp.com/#/)
 
