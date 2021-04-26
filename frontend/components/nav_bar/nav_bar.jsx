@@ -11,7 +11,7 @@ class NavBar extends React.Component {
 
     handleLink(e){
         e.preventDefault()
-        debugger
+        
         window.open(`${e.target.dataset.id}`)
     }
 

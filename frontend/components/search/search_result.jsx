@@ -10,18 +10,14 @@ class SearchResult extends React.Component{
             fetchPins: false
         }
     }
-    
     componentDidMount(){
         this.props.getPins();
         this.setState({fetchPins: true})
     }
     render(){
-
         let pinArray = Object.values(this.props.search);
         let propPins = this.props.pins;
-        
         let pins;
-        debugger
         if (pinArray.length > 0) {
             
             pins = pinArray.map((pin, index) => {       
