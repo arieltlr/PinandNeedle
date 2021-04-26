@@ -24,9 +24,7 @@ class SearchBar extends React.Component {
             pathname: "/search",
             search: `?results=${this.state.searchInput}`
         })
-    }
-    componentDidMount(){
-        this.setState({searchInput: ""})
+        this.setState({searchInput: ""});
     }
 
     render(){
