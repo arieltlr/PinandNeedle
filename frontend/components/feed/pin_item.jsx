@@ -27,6 +27,7 @@ class PinItem extends React.Component {
         let noBoards;
         let pins = this.props.propPins
         if (this.props.currentUser.boards) {
+            
             options = Object.values(this.props.currentUser.boards).map((board, index) => {
             return(
                 <BoardItem 

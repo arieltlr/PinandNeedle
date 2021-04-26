@@ -7,6 +7,8 @@ class SearchBar extends React.Component {
         this.state = {
             searchInput: "",
         }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleChange(e){
         e.preventDefault();
@@ -16,28 +18,29 @@ class SearchBar extends React.Component {
     }
     handleSubmit(e){
         e.preventDefault();
-
-
+        
         this.props.searchPins({search: this.state.searchInput});
-
         this.props.history.push({
             pathname: "/search",
-            search: `?resulst=${this.state.searchInput}`
+            search: `?results=${this.state.searchInput}`
         })
+    }
+    componentDidMount(){
+        this.setState({searchInput: ""})
     }
 
     render(){
         return (
-            <form>
+            <form className="search-form" onSubmit={this.handleSubmit}>
                 <input 
-                    className="nav-ele" 
+                    // className="nav-ele" 
                     id="search-bar" 
                     type="text" 
                     placeholder="Search"
                     value={this.state.searchInput}
-                    onChange={this.handleChange()} />
+                    onChange={this.handleChange} />
             </form>
         )
     }
 }
-export default withRouter(SearchBar)
+export default withRouter(SearchBar);

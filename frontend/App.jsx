@@ -10,6 +10,7 @@ import FollowingContainer from './components/feed/following_container';
 import BoardShowContainer from './components/boards/board_show_container';
 import CreatePinContainer from './components/pins/create_pin_container';
 import PinShowContainer from './components/pins/pin_show_container';
+import SearchResultContainer from './components/search/search_result_container';
 
 const App = (store) => (
     <div>
@@ -24,6 +25,7 @@ const App = (store) => (
                 <ProtectedRoute exact path="/pin" component={CreatePinContainer} />
                 <ProtectedRoute exact path="/pin/:pinId" component={PinShowContainer} />
                 <ProtectedRoute path="/board/:boardId" component={BoardShowContainer} />
+                <ProtectedRoute path="/search" component={SearchResultContainer} />
                 <AuthRoute exact path="/" component={SplashContainer} />
                     
             </Switch> 
