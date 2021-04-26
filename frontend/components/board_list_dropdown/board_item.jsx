@@ -16,7 +16,6 @@ class BoardItem extends React.Component {
     }
     handleSubmit(e){
         e.preventDefault();
-
         const assoc = {
                 'boardPin[board_id]': this.props.board.id, 
                 'boardPin[pin_id]': this.props.pin.id 

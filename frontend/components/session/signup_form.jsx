@@ -25,7 +25,6 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        // debugger
         this.props.signup(user)
             .then(() => this.props.closeModal());
     }
@@ -40,12 +39,10 @@ class SignupForm extends React.Component {
         this.setState({ age: e.target.value })
     }
     componentWillUnmount() {
-        // debugger
         const resetErrors = [];
         this.props.refreshErrors(resetErrors);
     }
     render() {
-        // debugger
         let emailError;
         let passwordError;
         let ageError;

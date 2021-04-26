@@ -22,6 +22,8 @@ class PinShow extends React.Component {
         this.findBoard = this.findBoard.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleLink = this.handleLink.bind(this);
+        this.findBoardFromObj = this.findBoardFromObj.bind(this);
+
         
     }
     handleLink(e){
@@ -85,16 +87,33 @@ class PinShow extends React.Component {
         }
         return pinsBoard;
     }
+    findBoardFromObj(pin, user){
+        let pinsBoard;
+        const pinId = pin.id;
+        const pinIdArray = Object.values(user.boards).map(board => {
+            return Object.assign({}, {[board.id]: board.pins})
+            })
+        for (let i = 0; i < pinIdArray.length; i++){
+            for (let j = 0; j < Object.values(pinIdArray[i])[0].length; j++){    
+                if (Object.values(pinIdArray[i])[0][j].id === pinId){
+                    pinsBoard = Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);     
+                    return Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
+                }
+            }
+        }
+        return pinsBoard;
+    }
     handleEdit(e){
         e.preventDefault();
         let pinsBoard;
-        if (this.props.currentUser.boards){
+        if (typeof Object.values(this.props.currentUser.boards)[0].pins[0] === "object"){
+            pinsBoard = this.findBoardFromObj(this.props.pin, this.props.currentUser);
+        } else if (this.props.currentUser.boards) {
             pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
         } else {
             pinsBoard = undefined;
         }
         if (pinsBoard && this.props.pinOwner.id === this.props.currentUser.id){
-            
             this.props.openModal("edit-pin")
         } else {
             this.props.openModal("edit-pinsBoard")
@@ -113,8 +132,16 @@ class PinShow extends React.Component {
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
         const profileLetter = email[0].toUpperCase();
         let pinsBoard;
+        
         if (this.props.currentUser.boards){
-            pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
+            if (typeof Object.values(this.props.currentUser.boards)[0].pins[0] === "object"){
+                
+                pinsBoard = this.findBoardFromObj(this.props.pin, this.props.currentUser);
+                
+            } else{
+                
+                pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
+            }
         }
         let pins = this.props.allPins;
         let options;

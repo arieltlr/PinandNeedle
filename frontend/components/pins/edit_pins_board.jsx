@@ -21,7 +21,8 @@ class EditPinsBoard extends React.Component {
         this.closeWhenClicked = this.closeWhenClicked.bind(this);
         this.whenClicked = this.whenClicked.bind(this);
         this.handleName = this.handleName.bind(this);
-        this.findBoard = this.findBoard.bind(this)
+        this.findBoard = this.findBoard.bind(this);
+        this.findBoardFromObj = this.findBoardFromObj.bind(this);
         
     }
 
@@ -80,16 +81,44 @@ class EditPinsBoard extends React.Component {
                 pinsBoard = Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
             }
         }
+        
         return pinsBoard;
     }
-
+    findBoardFromObj(pin, user){
+        let pinsBoard;
+        const pinId = pin.id;
+        const pinIdArray = Object.values(user.boards).map(board => {
+            return Object.assign({}, {[board.id]: board.pins})
+            })
+        
+        for (let i = 0; i < pinIdArray.length; i++){
+            for (let j = 0; j < Object.values(pinIdArray[i])[0].length; j++){
+                if (Object.values(pinIdArray[i])[0][j].id === pinId){
+                    pinsBoard = Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
+                    return Object.assign({}, user.boards[parseInt(Object.keys(pinIdArray[i]))]);
+                }
+            }
+        }
+        
+        return pinsBoard;
+    }
+    
     render (){
         let pinsBoard;
         if ( !this.state.board_found ){
-            pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
-            this.state.board_id = pinsBoard.id;
-            this.state.board_name= pinsBoard.name;
-            this.state.board_found = !this.state.board_found;
+            if (typeof Object.values(this.props.boards)[0].pins[0] === "object"){
+                this.state.board_found = !this.state.board_found;
+                pinsBoard = this.findBoardFromObj(this.props.pin, this.props.currentUser);
+                this.state.board_id = pinsBoard.id;
+                this.state.board_name= pinsBoard.name;
+                
+            } else{
+                
+                pinsBoard = this.findBoard(this.props.pin, this.props.currentUser);
+                this.state.board_id = pinsBoard.id;
+                this.state.board_name= pinsBoard.name;
+                this.state.board_found = !this.state.board_found;
+            }
 
         }
         const options = Object.values(this.props.currentUser.boards).map((board, index) => {

@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     } else {
         pinOwner = {};
     }
+    
     return {
         errors: state.errors.pins,
         ownProps,

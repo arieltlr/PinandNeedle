@@ -12,20 +12,10 @@ class BoardDropdown extends React.Component {
         
         this.handleSubmit = this.handleSubmit.bind(this);
         this.whenClicked = this.whenClicked.bind(this);
-        // this.onHover = this.onHover.bind(this);
 
 
     }
-    // onHover(e){
-    //     e.preventDefault();
-    //     if (!this.props.pinSaved.savedPin){
-    //         const changeState = !this.state.show_dropdown;
-    //         this.setState({show_dropdown: changeState});
-    //     } else {
-    //         this.setState({show_dropdown: false})
-    //         this.setState({show_board_list: "hidden"})
-    //     }
-    // }
+
     whenClicked(e){
         e.preventDefault()
         const changeState = !this.state.show;
@@ -34,13 +24,26 @@ class BoardDropdown extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
+        // const assoc = {
+        //         'boardPin[board_id]': this.props.firstBoard.id, 
+        //         'boardPin[pin_id]': this.props.pin.id 
+        //     }
 
-        const assoc = {
-                'boardPin[board_id]': this.props.firstBoard.id, 
-                'boardPin[pin_id]': this.props.pin.id 
-            }
-
-        this.props.createAssoc(assoc)
+        // this.props.createAssoc(assoc)
+        if (!this.props.currentUser.boards){
+            const assoc = {
+                'boardPin[pin_id]': this.props.pin.id, 
+                'boardPin[board_id]': e.target.value,
+                'newBoard[user_id]': this.props.currentUser.id,
+                'newBoard[owner_email]': this.props.currentUser.email}
+            this.props.createAssoc(assoc)
+        } else {
+                const assoc = {
+                    'boardPin[board_id]': e.target.value, 
+                    'boardPin[pin_id]': this.props.pin.id 
+                }
+                this.props.createAssoc(assoc)
+        }
     }
 
     render() {
