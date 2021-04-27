@@ -29,7 +29,7 @@ export const createFollow = (follow) => {
 
 export const unfollow = (follow) => {
     return dispatch => {
-        return FollowApiUtil.unfollow(follow)
+        return FollowApiUtil.destroyFollow(follow)
             .then((follow) =>
                 dispatch(receiveUnfollow(follow)),
                 (errors) =>

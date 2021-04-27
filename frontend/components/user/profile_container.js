@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
         openModal: (modal) => dispatch(openModal(modal)),
         closeModal: () => dispatch(closeModal()),
         createFollow: (follow) => dispatch(createFollow(follow)),
-        unfollow: (unfollow) => dispatch(unfollow(unfollow)),
+        unfollow: (follow) => dispatch(unfollow(follow)),
     }
 }
 

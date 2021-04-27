@@ -19,11 +19,11 @@ class FollowsProfileDisplay extends React.Component {
     }
     handleUnfollow(e){
         e.preventDefault();
-        const unfollow = {
+        const follow = {
             user_id: this.props.profileId,
             follower_id: this.props.currentUserId
         }
-        this.props.unfollow(unfollow);
+        this.props.unfollow(follow);
 
     }
 
@@ -31,17 +31,14 @@ class FollowsProfileDisplay extends React.Component {
         let followStatus;
         let currentProfileFollowerIds = [];
         if (this.props.followers){
-            debugger
             currentProfileFollowerIds = Object.keys(this.props.followers);
         }
         if (currentProfileFollowerIds.includes(this.props.currentUserId.toString())){
-            debugger
             followStatus = true;
         } else{
             
             followStatus = false;
         }
-        debugger
         return(
             <div>
                 {followStatus ? 

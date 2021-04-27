@@ -9,10 +9,11 @@ export const newFollow = (follow) => {
     })
 }
 
-export const unfollow = (follow) => {
+export const destroyFollow = (follow) => {
+    
     return $.ajax({
         method: "DELETE",
-        url: '/api/follows',
+        url: `/api/follows/${follow.id}`,
         data: {
             follow
         }

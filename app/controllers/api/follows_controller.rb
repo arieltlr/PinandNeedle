@@ -20,13 +20,11 @@ class Api::FollowsController < ApplicationController
 
     end
 
-    def delete
-        # @follow = Follow.find_by(params[])
-        # need to get follow instance id
-        # follower_id is always the currentUser.id
-        @follow = Follow.where("user_id = ?  AND follower_id = ?", params[:user_id], params[:follower_id])
-        @user = User.find(params[:user_id])
-        @boards = Board.where(user_id: params[:user_id]).includes(:pins).to_a
+    def destroy
+        followArray = Follow.where("user_id = ?  AND follower_id = ?", params[:follow][:user_id], params[:follow][:follower_id])
+        @follow = Follow.find(followArray[0].id)
+        @user = User.find(params[:follow][:user_id])
+        @boards = Board.where(user_id: params[:follow][:user_id]).includes(:pins).to_a
         @pins = []
         if @boards
             @boards.each do |board|
@@ -34,7 +32,7 @@ class Api::FollowsController < ApplicationController
             end
         end
         if @follow.destroy
-            @followers = User.where(id: @user.followers.pluck(:user_id)).to_a
+            @followers = User.where(id: @user.followers.pluck(:follower_id)).to_a
             @users_followed = User.where(id: @user.users_followed.pluck(:user_id)).to_a
             render "api/users/show"
         else

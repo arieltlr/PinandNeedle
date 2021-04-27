@@ -35,7 +35,6 @@ class Profile extends React.Component {
         const profileLetter = email[0].toUpperCase()
         const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
         let pins = this.props.pins
-        
         let boards = this.props.boards.map((board, index) => {
             const pinCount = board.pins.length
             
@@ -87,7 +86,8 @@ class Profile extends React.Component {
                             profileId={currentProfile.id} 
                             followers={currentProfile.followers}
                             usersFollowed={currentProfile.users_followed}
-                            createFollow={this.props.createFollow} />
+                            createFollow={this.props.createFollow}
+                            unfollow={this.props.unfollow} />
                         </div>
                         }
 
