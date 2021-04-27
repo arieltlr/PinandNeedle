@@ -3,6 +3,7 @@ import ProfileNav from './profile_nav';
 import FollowsProfileDisplay from '../follows/profile_options';
 import { Link, withRouter } from 'react-router-dom';
 
+
 class Profile extends React.Component {
 
     constructor(props){
@@ -27,13 +28,14 @@ class Profile extends React.Component {
             return null;
         }
 
-        const thisProfile = this.props.thisProfile;
-        const currentUserProfile = this.props.theCurrentUser.id === parseInt(thisProfile);
+        const currentProfile = this.props.currentProfile;
+        const currentUserProfile = this.props.currentUser.id === currentProfile.id;
         const email = this.props.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
         const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
         let pins = this.props.pins
+        
         let boards = this.props.boards.map((board, index) => {
             const pinCount = board.pins.length
             
@@ -79,9 +81,15 @@ class Profile extends React.Component {
                                 <h3>1 Following</h3>
                             </div>
                         </div>
-                        <div className="follows-container">
-                            <FollowsProfileDisplay props={Boolean(currentUserProfile)} />
+                        {currentUserProfile ? null : <div className="follows-container">
+                            <FollowsProfileDisplay 
+                            currentUserId={this.props.currentUser.id} 
+                            profileId={currentProfile.id} 
+                            followers={currentProfile.followers}
+                            usersFollowed={currentProfile.users_followed}
+                            createFollow={this.props.createFollow} />
                         </div>
+                        }
 
                     </div>
                     <nav className="profile-nav-bar-container" >

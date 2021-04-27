@@ -21,14 +21,14 @@ end
 json.followers do 
     @followers.each do |follower|
         json.set! follower.id do 
-            :id, :username, :email, :fname, :lname
+            json.extract! follower, :id, :username, :email, :fname, :lname
         end
     end
 end
 json.users_followed do 
     @users_followed.each do |user_followed|
-        json.set! follower.id do 
-            :id, :username, :email, :fname, :lname
+        json.set! user_followed.id do 
+           json.extract! user_followed, :id, :username, :email, :fname, :lname
         end
     end
 end

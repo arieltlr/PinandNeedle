@@ -2,6 +2,7 @@ import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_BOARD, RECEIVE_PROFILE } from '../actions/board_actions';
 import { RECEIVE_PIN, SHOW_PIN } from '../actions/pin_actions';
 import { RECEIVE_BOARDS_PINS_ASSOC } from '../actions/boards_pins_actions';
+import { RECEIVE_FOLLOW } from "../actions/follow_actions";
 
 const userReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -29,7 +30,11 @@ const userReducer = (state = {}, action) => {
             } else {
                 return state;
             }
-               
+        case RECEIVE_FOLLOW:
+            const newState = Object.assign({}, state)
+            newState[action.user.id] = Object.assign({}, {[action.user.id]: action.user})
+            debugger
+            return newState;      
         default:
             return state;
     }
