@@ -249,8 +249,14 @@ class User < ApplicationRecord
     has_many :pins,
     foreign_key: :user_id,
     class_name: :Pin
-   
 
+    has_many :followers, 
+        foreign_key: :user_id, 
+        class_name: :Follow
+    
+    has_many :users_followed, 
+        foreign_key: :follower_id, 
+        class_name: :Follow
 
 
     def self.find_user_by_credentials(email, password)

@@ -17,3 +17,18 @@ json.pins do
         end
     end
 end
+
+json.followers do 
+    @followers.each do |follower|
+        json.set! follower.id do 
+            :id, :username, :email, :fname, :lname
+        end
+    end
+end
+json.users_followed do 
+    @users_followed.each do |user_followed|
+        json.set! follower.id do 
+            :id, :username, :email, :fname, :lname
+        end
+    end
+end
