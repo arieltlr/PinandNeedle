@@ -22,9 +22,11 @@ json.followers do
     @followers.each do |follower|
         json.set! follower.id do 
             json.extract! follower, :id, :username, :email, :fname, :lname
+            json.followers follower.followers.pluck(:follower_id)
         end
     end
 end
+
 json.users_followed do 
     @users_followed.each do |user_followed|
         json.set! user_followed.id do 

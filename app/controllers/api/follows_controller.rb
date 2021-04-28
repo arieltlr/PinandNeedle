@@ -11,7 +11,7 @@ class Api::FollowsController < ApplicationController
             end
         end
         if @follow.save
-            @followers = User.where(id: @user.followers.pluck(:follower_id)).to_a
+            @followers = User.where(id: @user.followers.pluck(:follower_id)).includes(:followers).to_a
             @users_followed = User.where(id: @user.users_followed.pluck(:user_id)).to_a
            render "api/users/show"
         else
@@ -32,7 +32,7 @@ class Api::FollowsController < ApplicationController
             end
         end
         if @follow.destroy
-            @followers = User.where(id: @user.followers.pluck(:follower_id)).to_a
+            @followers = User.where(id: @user.followers.pluck(:follower_id)).includes(:followers).to_a
             @users_followed = User.where(id: @user.users_followed.pluck(:user_id)).to_a
             render "api/users/show"
         else

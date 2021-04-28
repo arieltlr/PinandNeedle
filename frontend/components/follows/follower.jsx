@@ -6,7 +6,7 @@ class Follower extends React.Component {
     }
     render(){
         let followStatus;
-        debugger
+        
         return(
             <div>
                 <div>
