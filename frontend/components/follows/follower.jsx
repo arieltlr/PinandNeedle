@@ -11,10 +11,10 @@ class Follower extends React.Component {
         handleFollow(e){
         e.preventDefault();
         const follow = {
-            user_id: this.props.profileId,
+            user_id: this.props.followerId,
             follower_id: this.props.currentUserId
         }
-        
+        debugger
         this.props.createFollow(follow);
 
     }
@@ -60,11 +60,11 @@ class Follower extends React.Component {
                         ?
                             <div>
                                 {followStatus ? 
-                                    <button onClick={this.handleUnfollow} className="profile-follow-button">
+                                    <button onClick={this.handleUnfollow} className="follow-modal-follow-button">
                                         Unfollow
                                         </button> 
                                         : 
-                                    <button onClick={this.handleFollow} className="profile-follow-button">
+                                    <button onClick={this.handleFollow} className="follow-modal-follow-button">
                                         Follow</button>
                                 }
                             </div>

@@ -50,12 +50,7 @@ constructor(props){
         
         return(
             <div>
-                {followers ? 
-                    <ul>{followers}</ul>
-                    :
-                    <h3>{this.props.currentProfile.username} does not follow any users</h3>
-                }
-
+                <ul>{followers}</ul>
             </div>
         )
         

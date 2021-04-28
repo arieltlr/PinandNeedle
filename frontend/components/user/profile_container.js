@@ -6,7 +6,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { createFollow, unfollow } from '../../actions/follow_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    
+    debugger
     return {
         currentUser: state.entities.user[state.session.id],
         currentProfile: state.entities.user[ownProps.match.params.userId],
