@@ -29,6 +29,8 @@ class Profile extends React.Component {
         }
 
         const currentProfile = this.props.currentProfile;
+        const usersFollowed = currentProfile.users_followed;
+        const followers = currentProfile.followers;
         const currentUserProfile = this.props.currentUser.id === currentProfile.id;
         const email = this.props.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
@@ -75,9 +77,9 @@ class Profile extends React.Component {
                             <h1 id="profile-page-username">{emailName}</h1>
                             <h3 id="username">@{emailName.toLowerCase()}</h3>
                             <div className="follows">
-                                <h3> 1 Follower</h3 >
+                                <h3 onClick={() => this.props.openModal('followers')}>{ followers ? Object.keys(followers).length : 0} Follower</h3>
                                 <p id="dot">  •  </p>
-                                <h3>1 Following</h3>
+                                <h3 onClick={() => this.props.openModal('users_followed')}>{ usersFollowed ? Object.keys(usersFollowed).length : 0} Following</h3>
                             </div>
                         </div>
                         {currentUserProfile ? null : <div className="follows-container">
