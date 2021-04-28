@@ -31,12 +31,18 @@ constructor(props){
 
     render(){
         let followers;
-        let currentProfileFollowerIds = [];
-        
         if (this.props.currentProfile.followers){
             followers = Object.values(this.props.currentProfile.followers).map((follower, idx) => {
                 return (
-                    <Follower username={follower.username} followerId={follower.id} currentUserId={this.props.currentUser.id}/> 
+                    <Follower
+                        key={idx} 
+                        username={follower.username} 
+                        followerId={follower.id} 
+                        currentUserId={this.props.currentUser.id}
+                        profileFollowers={follower.followers}
+                        unfollow={this.props.unfollow}
+                        createFollow={this.props.createFollow}
+                    /> 
                 )
             });
         }
