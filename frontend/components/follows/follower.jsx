@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Follower extends React.Component {
     constructor(props){
@@ -28,24 +29,33 @@ class Follower extends React.Component {
     }
     render(){
         let followStatus;
-        debugger
+        
         if (this.props.currentUserId !== this.props.followerId) {
-            debugger
+            
             if (this.props.profileFollowers && this.props.profileFollowers.includes(this.props.currentUserId)){
                 followStatus = true;
             } else {
                 followStatus = false;
             }
         }
+        debugger
         return(
-            <div>
-                <div>
-                    <div id="profile-circle">
-                        <p id="profile-page-letter">{this.props.username[0]}</p>
-                    </div>
-                    <h1 id="profile-page-username">{this.props.username}</h1>
+            <div className="followers-modal-outer-container">
+                <div className="followers-modal-title">
+                    <h3>Followers</h3>
                 </div>
-                <div> 
+                <div className="followers-modal-follower-container">
+
+                <Link to={`/user/${this.props.followerId}`}>
+                    <div className="followers-modal-user-info">
+                        <div className="small-profile-circle">
+                            <p className="small-profile-page-letter">{this.props.username[0]}</p>
+                        </div>
+                        <h1 id="followers-modal-username">{this.props.username}</h1>
+                    </div>
+                </Link>
+                
+                <div className="followers-modal-button-container"> 
                     {this.props.currentUserId !== this.props.followerId 
                         ?
                             <div>
@@ -62,6 +72,7 @@ class Follower extends React.Component {
                             null
                     }
                 </div>
+            </div>
             </div>
 
         )

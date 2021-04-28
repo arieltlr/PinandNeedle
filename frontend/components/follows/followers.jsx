@@ -31,6 +31,7 @@ constructor(props){
 
     render(){
         let followers;
+        debugger
         if (this.props.currentProfile.followers){
             followers = Object.values(this.props.currentProfile.followers).map((follower, idx) => {
                 return (

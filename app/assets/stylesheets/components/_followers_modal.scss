@@ -4,3 +4,38 @@
 .followers-modal {
     @include modal (400px, auto);
 }
+.followers-modal-outer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.followers-modal-follower-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.followers-modal-title {
+    width: 100%;
+    text-align: center;
+    h3 {
+        font-size: 30px;
+    }
+}
+.followers-modal-user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+#followers-modal-username {
+    font-size: 16px;
+    margin-left: 10px;
+}
+.followers-modal-button-container{
+    height: 100px;
+    width: 150px;
+}
