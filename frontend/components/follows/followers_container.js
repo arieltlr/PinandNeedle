@@ -6,8 +6,8 @@ import { createFollow, unfollow } from '../../actions/follow_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    let userId=ownProps.history.location.pathname.slice(5)
-    
+    let userId=ownProps.history.location.pathname.slice(6)
+    debugger
     return {
         errors: state.errors.pins,
         ownProps,

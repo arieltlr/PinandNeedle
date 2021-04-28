@@ -4,6 +4,7 @@ import Follower from "./follower"
 class Followers extends React.Component {
 constructor(props){
         super(props)
+        debugger
         this.handleFollow = this.handleFollow.bind(this);
         this.handleUnfollow = this.handleUnfollow.bind(this);
     }
@@ -31,6 +32,7 @@ constructor(props){
     render(){
         let followers;
         let currentProfileFollowerIds = [];
+        debugger
         if (this.props.currentProfile.followers){
             followers = Object.values(this.props.currentProfile.followers).map((follower, idx) => {
                 return (
@@ -38,6 +40,7 @@ constructor(props){
                 )
             });
         }
+        debugger
         return(
             <div>
                 {followers ? 

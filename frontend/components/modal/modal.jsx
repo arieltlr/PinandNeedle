@@ -65,10 +65,13 @@ function Modal ({modal, closeModal}) {
             form = "edit-pin-modal"
             break;
         case 'followers':
-            component = <FollowersContainer />
-            form = 'followers'
-        case 'followers':
-            component = <UsersFollowedContainer />
+            debugger
+            component = <FollowersContainer />;
+            form = 'followers-modal'
+            debugger
+            break;
+        case 'users-followed':
+            component = <UsersFollowedContainer />;
             form = 'users-followed'
         default:
             return null;

@@ -6,14 +6,14 @@ class Follower extends React.Component {
     }
     render(){
         let followStatus;
-
+        debugger
         return(
             <div>
                 <div>
                     <div id="profile-circle">
-                        <p id="profile-page-letter">{props.username[0]}</p>
+                        <p id="profile-page-letter">{this.props.username[0]}</p>
                     </div>
-                    <h1 id="profile-page-username">{props.username}</h1>
+                    <h1 id="profile-page-username">{this.props.username}</h1>
                 </div>
                 {/* <div>
                     {followStatus ? 
@@ -30,4 +30,4 @@ class Follower extends React.Component {
     }
 }
 
-export default Follower
+export default Follower;
