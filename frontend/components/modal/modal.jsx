@@ -64,15 +64,14 @@ function Modal ({modal, closeModal}) {
             component = <EditPinsBoardContainer />;
             form = "edit-pin-modal"
             break;
-        case 'followers':
-            
+        case 'followers':  
             component = <FollowersContainer />;
             form = 'followers-modal'
-            
             break;
         case 'users-followed':
             component = <UsersFollowedContainer />;
             form = 'users-followed'
+            break;
         default:
             return null;
     }

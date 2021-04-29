@@ -8,7 +8,7 @@ class Follower extends React.Component {
         this.handleUnfollow = this.handleUnfollow.bind(this);
     }
 
-        handleFollow(e){
+    handleFollow(e){
         e.preventDefault();
         const follow = {
             user_id: this.props.followerId,
@@ -21,13 +21,14 @@ class Follower extends React.Component {
     handleUnfollow(e){
         e.preventDefault();
         const follow = {
-            user_id: this.props.profileId,
+            user_id: this.props.followerId,
             follower_id: this.props.currentUserId
         }
         this.props.unfollow(follow);
 
     }
     render(){
+        debugger
         let followStatus;
         
         if (this.props.currentUserId !== this.props.followerId) {
@@ -56,7 +57,7 @@ class Follower extends React.Component {
                 </Link>
                 
                 <div className="followers-modal-button-container"> 
-                    {this.props.currentUserId !== this.props.followerId 
+                    {/* {this.props.currentUserId !== this.props.followerId 
                         ?
                             <div>
                                 {followStatus ? 
@@ -70,7 +71,7 @@ class Follower extends React.Component {
                             </div>
                         : 
                             null
-                    }
+                    } */}
                 </div>
             </div>
             </div>

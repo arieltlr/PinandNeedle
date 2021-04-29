@@ -9,28 +9,39 @@ class Profile extends React.Component {
     constructor(props){
         super(props)
         this.state ={
-            fetchBoards: false
+            fetchBoards: false,
         }
-
+        this.fetchBoards = this.fetchBoards.bind(this);
     }
 
     componentDidMount() {
+        debugger
         this.props.getBoards(this.props.match.params.userId)
     }
     componentDidUpdate(prevProps) {
+        debugger
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.props.getBoards(this.props.match.params.userId)
         }
+    }
+    fetchBoards(){
+        this.props.getBoards(this.props.match.params.userId);
     }
     render() {
         if (!this.state.fetchBoards) {
             this.state.fetchBoards = !this.state.fetchBoards;
             return null;
         }
+        if (!this.props.currentProfile){
+            this.fetchBoards();
+            return null;
+        }
         debugger
         const currentProfile = this.props.currentProfile;
-        const usersFollowed = currentProfile.users_followed;
-        const followers = currentProfile.followers;
+        let usersFollowed;
+        let followers;
+        currentProfile.users_followed ? usersFollowed = currentProfile.users_followed : null;
+        currentProfile.followers ? followers = currentProfile.followers : null;
         let followerCount;
         let followingCount;
         followers ? followerCount = `${Object.keys(followers).length} Follower` : followerCount = "0 Followers";
