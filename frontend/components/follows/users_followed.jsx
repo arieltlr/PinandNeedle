@@ -51,6 +51,7 @@ constructor(props){
                         followers={usersFollowers}
                         unfollow={this.props.unfollow}
                         createFollow={this.props.createFollow}
+                        currentUsersUsersFollowed={this.props.currentUser.users_followed}
                     /> 
                 )
             });

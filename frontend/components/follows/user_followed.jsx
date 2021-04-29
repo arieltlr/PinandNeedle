@@ -30,10 +30,18 @@ class UserFollowed extends React.Component {
     render(){
         
         let followStatus;
+        let currentUsersUsersFollowed = [];
+        if (this.props.currentUsersUsersFollowed){
+            currentUsersUsersFollowed = Object.keys(this.props.currentUsersUsersFollowed).map(key => {
+            return(
+                parseInt(key)
+            )
+        })
+        }
         
         if (this.props.currentUserId !== this.props.userId) {
             
-            if (this.props.followers && this.props.followers.includes(this.props.currentUserId)){
+            if (this.props.followers && currentUsersUsersFollowed.includes(this.props.userId)){
                 debugger
                 followStatus = true;
             } else {
