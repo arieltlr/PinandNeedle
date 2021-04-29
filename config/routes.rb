@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :boards
     resources :pins
     resources :boards_pins, only: [:create, :destroy]
+    resources :follows, only: [:create, :destroy]
     get '/search', to: 'search#search'
   end
 

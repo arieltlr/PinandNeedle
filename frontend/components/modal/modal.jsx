@@ -12,6 +12,8 @@ import PinSaveContainer from '../pins/pin_save_container';
 import EditPinContainer from '../pins/edit_pin_container';
 import EditPinsBoardContainer from '../pins/edit_pins_board_container';
 import CreatePinFromProfileContainer from '../pins/create_pin_from_profile_container';
+import FollowersContainer from '../follows/followers_container';
+import UsersFollowedContainer from '../follows/users_followed_container';
 
 
 
@@ -61,6 +63,14 @@ function Modal ({modal, closeModal}) {
         case 'edit-pinsBoard':
             component = <EditPinsBoardContainer />;
             form = "edit-pin-modal"
+            break;
+        case 'followers':  
+            component = <FollowersContainer />;
+            form = 'followers-modal'
+            break;
+        case 'users_followed':
+            component = <UsersFollowedContainer />;
+            form = 'followers-modal'
             break;
         default:
             return null;

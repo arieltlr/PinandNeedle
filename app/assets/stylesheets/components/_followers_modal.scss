@@ -1,0 +1,61 @@
+@import "base/colors.scss";
+@import "base/layout.scss";
+
+.followers-modal {
+    @include modal (400px, auto);
+}
+.followers-modal-outer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.followers-modal-follower-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.followers-modal-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    h3 {
+        font-size: 30px;
+    }
+}
+.followers-modal-user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+#followers-modal-username {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.follows-modal-link{
+    font-weight: 600;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.follows-modal-no-link {
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.follow-modal-follow-button{
+    width: 80px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    &:hover{
+        background-color: #a00119;
+        cursor: pointer;
+    }
+}

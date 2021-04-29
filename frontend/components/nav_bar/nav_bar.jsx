@@ -25,9 +25,9 @@ class NavBar extends React.Component {
                     <NavLink to="/feed">
                         <button className="nav-ele"id="nav-home">Home</button>
                     </NavLink>
-                    <NavLink to="/following">
+                    {/* <NavLink to="/following">
                         <button className="nav-ele" id="nav-following">Following</button>
-                    </NavLink>
+                    </NavLink> */}
                     <SearchBar searchPins={this.props.searchPins}/>
          
                     <img id="personal-links" src={window.linkedIn} alt="LinkedIn Logo" data-id="https://www.linkedin.com/in/taylorariel/" onClick={this.handleLink}/>

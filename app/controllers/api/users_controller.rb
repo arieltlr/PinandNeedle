@@ -25,8 +25,10 @@ class Api::UsersController < ApplicationController
                 @pins.concat(board.pins.includes(photo_attachment: :blob).to_a)
             end
         end
-        
         # @pins = @user.pins.includes(photo_attachment: :blob).to_a
+        @followers = User.where(id: @user.followers.pluck(:follower_id)).includes(:followers).to_a
+        @users_followed = User.where(id: @user.users_followed.pluck(:user_id)).includes(:followers).to_a
+        
         render :show
     end
 

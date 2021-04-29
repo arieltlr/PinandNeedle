@@ -2,6 +2,7 @@ import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_BOARD, RECEIVE_PROFILE } from '../actions/board_actions';
 import { RECEIVE_PIN, SHOW_PIN } from '../actions/pin_actions';
 import { RECEIVE_BOARDS_PINS_ASSOC } from '../actions/boards_pins_actions';
+import { RECEIVE_FOLLOW, UNFOLLOW } from "../actions/follow_actions";
 
 const userReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -19,8 +20,7 @@ const userReducer = (state = {}, action) => {
                 return state;
             } else {
                 return Object.assign({}, state, {[action.pin.user.id]: action.pin.user});
-            }
-            
+            }       
         case RECEIVE_BOARDS_PINS_ASSOC:
             if (action.boardsPins.user){
                 const newState = Object.assign({}, state);
@@ -29,7 +29,14 @@ const userReducer = (state = {}, action) => {
             } else {
                 return state;
             }
-               
+        case RECEIVE_FOLLOW:
+            const newState = Object.assign({}, state);
+            newState[action.follow.id] = action.follow;
+            return newState; 
+        case UNFOLLOW:
+            const updateState = Object.assign({}, state);
+            updateState[action.follow.id] = action.follow;
+            return updateState;   
         default:
             return state;
     }
