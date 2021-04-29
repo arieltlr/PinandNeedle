@@ -14,7 +14,7 @@ class Follower extends React.Component {
             user_id: this.props.followerId,
             follower_id: this.props.currentUserId
         }
-        debugger
+        
         this.props.createFollow(follow);
 
     }
@@ -28,7 +28,7 @@ class Follower extends React.Component {
 
     }
     render(){
-        debugger
+        
         let followStatus;
         
         if (this.props.currentUserId !== this.props.followerId) {
@@ -39,7 +39,7 @@ class Follower extends React.Component {
                 followStatus = false;
             }
         }
-        debugger
+        
         return(
             <div className="followers-modal-outer-container">
                 <div className="followers-modal-title">

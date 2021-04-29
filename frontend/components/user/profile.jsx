@@ -15,11 +15,11 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        debugger
+        
         this.props.getBoards(this.props.match.params.userId)
     }
     componentDidUpdate(prevProps) {
-        debugger
+        
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.props.getBoards(this.props.match.params.userId)
         }
@@ -36,7 +36,7 @@ class Profile extends React.Component {
             this.fetchBoards();
             return null;
         }
-        debugger
+        
         const currentProfile = this.props.currentProfile;
         let usersFollowed;
         let followers;
