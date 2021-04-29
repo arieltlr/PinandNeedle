@@ -42,10 +42,10 @@ class UserFollowed extends React.Component {
         if (this.props.currentUserId !== this.props.userId) {
             
             if (this.props.followers && currentUsersUsersFollowed.includes(this.props.userId)){
-                debugger
+                
                 followStatus = true;
             } else {
-                debugger
+                
                 followStatus = false;
             }
         }

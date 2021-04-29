@@ -36,12 +36,12 @@ constructor(props){
         }
         
         let following;
-        debugger
+        
         if (this.props.currentProfile.users_followed){
             following = Object.values(this.props.currentProfile.users_followed).map((user, idx) => {
                 let usersFollowers;
                 user.followers ? usersFollowers = user.followers : usersFollowers = [];
-                debugger
+                
                 return (
                     <UserFollowed
                         key={idx} 
