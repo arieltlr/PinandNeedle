@@ -6,7 +6,7 @@ import { createFollow, unfollow } from '../../actions/follow_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    let userId=ownProps.history.location.pathname.slice(5)
+ let userId=ownProps.history.location.pathname.slice(6)
     
     return {
         errors: state.errors.pins,
@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: state.entities.user[state.session.id],
         currentProfile: state.entities.user[userId],
         email: state.entities.profile,
+        userId: parseInt(userId),
     }
 }
 const mapDispatchToProps = (dispatch) => {

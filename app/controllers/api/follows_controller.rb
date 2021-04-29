@@ -2,8 +2,8 @@ class Api::FollowsController < ApplicationController
 
     def create
         @follow = Follow.new(follow_params)
-        @user = User.find(params[:follow][:user_id])
-        @boards = Board.where(user_id: params[:follow][:user_id]).includes(:pins).to_a
+        @user = User.find(current_user.id)
+        @boards = Board.where(user_id: current_user.id).includes(:pins).to_a
         @pins = []
         if @boards
             @boards.each do |board|
@@ -12,7 +12,7 @@ class Api::FollowsController < ApplicationController
         end
         if @follow.save
             @followers = User.where(id: @user.followers.pluck(:follower_id)).includes(:followers).to_a
-            @users_followed = User.where(id: @user.users_followed.pluck(:user_id)).to_a
+            @users_followed = User.where(id: @user.users_followed.pluck(:user_id)).includes(:followers).to_a
            render "api/users/show"
         else
             render json: @follow.errors.full_messages, status: 404
@@ -23,7 +23,7 @@ class Api::FollowsController < ApplicationController
     def destroy
         followArray = Follow.where("user_id = ?  AND follower_id = ?", params[:follow][:user_id], params[:follow][:follower_id])
         @follow = Follow.find(followArray[0].id)
-        @user = User.find(params[:follow][:user_id])
+        @user = User.find(current_user.id)
         @boards = Board.where(user_id: params[:follow][:user_id]).includes(:pins).to_a
         @pins = []
         if @boards

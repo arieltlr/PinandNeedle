@@ -30,10 +30,17 @@ class Follower extends React.Component {
     render(){
         
         let followStatus;
+        let currentUsersUsersFollowed = [];
+        if (this.props.currentUsersUsersFollowed){
+            currentUsersUsersFollowed = Object.keys(this.props.currentUsersUsersFollowed).map(key => {
+            return(
+                parseInt(key)
+            )
+        })
+        }
         
         if (this.props.currentUserId !== this.props.followerId) {
-            
-            if (this.props.profileFollowers && this.props.profileFollowers.includes(this.props.currentUserId)){
+            if (this.props.followerFollowers && currentUsersUsersFollowed.includes(this.props.followerId)){
                 followStatus = true;
             } else {
                 followStatus = false;
@@ -42,9 +49,6 @@ class Follower extends React.Component {
         
         return(
             <div className="followers-modal-outer-container">
-                <div className="followers-modal-title">
-                    <h3>Followers</h3>
-                </div>
                 <div className="followers-modal-follower-container">
 
                 <Link to={`/user/${this.props.followerId}`}>
@@ -57,7 +61,7 @@ class Follower extends React.Component {
                 </Link>
                 
                 <div className="followers-modal-button-container"> 
-                    {/* {this.props.currentUserId !== this.props.followerId 
+                    {this.props.currentUserId !== this.props.followerId 
                         ?
                             <div>
                                 {followStatus ? 
@@ -71,7 +75,7 @@ class Follower extends React.Component {
                             </div>
                         : 
                             null
-                    } */}
+                    }
                 </div>
             </div>
             </div>

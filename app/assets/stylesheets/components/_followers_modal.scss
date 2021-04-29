@@ -8,7 +8,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 20px;
     margin-bottom: 20px;
 }
 .followers-modal-follower-container{
@@ -20,6 +19,8 @@
     margin-right: 20px;
 }
 .followers-modal-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 100%;
     text-align: center;
     h3 {

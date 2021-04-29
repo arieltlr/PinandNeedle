@@ -4,6 +4,9 @@ import Follower from "./follower"
 class Followers extends React.Component {
 constructor(props){
         super(props)
+        this.state = {
+            followEvent: false,
+        }
         
         this.handleFollow = this.handleFollow.bind(this);
         this.handleUnfollow = this.handleUnfollow.bind(this);
@@ -16,7 +19,8 @@ constructor(props){
             follower_id: this.props.currentUserId
         }
         
-        this.props.createFollow(follow);
+        this.props.createFollow(follow).then(
+        this.setState({followEvent: !followEvent}))
 
     }
     handleUnfollow(e){
@@ -26,6 +30,7 @@ constructor(props){
             follower_id: this.props.currentUserId
         }
         this.props.unfollow(follow);
+        this.setState({followEvent: !followEvent})
 
     }
 
@@ -33,6 +38,7 @@ constructor(props){
         if (!this.props.currentProfile){
             return null;
         }
+
         let followers;
         if (this.props.currentProfile.followers){
             followers = Object.values(this.props.currentProfile.followers).map((follower, idx) => {
@@ -42,9 +48,10 @@ constructor(props){
                         username={follower.username} 
                         followerId={follower.id} 
                         currentUserId={this.props.currentUser.id}
-                        profileFollowers={follower.followers}
+                        followerFollowers={follower.followers}
                         unfollow={this.props.unfollow}
                         createFollow={this.props.createFollow}
+                        currentUsersUsersFollowed={this.props.currentUser.users_followed}
                     /> 
                 )
             });
@@ -52,6 +59,9 @@ constructor(props){
         
         return(
             <div>
+                <div className="followers-modal-title">
+                    <h3>Followers</h3>
+                </div>
                 <ul>{followers}</ul>
             </div>
         )

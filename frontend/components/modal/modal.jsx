@@ -68,9 +68,9 @@ function Modal ({modal, closeModal}) {
             component = <FollowersContainer />;
             form = 'followers-modal'
             break;
-        case 'users-followed':
+        case 'users_followed':
             component = <UsersFollowedContainer />;
-            form = 'users-followed'
+            form = 'followers-modal'
             break;
         default:
             return null;

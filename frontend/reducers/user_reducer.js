@@ -32,12 +32,13 @@ const userReducer = (state = {}, action) => {
         case RECEIVE_FOLLOW:
             const newState = Object.assign({}, state);
             newState[action.follow.id] = action.follow;
-            
+            debugger
             return newState; 
         case UNFOLLOW:
+
             const updateState = Object.assign({}, state);
             updateState[action.follow.id] = action.follow;
-            
+            debugger
             return updateState;   
         default:
             return state;

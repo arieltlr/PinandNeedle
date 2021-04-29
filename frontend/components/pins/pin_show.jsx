@@ -127,6 +127,11 @@ class PinShow extends React.Component {
             this.state.pinFetched = true;
             return null;
         }
+        const pinOwner = this.props.pinOwner;
+        let followers;
+        pinOwner.followers ? followers = pinOwner.followers : null;
+        let followerCount;
+        followers ? followerCount = `${Object.keys(followers).length} Follower` : followerCount = "0 Followers";
         const usersPin = Boolean(this.props.currentUser.id === this.props.pinOwner.id)
         const email = this.props.pin.owner_email.split('@')[0];
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase();
@@ -241,7 +246,7 @@ class PinShow extends React.Component {
                                 <Link id="username-link" to={`/user/${this.props.pinOwner.id}`}>
                                     <h1 id="profile-page-username-create-pin" id="pin-show-username">{emailName}</h1>
                                 </Link>
-                                <h3 className="pin-follower">1 Follower</h3 >
+                                <h3 className="pin-follower">{followerCount}</h3 >
                             </div>
                         </div>
                     </div>
