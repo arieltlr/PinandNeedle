@@ -30,10 +30,18 @@ class FollowsProfileDisplay extends React.Component {
     render(){
         let followStatus;
         let currentProfileFollowerIds = [];
-        if (this.props.followers){
-            currentProfileFollowerIds = Object.keys(this.props.followers);
+        let currentUsersUsersFollowed = [];
+        if (this.props.currentUsersUsersFollowed){
+            currentUsersUsersFollowed = Object.keys(this.props.currentUsersUsersFollowed).map(key => {
+            return(
+                parseInt(key)
+            )
+        })
         }
-        if (currentProfileFollowerIds.includes(this.props.currentUserId.toString())){
+        if (this.props.followers && currentUsersUsersFollowed.includes(this.props.profileId)){
+        //     currentProfileFollowerIds = Object.keys(this.props.followers);
+        // }
+        // if (currentProfileFollowerIds.includes(this.props.currentUserId.toString())){
             followStatus = true;
         } else{
             

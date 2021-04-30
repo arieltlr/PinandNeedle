@@ -108,7 +108,9 @@ class Profile extends React.Component {
                             followers={currentProfile.followers}
                             usersFollowed={currentProfile.users_followed}
                             createFollow={this.props.createFollow}
-                            unfollow={this.props.unfollow} />
+                            unfollow={this.props.unfollow}
+                            currentUsersUsersFollowed={this.props.currentUser.users_followed}
+                             />
                         </div>
                         }
 
