@@ -53,7 +53,6 @@ class FollowsProfileDisplay extends React.Component {
         } else{
             followStatus = false;
         }
-        debugger
         return(
             <div>
                 {followStatus ? 

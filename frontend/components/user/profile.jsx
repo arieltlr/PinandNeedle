@@ -39,7 +39,7 @@ class Profile extends React.Component {
             this.fetchBoards();
             return null;
         }
-        debugger
+        
         const currentProfile = this.props.currentProfile;
         //check if the currentProfile has followers and is following other users
         let usersFollowed;
@@ -92,7 +92,7 @@ class Profile extends React.Component {
         if (boards.length < 1 ? boards = noBoardsMessage : boards = boards)
         
         //here is the actual code to render
-        debugger
+        
             return (
 
                 <div>

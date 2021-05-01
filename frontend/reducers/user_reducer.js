@@ -37,13 +37,13 @@ const userReducer = (state = {}, action) => {
             const newState = Object.assign({}, state);
             newState[action.follow.current_user.id] = action.follow.current_user;
             newState[action.follow.current_profile.id] = action.follow.current_profile;
-            debugger
+            
             return newState; 
         case UNFOLLOW:
             const updateState = Object.assign({}, state);
             updateState[action.follow.current_user.id] = action.follow.current_user;
             updateState[action.follow.current_profile.id] = action.follow.current_profile;
-            debugger
+            
             return updateState;   
         default:
             return state;
