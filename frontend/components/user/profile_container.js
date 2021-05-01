@@ -6,12 +6,17 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { createFollow, unfollow } from '../../actions/follow_actions';
 
 const mapStateToProps = (state, ownProps) => {
+    let currentProfileFollowers = {};
+    if (state.entities.user[ownProps.match.params.userId]){
+        currentProfileFollowers = state.entities.user[ownProps.match.params.userId].followers;
+    }
     
     return {
         currentUser: state.entities.user[state.session.id],
         currentProfile: state.entities.user[ownProps.match.params.userId],
+        currentProfileFollowers: currentProfileFollowers,
         email: state.entities.profile,
-        boards: Object.values(state.entities.boards), 
+        // boards: Object.values(state.entities.boards), 
         pins: state.entities.pins
     }
 }

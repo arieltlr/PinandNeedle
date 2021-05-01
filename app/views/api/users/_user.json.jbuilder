@@ -16,3 +16,10 @@ json.pins do
         end
     end
 end
+ 
+json.followers do 
+    user.followers.pluck(:follower_id)
+end
+json.users_followed do 
+    user.users_followed.pluck(:user_id)
+end

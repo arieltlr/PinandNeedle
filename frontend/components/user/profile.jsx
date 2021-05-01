@@ -15,8 +15,8 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        
         this.props.getBoards(this.props.match.params.userId)
+        
     }
     componentDidUpdate(prevProps) {
         
@@ -25,34 +25,42 @@ class Profile extends React.Component {
         }
     }
     fetchBoards(){
-        this.props.getBoards(this.props.match.params.userId);
+        this.props.getBoards(this.props.match.params.userId)
+        
     }
+
     render() {
         if (!this.state.fetchBoards) {
             this.state.fetchBoards = !this.state.fetchBoards;
             return null;
         }
         if (!this.props.currentProfile){
+            
             this.fetchBoards();
             return null;
         }
-        
+        debugger
         const currentProfile = this.props.currentProfile;
+        //check if the currentProfile has followers and is following other users
         let usersFollowed;
         let followers;
         currentProfile.users_followed ? usersFollowed = currentProfile.users_followed : null;
         currentProfile.followers ? followers = currentProfile.followers : null;
+        //set up following and follower counts
         let followerCount;
         let followingCount;
         followers ? followerCount = `${Object.keys(followers).length} Follower` : followerCount = "0 Followers";
         usersFollowed ? followingCount = `${Object.keys(usersFollowed).length} Following` : followingCount = "0 Following";
+        //check if this is the currentUsers profile
         const currentUserProfile = this.props.currentUser.id === currentProfile.id;
-        const email = this.props.email.split('@')[0]
+        //set up profile information
+        const email = this.props.currentProfile.email.split('@')[0]
         const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
         const profileLetter = email[0].toUpperCase()
         const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
         let pins = this.props.pins
-        let boards = this.props.boards.map((board, index) => {
+        //map a list of all the users boards
+        let boards = Object.values(this.props.currentProfile.boards).map((board, index) => {
             const pinCount = board.pins.length
             
             return (
@@ -80,7 +88,11 @@ class Profile extends React.Component {
                 </li>
             )
         })
+       //check if the current user has any boards
         if (boards.length < 1 ? boards = noBoardsMessage : boards = boards)
+        
+        //here is the actual code to render
+        debugger
             return (
 
                 <div>
@@ -110,6 +122,7 @@ class Profile extends React.Component {
                             createFollow={this.props.createFollow}
                             unfollow={this.props.unfollow}
                             currentUsersUsersFollowed={this.props.currentUser.users_followed}
+                            getBoards={this.props.getBoards}
                              />
                         </div>
                         }

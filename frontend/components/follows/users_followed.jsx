@@ -13,7 +13,8 @@ constructor(props){
         e.preventDefault();
         const follow = {
             user_id: this.props.profileId,
-            follower_id: this.props.currentUserId
+            follower_id: this.props.currentUserId,
+            profile_id: this.props.currentProfileId,
         }
         
         this.props.createFollow(follow);
@@ -23,7 +24,8 @@ constructor(props){
         e.preventDefault();
         const follow = {
             user_id: this.props.profileId,
-            follower_id: this.props.currentUserId
+            follower_id: this.props.currentUserId,
+            profile_id: this.props.currentProfileId,
         }
         this.props.unfollow(follow);
 
@@ -48,6 +50,7 @@ constructor(props){
                         username={user.username} 
                         userId={user.id} 
                         currentUserId={this.props.currentUser.id}
+                        currentProfileId={this.props.currentProfile.id}
                         followers={usersFollowers}
                         unfollow={this.props.unfollow}
                         createFollow={this.props.createFollow}

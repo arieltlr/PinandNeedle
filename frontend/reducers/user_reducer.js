@@ -8,12 +8,16 @@ const userReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
+            
             return Object.assign({}, state, { [action.currentUser.id]: action.currentUser })
         case RECEIVE_PROFILE:
+            
             return Object.assign({}, state, {[action.userProfile.id]: action.userProfile});
         case RECEIVE_BOARD:
+            
             return Object.assign({}, state, { [action.board.user.id]: action.board.user });
         case RECEIVE_PIN:
+            
             return Object.assign({}, state, {[action.pin.user.id]: action.pin.user});
         case SHOW_PIN:
             if (Object.keys(state).includes(action.pin.user.id.toString())){
@@ -31,11 +35,15 @@ const userReducer = (state = {}, action) => {
             }
         case RECEIVE_FOLLOW:
             const newState = Object.assign({}, state);
-            newState[action.follow.id] = action.follow;
+            newState[action.follow.current_user.id] = action.follow.current_user;
+            newState[action.follow.current_profile.id] = action.follow.current_profile;
+            debugger
             return newState; 
         case UNFOLLOW:
             const updateState = Object.assign({}, state);
-            updateState[action.follow.id] = action.follow;
+            updateState[action.follow.current_user.id] = action.follow.current_user;
+            updateState[action.follow.current_profile.id] = action.follow.current_profile;
+            debugger
             return updateState;   
         default:
             return state;

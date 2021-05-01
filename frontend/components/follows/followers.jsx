@@ -6,6 +6,7 @@ constructor(props){
         super(props)
         this.state = {
             followEvent: false,
+            fetchBoards: false,
         }
         
         this.handleFollow = this.handleFollow.bind(this);
@@ -16,28 +17,26 @@ constructor(props){
         e.preventDefault();
         const follow = {
             user_id: this.props.profileId,
-            follower_id: this.props.currentUserId
+            follower_id: this.props.currentUserId,
+            profile_id: this.props.currentProfileId,
         }
         
-        this.props.createFollow(follow).then(
-        this.setState({followEvent: !followEvent}))
+        this.props.createFollow(follow)
 
     }
     handleUnfollow(e){
         e.preventDefault();
         const follow = {
             user_id: this.props.profileId,
-            follower_id: this.props.currentUserId
+            follower_id: this.props.currentUserId,
+            profile_id: this.props.currentProfileId,
         }
         this.props.unfollow(follow);
-        this.setState({followEvent: !followEvent})
 
     }
 
+
     render(){
-        if (!this.props.currentProfile){
-            return null;
-        }
 
         let followers;
         if (this.props.currentProfile.followers){
@@ -48,10 +47,12 @@ constructor(props){
                         username={follower.username} 
                         followerId={follower.id} 
                         currentUserId={this.props.currentUser.id}
+                        currentProfileId={this.props.currentProfile.id}
                         followerFollowers={follower.followers}
                         unfollow={this.props.unfollow}
                         createFollow={this.props.createFollow}
                         currentUsersUsersFollowed={this.props.currentUser.users_followed}
+                    
                     /> 
                 )
             });

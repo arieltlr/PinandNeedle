@@ -12,7 +12,8 @@ class Follower extends React.Component {
         e.preventDefault();
         const follow = {
             user_id: this.props.followerId,
-            follower_id: this.props.currentUserId
+            follower_id: this.props.currentUserId,
+            profile_id: this.props.currentProfileId,
         }
         
         this.props.createFollow(follow);
@@ -22,7 +23,8 @@ class Follower extends React.Component {
         e.preventDefault();
         const follow = {
             user_id: this.props.followerId,
-            follower_id: this.props.currentUserId
+            follower_id: this.props.currentUserId,
+            profile_id: this.props.currentProfileId,
         }
         this.props.unfollow(follow);
 
