@@ -7,8 +7,14 @@ import { createFollow, unfollow } from '../../actions/follow_actions';
 
 const mapStateToProps = (state, ownProps) => {
     let currentProfileFollowers = {};
+    let currentProfileBoards = {};
     if (state.entities.user[ownProps.match.params.userId]){
+        
         currentProfileFollowers = state.entities.user[ownProps.match.params.userId].followers;
+        if (state.entities.user[ownProps.match.params.userId].boards){
+            currentProfileBoards = state.entities.user[ownProps.match.params.userId].boards;
+        }
+        
     }
     
     return {
@@ -16,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
         currentProfile: state.entities.user[ownProps.match.params.userId],
         currentProfileFollowers: currentProfileFollowers,
         email: state.entities.profile,
-        // boards: Object.values(state.entities.boards), 
+        currentProfileBoards: currentProfileBoards, 
         pins: state.entities.pins
     }
 }

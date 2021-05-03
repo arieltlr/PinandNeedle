@@ -4,13 +4,10 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             login(@user)
-            @boards = Board.where(user_id: params[:id]).includes(:pins).to_a
+            @boards = []
             @pins = []
-            @boards.each do |board|
-            @pins.concat(board.pins.includes(photo_attachment: :blob).to_a)
-            @followers = User.where(id: @user.followers.pluck(:follower_id)).includes(:followers).to_a
-            @users_followed = User.where(id: @user.users_followed.pluck(:user_id)).includes(:followers).to_a
-        end
+            @followers = []
+            @users_followed = []
             render :show
         else
             render json: @user.errors.full_messages, status: 404
@@ -40,5 +37,4 @@ class Api::UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:email, :age, :password)
     end
-
 end

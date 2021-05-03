@@ -48,8 +48,10 @@ class Profile extends React.Component {
         currentProfile.followers ? followers = currentProfile.followers : null;
         //set up following and follower counts
         let followerCount;
+        let followerCountNum;
         let followingCount;
-        followers ? followerCount = `${Object.keys(followers).length} Follower` : followerCount = "0 Followers";
+        followers ? followerCountNum = Object.keys(followers).length : followerCountNum = 0;
+        followerCountNum === 1 ? followerCount = "1 Follower" : followerCount =`${followerCountNum} Followers`;
         usersFollowed ? followingCount = `${Object.keys(usersFollowed).length} Following` : followingCount = "0 Following";
         //check if this is the currentUsers profile
         const currentUserProfile = this.props.currentUser.id === currentProfile.id;
@@ -60,9 +62,11 @@ class Profile extends React.Component {
         const noBoardsMessage = <h3 className="no-boards-message">{emailName} hasn't saved any Pins yet</h3>;
         let pins = this.props.pins
         //map a list of all the users boards
-        let boards = Object.values(this.props.currentProfile.boards).map((board, index) => {
-            const pinCount = board.pins.length
-            
+        
+        let boards = Object.values(this.props.currentProfileBoards);
+        if (boards){
+            boards = Object.values(this.props.currentProfileBoards).map((board, index) => {
+            const pinCount = board.pins.length  
             return (
                 <li className="board-li" key={index}>
                     <Link className="board-show-link" to={`/board/${board.id}`}>
@@ -88,6 +92,7 @@ class Profile extends React.Component {
                 </li>
             )
         })
+        } 
        //check if the current user has any boards
         if (boards.length < 1 ? boards = noBoardsMessage : boards = boards)
         

@@ -41,10 +41,12 @@ constructor(props){
         let followers;
         if (this.props.currentProfile.followers){
             followers = Object.values(this.props.currentProfile.followers).map((follower, idx) => {
+                const email = follower.email.split('@')[0]
+                const emailName = email[0].toUpperCase() + email.slice(1).toLowerCase()
                 return (
                     <Follower
                         key={idx} 
-                        username={follower.username} 
+                        username={emailName} 
                         followerId={follower.id} 
                         currentUserId={this.props.currentUser.id}
                         currentProfileId={this.props.currentProfile.id}
