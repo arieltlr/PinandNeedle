@@ -8,9 +8,6 @@ const DropdownContent = (props) => {
             <li id="dropdown-header">
                 <span className="dropdown-header" >Options</span>
             </li>
-            {/* <li>
-                <NavLink to={`/user/${props.user.id}`}>Settings</NavLink>
-            </li> */}
             <li onClick={props.logout}>
                 Log out
                 </li>
