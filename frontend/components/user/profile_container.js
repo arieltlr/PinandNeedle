@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
         }
         
     }
-    
+    debugger
     return {
         currentUser: state.entities.user[state.session.id],
         currentProfile: state.entities.user[ownProps.match.params.userId],
