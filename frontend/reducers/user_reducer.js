@@ -14,8 +14,10 @@ const userReducer = (state = {}, action) => {
             
             return Object.assign({}, state, {[action.userProfile.id]: action.userProfile});
         case RECEIVE_BOARD:
-            
-            return Object.assign({}, state, { [action.board.user.id]: action.board.user });
+            state[action.board.user.id].boards = Object.assign({}, state[action.board.user.id].boards, {[action.board.id]: action.board});
+            debugger
+            // Object.assign({}, state, { [action.board.user.id]: action.board.user });
+            return state;
         case RECEIVE_PIN:
             
             return Object.assign({}, state, {[action.pin.user.id]: action.pin.user});

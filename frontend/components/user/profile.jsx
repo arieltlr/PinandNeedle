@@ -66,7 +66,7 @@ class Profile extends React.Component {
         let boards = Object.values(this.props.currentProfileBoards);
         if (boards){
             boards = Object.values(this.props.currentProfileBoards).map((board, index) => {
-            const pinCount = board.pins.length  
+            const pinCount = board.pins.length
             return (
                 <li className="board-li" key={index}>
                     <Link className="board-show-link" to={`/board/${board.id}`}>

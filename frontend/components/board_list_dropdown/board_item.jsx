@@ -40,7 +40,10 @@ class BoardItem extends React.Component {
         }else {
             buttonState = "hide-button";
         }
-        typeof board.pins[0] === 'object' ? pinID = board.pins[0].id : pinID = board.pins[0]
+        if (board.pins[0]){
+            typeof board.pins[0] === 'object' ? pinID = board.pins[0].id : pinID = board.pins[0];
+        }
+        
         return (
                 <div className="boards-dropdown-li-container" onMouseEnter={this.onHover} onMouseLeave={this.onHover} key={this.props.index} onClick={this.handleSubmit}>
                     <div className="boards-dropdown-board">
