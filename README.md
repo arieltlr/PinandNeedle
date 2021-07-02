@@ -28,7 +28,14 @@ Libraries
 
 ## Key Features
 * User authentication
+* Full CRUD cycle for boards 
+* Full CRUD cycle for pins
+* * Upload image as part of pin creation. Image stored remotely using AWS
+* User can save another users pin, and two levels of edit ability exist. Author can edit all details of the pin and delete. If user saves a pin from another user, only associated board can be modified. 
 * Save pins directly from the feed
-* Automatic board creation when user attempts to save a pin without an existing board. 
+* Automatic board creation when user attempts to save a pin without an existing board
 * Search feature for all pins
+* Users can follow and unfollow other users
+
+
 
