@@ -90,7 +90,6 @@ class Pins extends React.Component {
         
         if (this.props.currentUser.boards) { 
             options = Object.values(this.props.currentUser.boards).map((board, index) => {
-                debugger
                 return(
                 <div className="boards-dropdown-li-container" value={board.id} data-id={board.name} onClick={this.handleName} key={index}>
                     <div className="boards-dropdown-board">
@@ -103,7 +102,6 @@ class Pins extends React.Component {
         })} else{
             options = null;
         }
-        debugger
         return (
             <div className="new-pin-form-container">
             <form className="new-pin-form" onSubmit={this.handleSubmit}>

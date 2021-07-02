@@ -1,6 +1,5 @@
 
 json.extract! @board, :id, :name, :description, :user_id, :owner_email, :pins
-debugger
 json.pins @pins
 json.user do
     json.extract! @board.user, :id, :email
