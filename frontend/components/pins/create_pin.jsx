@@ -102,7 +102,6 @@ class Pins extends React.Component {
         })} else{
             options = null;
         }
-        
         return (
             <div className="new-pin-form-container">
             <form className="new-pin-form" onSubmit={this.handleSubmit}>
@@ -144,7 +143,6 @@ class Pins extends React.Component {
                                     </div>
                                     <div className="create-pin-name-followers">
                                         <h1 id="profile-page-username-create-pin">{emailName}</h1>
-                                        {/* <h3 className="pin-follower">1 Follower</h3 > */}
                                     </div>
                                 </div>
                                 <div className="pin-desc-container">

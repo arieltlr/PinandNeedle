@@ -68,12 +68,11 @@
 .edit-description {
     width: 80%;
     align-self: center;
-
+    height: 35px;
+    border-radius: 10px;
+    border: solid 2px lightgray;
+    margin-bottom: 30px;
 }
 .edit-board-title-container {
     padding-bottom: 30px;
-}
-.edit-description {
-    margin-bottom: 30px;
-
 }

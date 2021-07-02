@@ -50,6 +50,7 @@ class Api::BoardsController < ApplicationController
         @user = User.find(@board.user_id)
         @boards = Board.where(user_id: @board.user_id).includes(:pins).to_a
         @pins = @user.pins.includes(photo_attachment: :blob).to_a
+        debugger
         if @board 
             render :show
         else
