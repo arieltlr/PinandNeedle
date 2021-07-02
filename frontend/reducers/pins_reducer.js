@@ -27,7 +27,7 @@ const pinsReducer = (state = {}, action) => {
             return action.board.pins
             };
         case RECEIVE_PROFILE:
-            
+            debugger
             return Object.assign({}, state, action.userProfile.pins)
         default:
             return state;

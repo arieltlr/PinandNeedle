@@ -8,12 +8,6 @@ export const newBoard = (board) => {
     })
 }
 
-// export const boardIndex = () => {
-//     return $.ajax({
-//         method: "GET",
-//         url: "/api/boards"
-//     })
-// }
 
 export const showBoard = (boardId) => {
     return $.ajax({

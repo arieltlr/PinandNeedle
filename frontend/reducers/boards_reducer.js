@@ -5,9 +5,12 @@ const boardsReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_PROFILE:
+            debugger
             if (action.userProfile.boards === undefined){
+                debugger
                 return {};
             } else {
+                debugger
                 return action.userProfile.boards;
             } 
         case RECEIVE_BOARD:

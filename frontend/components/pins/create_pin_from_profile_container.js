@@ -34,6 +34,7 @@ const mapStateToProps = (state, ownProps) => {
         board_name = board.name;
         board_id = board.id;
     }
+    debugger
     return {
         errors: state.errors.pins,
         ownProps,

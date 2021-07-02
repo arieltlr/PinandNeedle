@@ -49,6 +49,7 @@ function Modal ({modal, closeModal}) {
             form = "create-pin-modal"
             break;
         case 'create-pin-from-profile':
+            debugger
             component = <CreatePinFromProfileContainer />;
             form = "create-pin-modal"
             break;
