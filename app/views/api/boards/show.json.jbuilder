@@ -1,5 +1,5 @@
-json.extract! @board, :id, :user_id, :name, :description, :owner_email, :pins
-   
+json.extract! @board, :id, :user_id, :name, :description, :owner_email
+json.newBoard :false
 json.user do
     json.extract! @board.user, :id, :email
         json.boards do 
