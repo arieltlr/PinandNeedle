@@ -15,11 +15,9 @@ const userReducer = (state = {}, action) => {
         case RECEIVE_BOARD:
             
             if (action.board.newBoard === "true"){
-                debugger
                 state[action.board.user.id].boards = Object.assign({}, state[action.board.user.id].boards, {[action.board.id]: action.board});
                 return state;
             }else {
-                debugger
                 return Object.assign({}, state, { [action.board.user.id]: action.board.user })
             }
         case RECEIVE_PIN:
